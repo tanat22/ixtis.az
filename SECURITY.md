@@ -9,7 +9,7 @@ Please follow these steps to report a security vulnerability:
 
 Do not open a public GitHub issue. This may expose the vulnerability to malicious actors before it can be fixed.
 
-Send an email to our security contact at [your email address] with the following information:
+Send an email to our security contact at eyunusov@avicom.tech with the following information:
 
 A clear and detailed description of the vulnerability.
 
