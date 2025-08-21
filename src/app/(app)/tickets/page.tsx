@@ -38,16 +38,16 @@ export default function TicketsPage() {
     const url = `https://waze.com/ul?ll=${lat},${lng}&navigate=yes`;
     window.open(url, '_blank');
     toast({
-        title: "Navigation Started",
-        description: "Opening Waze for navigation.",
+        title: "Naviqasiya Başladı",
+        description: "Naviqasiya üçün Waze açılır.",
     });
   };
 
   const getStatusVariant = (status: Ticket['status']) => {
     switch (status) {
-      case 'Open': return 'destructive';
-      case 'In Progress': return 'secondary';
-      case 'Closed': return 'default';
+      case 'Açıq': return 'destructive';
+      case 'İcra olunur': return 'secondary';
+      case 'Bağlı': return 'default';
       default: return 'outline';
     }
   };
@@ -55,20 +55,20 @@ export default function TicketsPage() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Tickets</CardTitle>
-        <CardDescription>Manage and track all support and maintenance tickets.</CardDescription>
+        <CardTitle>Tiketlər</CardTitle>
+        <CardDescription>Bütün dəstək və təmir tiketlərinizi idarə edin və izləyin.</CardDescription>
       </CardHeader>
       <CardContent>
         <Table>
           <TableHeader>
             <TableRow>
               <TableHead>Asset</TableHead>
-              <TableHead className="hidden md:table-cell">Issue</TableHead>
+              <TableHead className="hidden md:table-cell">Problem</TableHead>
               <TableHead>Status</TableHead>
-              <TableHead>Assigned To</TableHead>
-              {isMobile && <TableHead><span className="sr-only">Navigate</span></TableHead>}
+              <TableHead>Təyin edilib</TableHead>
+              {isMobile && <TableHead><span className="sr-only">Naviqasiya</span></TableHead>}
               <TableHead>
-                <span className="sr-only">Actions</span>
+                <span className="sr-only">Əməliyyatlar</span>
               </TableHead>
             </TableRow>
           </TableHeader>
@@ -78,17 +78,17 @@ export default function TicketsPage() {
               const user = mockUsers.find(u => u.id === ticket.assignedTo);
               return (
                 <TableRow key={ticket.id}>
-                  <TableCell className="font-medium">{asset?.name || 'Unknown Asset'}</TableCell>
+                  <TableCell className="font-medium">{asset?.name || 'Naməlum Asset'}</TableCell>
                   <TableCell className="hidden md:table-cell">{ticket.issue}</TableCell>
                   <TableCell>
                     <Badge variant={getStatusVariant(ticket.status)}>{ticket.status}</Badge>
                   </TableCell>
-                  <TableCell>{user?.name || 'Unassigned'}</TableCell>
+                  <TableCell>{user?.name || 'Təyin edilməyib'}</TableCell>
                   {isMobile && asset && (
                     <TableCell>
                        <Button size="icon" variant="outline" onClick={() => handleNavigate(asset.location.lat, asset.location.lng)}>
                          <MapPin className="h-4 w-4" />
-                         <span className="sr-only">Navigate</span>
+                         <span className="sr-only">Naviqasiya</span>
                        </Button>
                     </TableCell>
                   )}
@@ -97,23 +97,23 @@ export default function TicketsPage() {
                       <DropdownMenuTrigger asChild>
                         <Button aria-haspopup="true" size="icon" variant="ghost">
                           <MoreHorizontal className="h-4 w-4" />
-                          <span className="sr-only">Toggle menu</span>
+                          <span className="sr-only">Menyunu aç/bağla</span>
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuItem>View Details</DropdownMenuItem>
+                        <DropdownMenuLabel>Əməliyyatlar</DropdownMenuLabel>
+                        <DropdownMenuItem>Təfərrüatlara bax</DropdownMenuItem>
                         <DropdownMenuSub>
-                          <DropdownMenuSubTrigger>Assign To</DropdownMenuSubTrigger>
+                          <DropdownMenuSubTrigger>Təyin et</DropdownMenuSubTrigger>
                           <DropdownMenuPortal>
                             <DropdownMenuSubContent>
-                              {mockUsers.filter(u => u.role === 'Field User').map(fieldUser => (
+                              {mockUsers.filter(u => u.role === 'Səhra istifadəçisi').map(fieldUser => (
                                 <DropdownMenuItem key={fieldUser.id}>{fieldUser.name}</DropdownMenuItem>
                               ))}
                             </DropdownMenuSubContent>
                           </DropdownMenuPortal>
                         </DropdownMenuSub>
-                        <DropdownMenuItem>Close Ticket</DropdownMenuItem>
+                        <DropdownMenuItem>Tiketi bağla</DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
                   </TableCell>

@@ -13,12 +13,12 @@ export default function LoginPage() {
             AssetRover
           </h1>
           <p className="text-muted-foreground">
-            Sign in to manage your assets
+            Assetlərinizi idarə etmək üçün daxil olun
           </p>
         </div>
         <LoginForm />
         <p className="mt-8 text-center text-sm text-muted-foreground">
-          &copy; {new Date().getFullYear()} AssetRover. All rights reserved.
+          &copy; {new Date().getFullYear()} AssetRover. Bütün hüquqlar qorunur.
         </p>
       </div>
     </div>

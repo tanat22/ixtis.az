@@ -2,7 +2,7 @@ export type User = {
   id: string;
   name: string;
   email: string;
-  role: 'Super Admin' | 'Admin' | 'Field User';
+  role: 'Super Admin' | 'Admin' | 'Səhra istifadəçisi';
   region: string;
   avatar: string;
 };
@@ -10,13 +10,13 @@ export type User = {
 export type Asset = {
   id: string;
   name: string;
-  type: 'Direk' | 'Qutu' | 'Kamera' | 'Switch' | 'Router';
+  type: 'Dirək' | 'Qutu' | 'Kamera' | 'Switch' | 'Router';
   region: string;
   location: {
     lat: number;
     lng: number;
   };
-  status: 'Active' | 'Inactive' | 'Maintenance';
+  status: 'Aktiv' | 'Qeyri-aktiv' | 'Təmir';
   addedBy: string;
   addedDate: string;
 };
@@ -25,7 +25,7 @@ export type Ticket = {
   id: string;
   assetId: string;
   issue: string;
-  status: 'Open' | 'In Progress' | 'Closed';
+  status: 'Açıq' | 'İcra olunur' | 'Bağlı';
   assignedTo?: string;
   createdDate: string;
 };

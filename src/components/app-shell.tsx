@@ -37,18 +37,18 @@ import {
 
 // This is a mock. In a real app, you'd get this from your auth context.
 const user = {
-  name: 'Ali Valiyev',
+  name: 'Əli Vəliyev',
   email: 'ali.v@example.com',
   avatar: '/avatars/01.png',
   role: 'Super Admin',
 };
 
 const navItems = [
-  { href: '/dashboard', icon: LayoutDashboard, label: 'Dashboard', roles: ['Super Admin', 'Admin', 'Field User'] },
-  { href: '/assets', icon: Box, label: 'Assets', roles: ['Super Admin', 'Admin', 'Field User'] },
-  { href: '/tickets', icon: Ticket, label: 'Tickets', roles: ['Super Admin', 'Admin', 'Field User'] },
-  { href: '/users', icon: Users, label: 'User Management', roles: ['Super Admin', 'Admin'] },
-  { href: '/audit-log', icon: FileClock, label: 'Audit Log', roles: ['Super Admin'] },
+  { href: '/dashboard', icon: LayoutDashboard, label: 'İdarə Paneli', roles: ['Super Admin', 'Admin', 'Field User'] },
+  { href: '/assets', icon: Box, label: 'Assetlər', roles: ['Super Admin', 'Admin', 'Field User'] },
+  { href: '/tickets', icon: Ticket, label: 'Tiketlər', roles: ['Super Admin', 'Admin', 'Field User'] },
+  { href: '/users', icon: Users, label: 'İstifadəçi İdarəetməsi', roles: ['Super Admin', 'Admin'] },
+  { href: '/audit-log', icon: FileClock, label: 'Audit Jurnalı', roles: ['Super Admin'] },
 ];
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
@@ -104,13 +104,13 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               <DropdownMenuSeparator />
               <DropdownMenuItem>
                 <Settings className="mr-2 h-4 w-4" />
-                <span>Settings</span>
+                <span>Parametrlər</span>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild>
                  <a href="/">
                     <LogOut className="mr-2 h-4 w-4" />
-                    <span>Log out</span>
+                    <span>Çıxış</span>
                  </a>
               </DropdownMenuItem>
             </DropdownMenuContent>

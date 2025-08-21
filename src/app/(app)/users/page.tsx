@@ -35,15 +35,15 @@ export default function UsersPage() {
     <Card>
       <CardHeader className="flex flex-row items-center justify-between">
         <div>
-          <CardTitle>User Management</CardTitle>
+          <CardTitle>İstifadəçi İdarəetməsi</CardTitle>
           <CardDescription>
-            Assign roles and manage user access.
+            Rollar təyin edin və istifadəçi girişini idarə edin.
           </CardDescription>
         </div>
         <Button size="sm" className="gap-1">
           <PlusCircle className="h-3.5 w-3.5" />
           <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-            Add User
+            İstifadəçi əlavə et
           </span>
         </Button>
       </CardHeader>
@@ -51,11 +51,11 @@ export default function UsersPage() {
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>User</TableHead>
-              <TableHead>Role</TableHead>
+              <TableHead>İstifadəçi</TableHead>
+              <TableHead>Rol</TableHead>
               <TableHead>Region</TableHead>
               <TableHead>
-                <span className="sr-only">Actions</span>
+                <span className="sr-only">Əməliyyatlar</span>
               </TableHead>
             </TableRow>
           </TableHeader>
@@ -83,15 +83,15 @@ export default function UsersPage() {
                     <DropdownMenuTrigger asChild>
                       <Button aria-haspopup="true" size="icon" variant="ghost">
                         <MoreHorizontal className="h-4 w-4" />
-                        <span className="sr-only">Toggle menu</span>
+                        <span className="sr-only">Menyunu aç/bağla</span>
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
-                      <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                      <DropdownMenuItem>Edit</DropdownMenuItem>
-                      <DropdownMenuItem>Change Role</DropdownMenuItem>
+                      <DropdownMenuLabel>Əməliyyatlar</DropdownMenuLabel>
+                      <DropdownMenuItem>Redaktə et</DropdownMenuItem>
+                      <DropdownMenuItem>Rolu dəyiş</DropdownMenuItem>
                       <DropdownMenuItem className="text-destructive">
-                        Delete
+                        Sil
                       </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>

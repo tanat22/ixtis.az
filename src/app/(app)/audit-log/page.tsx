@@ -20,7 +20,7 @@ export default function AuditLogPage() {
 
     const filteredLogs = mockAuditLogs.filter(log => {
         const user = mockUsers.find(u => u.id === log.userId);
-        const searchContent = `${user?.name || ''} ${log.action} ${log.details} ${log.timestamp}`.toLowerCase();
+        const searchContent = `${user?.name || ''} ${log.action} ${log.details} ${new Date(log.timestamp).toLocaleString('az-AZ')}`.toLowerCase();
         return searchContent.includes(searchTerm.toLowerCase());
     });
   
@@ -29,16 +29,16 @@ export default function AuditLogPage() {
       <CardHeader>
         <div className="flex flex-col md:flex-row md:items-center md:justify-between">
             <div>
-                <CardTitle>Audit Log</CardTitle>
+                <CardTitle>Audit Jurnalı</CardTitle>
                 <CardDescription>
-                A detailed log of all actions taken within the system.
+                Sistem daxilində görülən bütün əməliyyatların ətraflı jurnalı.
                 </CardDescription>
             </div>
             <div className="relative mt-4 md:mt-0">
                 <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
                 <Input
                     type="search"
-                    placeholder="Search logs..."
+                    placeholder="Jurnallarda axtarış..."
                     className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[320px]"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
@@ -50,10 +50,10 @@ export default function AuditLogPage() {
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>User</TableHead>
-              <TableHead>Action</TableHead>
-              <TableHead>Details</TableHead>
-              <TableHead>Timestamp</TableHead>
+              <TableHead>İstifadəçi</TableHead>
+              <TableHead>Əməliyyat</TableHead>
+              <TableHead>Təfərrüatlar</TableHead>
+              <TableHead>Tarix</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -68,7 +68,7 @@ export default function AuditLogPage() {
                         <AvatarFallback>{user?.name.charAt(0)}</AvatarFallback>
                       </Avatar>
                       <div className="grid gap-0.5">
-                        <p className="font-medium">{user?.name || 'System'}</p>
+                        <p className="font-medium">{user?.name || 'Sistem'}</p>
                         <p className="hidden text-sm text-muted-foreground md:inline">
                           {user?.email}
                         </p>
@@ -77,7 +77,7 @@ export default function AuditLogPage() {
                   </TableCell>
                   <TableCell>{log.action}</TableCell>
                   <TableCell>{log.details}</TableCell>
-                  <TableCell>{log.timestamp}</TableCell>
+                  <TableCell>{new Date(log.timestamp).toLocaleString('az-AZ')}</TableCell>
                 </TableRow>
               );
             })}

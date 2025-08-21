@@ -20,10 +20,10 @@ import { LogIn } from 'lucide-react';
 
 const formSchema = z.object({
   email: z.string().email({
-    message: 'Please enter a valid email address.',
+    message: 'Zəhmət olmasa, etibarlı bir e-poçt ünvanı daxil edin.',
   }),
   password: z.string().min(6, {
-    message: 'Password must be at least 6 characters.',
+    message: 'Şifrə ən azı 6 simvoldan ibarət olmalıdır.',
   }),
 });
 
@@ -47,8 +47,8 @@ export default function LoginForm() {
       // In a real app, you'd handle auth here.
       // We'll just show a success toast and redirect.
       toast({
-        title: 'Login Successful',
-        description: `Welcome back, ${values.email}!`,
+        title: 'Giriş Uğurludur',
+        description: `Xoş gəldiniz, ${values.email}!`,
       });
       router.push('/dashboard');
       setIsLoading(false);
@@ -63,11 +63,11 @@ export default function LoginForm() {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email Address</FormLabel>
+              <FormLabel>E-poçt ünvanı</FormLabel>
               <FormControl>
                 <Input
                   type="email"
-                  placeholder="name@example.com"
+                  placeholder="ad@misal.com"
                   {...field}
                   disabled={isLoading}
                 />
@@ -81,7 +81,7 @@ export default function LoginForm() {
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Password</FormLabel>
+              <FormLabel>Şifrə</FormLabel>
               <FormControl>
                 <Input
                   type="password"
@@ -98,12 +98,12 @@ export default function LoginForm() {
           {isLoading ? (
             <div className="flex items-center gap-2">
               <div className="h-4 w-4 animate-spin rounded-full border-2 border-primary-foreground border-t-transparent"></div>
-              <span>Signing In...</span>
+              <span>Daxil olunur...</span>
             </div>
           ) : (
             <>
               <LogIn />
-              Sign In
+              Daxil ol
             </>
           )}
         </Button>

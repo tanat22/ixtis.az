@@ -21,7 +21,7 @@ export default function DashboardPage() {
 
   const chartConfig = {
     count: {
-      label: 'Assets',
+      label: 'Assetlər',
       color: 'hsl(var(--primary))',
     },
   };
@@ -33,34 +33,34 @@ export default function DashboardPage() {
       <div className="grid gap-4 md:grid-cols-3 xl:col-span-3">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Assets</CardTitle>
+            <CardTitle className="text-sm font-medium">Ümumi Assetlər</CardTitle>
             <Box className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{mockAssets.length}</div>
-            <p className="text-xs text-muted-foreground">+2 from last month</p>
+            <p className="text-xs text-muted-foreground">Keçən aydan +2</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Open Tickets</CardTitle>
+            <CardTitle className="text-sm font-medium">Açıq Tiketlər</CardTitle>
             <Ticket className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
-              {mockTickets.filter(t => t.status === 'Open' || t.status === 'In Progress').length}
+              {mockTickets.filter(t => t.status === 'Açıq' || t.status === 'İcra olunur').length}
             </div>
-            <p className="text-xs text-muted-foreground">+1 since yesterday</p>
+            <p className="text-xs text-muted-foreground">Dünəndən +1</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Active Users</CardTitle>
+            <CardTitle className="text-sm font-medium">Aktiv İstifadəçilər</CardTitle>
             <Users className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{mockUsers.length}</div>
-            <p className="text-xs text-muted-foreground">All users currently active</p>
+            <p className="text-xs text-muted-foreground">Bütün istifadəçilər hazırda aktivdir</p>
           </CardContent>
         </Card>
       </div>
@@ -68,8 +68,8 @@ export default function DashboardPage() {
       <div className="grid gap-4 xl:col-span-2">
         <Card>
           <CardHeader>
-            <CardTitle>Asset Distribution</CardTitle>
-            <CardDescription>Number of assets by type.</CardDescription>
+            <CardTitle>Asset Paylanması</CardTitle>
+            <CardDescription>Assetlərin növünə görə sayı.</CardDescription>
           </CardHeader>
           <CardContent>
             <ChartContainer config={chartConfig} className="h-[300px] w-full">
@@ -91,8 +91,8 @@ export default function DashboardPage() {
       <div>
         <Card>
           <CardHeader>
-            <CardTitle>Recent Activity</CardTitle>
-            <CardDescription>A log of recent system events.</CardDescription>
+            <CardTitle>Son Fəaliyyət</CardTitle>
+            <CardDescription>Son sistem hadisələrinin jurnalı.</CardDescription>
           </CardHeader>
           <CardContent className="grid gap-6">
             {recentLogs.map((log) => {
@@ -105,11 +105,11 @@ export default function DashboardPage() {
                   </Avatar>
                   <div className="grid gap-1">
                     <p className="text-sm font-medium leading-none">
-                      {user?.name || 'System'}
+                      {user?.name || 'Sistem'}
                       <span className="ml-2 font-normal text-muted-foreground">{log.action}</span>
                     </p>
                     <p className="text-sm text-muted-foreground">{log.details}</p>
-                    <p className="text-xs text-muted-foreground">{log.timestamp}</p>
+                    <p className="text-xs text-muted-foreground">{new Date(log.timestamp).toLocaleString('az-AZ')}</p>
                   </div>
                 </div>
               );
