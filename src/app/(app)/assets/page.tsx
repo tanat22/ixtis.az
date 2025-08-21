@@ -34,7 +34,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 import { mockAssets, mockUsers } from '@/lib/data';
-import type { Asset, DirekAsset, DataKabelAsset, ElektrikKabelAsset, KameraAsset } from '@/lib/types';
+import type { Asset, DirekAsset, DataKabelAsset, ElektrikKabelAsset, KameraAsset, QutuAsset } from '@/lib/types';
 
 export default function AssetsPage() {
   const [assets, setAssets] = React.useState<Asset[]>(mockAssets);
@@ -108,11 +108,26 @@ export default function AssetsPage() {
             montajAksesuariIstismarVeziyyeti: formData.get('montajAksesuariIstismarVeziyyeti') as KameraAsset['montajAksesuariIstismarVeziyyeti'],
             kameraTemizliyi: formData.get('kameraTemizliyi') as KameraAsset['kameraTemizliyi'],
         }
+    } else if (assetType === 'Qutu') {
+        newAsset = {
+            ...commonData,
+            type: 'Qutu',
+            istehsalci: formData.get('istehsalci') as QutuAsset['istehsalci'],
+            tipi: formData.get('tipi') as QutuAsset['tipi'],
+            soyutmaSistemi: formData.get('soyutmaSistemi') as QutuAsset['soyutmaSistemi'],
+            termalSensor: formData.get('termalSensor') as QutuAsset['termalSensor'],
+            reng: formData.get('reng') as string,
+            acarYeri: formData.get('acarYeri') as QutuAsset['acarYeri'],
+            refSayi: formData.get('refSayi') as QutuAsset['refSayi'],
+            berkidilmeUsulu: formData.get('berkidilmeUsulu') as QutuAsset['berkidilmeUsulu'],
+            torpaqlanma: formData.get('torpaqlanma') as QutuAsset['torpaqlanma'],
+            etiket: formData.get('etiket') as QutuAsset['etiket'],
+        }
     }
      else {
          newAsset = {
             ...commonData,
-            type: assetType as 'Qutu' | 'Switch' | 'Router',
+            type: assetType as 'Switch' | 'Router',
         };
     }
     
@@ -142,6 +157,9 @@ export default function AssetsPage() {
     }
     if (asset.type === 'Kamera') {
       return `Marka: ${asset.marka || 'N/A'}, Model: ${asset.model || 'N/A'}`;
+    }
+    if (asset.type === 'Qutu') {
+        return `İstehsalçı: ${asset.istehsalci || 'N/A'}, Tip: ${asset.tipi || 'N/A'}`;
     }
     return asset.type;
   }
@@ -404,6 +422,131 @@ export default function AssetsPage() {
             {commonFields}
         </>
       );
+    } else if (selectedAssetType === 'Qutu') {
+        return (
+            <>
+                <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="istehsalci" className="text-right">İstehsalçı</Label>
+                    <Select name="istehsalci">
+                        <SelectTrigger className="col-span-3">
+                            <SelectValue placeholder="İstehsalçını seçin" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="İDEA">İDEA</SelectItem>
+                            <SelectItem value="Lande AviCOM">Lande AviCOM</SelectItem>
+                            <SelectItem value="Lande">Lande</SelectItem>
+                            <SelectItem value="Lande EKİN">Lande EKİN</SelectItem>
+                            <SelectItem value="Legrant">Legrant</SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="tipi" className="text-right">Tipi</Label>
+                    <Select name="tipi">
+                        <SelectTrigger className="col-span-3">
+                            <SelectValue placeholder="Tipi seçin" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="Yer">Yer</SelectItem>
+                            <SelectItem value="Dirək">Dirək</SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="soyutmaSistemi" className="text-right">Soyutma Sistemi</Label>
+                     <Select name="soyutmaSistemi">
+                        <SelectTrigger className="col-span-3">
+                            <SelectValue placeholder="Sistemi seçin" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="Yoxdur">Yoxdur</SelectItem>
+                            <SelectItem value="FAN">FAN</SelectItem>
+                            <SelectItem value="Kuller">Kuller</SelectItem>
+                            <SelectItem value="Kondisioner">Kondisioner</SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
+                 <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="termalSensor" className="text-right">Termal Sensor</Label>
+                     <Select name="termalSensor">
+                        <SelectTrigger className="col-span-3">
+                            <SelectValue placeholder="Seçin" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="Var">Var</SelectItem>
+                            <SelectItem value="Yoxdur">Yoxdur</SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
+                 <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="reng" className="text-right">Rəng</Label>
+                    <Input id="reng" name="reng" className="col-span-3" />
+                </div>
+                 <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="acarYeri" className="text-right">Açar Yeri</Label>
+                    <Select name="acarYeri">
+                        <SelectTrigger className="col-span-3">
+                            <SelectValue placeholder="Seçin" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="Plastik">Plastik</SelectItem>
+                            <SelectItem value="Metal">Metal</SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="refSayi" className="text-right">Rəf Sayı</Label>
+                    <Select name="refSayi">
+                        <SelectTrigger className="col-span-3">
+                            <SelectValue placeholder="Rəf sayını seçin" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="Rəfsiz">Rəfsiz</SelectItem>
+                            <SelectItem value="1 rəfli">1 rəfli</SelectItem>
+                             <SelectItem value="2 rəfli">2 rəfli</SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="berkidilmeUsulu" className="text-right">Bərkidilmə Üsulu</Label>
+                    <Select name="berkidilmeUsulu">
+                        <SelectTrigger className="col-span-3">
+                            <SelectValue placeholder="Üsulu seçin" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="Kələpçə">Kələpçə</SelectItem>
+                            <SelectItem value="Anker bolt">Anker bolt</SelectItem>
+                            <SelectItem value="Probka şurup">Probka şurup</SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
+                 <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="torpaqlanma" className="text-right">Torpaqlanma</Label>
+                     <Select name="torpaqlanma">
+                        <SelectTrigger className="col-span-3">
+                            <SelectValue placeholder="Seçin" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="Var">Var</SelectItem>
+                            <SelectItem value="Yoxdur">Yoxdur</SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
+                 <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="etiket" className="text-right">Etiket</Label>
+                     <Select name="etiket">
+                        <SelectTrigger className="col-span-3">
+                            <SelectValue placeholder="Seçin" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="Var">Var</SelectItem>
+                            <SelectItem value="Yoxdur">Yoxdur</SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
+                {commonFields}
+            </>
+        );
     }
     
     // For other generic types, only show common fields

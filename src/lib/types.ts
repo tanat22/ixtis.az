@@ -80,12 +80,31 @@ export type KameraAsset = BaseAsset & {
   kameraTemizliyi?: 'Təmiz' | 'Çirkli';
 };
 
-
-export type GenericAsset = BaseAsset & {
-    type: 'Qutu' | 'Switch' | 'Router';
+export type QutuAsset = BaseAsset & {
+  type: 'Qutu';
+  istehsalci?: 'İDEA' | 'Lande AviCOM' | 'Lande' | 'Lande EKİN' | 'Legrant';
+  tipi?: 'Yer' | 'Dirək';
+  soyutmaSistemi?: 'Yoxdur' | 'FAN' | 'Kuller' | 'Kondisioner';
+  termalSensor?: 'Var' | 'Yoxdur';
+  reng?: string;
+  acarYeri?: 'Plastik' | 'Metal';
+  refSayi?: 'Rəfsiz' | '1 rəfli' | '2 rəfli';
+  berkidilmeUsulu?: 'Kələpçə' | 'Anker bolt' | 'Probka şurup';
+  torpaqlanma?: 'Var' | 'Yoxdur';
+  etiket?: 'Var' | 'Yoxdur';
+  istismarVeziyyeti?: 'Yararlı' | 'Yararsız' | 'Restovrasiya olunmalıdır';
+  elaveKilidMexanizmi?: 'Var' | 'Yoxdur';
+  kilidIstismarVeziyyeti?: 'Yararlı' | 'Yararsız' | 'Restovrasiya olunmalıdır';
+  qutununXariciTemizliyi?: 'Təmiz' | 'Çirkli';
+  qutununDaxiliTemizliyi?: 'Təmiz' | 'Çirkli';
 };
 
-export type Asset = DirekAsset | GenericAsset | DataKabelAsset | ElektrikKabelAsset | KameraAsset;
+
+export type GenericAsset = BaseAsset & {
+    type: 'Switch' | 'Router';
+};
+
+export type Asset = DirekAsset | GenericAsset | DataKabelAsset | ElektrikKabelAsset | KameraAsset | QutuAsset;
 
 export type Ticket = {
   id: string;
