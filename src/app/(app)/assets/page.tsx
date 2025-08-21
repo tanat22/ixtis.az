@@ -39,7 +39,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 
-import { mockAssets, mockUsers, mockNodes, azerbaijanCities, azerbaijanRayons } from '@/lib/data';
+import { mockAssets, mockUsers, mockNodes, azerbaijanCities, cityRayons } from '@/lib/data';
 import type { Asset, DirekAsset, DataKabelAsset, ElektrikKabelAsset, KameraAsset, QutuAsset, SwitchAsset, TasinmazEmlak } from '@/lib/types';
 import { useToast } from '@/hooks/use-toast';
 
@@ -51,7 +51,21 @@ export default function AssetsPage() {
   const [selectedAssetType, setSelectedAssetType] = React.useState<Asset['type'] | ''>('');
   const [selectedNode, setSelectedNode] = React.useState<TasinmazEmlak | null>(null);
   const [nodeFormData, setNodeFormData] = React.useState<Partial<TasinmazEmlak>>({});
+  const [availableRayons, setAvailableRayons] = React.useState<string[]>([]);
   const { toast } = useToast();
+
+  React.useEffect(() => {
+    if (nodeFormData.seher && cityRayons[nodeFormData.seher]) {
+        setAvailableRayons(cityRayons[nodeFormData.seher]);
+    } else {
+        setAvailableRayons([]);
+    }
+    // Reset rayon if city changes and the old rayon is not in the new list
+    if (nodeFormData.rayon && !cityRayons[nodeFormData.seher]?.includes(nodeFormData.rayon)) {
+      setNodeFormData(prev => ({...prev, rayon: undefined}));
+    }
+  }, [nodeFormData.seher]);
+
 
   const handleAddAsset = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -863,12 +877,12 @@ export default function AssetsPage() {
                             </div>
                             <div className="grid grid-cols-4 items-center gap-4">
                                 <Label htmlFor="rayon" className="text-right">Rayon</Label>
-                                <Select name="rayon" onValueChange={(value) => handleNodeFormSelectChange('rayon', value)}>
+                                <Select name="rayon" value={nodeFormData.rayon} onValueChange={(value) => handleNodeFormSelectChange('rayon', value)} disabled={!availableRayons.length}>
                                     <SelectTrigger className="col-span-3">
                                         <SelectValue placeholder="Rayon seçin" />
                                     </SelectTrigger>
                                     <SelectContent>
-                                        {azerbaijanRayons.map(rayon => <SelectItem key={rayon} value={rayon}>{rayon}</SelectItem>)}
+                                        {availableRayons.map(rayon => <SelectItem key={rayon} value={rayon}>{rayon}</SelectItem>)}
                                     </SelectContent>
                                 </Select>
                             </div>

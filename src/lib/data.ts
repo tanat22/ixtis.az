@@ -2,7 +2,7 @@ import type { User, Asset, Ticket, AuditLog, TasinmazEmlak } from './types';
 
 export const mockUsers: User[] = [
   { id: 'user-1', name: 'Əli Vəliyev', email: 'ali.v@example.com', role: 'Super Admin', region: 'Bütün', avatar: '/avatars/01.png' },
-  { id: 'user-2', name: 'Sara Qasımlı', email: 'sara.q@example.com', role: 'Admin', region: 'Bakı', avatar: '/avatars/02.png' },
+  { id: 'user-2', name: 'Sara Qasımlı', email: 'sara.q@example.com', role: 'Admin', region: 'Bütün', avatar: '/avatars/02.png' },
   { id: 'user-3', name: 'Tural Məmmədov', email: 'tural.m@example.com', role: 'Regional Menecer', region: 'Bakı', avatar: '/avatars/03.png' },
   { id: 'user-4', name: 'Leyla Hüseynova', email: 'leyla.h@example.com', role: 'Regional Menecer', region: 'Gəncə', avatar: '/avatars/04.png' },
   { id: 'user-5', name: 'Fərid İsmayılov', email: 'farid.i@example.com', role: 'Təmir üzrə Məsul Şəxs', region: 'Bütün', avatar: '/avatars/05.png' },
@@ -251,23 +251,19 @@ export const mockAuditLogs: AuditLog[] = [
 ];
 
 export const azerbaijanCities = [
-  "Ağdam", "Ağdaş", "Ağcabədi", "Ağstafa", "Ağsu", "Astara", "Bakı", "Balakən", "Bərdə",
-  "Beyləqan", "Biləsuvar", "Cəbrayıl", "Cəlilabad", "Daşkəsən", "Füzuli", "Gədəbəy",
-  "Gəncə", "Goranboy", "Göyçay", "Göygöl", "Hacıqabul", "Xaçmaz", "Xankəndi", "Xocalı",
-  "Xocavənd", "Xırdalan", "İmişli", "İsmayıllı", "Kəlbəcər", "Kürdəmir", "Laçın", "Lənkəran",
-  "Lerik", "Masallı", "Mingəçevir", "Naftalan", "Naxçıvan", "Neftçala", "Oğuz", "Qəbələ",
-  "Qax", "Qazax", "Qobustan", "Quba", "Qubadlı", "Qusar", "Saatlı", "Sabirabad", "Salyan",
-  "Samux", "Siyəzən", "Sumqayıt", "Şabran", "Şəki", "Şəmkir", "Şərur", "Şuşa", "Tərtər",
-  "Tovuz", "Ucar", "Yardımlı", "Yevlax", "Zəngilan", "Zaqatala", "Zərdab"
+  "Bakı", "Gəncə", "Sumqayıt", "Lənkəran", "Mingəçevir", "Şirvan", "Naxçıvan", 
+  "Şəki", "Yevlax", "Xankəndi", "Ağdam", "Ağdaş", "Ağcabədi", "Ağstafa", "Ağsu", 
+  "Astara", "Balakən", "Bərdə", "Beyləqan", "Biləsuvar", "Cəbrayıl", "Cəlilabad", 
+  "Daşkəsən", "Füzuli", "Gədəbəy", "Goranboy", "Göyçay", "Göygöl", "Hacıqabul", 
+  "Xaçmaz", "Xocalı", "Xocavənd", "Xırdalan", "İmişli", "İsmayıllı", "Kəlbəcər", 
+  "Kürdəmir", "Laçın", "Lerik", "Masallı", "Naftalan", "Neftçala", "Oğuz", "Qəbələ", 
+  "Qax", "Qazax", "Qobustan", "Quba", "Qubadlı", "Qusar", "Saatlı", "Sabirabad", 
+  "Salyan", "Samux", "Siyəzən", "Şabran", "Şəmkir", "Şərur", "Şuşa", "Tərtər", 
+  "Tovuz", "Ucar", "Yardımlı", "Zəngilan", "Zaqatala", "Zərdab"
 ];
 
-export const azerbaijanRayons = [
-  "Abşeron", "Ağdam", "Ağdaş", "Ağcabədi", "Ağstafa", "Ağsu", "Astara", "Babək", "Balakən",
-  "Bərdə", "Beyləqan", "Biləsuvar", "Cəbrayıl", "Cəlilabad", "Culfa", "Daşkəsən", "Füzuli",
-  "Gədəbəy", "Goranboy", "Göyçay", "Göygöl", "Hacıqabul", "Xaçmaz", "Xızı", "Xocalı",
-  "Xocavənd", "İmişli", "İsmayıllı", "Kəlbəcər", "Kəngərli", "Kürdəmir", "Laçın", "Lənkəran",
-  "Lerik", "Masallı", "Neftçala", "Oğuz", "Ordubad", "Qəbələ", "Qax", "Qazax", "Qobustan",
-  "Quba", "Qubadlı", "Qusar", "Saatlı", "Sabirabad", "Sədərək", "Salyan", "Samux", "Siyəzən",
-  "Şabran", "Şahbuz", "Şəki", "Şəmkir", "Şərur", "Şuşa", "Tərtər", "Tovuz", "Ucar", "Yardımlı",
-  "Yevlax", "Zəngilan", "Zaqatala", "Zərdab"
-];
+export const cityRayons: { [key: string]: string[] } = {
+  "Bakı": ["Binəqədi", "Qaradağ", "Nərimanov", "Nəsimi", "Nizami", "Sabunçu", "Səbail", "Suraxanı", "Xəzər", "Yasamal", "Pirallahı", "Xətai"],
+  "Naxçıvan": ["Babək", "Culfa", "Kəngərli", "Ordubad", "Sədərək", "Şahbuz", "Şərur"],
+  // Add other cities with their specific rayons if needed
+};

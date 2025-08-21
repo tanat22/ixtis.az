@@ -1,7 +1,59 @@
-import LoginForm from '@/components/auth/login-form';
-import { Box } from 'lucide-react';
+'use client';
+
+import * as React from 'react';
+import { useRouter } from 'next/navigation';
+import { Box, LogIn } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { useToast } from '@/hooks/use-toast';
+import { useUser } from '@/context/user-context';
+import { mockUsers } from '@/lib/data';
+import type { User } from '@/lib/types';
+
 
 export default function LoginPage() {
+  const router = useRouter();
+  const { toast } = useToast();
+  const { setUser } = useUser();
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [selectedUserId, setSelectedUserId] = React.useState<string | null>(null);
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!selectedUserId) {
+        toast({
+            variant: "destructive",
+            title: "Xəta",
+            description: "Zəhmət olmasa, daxil olmaq üçün bir istifadəçi seçin.",
+        });
+        return;
+    }
+    
+    setIsLoading(true);
+
+    const selectedUser = mockUsers.find(u => u.id === selectedUserId);
+
+    // Simulate API call
+    setTimeout(() => {
+      if (selectedUser) {
+        setUser(selectedUser);
+        toast({
+          title: 'Giriş Uğurludur',
+          description: `Xoş gəldiniz, ${selectedUser.name}!`,
+        });
+        router.push('/dashboard');
+      } else {
+         toast({
+            variant: "destructive",
+            title: "Xəta",
+            description: "İstifadəçi tapılmadı.",
+        });
+      }
+      setIsLoading(false);
+    }, 1000);
+  };
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-background p-4">
       <div className="w-full max-w-md">
@@ -16,7 +68,42 @@ export default function LoginPage() {
             Assetlərinizi idarə etmək üçün daxil olun
           </p>
         </div>
-        <LoginForm />
+        
+        <form onSubmit={handleLogin} className="space-y-6">
+           <div>
+              <Label htmlFor="user-select">İstifadəçi seçin (Simulyasiya)</Label>
+               <Select onValueChange={setSelectedUserId} required>
+                    <SelectTrigger id="user-select" className="mt-2">
+                        <SelectValue placeholder="Daxil olmaq üçün bir istifadəçi profili seçin..." />
+                    </SelectTrigger>
+                    <SelectContent>
+                        {mockUsers.map((user) => (
+                            <SelectItem key={user.id} value={user.id}>
+                               <div className="flex items-center gap-2">
+                                 <span>{user.name}</span>
+                                 <span className="text-xs text-muted-foreground">({user.role})</span>
+                               </div>
+                            </SelectItem>
+                        ))}
+                    </SelectContent>
+                </Select>
+           </div>
+
+            <Button type="submit" className="w-full" disabled={isLoading}>
+            {isLoading ? (
+                <div className="flex items-center gap-2">
+                <div className="h-4 w-4 animate-spin rounded-full border-2 border-primary-foreground border-t-transparent"></div>
+                <span>Daxil olunur...</span>
+                </div>
+            ) : (
+                <>
+                <LogIn />
+                Daxil ol
+                </>
+            )}
+            </Button>
+        </form>
+        
         <p className="mt-8 text-center text-sm text-muted-foreground">
           &copy; {new Date().getFullYear()} AssetRover. Bütün hüquqlar qorunur.
         </p>

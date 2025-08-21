@@ -23,6 +23,7 @@ import {
   LogOut,
   ChevronDown,
   Settings,
+  User as UserIcon,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -35,32 +36,30 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import type { User } from '@/lib/types';
+import { useUser } from '@/context/user-context';
 
-
-// This is a mock. In a real app, you'd get this from your auth context.
-const user: User = {
-  id: 'user-1',
-  name: 'Əli Vəliyev',
-  email: 'ali.v@example.com',
-  avatar: '/avatars/01.png',
-  role: 'Super Admin',
-  region: 'Bütün',
-};
 
 const navItems: { href: string; icon: React.ElementType; label: string; roles: User['role'][] }[] = [
   { href: '/dashboard', icon: LayoutDashboard, label: 'İdarə Paneli', roles: ['Super Admin', 'Admin', 'Regional Menecer', 'Təmir üzrə Məsul Şəxs'] },
   { href: '/assets', icon: Box, label: 'Assetlər', roles: ['Super Admin', 'Admin', 'Regional Menecer', 'Təmir üzrə Məsul Şəxs'] },
-  { href: '/tickets', icon: Ticket, label: 'Tiketlər', roles: ['Super Admin', 'Admin', 'Regional Menecer'] },
+  { href: '/tickets', icon: Ticket, label: 'Tiketlər', roles: ['Super Admin', 'Admin', 'Regional Menecer', 'Təmir üzrə Məsul Şəxs'] },
   { href: '/users', icon: Users, label: 'İstifadəçi İdarəetməsi', roles: ['Super Admin', 'Admin'] },
   { href: '/audit-log', icon: FileClock, label: 'Audit Jurnalı', roles: ['Super Admin'] },
 ];
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const { user, setUser } = useUser();
 
   const userHasAccess = (allowedRoles: User['role'][]) => {
+    if (!user) return false;
     return allowedRoles.includes(user.role);
   };
+  
+  const handleLogout = () => {
+    setUser(null);
+    // In a real app, you'd also clear tokens, etc.
+  }
 
   return (
     <SidebarProvider>
@@ -81,7 +80,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                   <SidebarMenuButton
                     href={item.href}
                     asChild
-                    isActive={pathname === item.href}
+                    isActive={pathname.startsWith(item.href)}
                     tooltip={item.label}
                   >
                     <a href={item.href}>
@@ -99,18 +98,20 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="h-auto w-full justify-start gap-3 p-2">
                  <Avatar className="h-9 w-9">
-                    <AvatarImage src={user.avatar} alt={user.name} />
-                    <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
+                    <AvatarImage src={user?.avatar} alt={user?.name} />
+                    <AvatarFallback>
+                      {user ? user.name.charAt(0) : <UserIcon />}
+                    </AvatarFallback>
                   </Avatar>
                   <div className="flex flex-col items-start text-left">
-                    <p className="font-medium">{user.name}</p>
-                    <p className="text-xs text-muted-foreground">{user.email}</p>
+                    <p className="font-medium">{user?.name || 'İstifadəçi'}</p>
+                    <p className="text-xs text-muted-foreground">{user?.email || 'Daxil olun'}</p>
                   </div>
                   <ChevronDown className="ml-auto h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-64" align="end">
-              <DropdownMenuLabel>{user.name}</DropdownMenuLabel>
+              <DropdownMenuLabel>{user?.name}</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
                 <Settings className="mr-2 h-4 w-4" />
@@ -118,7 +119,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild>
-                 <a href="/">
+                 <a href="/" onClick={handleLogout}>
                     <LogOut className="mr-2 h-4 w-4" />
                     <span>Çıxış</span>
                  </a>
