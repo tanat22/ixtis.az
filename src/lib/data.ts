@@ -11,6 +11,8 @@ export const mockUsers: User[] = [
 export const mockNodes: TasinmazEmlak[] = [
     { id: 'ts-1', type: 'Təhlükəsizlik Nöqtəsi', name: 'TŞ4-952', seherRayon: 'Nəsimi', layihe: '970', dataMenbeyi: 'Optik' },
     { id: 'ts-2', type: 'Alt Keçid', name: 'Sumqayıt Alt Keçid 1', seherRayon: 'Sumqayıt', dataMenbeyi: 'Anten' },
+    { id: 'ts-3', type: 'Ticarət Mərkəzi', name: 'Gənclik Mall', seherRayon: 'Nərimanov', dataMenbeyi: 'Optik' },
+    { id: 'ts-4', type: 'Metro', name: '28 May Metrosu', seherRayon: 'Nəsimi', dataMenbeyi: 'Optik' },
 ];
 
 

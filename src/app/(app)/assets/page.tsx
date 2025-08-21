@@ -38,7 +38,9 @@ import type { Asset, DirekAsset, DataKabelAsset, ElektrikKabelAsset, KameraAsset
 
 export default function AssetsPage() {
   const [assets, setAssets] = React.useState<Asset[]>(mockAssets);
-  const [isDialogOpen, setIsDialogOpen] = React.useState(false);
+  const [nodes, setNodes] = React.useState<TasinmazEmlak[]>(mockNodes);
+  const [isAssetDialogOpen, setIsAssetDialogOpen] = React.useState(false);
+  const [isNodeDialogOpen, setIsNodeDialogOpen] = React.useState(false);
   const [selectedAssetType, setSelectedAssetType] = React.useState<Asset['type'] | ''>('');
   const [selectedNode, setSelectedNode] = React.useState<TasinmazEmlak | null>(null);
 
@@ -143,7 +145,7 @@ export default function AssetsPage() {
         }
     }
      else {
-        // Fallback for any other type that might be passed, though we removed Router
+        // Fallback for any other type that might be passed
         newAsset = {
             ...commonData,
             type: assetType,
@@ -151,8 +153,23 @@ export default function AssetsPage() {
     }
     
     setAssets(prev => [newAsset, ...prev]);
-    setIsDialogOpen(false);
+    setIsAssetDialogOpen(false);
     setSelectedAssetType('');
+  };
+
+  const handleAddNode = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const newNode: TasinmazEmlak = {
+        id: `ts-${Date.now()}`,
+        name: formData.get('name') as string,
+        type: formData.get('type') as TasinmazEmlak['type'],
+        seherRayon: 'Təyin edilməyib', // This should probably be a form field too
+        layihe: 'Təyin edilməyib',
+        dataMenbeyi: 'Optik' // Default or from form
+    };
+    setNodes(prev => [newNode, ...prev]);
+    setIsNodeDialogOpen(false);
   };
   
   const getStatusVariant = (status: Asset['status']) => {
@@ -700,8 +717,57 @@ export default function AssetsPage() {
         <CardHeader className="flex flex-row items-center justify-between">
             <div>
               <CardTitle>Təhlükəsizlik Nöqtələri (Node)</CardTitle>
-              <CardDescription>Assetləri görmək üçün bir nöqtə seçin.</CardDescription>
+              <CardDescription>Assetləri görmək və ya yeni nöqtə yaratmaq üçün seçim edin.</CardDescription>
             </div>
+            <Dialog open={isNodeDialogOpen} onOpenChange={setIsNodeDialogOpen}>
+                <DialogTrigger asChild>
+                    <Button size="sm" className="gap-1">
+                        <PlusCircle className="h-3.5 w-3.5" />
+                        <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+                            Yeni Nöqtə Əlavə Et
+                        </span>
+                    </Button>
+                </DialogTrigger>
+                <DialogContent>
+                    <form onSubmit={handleAddNode}>
+                        <DialogHeader>
+                            <DialogTitle>Yeni Təhlükəsizlik Nöqtəsi Yarat</DialogTitle>
+                            <DialogDescription>
+                                Zəhmət olmasa, yeni nöqtənin təfərrüatlarını daxil edin.
+                            </DialogDescription>
+                        </DialogHeader>
+                        <div className="grid gap-4 py-4">
+                            <div className="grid grid-cols-4 items-center gap-4">
+                                <Label htmlFor="name" className="text-right">Ad</Label>
+                                <Input id="name" name="name" className="col-span-3" required />
+                            </div>
+                            <div className="grid grid-cols-4 items-center gap-4">
+                                <Label htmlFor="type" className="text-right">Növ</Label>
+                                <Select name="type" required>
+                                    <SelectTrigger className="col-span-3">
+                                        <SelectValue placeholder="Nöqtə növünü seçin" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectItem value="Təhlükəsizlik Nöqtəsi">Təhlükəsizlik Nöqtəsi (TŞ)</SelectItem>
+                                        <SelectItem value="Alt Keçid">Alt Keçid (AK)</SelectItem>
+                                        <SelectItem value="Üst Keçid">Üst Keçid (UK)</SelectItem>
+                                        <SelectItem value="Məscid">Məscid</SelectItem>
+                                        <SelectItem value="Ticarət Mərkəzi">Ticarət Mərkəzi (TM)</SelectItem>
+                                        <SelectItem value="ASAN">ASAN</SelectItem>
+                                        <SelectItem value="İdman və Konsert">İdman və Konsert (İK)</SelectItem>
+                                        <SelectItem value="POÇT">POÇT</SelectItem>
+                                        <SelectItem value="Metro">Metro</SelectItem>
+                                        <SelectItem value="Biznes Mərkəzi">Biznes Mərkəzi (BM)</SelectItem>
+                                    </SelectContent>
+                                </Select>
+                            </div>
+                        </div>
+                        <DialogFooter>
+                            <Button type="submit">Nöqtəni Yarat</Button>
+                        </DialogFooter>
+                    </form>
+                </DialogContent>
+            </Dialog>
         </CardHeader>
         <CardContent>
             <Table>
@@ -714,7 +780,7 @@ export default function AssetsPage() {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {mockNodes.map((node) => (
+                    {nodes.map((node) => (
                         <TableRow key={node.id} onClick={() => setSelectedNode(node)} className="cursor-pointer">
                             <TableCell className="font-medium">{node.name}</TableCell>
                             <TableCell>{node.type}</TableCell>
@@ -743,7 +809,7 @@ export default function AssetsPage() {
                 <CardTitle>{selectedNode.name} - Assetlər</CardTitle>
                 <CardDescription>Bu nöqtəyə bağlı assetləri idarə edin.</CardDescription>
                 </div>
-                 <Dialog open={isDialogOpen} onOpenChange={(isOpen) => { setIsDialogOpen(isOpen); if (!isOpen) setSelectedAssetType(''); }}>
+                 <Dialog open={isAssetDialogOpen} onOpenChange={(isOpen) => { setIsAssetDialogOpen(isOpen); if (!isOpen) setSelectedAssetType(''); }}>
                     <DialogTrigger asChild>
                         <Button size="sm" className="gap-1">
                         <PlusCircle className="h-3.5 w-3.5" />

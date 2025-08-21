@@ -9,7 +9,17 @@ export type User = {
 
 export type TasinmazEmlak = {
   id: string;
-  type: 'Təhlükəsizlik Nöqtəsi' | 'Alt Keçid' | 'Üst Keçid' | 'Məscid' | 'Ticarət Mərkəzi';
+  type: 
+    | 'Təhlükəsizlik Nöqtəsi' 
+    | 'Alt Keçid' 
+    | 'Üst Keçid' 
+    | 'Məscid' 
+    | 'Ticarət Mərkəzi' 
+    | 'ASAN' 
+    | 'İdman və Konsert' 
+    | 'POÇT' 
+    | 'Metro' 
+    | 'Biznes Mərkəzi';
   name: string;
   aktivlesmeTarixi?: string;
   seherRayon?: string;
