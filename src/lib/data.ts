@@ -123,7 +123,6 @@ export const mockAssets: Asset[] = [
     bunovreVeziyyeti: 'Aşınmış',
     ankerVeziyyeti: 'Yararsız'
   },
-  { id: 'asset-5', nodeId: 'ts-2', name: 'Bulvar Park Router', type: 'Router', region: 'Sumqayıt', location: { lat: 40.5897, lng: 49.6686 }, status: 'Qeyri-aktiv', addedBy: 'user-5', addedDate: '2023-08-20', qurasdirilmaTarixi: '2021-11-11' },
   { 
     id: 'asset-6', 
     nodeId: 'ts-1',
@@ -235,9 +234,8 @@ export const mockAssets: Asset[] = [
 
 export const mockTickets: Ticket[] = [
   { id: 'ticket-1', assetId: 'asset-3', issue: 'Kamera oflayndır', status: 'İcra olunur', assignedTo: 'user-3', createdDate: '2023-11-20' },
-  { id: 'ticket-2', assetId: 'asset-5', issue: 'Router IP vermir', status: 'Açıq', createdDate: '2023-11-21' },
+  { id: 'ticket-2', assetId: 'asset-4', issue: 'Dirək aşınmaya məruz qalıb', status: 'Açıq', assignedTo: 'user-4', createdDate: '2023-11-22' },
   { id: 'ticket-3', assetId: 'asset-1', issue: 'Dirəkdə elektrik kəsintisi', status: 'Bağlı', assignedTo: 'user-3', createdDate: '2023-11-18' },
-  { id: 'ticket-4', assetId: 'asset-4', issue: 'Dirək aşınmaya məruz qalıb', status: 'Açıq', assignedTo: 'user-4', createdDate: '2023-11-22' },
 ];
 
 export const mockAuditLogs: AuditLog[] = [

@@ -12,7 +12,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { MoreHorizontal, PlusCircle } from 'lucide-react';
+import { MoreHorizontal, PlusCircle, ChevronLeft } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -33,24 +33,28 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
-import { mockAssets, mockUsers } from '@/lib/data';
-import type { Asset, DirekAsset, DataKabelAsset, ElektrikKabelAsset, KameraAsset, QutuAsset, SwitchAsset } from '@/lib/types';
+import { mockAssets, mockUsers, mockNodes } from '@/lib/data';
+import type { Asset, DirekAsset, DataKabelAsset, ElektrikKabelAsset, KameraAsset, QutuAsset, SwitchAsset, TasinmazEmlak } from '@/lib/types';
 
 export default function AssetsPage() {
   const [assets, setAssets] = React.useState<Asset[]>(mockAssets);
   const [isDialogOpen, setIsDialogOpen] = React.useState(false);
   const [selectedAssetType, setSelectedAssetType] = React.useState<Asset['type'] | ''>('');
+  const [selectedNode, setSelectedNode] = React.useState<TasinmazEmlak | null>(null);
 
   const handleAddAsset = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (!selectedNode) return;
+
     const formData = new FormData(event.currentTarget);
     const assetType = formData.get('type') as Asset['type'];
     
     const commonData = {
         id: `asset-${Date.now()}`,
+        nodeId: selectedNode.id,
         name: formData.get('name') as string,
-        region: formData.get('region') as string,
-        status: 'Aktiv',
+        region: selectedNode.seherRayon || 'N/A',
+        status: 'Aktiv' as const,
         location: { lat: 40.37, lng: 49.84 }, // Mock coordinates
         addedBy: 'user-1', // Mock user
         addedDate: new Date().toISOString().split('T')[0],
@@ -139,9 +143,10 @@ export default function AssetsPage() {
         }
     }
      else {
-         newAsset = {
+        // Fallback for any other type that might be passed, though we removed Router
+        newAsset = {
             ...commonData,
-            type: assetType as 'Router',
+            type: assetType,
         };
     }
     
@@ -160,25 +165,22 @@ export default function AssetsPage() {
   };
 
   const renderAssetDetails = (asset: Asset) => {
-    if (asset.type === 'Dirək') {
-      return `İstehsalçı: ${asset.istehsalci || 'N/A'}, Hündürlük: ${asset.hundurluk || 'N/A'}m`;
+    switch (asset.type) {
+        case 'Dirək':
+            return `İstehsalçı: ${asset.istehsalci || 'N/A'}, Hündürlük: ${asset.hundurluk || 'N/A'}m`;
+        case 'Data Kabeli':
+            return `Ethernet: ${asset.ethernetTipi || 'N/A'}, Optik: ${asset.patchcordTipi || 'N/A'}`;
+        case 'Elektrik Kabeli':
+            return `Kabel: ${asset.kabelTipi || 'N/A'}, Birləşmə: ${asset.birlesmeUsulu || 'N/A'}`;
+        case 'Kamera':
+            return `Marka: ${asset.marka || 'N/A'}, Model: ${asset.model || 'N/A'}`;
+        case 'Qutu':
+            return `İstehsalçı: ${asset.istehsalci || 'N/A'}, Tip: ${asset.tipi || 'N/A'}`;
+        case 'Switch':
+            return `Marka: ${asset.marka || 'N/A'}, Model: ${asset.model || 'N/A'}`;
+        default:
+            return asset.type;
     }
-     if (asset.type === 'Data Kabeli') {
-      return `Ethernet: ${asset.ethernetTipi || 'N/A'}, Optik: ${asset.patchcordTipi || 'N/A'}`;
-    }
-    if (asset.type === 'Elektrik Kabeli') {
-      return `Kabel: ${asset.kabelTipi || 'N/A'}, Birləşmə: ${asset.birlesmeUsulu || 'N/A'}`;
-    }
-    if (asset.type === 'Kamera') {
-      return `Marka: ${asset.marka || 'N/A'}, Model: ${asset.model || 'N/A'}`;
-    }
-    if (asset.type === 'Qutu') {
-        return `İstehsalçı: ${asset.istehsalci || 'N/A'}, Tip: ${asset.tipi || 'N/A'}`;
-    }
-    if (asset.type === 'Switch') {
-        return `Marka: ${asset.marka || 'N/A'}, Model: ${asset.model || 'N/A'}`;
-    }
-    return asset.type;
   }
   
   const renderAddAssetFormFields = () => {
@@ -270,7 +272,16 @@ export default function AssetsPage() {
             <>
                 <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="ethernetTipi" className="text-right">Ethernet Tipi</Label>
-                    <Input id="ethernetTipi" name="ethernetTipi" className="col-span-3" />
+                     <Select name="ethernetTipi">
+                        <SelectTrigger className="col-span-3">
+                            <SelectValue placeholder="Ethernet tipini seçin" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="Patchcord Ethernet CAT6 1M.">Patchcord Ethernet CAT6 1M.</SelectItem>
+                            <SelectItem value="CAT6 Kabel Outdoor (Black)">CAT6 Kabel Outdoor (Black)</SelectItem>
+                            <SelectItem value="Cat 6 Ethernet Kabel">Cat 6 Ethernet Kabel</SelectItem>
+                        </SelectContent>
+                    </Select>
                 </div>
                 <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="ethernetUzunluq" className="text-right">Ethernet Uzunluq (m)</Label>
@@ -278,7 +289,15 @@ export default function AssetsPage() {
                 </div>
                 <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="patchcordTipi" className="text-right">Patchcord Tipi</Label>
-                    <Input id="patchcordTipi" name="patchcordTipi" className="col-span-3" />
+                     <Select name="patchcordTipi">
+                        <SelectTrigger className="col-span-3">
+                            <SelectValue placeholder="Patchcord tipini seçin" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="Patchcord optik 1M">Patchcord optik 1M</SelectItem>
+                            <SelectItem value="FO Patchcord 7m">FO Patchcord 7m</SelectItem>
+                        </SelectContent>
+                    </Select>
                 </div>
                 <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="patchcordUzunluq" className="text-right">Patchcord Uzunluq (m)</Label>
@@ -304,7 +323,15 @@ export default function AssetsPage() {
             <>
                 <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="kabelTipi" className="text-right">Kabel Tipi</Label>
-                    <Input id="kabelTipi" name="kabelTipi" className="col-span-3" />
+                     <Select name="kabelTipi">
+                        <SelectTrigger className="col-span-3">
+                            <SelectValue placeholder="Kabel tipini seçin" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="Elektrik kabeli 2x2.25">Elektrik kabeli 2x2.25</SelectItem>
+                            <SelectItem value="Elektrik kabeli 2x0.75">Elektrik kabeli 2x0.75</SelectItem>
+                        </SelectContent>
+                    </Select>
                 </div>
                 <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="kabelUzunluq" className="text-right">Kabel Uzunluğu (m)</Label>
@@ -338,7 +365,19 @@ export default function AssetsPage() {
         <>
             <div className="grid grid-cols-4 items-center gap-4">
                 <Label htmlFor="marka" className="text-right">Marka</Label>
-                <Input id="marka" name="marka" className="col-span-3" />
+                 <Select name="marka">
+                    <SelectTrigger className="col-span-3">
+                        <SelectValue placeholder="Marka seçin" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="Hikvision">Hikvision</SelectItem>
+                        <SelectItem value="AXİS">AXİS</SelectItem>
+                        <SelectItem value="Aviglon">Aviglon</SelectItem>
+                        <SelectItem value="Dahua">Dahua</SelectItem>
+                        <SelectItem value="Sanyo">Sanyo</SelectItem>
+                        <SelectItem value="Digər">Digər</SelectItem>
+                    </SelectContent>
+                </Select>
             </div>
              <div className="grid grid-cols-4 items-center gap-4">
                 <Label htmlFor="model" className="text-right">Model</Label>
@@ -570,7 +609,19 @@ export default function AssetsPage() {
             <>
                 <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="marka" className="text-right">Marka</Label>
-                    <Input id="marka" name="marka" className="col-span-3" />
+                    <Select name="marka">
+                        <SelectTrigger className="col-span-3">
+                            <SelectValue placeholder="Marka seçin" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="Huawei">Huawei</SelectItem>
+                            <SelectItem value="Hikvision">Hikvision</SelectItem>
+                            <SelectItem value="Aruba">Aruba</SelectItem>
+                            <SelectItem value="Cisco">Cisco</SelectItem>
+                            <SelectItem value="Dahua">Dahua</SelectItem>
+                            <SelectItem value="AT">AT</SelectItem>
+                        </SelectContent>
+                    </Select>
                 </div>
                 <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="model" className="text-right">Model</Label>
@@ -641,116 +692,154 @@ export default function AssetsPage() {
         )
     }
     
-    // For other generic types, only show common fields
     return commonFields;
   }
 
-  return (
+  const renderNodeView = () => (
     <Card>
-      <CardHeader className="flex flex-row items-center justify-between">
-        <div>
-          <CardTitle>Assetlər</CardTitle>
-          <CardDescription>İnventarınızı idarə edin və asset təfərrüatlarına baxın.</CardDescription>
-        </div>
-        <Dialog open={isDialogOpen} onOpenChange={(isOpen) => { setIsDialogOpen(isOpen); if (!isOpen) setSelectedAssetType(''); }}>
-          <DialogTrigger asChild>
-            <Button size="sm" className="gap-1">
-              <PlusCircle className="h-3.5 w-3.5" />
-              <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-                Asset əlavə et
-              </span>
-            </Button>
-          </DialogTrigger>
-          <DialogContent className="max-h-[90vh] overflow-y-auto">
-            <form onSubmit={handleAddAsset}>
-              <DialogHeader>
-                <DialogTitle>Yeni Asset əlavə et</DialogTitle>
-                <DialogDescription>
-                  Yeni asset üçün təfərrüatları daxil edin.
-                </DialogDescription>
-              </DialogHeader>
-              <div className="grid gap-4 py-4">
-                <div className="grid grid-cols-4 items-center gap-4">
-                  <Label htmlFor="type" className="text-right">Növ</Label>
-                   <Select name="type" required onValueChange={(value: Asset['type']) => setSelectedAssetType(value)}>
-                      <SelectTrigger className="col-span-3">
-                        <SelectValue placeholder="Asset növünü seçin" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="Dirək">Dirək</SelectItem>
-                        <SelectItem value="Qutu">Qutu</SelectItem>
-                        <SelectItem value="Kamera">Kamera</SelectItem>
-                        <SelectItem value="Switch">Switch</SelectItem>
-                        <SelectItem value="Router">Router</SelectItem>
-                        <SelectItem value="Data Kabeli">Data Kabeli</SelectItem>
-                        <SelectItem value="Elektrik Kabeli">Elektrik Kabeli</SelectItem>
-                      </SelectContent>
-                    </Select>
-                </div>
-                 <div className="grid grid-cols-4 items-center gap-4">
-                  <Label htmlFor="name" className="text-right">Ad</Label>
-                  <Input id="name" name="name" className="col-span-3" required />
-                </div>
-                 <div className="grid grid-cols-4 items-center gap-4">
-                  <Label htmlFor="region" className="text-right">Region</Label>
-                  <Input id="region" name="region" className="col-span-3" defaultValue="Bakı" required />
-                </div>
-                {renderAddAssetFormFields()}
-              </div>
-              <DialogFooter>
-                <Button type="submit">Asseti yadda saxla</Button>
-              </DialogFooter>
-            </form>
-          </DialogContent>
-        </Dialog>
-      </CardHeader>
-      <CardContent>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Ad</TableHead>
-              <TableHead>Növ/Detal</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead>Region</TableHead>
-              <TableHead>Əlavə etdi</TableHead>
-              <TableHead>
-                <span className="sr-only">Əməliyyatlar</span>
-              </TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {assets.map((asset) => {
-               const user = mockUsers.find(u => u.id === asset.addedBy);
-               return (
-                <TableRow key={asset.id}>
-                  <TableCell className="font-medium">{asset.name}</TableCell>
-                  <TableCell>{renderAssetDetails(asset)}</TableCell>
-                  <TableCell>
-                    <Badge variant={getStatusVariant(asset.status)}>{asset.status}</Badge>
-                  </TableCell>
-                  <TableCell>{asset.region}</TableCell>
-                  <TableCell>{user?.name || 'Naməlum'}</TableCell>
-                  <TableCell>
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button aria-haspopup="true" size="icon" variant="ghost">
-                          <MoreHorizontal className="h-4 w-4" />
-                          <span className="sr-only">Menyunu aç/bağla</span>
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>Əməliyyatlar</DropdownMenuLabel>
-                        <DropdownMenuItem>Redaktə et</DropdownMenuItem>
-                        <DropdownMenuItem>Sil</DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </TableCell>
-                </TableRow>
-               );
-            })}
-          </TableBody>
-        </Table>
-      </CardContent>
+        <CardHeader className="flex flex-row items-center justify-between">
+            <div>
+              <CardTitle>Təhlükəsizlik Nöqtələri (Node)</CardTitle>
+              <CardDescription>Assetləri görmək üçün bir nöqtə seçin.</CardDescription>
+            </div>
+        </CardHeader>
+        <CardContent>
+            <Table>
+                <TableHeader>
+                    <TableRow>
+                        <TableHead>Ad</TableHead>
+                        <TableHead>Növ</TableHead>
+                        <TableHead>Region</TableHead>
+                        <TableHead>Layihə</TableHead>
+                    </TableRow>
+                </TableHeader>
+                <TableBody>
+                    {mockNodes.map((node) => (
+                        <TableRow key={node.id} onClick={() => setSelectedNode(node)} className="cursor-pointer">
+                            <TableCell className="font-medium">{node.name}</TableCell>
+                            <TableCell>{node.type}</TableCell>
+                            <TableCell>{node.seherRayon}</TableCell>
+                            <TableCell>{node.layihe}</TableCell>
+                        </TableRow>
+                    ))}
+                </TableBody>
+            </Table>
+        </CardContent>
     </Card>
   );
+
+  const renderAssetView = () => {
+    if (!selectedNode) return null;
+    const filteredAssets = assets.filter(asset => asset.nodeId === selectedNode.id);
+
+    return (
+        <Card>
+            <CardHeader className="flex flex-row items-center justify-between">
+                <div>
+                <Button variant="ghost" onClick={() => setSelectedNode(null)} className="mb-2">
+                    <ChevronLeft className="h-4 w-4 mr-2" />
+                    Geri
+                </Button>
+                <CardTitle>{selectedNode.name} - Assetlər</CardTitle>
+                <CardDescription>Bu nöqtəyə bağlı assetləri idarə edin.</CardDescription>
+                </div>
+                 <Dialog open={isDialogOpen} onOpenChange={(isOpen) => { setIsDialogOpen(isOpen); if (!isOpen) setSelectedAssetType(''); }}>
+                    <DialogTrigger asChild>
+                        <Button size="sm" className="gap-1">
+                        <PlusCircle className="h-3.5 w-3.5" />
+                        <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+                            Asset əlavə et
+                        </span>
+                        </Button>
+                    </DialogTrigger>
+                    <DialogContent className="max-h-[90vh] overflow-y-auto">
+                        <form onSubmit={handleAddAsset}>
+                        <DialogHeader>
+                            <DialogTitle>Yeni Asset əlavə et</DialogTitle>
+                            <DialogDescription>
+                            {selectedNode.name} üçün yeni asset təfərrüatlarını daxil edin.
+                            </DialogDescription>
+                        </DialogHeader>
+                        <div className="grid gap-4 py-4">
+                            <div className="grid grid-cols-4 items-center gap-4">
+                            <Label htmlFor="type" className="text-right">Növ</Label>
+                            <Select name="type" required onValueChange={(value: Asset['type']) => setSelectedAssetType(value)}>
+                                <SelectTrigger className="col-span-3">
+                                    <SelectValue placeholder="Asset növünü seçin" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="Dirək">Dirək</SelectItem>
+                                    <SelectItem value="Qutu">Qutu</SelectItem>
+                                    <SelectItem value="Kamera">Kamera</SelectItem>
+                                    <SelectItem value="Switch">Switch</SelectItem>
+                                    <SelectItem value="Data Kabeli">Data Kabeli</SelectItem>
+                                    <SelectItem value="Elektrik Kabeli">Elektrik Kabeli</SelectItem>
+                                </SelectContent>
+                                </Select>
+                            </div>
+                            <div className="grid grid-cols-4 items-center gap-4">
+                            <Label htmlFor="name" className="text-right">Ad</Label>
+                            <Input id="name" name="name" className="col-span-3" required />
+                            </div>
+                            {renderAddAssetFormFields()}
+                        </div>
+                        <DialogFooter>
+                            <Button type="submit">Asseti yadda saxla</Button>
+                        </DialogFooter>
+                        </form>
+                    </DialogContent>
+                </Dialog>
+            </CardHeader>
+            <CardContent>
+                <Table>
+                <TableHeader>
+                    <TableRow>
+                    <TableHead>Ad</TableHead>
+                    <TableHead>Növ/Detal</TableHead>
+                    <TableHead>Status</TableHead>
+                    <TableHead>Region</TableHead>
+                    <TableHead>Əlavə etdi</TableHead>
+                    <TableHead>
+                        <span className="sr-only">Əməliyyatlar</span>
+                    </TableHead>
+                    </TableRow>
+                </TableHeader>
+                <TableBody>
+                    {filteredAssets.map((asset) => {
+                    const user = mockUsers.find(u => u.id === asset.addedBy);
+                    return (
+                        <TableRow key={asset.id}>
+                        <TableCell className="font-medium">{asset.name}</TableCell>
+                        <TableCell>{renderAssetDetails(asset)}</TableCell>
+                        <TableCell>
+                            <Badge variant={getStatusVariant(asset.status)}>{asset.status}</Badge>
+                        </TableCell>
+                        <TableCell>{asset.region}</TableCell>
+                        <TableCell>{user?.name || 'Naməlum'}</TableCell>
+                        <TableCell>
+                            <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                                <Button aria-haspopup="true" size="icon" variant="ghost">
+                                <MoreHorizontal className="h-4 w-4" />
+                                <span className="sr-only">Menyunu aç/bağla</span>
+                                </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end">
+                                <DropdownMenuLabel>Əməliyyatlar</DropdownMenuLabel>
+                                <DropdownMenuItem>Redaktə et</DropdownMenuItem>
+                                <DropdownMenuItem>Sil</DropdownMenuItem>
+                            </DropdownMenuContent>
+                            </DropdownMenu>
+                        </TableCell>
+                        </TableRow>
+                    );
+                    })}
+                </TableBody>
+                </Table>
+            </CardContent>
+        </Card>
+    );
+  }
+
+  return selectedNode ? renderAssetView() : renderNodeView();
 }

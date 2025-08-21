@@ -140,7 +140,7 @@ export type SwitchAsset = BaseAsset & {
 
 
 export type GenericAsset = BaseAsset & {
-    type: 'Router' | 'Rack Kabin';
+    type: 'Rack Kabin';
 };
 
 export type Asset = DirekAsset | GenericAsset | DataKabelAsset | ElektrikKabelAsset | KameraAsset | QutuAsset | SwitchAsset;
