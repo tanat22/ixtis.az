@@ -29,9 +29,9 @@ export type TasinmazEmlak = {
   layihe?: string;
   dataMenbeyi?: 'Optik' | 'Anten' | 'Sim nömrə' | 'Digər';
   bagliOlduguNeqte?: string;
-  elektrikMenbeyi?: string;
+  elektrikMenbeyi?: 'Transformator' | 'İAŞƏ obyekti' | 'Vətəndaş' | 'Alternativ';
   qeyd?: string;
-  mertebe?: string; // Məsələn: Z3, M3
+  mertebe?: 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6' | 'Z0' | 'Z1' | 'Z2' | 'Z3';
 };
 
 

@@ -186,9 +186,9 @@ export default function AssetsPage() {
         layihe: formData.get('layihe') as string,
         dataMenbeyi: formData.get('dataMenbeyi') as TasinmazEmlak['dataMenbeyi'],
         bagliOlduguNeqte: formData.get('bagliOlduguNeqte') as string,
-        elektrikMenbeyi: formData.get('elektrikMenbeyi') as string,
+        elektrikMenbeyi: formData.get('elektrikMenbeyi') as TasinmazEmlak['elektrikMenbeyi'],
         qeyd: formData.get('qeyd') as string,
-        mertebe: formData.get('mertebe') as string,
+        mertebe: formData.get('mertebe') as TasinmazEmlak['mertebe'],
     };
     setNodes(prev => [newNode, ...prev]);
     setIsNodeDialogOpen(false);
@@ -795,7 +795,8 @@ export default function AssetsPage() {
 
   const renderNodeView = () => {
     const existingProjects = [...new Set(nodes.map(node => node.layihe).filter(Boolean))] as string[];
-    
+    const existingNodes = [...new Set(nodes.map(node => node.name).filter(Boolean))] as string[];
+
     return (
     <Card>
         <CardHeader className="flex flex-row items-center justify-between">
@@ -821,13 +822,9 @@ export default function AssetsPage() {
                             </DialogDescription>
                         </DialogHeader>
                         <div className="grid gap-4 py-4">
-                            <div className="grid grid-cols-4 items-center gap-4">
-                                <Label htmlFor="name" className="text-right">Ad (TŞ Nöqtəsi)</Label>
-                                <Input id="name" name="name" className="col-span-3" required />
-                            </div>
-                            <div className="grid grid-cols-4 items-center gap-4">
+                             <div className="grid grid-cols-4 items-center gap-4">
                                 <Label htmlFor="type" className="text-right">Növ</Label>
-                                <Select name="type" required>
+                                <Select name="type" required onValueChange={(value) => handleNodeFormSelectChange('type', value)}>
                                     <SelectTrigger className="col-span-3">
                                         <SelectValue placeholder="Nöqtə növünü seçin" />
                                     </SelectTrigger>
@@ -844,6 +841,10 @@ export default function AssetsPage() {
                                         <SelectItem value="Biznes Mərkəzi">Biznes Mərkəzi (BM)</SelectItem>
                                     </SelectContent>
                                 </Select>
+                            </div>
+                            <div className="grid grid-cols-4 items-center gap-4">
+                                <Label htmlFor="name" className="text-right">Ad (TŞ Nöqtəsi)</Label>
+                                <Input id="name" name="name" className="col-span-3" required />
                             </div>
                             <div className="grid grid-cols-4 items-center gap-4">
                                 <Label htmlFor="aktivlesmeTarixi" className="text-right">Aktivləşmə Tarixi</Label>
@@ -908,15 +909,40 @@ export default function AssetsPage() {
                             </div>
                              <div className="grid grid-cols-4 items-center gap-4">
                                 <Label htmlFor="bagliOlduguNeqte" className="text-right">Bağlı Olduğu Nöqtə</Label>
-                                <Input id="bagliOlduguNeqte" name="bagliOlduguNeqte" className="col-span-3" />
+                                <Select name="bagliOlduguNeqte" onValueChange={(value) => handleNodeFormSelectChange('bagliOlduguNeqte', value)}>
+                                    <SelectTrigger className="col-span-3">
+                                        <SelectValue placeholder="Nöqtə seçin və ya yazın" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        {existingNodes.map(node => <SelectItem key={node} value={node}>{node}</SelectItem>)}
+                                    </SelectContent>
+                                </Select>
                             </div>
                             <div className="grid grid-cols-4 items-center gap-4">
                                 <Label htmlFor="elektrikMenbeyi" className="text-right">Elektrik Mənbəyi</Label>
-                                <Input id="elektrikMenbeyi" name="elektrikMenbeyi" className="col-span-3" />
+                                <Select name="elektrikMenbeyi" onValueChange={(value) => handleNodeFormSelectChange('elektrikMenbeyi', value as any)}>
+                                    <SelectTrigger className="col-span-3">
+                                        <SelectValue placeholder="Mənbəyi seçin" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectItem value="Transformator">Transformator</SelectItem>
+                                        <SelectItem value="İAŞƏ obyekti">İAŞƏ obyekti</SelectItem>
+                                        <SelectItem value="Vətəndaş">Vətəndaş</SelectItem>
+                                        <SelectItem value="Alternativ">Alternativ (Günəş paneli vs.)</SelectItem>
+                                    </SelectContent>
+                                </Select>
                             </div>
-                             <div className="grid grid-cols-4 items-center gap-4">
+                            <div className="grid grid-cols-4 items-center gap-4">
                                 <Label htmlFor="mertebe" className="text-right">Mərtəbə</Label>
-                                <Input id="mertebe" name="mertebe" placeholder="Məs: Z3, M3" className="col-span-3" />
+                                <Select name="mertebe" onValueChange={(value) => handleNodeFormSelectChange('mertebe', value as any)}>
+                                    <SelectTrigger className="col-span-3">
+                                        <SelectValue placeholder="Mərtəbəni seçin" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        {['M1', 'M2', 'M3', 'M4', 'M5', 'M6'].map(m => <SelectItem key={m} value={m}>{m}</SelectItem>)}
+                                        {['Z0', 'Z1', 'Z2', 'Z3'].map(z => <SelectItem key={z} value={z}>{z}</SelectItem>)}
+                                    </SelectContent>
+                                </Select>
                             </div>
                              <div className="grid grid-cols-4 items-center gap-4">
                                 <Label htmlFor="qeyd" className="text-right">Qeyd</Label>
