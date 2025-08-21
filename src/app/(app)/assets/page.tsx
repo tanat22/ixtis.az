@@ -232,6 +232,7 @@ export default function AssetsPage() {
               <SelectContent>
                 <SelectItem value="T">T</SelectItem>
                 <SelectItem value="I">I</SelectItem>
+                <SelectItem value="Г">Г</SelectItem>
               </SelectContent>
             </Select>
           </div>

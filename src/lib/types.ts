@@ -30,7 +30,7 @@ export type DirekAsset = BaseAsset & {
     istehsalci?: 'İDEA' | 'OZON' | 'FRANSIZ' | 'BCG' | 'Digər';
     hundurluk?: number;
     reng?: string;
-    nov?: 'T' | 'I';
+    nov?: 'T' | 'I' | 'Г';
     hendesiForma?: 'Kvadrat' | 'Dairəvi' | 'Dairəvi Xonçalı';
     material?: 'Qara metal' | 'Qalvanizasiya olunmuş qara metal' | 'Aluminium';
     istismarVeziyyeti?: 'Yararlı' | 'Yararsız' | 'Restovrasiya olunmalıdır';
@@ -40,8 +40,8 @@ export type DirekAsset = BaseAsset & {
     qapaq?: 'Yararlı' | 'Yararsız' | 'Restovrasiya olunmalıdır';
     direyinTemizliyi?: 'Təmiz' | 'Çirkli';
     torpaqlanma?: 'Var' | 'Yoxdur';
-    bunovreNovu?: 'Stasionar' | 'Səyyar basdırılmış' | 'Səyyar yer üstü';
-    bunovreVeziyyeti?: 'Yararlı' | 'Aşınmış' | 'Əlçə qüsurlu';
+    bunovreNovu?: 'Stasionar' | 'Səyyar bastırılmış' | 'Səyyar yer üstü';
+    bunovreVeziyyeti?: 'Yararlı' | 'Aşınmış' | 'Ölçü qüsurlu';
     ankerVeziyyeti?: 'Yararlı' | 'Yararsız';
 };
 
