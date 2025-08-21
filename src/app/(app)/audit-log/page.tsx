@@ -14,13 +14,32 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Input } from '@/components/ui/input';
 import { Search } from 'lucide-react';
 import { mockAuditLogs, mockUsers } from '@/lib/data';
+import type { AuditLog } from '@/lib/types';
+
+const FormattedDate = ({ timestamp }: { timestamp: string }) => {
+  const [formattedDate, setFormattedDate] = React.useState('');
+
+  React.useEffect(() => {
+    // Format date only on the client-side to avoid hydration mismatch
+    setFormattedDate(new Date(timestamp).toLocaleString('az-AZ'));
+  }, [timestamp]);
+
+  return <>{formattedDate}</>;
+};
+
 
 export default function AuditLogPage() {
     const [searchTerm, setSearchTerm] = React.useState('');
+    const [isClient, setIsClient] = React.useState(false);
+
+    React.useEffect(() => {
+        setIsClient(true);
+    }, []);
 
     const filteredLogs = mockAuditLogs.filter(log => {
         const user = mockUsers.find(u => u.id === log.userId);
-        const searchContent = `${user?.name || ''} ${log.action} ${log.details} ${new Date(log.timestamp).toLocaleString('az-AZ')}`.toLowerCase();
+        const dateString = isClient ? new Date(log.timestamp).toLocaleString('az-AZ') : log.timestamp;
+        const searchContent = `${user?.name || ''} ${log.action} ${log.details} ${dateString}`.toLowerCase();
         return searchContent.includes(searchTerm.toLowerCase());
     });
   
@@ -77,7 +96,9 @@ export default function AuditLogPage() {
                   </TableCell>
                   <TableCell>{log.action}</TableCell>
                   <TableCell>{log.details}</TableCell>
-                  <TableCell>{new Date(log.timestamp).toLocaleString('az-AZ')}</TableCell>
+                  <TableCell>
+                    {isClient ? <FormattedDate timestamp={log.timestamp} /> : 'Yüklənir...'}
+                  </TableCell>
                 </TableRow>
               );
             })}
