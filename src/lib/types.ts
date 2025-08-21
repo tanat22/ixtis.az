@@ -63,12 +63,29 @@ export type ElektrikKabelAsset = BaseAsset & {
     birlesmeUsulu?: 'Vilka' | 'Birbaşa';
 };
 
-
-export type GenericAsset = BaseAsset & {
-    type: 'Qutu' | 'Kamera' | 'Switch' | 'Router';
+export type KameraAsset = BaseAsset & {
+  type: 'Kamera';
+  marka?: string;
+  model?: string;
+  funksiya?: string;
+  seriaNomresi?: string;
+  kameraNovu?: 'Daxili' | 'Xarici';
+  adapter?: string;
+  istehsalIli?: string;
+  reng?: string;
+  kameraQolu?: 'Var' | 'Yox';
+  qolIstismarVeziyyeti?: 'Yararlı' | 'Yararsız' | 'Restovrasiya olunmalıdır';
+  montajAksesuari?: 'Təkli' | 'Üçlü' | 'Düz' | 'Dairəvi' | 'Yoxdur';
+  montajAksesuariIstismarVeziyyeti?: 'Yararlı' | 'Yararsız' | 'Restovrasiya olunmalıdır';
+  kameraTemizliyi?: 'Təmiz' | 'Çirkli';
 };
 
-export type Asset = DirekAsset | GenericAsset | DataKabelAsset | ElektrikKabelAsset;
+
+export type GenericAsset = BaseAsset & {
+    type: 'Qutu' | 'Switch' | 'Router';
+};
+
+export type Asset = DirekAsset | GenericAsset | DataKabelAsset | ElektrikKabelAsset | KameraAsset;
 
 export type Ticket = {
   id: string;

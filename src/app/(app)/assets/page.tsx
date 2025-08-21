@@ -34,7 +34,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 import { mockAssets, mockUsers } from '@/lib/data';
-import type { Asset, DirekAsset, DataKabelAsset, ElektrikKabelAsset } from '@/lib/types';
+import type { Asset, DirekAsset, DataKabelAsset, ElektrikKabelAsset, KameraAsset } from '@/lib/types';
 
 export default function AssetsPage() {
   const [assets, setAssets] = React.useState<Asset[]>(mockAssets);
@@ -91,10 +91,28 @@ export default function AssetsPage() {
             uzaticiUzunluq: Number(formData.get('uzaticiUzunluq')),
             birlesmeUsulu: formData.get('birlesmeUsulu') as ElektrikKabelAsset['birlesmeUsulu'],
         }
-    } else {
+    } else if (assetType === 'Kamera') {
+        newAsset = {
+            ...commonData,
+            type: 'Kamera',
+            marka: formData.get('marka') as string,
+            model: formData.get('model') as string,
+            funksiya: formData.get('funksiya') as string,
+            seriaNomresi: formData.get('seriaNomresi') as string,
+            kameraNovu: formData.get('kameraNovu') as KameraAsset['kameraNovu'],
+            adapter: formData.get('adapter') as string,
+            reng: formData.get('reng') as string,
+            kameraQolu: formData.get('kameraQolu') as KameraAsset['kameraQolu'],
+            qolIstismarVeziyyeti: formData.get('qolIstismarVeziyyeti') as KameraAsset['qolIstismarVeziyyeti'],
+            montajAksesuari: formData.get('montajAksesuari') as KameraAsset['montajAksesuari'],
+            montajAksesuariIstismarVeziyyeti: formData.get('montajAksesuariIstismarVeziyyeti') as KameraAsset['montajAksesuariIstismarVeziyyeti'],
+            kameraTemizliyi: formData.get('kameraTemizliyi') as KameraAsset['kameraTemizliyi'],
+        }
+    }
+     else {
          newAsset = {
             ...commonData,
-            type: assetType as 'Qutu' | 'Kamera' | 'Switch' | 'Router',
+            type: assetType as 'Qutu' | 'Switch' | 'Router',
         };
     }
     
@@ -121,6 +139,9 @@ export default function AssetsPage() {
     }
     if (asset.type === 'Elektrik Kabeli') {
       return `Kabel: ${asset.kabelTipi || 'N/A'}, Birləşmə: ${asset.birlesmeUsulu || 'N/A'}`;
+    }
+    if (asset.type === 'Kamera') {
+      return `Marka: ${asset.marka || 'N/A'}, Model: ${asset.model || 'N/A'}`;
     }
     return asset.type;
   }
@@ -276,6 +297,113 @@ export default function AssetsPage() {
                 {commonFields}
             </>
         );
+    } else if (selectedAssetType === 'Kamera') {
+      return (
+        <>
+            <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="marka" className="text-right">Marka</Label>
+                <Input id="marka" name="marka" className="col-span-3" />
+            </div>
+             <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="model" className="text-right">Model</Label>
+                <Input id="model" name="model" className="col-span-3" />
+            </div>
+             <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="funksiya" className="text-right">Funksiya</Label>
+                <Input id="funksiya" name="funksiya" className="col-span-3" />
+            </div>
+             <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="seriaNomresi" className="text-right">Seria Nömrəsi</Label>
+                <Input id="seriaNomresi" name="seriaNomresi" className="col-span-3" />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="kameraNovu" className="text-right">Növ</Label>
+                <Select name="kameraNovu">
+                    <SelectTrigger className="col-span-3">
+                        <SelectValue placeholder="Növü seçin" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="Daxili">Daxili</SelectItem>
+                        <SelectItem value="Xarici">Xarici</SelectItem>
+                    </SelectContent>
+                </Select>
+            </div>
+             <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="adapter" className="text-right">Adapter</Label>
+                <Input id="adapter" name="adapter" className="col-span-3" />
+            </div>
+             <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="reng" className="text-right">Rəng</Label>
+                <Input id="reng" name="reng" className="col-span-3" />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="kameraQolu" className="text-right">Kamera Qolu</Label>
+                <Select name="kameraQolu">
+                    <SelectTrigger className="col-span-3">
+                        <SelectValue placeholder="Seçin" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="Var">Var</SelectItem>
+                        <SelectItem value="Yox">Yox</SelectItem>
+                    </SelectContent>
+                </Select>
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="qolIstismarVeziyyeti" className="text-right">Qol İstismar Vəziyyəti</Label>
+                 <Select name="qolIstismarVeziyyeti">
+                    <SelectTrigger className="col-span-3">
+                        <SelectValue placeholder="Vəziyyəti seçin" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="Yararlı">Yararlı</SelectItem>
+                        <SelectItem value="Yararsız">Yararsız</SelectItem>
+                        <SelectItem value="Restovrasiya olunmalıdır">Restovrasiya olunmalıdır</SelectItem>
+                    </SelectContent>
+                </Select>
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="montajAksesuari" className="text-right">Montaj Aksesuarı</Label>
+                 <Select name="montajAksesuari">
+                    <SelectTrigger className="col-span-3">
+                        <SelectValue placeholder="Aksesuarı seçin" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="Təkli">Təkli</SelectItem>
+                        <SelectItem value="Üçlü">Üçlü</SelectItem>
+                        <SelectItem value="Düz">Düz</SelectItem>
+                        <SelectItem value="Dairəvi">Dairəvi</SelectItem>
+                        <SelectItem value="Yoxdur">Yoxdur</SelectItem>
+                    </SelectContent>
+                </Select>
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="montajAksesuariIstismarVeziyyeti" className="text-right">Montaj Aksesuarı Vəziyyəti</Label>
+                 <Select name="montajAksesuariIstismarVeziyyeti">
+                    <SelectTrigger className="col-span-3">
+                        <SelectValue placeholder="Vəziyyəti seçin" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="Yararlı">Yararlı</SelectItem>
+                        <SelectItem value="Yararsız">Yararsız</SelectItem>
+                        <SelectItem value="Restovrasiya olunmalıdır">Restovrasiya olunmalıdır</SelectItem>
+                    </SelectContent>
+                </Select>
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="kameraTemizliyi" className="text-right">Kamera Təmizliyi</Label>
+                 <Select name="kameraTemizliyi">
+                    <SelectTrigger className="col-span-3">
+                        <SelectValue placeholder="Təmizliyi seçin" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="Təmiz">Təmiz</SelectItem>
+                        <SelectItem value="Çirkli">Çirkli</SelectItem>
+                    </SelectContent>
+                </Select>
+            </div>
+            {commonFields}
+        </>
+      );
     }
     
     // For other generic types, only show common fields
