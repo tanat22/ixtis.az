@@ -159,9 +159,10 @@ export type Ticket = {
   id: string;
   assetId: string;
   issue: string;
-  status: 'Açıq' | 'İcra olunur' | 'Bağlı';
+  status: 'Açıq' | 'İcra olunur' | 'Həll edildi' | 'Bağlı' | 'Yenidən açıldı';
   assignedTo?: string;
   createdDate: string;
+  priority: 'Yüksək' | 'Orta' | 'Aşağı';
 };
 
 export type AuditLog = {

@@ -235,9 +235,11 @@ export const mockAssets: Asset[] = [
 ];
 
 export const mockTickets: Ticket[] = [
-  { id: 'ticket-1', assetId: 'asset-3', issue: 'Kamera oflayndır', status: 'İcra olunur', assignedTo: 'user-3', createdDate: '2023-11-20' },
-  { id: 'ticket-2', assetId: 'asset-4', issue: 'Dirək aşınmaya məruz qalıb', status: 'Açıq', assignedTo: 'user-4', createdDate: '2023-11-22' },
-  { id: 'ticket-3', assetId: 'asset-1', issue: 'Dirəkdə elektrik kəsintisi', status: 'Bağlı', assignedTo: 'user-3', createdDate: '2023-11-18' },
+  { id: 'ticket-1', assetId: 'asset-3', issue: 'Kamera oflayndır', status: 'İcra olunur', assignedTo: 'user-3', createdDate: '2023-11-20', priority: 'Yüksək' },
+  { id: 'ticket-2', assetId: 'asset-4', issue: 'Dirək aşınmaya məruz qalıb', status: 'Açıq', assignedTo: 'user-4', createdDate: '2023-11-22', priority: 'Orta' },
+  { id: 'ticket-3', assetId: 'asset-1', issue: 'Dirəkdə elektrik kəsintisi', status: 'Bağlı', assignedTo: 'user-3', createdDate: '2023-11-18', priority: 'Aşağı' },
+  { id: 'ticket-4', assetId: 'asset-9', issue: 'Switch konfiqurasiya edilməlidir', status: 'Həll edildi', assignedTo: 'user-2', createdDate: '2023-11-25', priority: 'Orta' },
+
 ];
 
 export const mockAuditLogs: AuditLog[] = [

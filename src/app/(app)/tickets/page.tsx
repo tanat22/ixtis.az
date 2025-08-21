@@ -12,7 +12,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { MoreHorizontal, MapPin } from 'lucide-react';
+import { MoreHorizontal, MapPin, PlusCircle, CheckCircle, XCircle, RefreshCw } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -22,7 +22,8 @@ import {
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
-  DropdownMenuPortal
+  DropdownMenuPortal,
+  DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useToast } from '@/hooks/use-toast';
@@ -31,6 +32,7 @@ import type { Ticket } from '@/lib/types';
 
 
 export default function TicketsPage() {
+  const [tickets, setTickets] = React.useState<Ticket[]>(mockTickets);
   const isMobile = useIsMobile();
   const { toast } = useToast();
 
@@ -43,20 +45,61 @@ export default function TicketsPage() {
     });
   };
 
+  const handleStatusChange = (ticketId: string, newStatus: Ticket['status']) => {
+    setTickets(prev => prev.map(ticket => 
+        ticket.id === ticketId ? { ...ticket, status: newStatus } : ticket
+    ));
+    toast({
+        title: "Status Dəyişdirildi",
+        description: `Tiketin statusu "${newStatus}" olaraq yeniləndi.`
+    })
+  };
+  
+  const handleAssignUser = (ticketId: string, userId: string) => {
+    const user = mockUsers.find(u => u.id === userId);
+    setTickets(prev => prev.map(ticket => 
+        ticket.id === ticketId ? { ...ticket, assignedTo: userId } : ticket
+    ));
+     toast({
+        title: "İstifadəçi Təyin Edildi",
+        description: `Tiket "${user?.name}" adlı istifadəçiyə təyin edildi.`
+    })
+  }
+
   const getStatusVariant = (status: Ticket['status']) => {
     switch (status) {
       case 'Açıq': return 'destructive';
       case 'İcra olunur': return 'secondary';
-      case 'Bağlı': return 'default';
+      case 'Həll edildi': return 'default';
+      case 'Bağlı': return 'outline';
+      case 'Yenidən açıldı': return 'destructive';
       default: return 'outline';
     }
   };
 
+  const getPriorityVariant = (priority: Ticket['priority']) => {
+    switch (priority) {
+      case 'Yüksək': return 'destructive';
+      case 'Orta': return 'secondary';
+      case 'Aşağı': return 'outline';
+      default: return 'outline';
+    }
+  };
+
+
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Tiketlər</CardTitle>
-        <CardDescription>Bütün dəstək və təmir tiketlərinizi idarə edin və izləyin.</CardDescription>
+      <CardHeader className="flex flex-row items-center justify-between">
+        <div>
+          <CardTitle>Tiketlər</CardTitle>
+          <CardDescription>Bütün dəstək və təmir tiketlərinizi idarə edin və izləyin.</CardDescription>
+        </div>
+        <Button size="sm" className="gap-1">
+          <PlusCircle className="h-3.5 w-3.5" />
+          <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+            Yeni Tiket Yarat
+          </span>
+        </Button>
       </CardHeader>
       <CardContent>
         <Table>
@@ -65,6 +108,7 @@ export default function TicketsPage() {
               <TableHead>Asset</TableHead>
               <TableHead className="hidden md:table-cell">Problem</TableHead>
               <TableHead>Status</TableHead>
+              <TableHead>Prioritet</TableHead>
               <TableHead>Təyin edilib</TableHead>
               {isMobile && <TableHead><span className="sr-only">Naviqasiya</span></TableHead>}
               <TableHead>
@@ -73,7 +117,7 @@ export default function TicketsPage() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {mockTickets.map((ticket) => {
+            {tickets.map((ticket) => {
               const asset = mockAssets.find(a => a.id === ticket.assetId);
               const user = mockUsers.find(u => u.id === ticket.assignedTo);
               return (
@@ -82,6 +126,9 @@ export default function TicketsPage() {
                   <TableCell className="hidden md:table-cell">{ticket.issue}</TableCell>
                   <TableCell>
                     <Badge variant={getStatusVariant(ticket.status)}>{ticket.status}</Badge>
+                  </TableCell>
+                   <TableCell>
+                    <Badge variant={getPriorityVariant(ticket.priority)}>{ticket.priority}</Badge>
                   </TableCell>
                   <TableCell>{user?.name || 'Təyin edilməyib'}</TableCell>
                   {isMobile && asset && (
@@ -107,13 +154,37 @@ export default function TicketsPage() {
                           <DropdownMenuSubTrigger>Təyin et</DropdownMenuSubTrigger>
                           <DropdownMenuPortal>
                             <DropdownMenuSubContent>
-                              {mockUsers.filter(u => u.role === 'Səhra istifadəçisi').map(fieldUser => (
-                                <DropdownMenuItem key={fieldUser.id}>{fieldUser.name}</DropdownMenuItem>
+                              {mockUsers.filter(u => u.role === 'Regional Menecer' || u.role === 'Təmir üzrə Məsul Şəxs').map(fieldUser => (
+                                <DropdownMenuItem key={fieldUser.id} onClick={() => handleAssignUser(ticket.id, fieldUser.id)}>
+                                  {fieldUser.name}
+                                </DropdownMenuItem>
                               ))}
                             </DropdownMenuSubContent>
                           </DropdownMenuPortal>
                         </DropdownMenuSub>
-                        <DropdownMenuItem>Tiketi bağla</DropdownMenuItem>
+                        <DropdownMenuSub>
+                            <DropdownMenuSubTrigger>Statusu dəyiş</DropdownMenuSubTrigger>
+                            <DropdownMenuPortal>
+                                <DropdownMenuSubContent>
+                                    <DropdownMenuItem onClick={() => handleStatusChange(ticket.id, 'Açıq')}>Açıq</DropdownMenuItem>
+                                    <DropdownMenuItem onClick={() => handleStatusChange(ticket.id, 'İcra olunur')}>İcra olunur</DropdownMenuItem>
+                                    <DropdownMenuItem onClick={() => handleStatusChange(ticket.id, 'Həll edildi')}>Həll edildi</DropdownMenuItem>
+                                </DropdownMenuSubContent>
+                            </DropdownMenuPortal>
+                        </DropdownMenuSub>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem onClick={() => handleStatusChange(ticket.id, 'Yenidən açıldı')}>
+                            <RefreshCw className="mr-2 h-4 w-4" />
+                            Yenidən aç
+                        </DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => handleStatusChange(ticket.id, 'Bağlı')}>
+                            <CheckCircle className="mr-2 h-4 w-4" />
+                            Tiketi bağla
+                        </DropdownMenuItem>
+                        <DropdownMenuItem className="text-destructive">
+                           <XCircle className="mr-2 h-4 w-4" />
+                           Ləğv et
+                        </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
                   </TableCell>
