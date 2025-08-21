@@ -31,7 +31,6 @@ export type TasinmazEmlak = {
   bagliOlduguNeqte?: string;
   elektrikMenbeyi?: 'Transformator' | 'İAŞƏ obyekti' | 'Vətəndaş' | 'Alternativ';
   qeyd?: string;
-  mertebe?: 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6' | 'Z0' | 'Z1' | 'Z2' | 'Z3';
 };
 
 
@@ -127,6 +126,7 @@ export type QutuAsset = BaseAsset & {
   kilidIstismarVeziyyeti?: 'Yararlı' | 'Yararsız' | 'Restovrasiya olunmalıdır';
   qutununXariciTemizliyi?: 'Təmiz' | 'Çirkli';
   qutununDaxiliTemizliyi?: 'Təmiz' | 'Çirkli';
+  mertebe?: 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6' | 'Z0' | 'Z1' | 'Z2' | 'Z3';
 };
 
 export type SwitchAsset = BaseAsset & {

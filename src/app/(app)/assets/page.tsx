@@ -73,11 +73,14 @@ export default function AssetsPage() {
 
     const formData = new FormData(event.currentTarget);
     const assetType = formData.get('type') as Asset['type'];
+
+    const existingAssetsOfType = assets.filter(a => a.nodeId === selectedNode.id && a.type === assetType);
+    const newAssetName = `${assetType}-${existingAssetsOfType.length + 1}`;
     
     const commonData = {
         id: `asset-${Date.now()}`,
         nodeId: selectedNode.id,
-        name: formData.get('name') as string,
+        name: newAssetName,
         region: selectedNode.seher || 'N/A',
         status: 'Aktiv' as const,
         location: { lat: 40.37, lng: 49.84 }, // Mock coordinates
@@ -140,6 +143,7 @@ export default function AssetsPage() {
     } else if (assetType === 'Qutu') {
         newAsset = {
             ...commonData,
+            name: `${formData.get('mertebe') || 'Qutu'}-${existingAssetsOfType.length + 1}`,
             type: 'Qutu',
             istehsalci: formData.get('istehsalci') as QutuAsset['istehsalci'],
             tipi: formData.get('tipi') as QutuAsset['tipi'],
@@ -151,6 +155,7 @@ export default function AssetsPage() {
             berkidilmeUsulu: formData.get('berkidilmeUsulu') as QutuAsset['berkidilmeUsulu'],
             torpaqlanma: formData.get('torpaqlanma') as QutuAsset['torpaqlanma'],
             etiket: formData.get('etiket') as QutuAsset['etiket'],
+            mertebe: formData.get('mertebe') as QutuAsset['mertebe'],
         }
     } else if (assetType === 'Switch') {
         newAsset = {
@@ -202,7 +207,6 @@ export default function AssetsPage() {
         bagliOlduguNeqte: formData.get('bagliOlduguNeqte') as string,
         elektrikMenbeyi: formData.get('elektrikMenbeyi') as TasinmazEmlak['elektrikMenbeyi'],
         qeyd: formData.get('qeyd') as string,
-        mertebe: formData.get('mertebe') as TasinmazEmlak['mertebe'],
     };
     setNodes(prev => [newNode, ...prev]);
     setIsNodeDialogOpen(false);
@@ -595,6 +599,18 @@ export default function AssetsPage() {
         return (
             <>
                 <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="mertebe" className="text-right">Mərtəbə</Label>
+                    <Select name="mertebe">
+                        <SelectTrigger className="col-span-3">
+                            <SelectValue placeholder="Mərtəbəni seçin" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            {['M1', 'M2', 'M3', 'M4', 'M5', 'M6'].map(m => <SelectItem key={m} value={m}>{m}</SelectItem>)}
+                            {['Z0', 'Z1', 'Z2', 'Z3'].map(z => <SelectItem key={z} value={z}>{z}</SelectItem>)}
+                        </SelectContent>
+                    </Select>
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="istehsalci" className="text-right">İstehsalçı</Label>
                     <Select name="istehsalci">
                         <SelectTrigger className="col-span-3">
@@ -946,18 +962,6 @@ export default function AssetsPage() {
                                     </SelectContent>
                                 </Select>
                             </div>
-                            <div className="grid grid-cols-4 items-center gap-4">
-                                <Label htmlFor="mertebe" className="text-right">Mərtəbə</Label>
-                                <Select name="mertebe" onValueChange={(value) => handleNodeFormSelectChange('mertebe', value as any)}>
-                                    <SelectTrigger className="col-span-3">
-                                        <SelectValue placeholder="Mərtəbəni seçin" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        {['M1', 'M2', 'M3', 'M4', 'M5', 'M6'].map(m => <SelectItem key={m} value={m}>{m}</SelectItem>)}
-                                        {['Z0', 'Z1', 'Z2', 'Z3'].map(z => <SelectItem key={z} value={z}>{z}</SelectItem>)}
-                                    </SelectContent>
-                                </Select>
-                            </div>
                              <div className="grid grid-cols-4 items-center gap-4">
                                 <Label htmlFor="qeyd" className="text-right">Qeyd</Label>
                                 <Textarea id="qeyd" name="qeyd" className="col-span-3" />
@@ -1036,7 +1040,7 @@ export default function AssetsPage() {
                                     <SelectValue placeholder="Asset növünü seçin" />
                                 </SelectTrigger>
                                 <SelectContent>
-                                    <SelectItem value="Dirək">Dirək</SelectItem>
+                                    {selectedNode.type === 'Təhlükəsizlik Nöqtəsi' && <SelectItem value="Dirək">Dirək</SelectItem>}
                                     <SelectItem value="Qutu">Qutu</SelectItem>
                                     <SelectItem value="Kamera">Kamera</SelectItem>
                                     <SelectItem value="Switch">Switch</SelectItem>
@@ -1044,10 +1048,6 @@ export default function AssetsPage() {
                                     <SelectItem value="Elektrik Kabeli">Elektrik Kabeli</SelectItem>
                                 </SelectContent>
                                 </Select>
-                            </div>
-                            <div className="grid grid-cols-4 items-center gap-4">
-                            <Label htmlFor="name" className="text-right">Ad</Label>
-                            <Input id="name" name="name" className="col-span-3" required />
                             </div>
                             {renderAddAssetFormFields()}
                         </div>
