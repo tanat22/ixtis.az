@@ -1,4 +1,4 @@
-import type { User, Asset, Ticket, AuditLog } from './types';
+import type { User, Asset, Ticket, AuditLog, TasinmazEmlak } from './types';
 
 export const mockUsers: User[] = [
   { id: 'user-1', name: 'Əli Vəliyev', email: 'ali.v@example.com', role: 'Super Admin', region: 'Bütün', avatar: '/avatars/01.png' },
@@ -8,9 +8,16 @@ export const mockUsers: User[] = [
   { id: 'user-5', name: 'Fərid İsmayılov', email: 'farid.i@example.com', role: 'Səhra istifadəçisi', region: 'Sumqayıt', avatar: '/avatars/05.png' },
 ];
 
+export const mockNodes: TasinmazEmlak[] = [
+    { id: 'ts-1', type: 'Təhlükəsizlik Nöqtəsi', name: 'TŞ4-952', seherRayon: 'Nəsimi', layihe: '970', dataMenbeyi: 'Optik' },
+    { id: 'ts-2', type: 'Alt Keçid', name: 'Sumqayıt Alt Keçid 1', seherRayon: 'Sumqayıt', dataMenbeyi: 'Anten' },
+];
+
+
 export const mockAssets: Asset[] = [
   { 
     id: 'asset-1', 
+    nodeId: 'ts-1',
     name: 'Nizami küç. dirək 1', 
     type: 'Dirək', 
     region: 'Bakı', 
@@ -38,6 +45,8 @@ export const mockAssets: Asset[] = [
   },
   { 
     id: 'asset-2', 
+    nodeId: 'ts-1',
+    parentId: 'asset-1',
     name: '28 May qovşaq qutusu', 
     type: 'Qutu', 
     region: 'Bakı', 
@@ -47,7 +56,7 @@ export const mockAssets: Asset[] = [
     addedDate: '2023-10-02', 
     qurasdirilmaTarixi: '2020-dən əvvəl',
     istehsalci: 'İDEA',
-    tipi: 'Yer',
+    tipi: 'Dirək',
     soyutmaSistemi: 'Yoxdur',
     termalSensor: 'Var',
     reng: 'Boz',
@@ -64,6 +73,8 @@ export const mockAssets: Asset[] = [
   },
   { 
     id: 'asset-3', 
+    nodeId: 'ts-1',
+    parentId: 'asset-9',
     name: 'İçərişəhər Cam 01', 
     type: 'Kamera', 
     region: 'Bakı', 
@@ -86,6 +97,7 @@ export const mockAssets: Asset[] = [
   },
   { 
     id: 'asset-4', 
+    nodeId: 'ts-2',
     name: 'Gəncə dirək 1', 
     type: 'Dirək', 
     region: 'Gəncə', 
@@ -111,9 +123,11 @@ export const mockAssets: Asset[] = [
     bunovreVeziyyeti: 'Aşınmış',
     ankerVeziyyeti: 'Yararsız'
   },
-  { id: 'asset-5', name: 'Bulvar Park Router', type: 'Router', region: 'Sumqayıt', location: { lat: 40.5897, lng: 49.6686 }, status: 'Qeyri-aktiv', addedBy: 'user-5', addedDate: '2023-08-20', qurasdirilmaTarixi: '2021-11-11' },
+  { id: 'asset-5', nodeId: 'ts-2', name: 'Bulvar Park Router', type: 'Router', region: 'Sumqayıt', location: { lat: 40.5897, lng: 49.6686 }, status: 'Qeyri-aktiv', addedBy: 'user-5', addedDate: '2023-08-20', qurasdirilmaTarixi: '2021-11-11' },
   { 
     id: 'asset-6', 
+    nodeId: 'ts-1',
+    parentId: 'asset-9',
     name: 'Fəvvarələr Meydanı Cam 05', 
     type: 'Kamera', 
     region: 'Bakı', 
@@ -136,6 +150,7 @@ export const mockAssets: Asset[] = [
   },
   {
     id: 'asset-7',
+    nodeId: 'ts-1',
     name: 'Nizami küç. Data Kabeli',
     type: 'Data Kabeli',
     region: 'Bakı',
@@ -151,6 +166,7 @@ export const mockAssets: Asset[] = [
   },
   {
     id: 'asset-8',
+    nodeId: 'ts-1',
     name: 'Nizami küç. Elektrik Kabeli',
     type: 'Elektrik Kabeli',
     region: 'Bakı',
@@ -166,6 +182,8 @@ export const mockAssets: Asset[] = [
   },
   {
     id: 'asset-9',
+    nodeId: 'ts-1',
+    parentId: 'asset-2',
     name: 'Mərkəzi Bank Switch',
     type: 'Switch',
     region: 'Bakı',
@@ -187,6 +205,7 @@ export const mockAssets: Asset[] = [
   },
   {
     id: 'asset-10',
+    nodeId: 'ts-1',
     name: 'Fransız Dirək',
     type: 'Dirək',
     region: 'Bakı',

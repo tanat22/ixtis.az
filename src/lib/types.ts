@@ -7,15 +7,33 @@ export type User = {
   avatar: string;
 };
 
+export type TasinmazEmlak = {
+  id: string;
+  type: 'Təhlükəsizlik Nöqtəsi' | 'Alt Keçid' | 'Üst Keçid' | 'Məscid' | 'Ticarət Mərkəzi';
+  name: string;
+  aktivlesmeTarixi?: string;
+  seherRayon?: string;
+  koordinat?: string;
+  layihe?: string;
+  dataMenbeyi?: 'Optik' | 'Anten' | 'Sim nömrə' | 'Digər';
+  bagliOlduguNeqte?: string;
+  elektrikMenbeyi?: string;
+  qeyd?: string;
+  mertebe?: string; // Məsələn: Z3, M3
+};
+
+
 type BaseAsset = {
   id: string;
+  parentId?: string | null; // Hierarxiyanı qurmaq üçün (məs: Switch-in Qutu-ya bağlanması)
+  nodeId: string; // Hansı TŞ-yə aid olduğunu göstərir
   name:string;
   region: string;
   location: {
     lat: number;
     lng: number;
   };
-  status: 'Aktiv' | 'Qeyri-aktiv' | 'Təmir';
+  status: 'Aktiv' | 'Qeyri-aktiv' | 'Təmir' | 'Anbarda' | 'İstifadəyə Yararsız';
   addedBy: string;
   addedDate: string;
   qurasdirilmaTarixi?: string;
@@ -110,7 +128,7 @@ export type SwitchAsset = BaseAsset & {
   ethernetPortSayi?: number;
   poePortSayi?: number;
   management?: 'idarə olunan' | 'idarə olunmayan';
-  switchYeri?: 'Qapı' | 'Rəf';
+  switchYeri?: 'Qapı' | 'Rəf' | 'Rack Kabin';
   konfiqurasiya?: 'olunub' | 'olunmayıb';
   sfpModul?: string;
   sfpModulSayi?: number;
@@ -122,7 +140,7 @@ export type SwitchAsset = BaseAsset & {
 
 
 export type GenericAsset = BaseAsset & {
-    type: 'Router';
+    type: 'Router' | 'Rack Kabin';
 };
 
 export type Asset = DirekAsset | GenericAsset | DataKabelAsset | ElektrikKabelAsset | KameraAsset | QutuAsset | SwitchAsset;
