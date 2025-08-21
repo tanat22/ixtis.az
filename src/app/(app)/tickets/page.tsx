@@ -49,6 +49,12 @@ export default function TicketsPage() {
   const [isNewTicketDialogOpen, setIsNewTicketDialogOpen] = React.useState(false);
   const isMobile = useIsMobile();
   const { toast } = useToast();
+  const [isClient, setIsClient] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsClient(true);
+  }, []);
+
 
   const handleNavigate = (lat: number, lng: number) => {
     const url = `https://waze.com/ul?ll=${lat},${lng}&navigate=yes`;
@@ -193,7 +199,7 @@ export default function TicketsPage() {
               <TableHead>Status</TableHead>
               <TableHead>Prioritet</TableHead>
               <TableHead>Təyin edilib</TableHead>
-              {isMobile && <TableHead><span className="sr-only">Naviqasiya</span></TableHead>}
+              {isClient && isMobile && <TableHead><span className="sr-only">Naviqasiya</span></TableHead>}
               <TableHead>
                 <span className="sr-only">Əməliyyatlar</span>
               </TableHead>
@@ -214,7 +220,7 @@ export default function TicketsPage() {
                     <Badge variant={getPriorityVariant(ticket.priority)}>{ticket.priority}</Badge>
                   </TableCell>
                   <TableCell>{user?.name || 'Təyin edilməyib'}</TableCell>
-                  {isMobile && asset && (
+                  {isClient && isMobile && asset && (
                     <TableCell>
                        <Button size="icon" variant="outline" onClick={() => handleNavigate(asset.location.lat, asset.location.lng)}>
                          <MapPin className="h-4 w-4" />

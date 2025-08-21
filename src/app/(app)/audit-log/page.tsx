@@ -23,6 +23,10 @@ const FormattedDate = ({ timestamp }: { timestamp: string }) => {
     // Format date only on the client-side to avoid hydration mismatch
     setFormattedDate(new Date(timestamp).toLocaleString('az-AZ'));
   }, [timestamp]);
+  
+  if (!formattedDate) {
+    return <>Yüklənir...</>;
+  }
 
   return <>{formattedDate}</>;
 };
