@@ -34,7 +34,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 import { mockAssets, mockUsers } from '@/lib/data';
-import type { Asset, DirekAsset, DataKabelAsset, ElektrikKabelAsset, KameraAsset, QutuAsset } from '@/lib/types';
+import type { Asset, DirekAsset, DataKabelAsset, ElektrikKabelAsset, KameraAsset, QutuAsset, SwitchAsset } from '@/lib/types';
 
 export default function AssetsPage() {
   const [assets, setAssets] = React.useState<Asset[]>(mockAssets);
@@ -123,11 +123,25 @@ export default function AssetsPage() {
             torpaqlanma: formData.get('torpaqlanma') as QutuAsset['torpaqlanma'],
             etiket: formData.get('etiket') as QutuAsset['etiket'],
         }
+    } else if (assetType === 'Switch') {
+        newAsset = {
+            ...commonData,
+            type: 'Switch',
+            marka: formData.get('marka') as string,
+            model: formData.get('model') as string,
+            adapter: formData.get('adapter') as string,
+            seriaNomresi: formData.get('seriaNomresi') as string,
+            switchTipi: formData.get('switchTipi') as SwitchAsset['switchTipi'],
+            management: formData.get('management') as SwitchAsset['management'],
+            switchYeri: formData.get('switchYeri') as SwitchAsset['switchYeri'],
+            konfiqurasiya: formData.get('konfiqurasiya') as SwitchAsset['konfiqurasiya'],
+            sfpModul: formData.get('sfpModul') as string,
+        }
     }
      else {
          newAsset = {
             ...commonData,
-            type: assetType as 'Switch' | 'Router',
+            type: assetType as 'Router',
         };
     }
     
@@ -160,6 +174,9 @@ export default function AssetsPage() {
     }
     if (asset.type === 'Qutu') {
         return `İstehsalçı: ${asset.istehsalci || 'N/A'}, Tip: ${asset.tipi || 'N/A'}`;
+    }
+    if (asset.type === 'Switch') {
+        return `Marka: ${asset.marka || 'N/A'}, Model: ${asset.model || 'N/A'}`;
     }
     return asset.type;
   }
@@ -547,6 +564,80 @@ export default function AssetsPage() {
                 {commonFields}
             </>
         );
+    } else if (selectedAssetType === 'Switch') {
+        return (
+            <>
+                <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="marka" className="text-right">Marka</Label>
+                    <Input id="marka" name="marka" className="col-span-3" />
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="model" className="text-right">Model</Label>
+                    <Input id="model" name="model" className="col-span-3" />
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="adapter" className="text-right">Adapter</Label>
+                    <Input id="adapter" name="adapter" className="col-span-3" />
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="seriaNomresi" className="text-right">Seria Nömrəsi</Label>
+                    <Input id="seriaNomresi" name="seriaNomresi" className="col-span-3" />
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="switchTipi" className="text-right">Tipi</Label>
+                    <Select name="switchTipi">
+                        <SelectTrigger className="col-span-3">
+                            <SelectValue placeholder="Növü seçin" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="İndustrial tipli">İndustrial tipli</SelectItem>
+                            <SelectItem value="Kommersiya tipli">Kommersiya tipli</SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="management" className="text-right">Management</Label>
+                    <Select name="management">
+                        <SelectTrigger className="col-span-3">
+                            <SelectValue placeholder="Seçin" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="idarə olunan">İdarə olunan</SelectItem>
+                            <SelectItem value="idarə olunmayan">İdarə olunmayan</SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="switchYeri" className="text-right">Yeri</Label>
+                    <Select name="switchYeri">
+                        <SelectTrigger className="col-span-3">
+                            <SelectValue placeholder="Yeri seçin" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="Qapı">Qapı</SelectItem>
+                            <SelectItem value="Rəf">Rəf</SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="konfiqurasiya" className="text-right">Konfiqurasiya</Label>
+                    <Select name="konfiqurasiya">
+                        <SelectTrigger className="col-span-3">
+                            <SelectValue placeholder="Seçin" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="olunub">Olunub</SelectItem>
+                            <SelectItem value="olunmayıb">Olunmayıb</SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
+                 <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="sfpModul" className="text-right">SFP Modul</Label>
+                    <Input id="sfpModul" name="sfpModul" className="col-span-3" />
+                </div>
+                {commonFields}
+            </>
+        )
     }
     
     // For other generic types, only show common fields

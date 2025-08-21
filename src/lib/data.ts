@@ -161,6 +161,27 @@ export const mockAssets: Asset[] = [
     uzaticiYuvaSayi: 4,
     uzaticiUzunluq: 2,
     birlesmeUsulu: 'Birbaşa'
+  },
+  {
+    id: 'asset-9',
+    name: 'Mərkəzi Bank Switch',
+    type: 'Switch',
+    region: 'Bakı',
+    location: { lat: 40.3713, lng: 49.8465 },
+    status: 'Aktiv',
+    addedBy: 'user-2',
+    addedDate: '2023-07-15',
+    marka: 'Huawei',
+    model: 'S5735-L8P4X-QA-V2 (8x10/100/1000BASE-T)',
+    adapter: 'Cisco Power Adapter PWR-IE 170W-PC-AC',
+    qurasdirilmaTarixi: '2023-07-10',
+    switchTipi: 'İndustrial tipli',
+    management: 'idarə olunan',
+    switchYeri: 'Qapı',
+    konfiqurasiya: 'olunub',
+    sfpModul: 'Allied Telesis 1310/1490',
+    ups: 'Makelsan',
+    stabilizator: 'Tuncmatik',
   }
 ];
 

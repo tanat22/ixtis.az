@@ -99,12 +99,33 @@ export type QutuAsset = BaseAsset & {
   qutununDaxiliTemizliyi?: 'Təmiz' | 'Çirkli';
 };
 
-
-export type GenericAsset = BaseAsset & {
-    type: 'Switch' | 'Router';
+export type SwitchAsset = BaseAsset & {
+  type: 'Switch';
+  marka?: string;
+  model?: string;
+  adapter?: string;
+  seriaNomresi?: string;
+  istehsalIli?: string;
+  switchTipi?: 'İndustrial tipli' | 'Kommersiya tipli';
+  ethernetPortSayi?: number;
+  poePortSayi?: number;
+  management?: 'idarə olunan' | 'idarə olunmayan';
+  switchYeri?: 'Qapı' | 'Rəf';
+  konfiqurasiya?: 'olunub' | 'olunmayıb';
+  sfpModul?: string;
+  sfpModulSayi?: number;
+  ups?: string;
+  upsQurasdirilmaTarixi?: string;
+  stabilizator?: string;
+  stabilizatorQurasdirilmaTarixi?: string;
 };
 
-export type Asset = DirekAsset | GenericAsset | DataKabelAsset | ElektrikKabelAsset | KameraAsset | QutuAsset;
+
+export type GenericAsset = BaseAsset & {
+    type: 'Router';
+};
+
+export type Asset = DirekAsset | GenericAsset | DataKabelAsset | ElektrikKabelAsset | KameraAsset | QutuAsset | SwitchAsset;
 
 export type Ticket = {
   id: string;
