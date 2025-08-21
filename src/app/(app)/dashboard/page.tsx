@@ -1,5 +1,6 @@
 'use client';
 
+import * as React from 'react';
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
@@ -7,6 +8,21 @@ import { Box, Ticket, Users, FileClock } from 'lucide-react';
 import { mockAssets, mockTickets, mockUsers, mockAuditLogs } from '@/lib/data';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
+
+const FormattedDate = ({ timestamp }: { timestamp: string }) => {
+  const [formattedDate, setFormattedDate] = React.useState('');
+
+  React.useEffect(() => {
+    // Format date only on the client-side to avoid hydration mismatch
+    setFormattedDate(new Date(timestamp).toLocaleString('az-AZ'));
+  }, [timestamp]);
+  
+  if (!formattedDate) {
+    return <>Yüklənir...</>;
+  }
+
+  return <>{formattedDate}</>;
+};
 
 export default function DashboardPage() {
   const assetData = mockAssets.reduce((acc, asset) => {
@@ -27,6 +43,12 @@ export default function DashboardPage() {
   };
 
   const recentLogs = mockAuditLogs.slice(0, 5);
+  const [isClient, setIsClient] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsClient(true);
+  }, []);
+
 
   return (
     <div className="grid gap-4 md:gap-8 lg:grid-cols-2 xl:grid-cols-3">
@@ -109,7 +131,9 @@ export default function DashboardPage() {
                       <span className="ml-2 font-normal text-muted-foreground">{log.action}</span>
                     </p>
                     <p className="text-sm text-muted-foreground">{log.details}</p>
-                    <p className="text-xs text-muted-foreground">{new Date(log.timestamp).toLocaleString('az-AZ')}</p>
+                    <p className="text-xs text-muted-foreground">
+                      {isClient ? <FormattedDate timestamp={log.timestamp} /> : 'Yüklənir...'}
+                    </p>
                   </div>
                 </div>
               );
