@@ -9,10 +9,10 @@ export const mockUsers: User[] = [
 ];
 
 export const mockNodes: TasinmazEmlak[] = [
-    { id: 'ts-1', type: 'Təhlükəsizlik Nöqtəsi', name: 'TŞ4-952', seherRayon: 'Nəsimi', layihe: '970', dataMenbeyi: 'Optik' },
-    { id: 'ts-2', type: 'Alt Keçid', name: 'Sumqayıt Alt Keçid 1', seherRayon: 'Sumqayıt', dataMenbeyi: 'Anten' },
-    { id: 'ts-3', type: 'Ticarət Mərkəzi', name: 'Gənclik Mall', seherRayon: 'Nərimanov', dataMenbeyi: 'Optik' },
-    { id: 'ts-4', type: 'Metro', name: '28 May Metrosu', seherRayon: 'Nəsimi', dataMenbeyi: 'Optik' },
+    { id: 'ts-1', type: 'Təhlükəsizlik Nöqtəsi', name: 'TŞ4-952', seher: 'Bakı', rayon: 'Nəsimi', layihe: '970', dataMenbeyi: 'Optik', koordinatX: '49.8492', koordinatY: '40.3792' },
+    { id: 'ts-2', type: 'Alt Keçid', name: 'Sumqayıt Alt Keçid 1', seher: 'Sumqayıt', layihe: 'Yer altı keçidlər', dataMenbeyi: 'Anten', koordinatX: '49.6676', koordinatY: '40.5917' },
+    { id: 'ts-3', type: 'Ticarət Mərkəzi', name: 'Gənclik Mall', seher: 'Bakı', rayon: 'Nərimanov', layihe: 'Ticarət Mərkəzləri', dataMenbeyi: 'Optik', koordinatX: '49.8532', koordinatY: '40.3981' },
+    { id: 'ts-4', type: 'Metro', name: '28 May Metrosu', seher: 'Bakı', rayon: 'Nəsimi', layihe: 'Metro Stansiyaları', dataMenbeyi: 'Optik', koordinatX: '49.8499', koordinatY: '40.3798' },
 ];
 
 
@@ -248,4 +248,26 @@ export const mockAuditLogs: AuditLog[] = [
   { id: 'log-3', userId: 'user-2', action: 'Tiket Təyin Edildi', timestamp: '2023-11-22T08:55:30Z', details: 'Tiket-1 Tural Məmmədova təyin edildi' },
   { id: 'log-4', userId: 'user-4', action: 'Asset Statusu Dəyişdirildi', timestamp: '2023-11-21T15:30:00Z', details: 'Asset-4-ün statusu Aktiv olaraq dəyişdirildi' },
   { id: 'log-5', userId: 'user-1', action: 'İstifadəçi Girişi', timestamp: '2023-11-21T15:25:10Z', details: 'Əli Vəliyev daxil oldu' },
+];
+
+export const azerbaijanCities = [
+  "Ağdam", "Ağdaş", "Ağcabədi", "Ağstafa", "Ağsu", "Astara", "Bakı", "Balakən", "Bərdə",
+  "Beyləqan", "Biləsuvar", "Cəbrayıl", "Cəlilabad", "Daşkəsən", "Füzuli", "Gədəbəy",
+  "Gəncə", "Goranboy", "Göyçay", "Göygöl", "Hacıqabul", "Xaçmaz", "Xankəndi", "Xocalı",
+  "Xocavənd", "Xırdalan", "İmişli", "İsmayıllı", "Kəlbəcər", "Kürdəmir", "Laçın", "Lənkəran",
+  "Lerik", "Masallı", "Mingəçevir", "Naftalan", "Naxçıvan", "Neftçala", "Oğuz", "Qəbələ",
+  "Qax", "Qazax", "Qobustan", "Quba", "Qubadlı", "Qusar", "Saatlı", "Sabirabad", "Salyan",
+  "Samux", "Siyəzən", "Sumqayıt", "Şabran", "Şəki", "Şəmkir", "Şərur", "Şuşa", "Tərtər",
+  "Tovuz", "Ucar", "Yardımlı", "Yevlax", "Zəngilan", "Zaqatala", "Zərdab"
+];
+
+export const azerbaijanRayons = [
+  "Abşeron", "Ağdam", "Ağdaş", "Ağcabədi", "Ağstafa", "Ağsu", "Astara", "Babək", "Balakən",
+  "Bərdə", "Beyləqan", "Biləsuvar", "Cəbrayıl", "Cəlilabad", "Culfa", "Daşkəsən", "Füzuli",
+  "Gədəbəy", "Goranboy", "Göyçay", "Göygöl", "Hacıqabul", "Xaçmaz", "Xızı", "Xocalı",
+  "Xocavənd", "İmişli", "İsmayıllı", "Kəlbəcər", "Kəngərli", "Kürdəmir", "Laçın", "Lənkəran",
+  "Lerik", "Masallı", "Neftçala", "Oğuz", "Ordubad", "Qəbələ", "Qax", "Qazax", "Qobustan",
+  "Quba", "Qubadlı", "Qusar", "Saatlı", "Sabirabad", "Sədərək", "Salyan", "Samux", "Siyəzən",
+  "Şabran", "Şahbuz", "Şəki", "Şəmkir", "Şərur", "Şuşa", "Tərtər", "Tovuz", "Ucar", "Yardımlı",
+  "Yevlax", "Zəngilan", "Zaqatala", "Zərdab"
 ];

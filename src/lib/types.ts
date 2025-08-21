@@ -22,8 +22,10 @@ export type TasinmazEmlak = {
     | 'Biznes Mərkəzi';
   name: string;
   aktivlesmeTarixi?: string;
-  seherRayon?: string;
-  koordinat?: string;
+  seher?: string;
+  rayon?: string;
+  koordinatX?: string;
+  koordinatY?: string;
   layihe?: string;
   dataMenbeyi?: 'Optik' | 'Anten' | 'Sim nömrə' | 'Digər';
   bagliOlduguNeqte?: string;

@@ -12,7 +12,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { MoreHorizontal, PlusCircle, ChevronLeft } from 'lucide-react';
+import { MoreHorizontal, PlusCircle, ChevronLeft, LocateFixed } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -39,7 +39,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 
-import { mockAssets, mockUsers, mockNodes } from '@/lib/data';
+import { mockAssets, mockUsers, mockNodes, azerbaijanCities, azerbaijanRayons } from '@/lib/data';
 import type { Asset, DirekAsset, DataKabelAsset, ElektrikKabelAsset, KameraAsset, QutuAsset, SwitchAsset, TasinmazEmlak } from '@/lib/types';
 import { useToast } from '@/hooks/use-toast';
 
@@ -50,6 +50,7 @@ export default function AssetsPage() {
   const [isNodeDialogOpen, setIsNodeDialogOpen] = React.useState(false);
   const [selectedAssetType, setSelectedAssetType] = React.useState<Asset['type'] | ''>('');
   const [selectedNode, setSelectedNode] = React.useState<TasinmazEmlak | null>(null);
+  const [nodeFormData, setNodeFormData] = React.useState<Partial<TasinmazEmlak>>({});
   const { toast } = useToast();
 
   const handleAddAsset = (event: React.FormEvent<HTMLFormElement>) => {
@@ -63,7 +64,7 @@ export default function AssetsPage() {
         id: `asset-${Date.now()}`,
         nodeId: selectedNode.id,
         name: formData.get('name') as string,
-        region: selectedNode.seherRayon || 'N/A',
+        region: selectedNode.seher || 'N/A',
         status: 'Aktiv' as const,
         location: { lat: 40.37, lng: 49.84 }, // Mock coordinates
         addedBy: 'user-1', // Mock user
@@ -178,8 +179,10 @@ export default function AssetsPage() {
         name: formData.get('name') as string,
         type: formData.get('type') as TasinmazEmlak['type'],
         aktivlesmeTarixi: formData.get('aktivlesmeTarixi') as string,
-        seherRayon: formData.get('seherRayon') as string,
-        koordinat: formData.get('koordinat') as string,
+        seher: formData.get('seher') as string,
+        rayon: formData.get('rayon') as string,
+        koordinatX: formData.get('koordinatX') as string,
+        koordinatY: formData.get('koordinatY') as string,
         layihe: formData.get('layihe') as string,
         dataMenbeyi: formData.get('dataMenbeyi') as TasinmazEmlak['dataMenbeyi'],
         bagliOlduguNeqte: formData.get('bagliOlduguNeqte') as string,
@@ -189,6 +192,7 @@ export default function AssetsPage() {
     };
     setNodes(prev => [newNode, ...prev]);
     setIsNodeDialogOpen(false);
+    setNodeFormData({});
     toast({
         title: "Uğurlu Əməliyyat",
         description: `"${newNode.name}" adlı yeni nöqtə yaradıldı.`
@@ -214,6 +218,48 @@ export default function AssetsPage() {
       case 'İstifadəyə Yararsız': return 'destructive';
       default: return 'outline';
     }
+  };
+  
+  const getCoordinates = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setNodeFormData(prev => ({
+            ...prev,
+            koordinatY: latitude.toFixed(6), // Latitude for Y
+            koordinatX: longitude.toFixed(6), // Longitude for X
+          }));
+          toast({
+            title: "Koordinatlar Alındı",
+            description: `Enlik: ${latitude.toFixed(6)}, Uzunluq: ${longitude.toFixed(6)}`,
+          });
+        },
+        (error) => {
+          toast({
+            variant: "destructive",
+            title: "GPS Xətası",
+            description: "Lokasiya məlumatlarını almaq mümkün olmadı. Brauzer icazələrini yoxlayın.",
+          });
+          console.error("Error getting location: ", error);
+        }
+      );
+    } else {
+       toast({
+         variant: "destructive",
+         title: "GPS Dəstəklənmir",
+         description: "Brauzeriniz geolokasiyanı dəstəkləmir.",
+       });
+    }
+  };
+
+  const handleNodeFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setNodeFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleNodeFormSelectChange = (name: keyof TasinmazEmlak, value: string) => {
+     setNodeFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const renderAssetDetails = (asset: Asset) => {
@@ -747,7 +793,10 @@ export default function AssetsPage() {
     return commonFields;
   }
 
-  const renderNodeView = () => (
+  const renderNodeView = () => {
+    const existingProjects = [...new Set(nodes.map(node => node.layihe).filter(Boolean))] as string[];
+    
+    return (
     <Card>
         <CardHeader className="flex flex-row items-center justify-between">
             <div>
@@ -801,20 +850,51 @@ export default function AssetsPage() {
                                 <Input id="aktivlesmeTarixi" name="aktivlesmeTarixi" type="date" className="col-span-3" />
                             </div>
                              <div className="grid grid-cols-4 items-center gap-4">
-                                <Label htmlFor="seherRayon" className="text-right">Şəhər/Rayon</Label>
-                                <Input id="seherRayon" name="seherRayon" className="col-span-3" />
+                                <Label htmlFor="seher" className="text-right">Şəhər</Label>
+                                <Select name="seher" onValueChange={(value) => handleNodeFormSelectChange('seher', value)}>
+                                    <SelectTrigger className="col-span-3">
+                                        <SelectValue placeholder="Şəhər seçin" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        {azerbaijanCities.map(city => <SelectItem key={city} value={city}>{city}</SelectItem>)}
+                                    </SelectContent>
+                                </Select>
                             </div>
-                             <div className="grid grid-cols-4 items-center gap-4">
-                                <Label htmlFor="koordinat" className="text-right">Koordinat (X, Y)</Label>
-                                <Input id="koordinat" name="koordinat" className="col-span-3" />
+                            <div className="grid grid-cols-4 items-center gap-4">
+                                <Label htmlFor="rayon" className="text-right">Rayon</Label>
+                                <Select name="rayon" onValueChange={(value) => handleNodeFormSelectChange('rayon', value)}>
+                                    <SelectTrigger className="col-span-3">
+                                        <SelectValue placeholder="Rayon seçin" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        {azerbaijanRayons.map(rayon => <SelectItem key={rayon} value={rayon}>{rayon}</SelectItem>)}
+                                    </SelectContent>
+                                </Select>
+                            </div>
+                            <div className="grid grid-cols-4 items-center gap-4">
+                                <Label htmlFor="koordinat" className="text-right">Koordinatlar (X, Y)</Label>
+                                <div className="col-span-3 flex items-center gap-2">
+                                    <Input id="koordinatX" name="koordinatX" placeholder="Uzunluq (X)" value={nodeFormData.koordinatX || ''} onChange={handleNodeFormChange} />
+                                    <Input id="koordinatY" name="koordinatY" placeholder="Enlik (Y)" value={nodeFormData.koordinatY || ''} onChange={handleNodeFormChange} />
+                                    <Button type="button" variant="outline" size="icon" onClick={getCoordinates}>
+                                        <LocateFixed className="h-4 w-4" />
+                                    </Button>
+                                </div>
                             </div>
                              <div className="grid grid-cols-4 items-center gap-4">
                                 <Label htmlFor="layihe" className="text-right">Layihə</Label>
-                                <Input id="layihe" name="layihe" className="col-span-3" />
+                                 <Select name="layihe" onValueChange={(value) => handleNodeFormSelectChange('layihe', value)}>
+                                    <SelectTrigger className="col-span-3">
+                                        <SelectValue placeholder="Layihə seçin və ya yazın" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        {existingProjects.map(proj => <SelectItem key={proj} value={proj}>{proj}</SelectItem>)}
+                                    </SelectContent>
+                                </Select>
                             </div>
-                            <div className="grid grid-cols-4 items-center gap-4">
+                             <div className="grid grid-cols-4 items-center gap-4">
                                 <Label htmlFor="dataMenbeyi" className="text-right">Data Mənbəyi</Label>
-                                 <Select name="dataMenbeyi">
+                                 <Select name="dataMenbeyi" onValueChange={(value) => handleNodeFormSelectChange('dataMenbeyi', value as any)}>
                                     <SelectTrigger className="col-span-3">
                                         <SelectValue placeholder="Data mənbəyini seçin" />
                                     </SelectTrigger>
@@ -865,7 +945,7 @@ export default function AssetsPage() {
                         <TableRow key={node.id} onClick={() => setSelectedNode(node)} className="cursor-pointer">
                             <TableCell className="font-medium">{node.name}</TableCell>
                             <TableCell>{node.type}</TableCell>
-                            <TableCell>{node.seherRayon}</TableCell>
+                            <TableCell>{node.seher ? `${node.seher}${node.rayon ? `, ${node.rayon}` : ''}` : 'N/A'}</TableCell>
                             <TableCell>{node.layihe}</TableCell>
                         </TableRow>
                     ))}
@@ -874,6 +954,7 @@ export default function AssetsPage() {
         </CardContent>
     </Card>
   );
+  }
 
   const renderAssetView = () => {
     if (!selectedNode) return null;
