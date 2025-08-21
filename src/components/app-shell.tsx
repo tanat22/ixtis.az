@@ -103,11 +103,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                       {user ? user.name.charAt(0) : <UserIcon />}
                     </AvatarFallback>
                   </Avatar>
-                  <div className="flex flex-col items-start text-left">
+                  <div className="flex flex-1 flex-col items-start text-left">
                     <p className="font-medium">{user?.name || 'İstifadəçi'}</p>
                     <p className="text-xs text-muted-foreground">{user?.email || 'Daxil olun'}</p>
                   </div>
-                  <ChevronDown className="ml-auto h-4 w-4" />
+                  <ChevronDown className="h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-64" align="end">

@@ -2,9 +2,10 @@
 
 import * as React from 'react';
 import { useRouter } from 'next/navigation';
-import { Box, LogIn } from 'lucide-react';
+import { Box, LogIn, Server } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 import { useUser } from '@/context/user-context';
@@ -18,6 +19,8 @@ export default function LoginPage() {
   const { setUser } = useUser();
   const [isLoading, setIsLoading] = React.useState(false);
   const [selectedUserId, setSelectedUserId] = React.useState<string | null>(null);
+  const [serverIp, setServerIp] = React.useState('127.0.0.1');
+  const [port, setPort] = React.useState('8080');
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,7 +37,9 @@ export default function LoginPage() {
 
     const selectedUser = mockUsers.find(u => u.id === selectedUserId);
 
-    // Simulate API call
+    // Simulate API call to the provided IP and port
+    console.log(`Connecting to ${serverIp}:${port}...`);
+    
     setTimeout(() => {
       if (selectedUser) {
         setUser(selectedUser);
@@ -70,24 +75,50 @@ export default function LoginPage() {
         </div>
         
         <form onSubmit={handleLogin} className="space-y-6">
-           <div>
-              <Label htmlFor="user-select">İstifadəçi seçin (Simulyasiya)</Label>
-               <Select onValueChange={setSelectedUserId} required>
-                    <SelectTrigger id="user-select" className="mt-2">
-                        <SelectValue placeholder="Daxil olmaq üçün bir istifadəçi profili seçin..." />
-                    </SelectTrigger>
-                    <SelectContent>
-                        {mockUsers.map((user) => (
-                            <SelectItem key={user.id} value={user.id}>
-                               <div className="flex items-center gap-2">
-                                 <span>{user.name}</span>
-                                 <span className="text-xs text-muted-foreground">({user.role})</span>
-                               </div>
-                            </SelectItem>
-                        ))}
-                    </SelectContent>
-                </Select>
+           <div className='space-y-4'>
+             <div className="grid grid-cols-3 gap-4">
+                <div className="col-span-2">
+                    <Label htmlFor="server-ip">Server IP</Label>
+                    <Input 
+                      id="server-ip" 
+                      value={serverIp}
+                      onChange={(e) => setServerIp(e.target.value)}
+                      placeholder="192.168.1.1"
+                      required
+                    />
+                </div>
+                <div>
+                    <Label htmlFor="port">Port</Label>
+                    <Input 
+                      id="port" 
+                      value={port}
+                      onChange={(e) => setPort(e.target.value)}
+                      placeholder="8080" 
+                      required
+                    />
+                </div>
+             </div>
+
+             <div>
+                <Label htmlFor="user-select">İstifadəçi seçin (Simulyasiya)</Label>
+                 <Select onValueChange={setSelectedUserId} required>
+                      <SelectTrigger id="user-select" className="mt-1">
+                          <SelectValue placeholder="Daxil olmaq üçün bir istifadəçi profili seçin..." />
+                      </SelectTrigger>
+                      <SelectContent>
+                          {mockUsers.map((user) => (
+                              <SelectItem key={user.id} value={user.id}>
+                                 <div className="flex items-center gap-2">
+                                   <span>{user.name}</span>
+                                   <span className="text-xs text-muted-foreground">({user.role})</span>
+                                 </div>
+                              </SelectItem>
+                          ))}
+                      </SelectContent>
+                  </Select>
+             </div>
            </div>
+
 
             <Button type="submit" className="w-full" disabled={isLoading}>
             {isLoading ? (
