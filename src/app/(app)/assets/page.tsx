@@ -19,6 +19,11 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
+  DropdownMenuSub,
+  DropdownMenuSubTrigger,
+  DropdownMenuPortal,
+  DropdownMenuSubContent,
+  DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu';
 import {
   Dialog,
@@ -35,6 +40,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 
 import { mockAssets, mockUsers, mockNodes } from '@/lib/data';
 import type { Asset, DirekAsset, DataKabelAsset, ElektrikKabelAsset, KameraAsset, QutuAsset, SwitchAsset, TasinmazEmlak } from '@/lib/types';
+import { useToast } from '@/hooks/use-toast';
 
 export default function AssetsPage() {
   const [assets, setAssets] = React.useState<Asset[]>(mockAssets);
@@ -43,6 +49,7 @@ export default function AssetsPage() {
   const [isNodeDialogOpen, setIsNodeDialogOpen] = React.useState(false);
   const [selectedAssetType, setSelectedAssetType] = React.useState<Asset['type'] | ''>('');
   const [selectedNode, setSelectedNode] = React.useState<TasinmazEmlak | null>(null);
+  const { toast } = useToast();
 
   const handleAddAsset = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -146,15 +153,20 @@ export default function AssetsPage() {
     }
      else {
         // Fallback for any other type that might be passed
-        newAsset = {
+        const genericAsset : any = { // Use any to allow dynamic properties
             ...commonData,
             type: assetType,
         };
+        newAsset = genericAsset;
     }
     
     setAssets(prev => [newAsset, ...prev]);
     setIsAssetDialogOpen(false);
     setSelectedAssetType('');
+    toast({
+        title: "Uğurlu Əməliyyat",
+        description: `${assetType} tipli yeni asset yaradıldı.`
+    })
   };
 
   const handleAddNode = (event: React.FormEvent<HTMLFormElement>) => {
@@ -170,6 +182,20 @@ export default function AssetsPage() {
     };
     setNodes(prev => [newNode, ...prev]);
     setIsNodeDialogOpen(false);
+    toast({
+        title: "Uğurlu Əməliyyat",
+        description: `"${newNode.name}" adlı yeni nöqtə yaradıldı.`
+    })
+  };
+
+  const handleStatusChange = (assetId: string, newStatus: Asset['status']) => {
+    setAssets(prev => prev.map(asset => 
+        asset.id === assetId ? { ...asset, status: newStatus } : asset
+    ));
+    toast({
+        title: "Status Dəyişdirildi",
+        description: `Asset statusu "${newStatus}" olaraq yeniləndi.`
+    })
   };
   
   const getStatusVariant = (status: Asset['status']) => {
@@ -177,6 +203,8 @@ export default function AssetsPage() {
       case 'Aktiv': return 'default';
       case 'Təmir': return 'secondary';
       case 'Qeyri-aktiv': return 'destructive';
+      case 'Anbarda': return 'outline';
+      case 'İstifadəyə Yararsız': return 'destructive';
       default: return 'outline';
     }
   };
@@ -893,7 +921,20 @@ export default function AssetsPage() {
                             <DropdownMenuContent align="end">
                                 <DropdownMenuLabel>Əməliyyatlar</DropdownMenuLabel>
                                 <DropdownMenuItem>Redaktə et</DropdownMenuItem>
-                                <DropdownMenuItem>Sil</DropdownMenuItem>
+                                 <DropdownMenuSub>
+                                    <DropdownMenuSubTrigger>Statusu dəyiş</DropdownMenuSubTrigger>
+                                    <DropdownMenuPortal>
+                                        <DropdownMenuSubContent>
+                                            <DropdownMenuItem onClick={() => handleStatusChange(asset.id, 'Aktiv')}>Aktiv</DropdownMenuItem>
+                                            <DropdownMenuItem onClick={() => handleStatusChange(asset.id, 'Təmir')}>Təmir</DropdownMenuItem>
+                                            <DropdownMenuItem onClick={() => handleStatusChange(asset.id, 'Anbarda')}>Anbarda</DropdownMenuItem>
+                                            <DropdownMenuItem onClick={() => handleStatusChange(asset.id, 'Qeyri-aktiv')}>Qeyri-aktiv</DropdownMenuItem>
+                                            <DropdownMenuItem onClick={() => handleStatusChange(asset.id, 'İstifadəyə Yararsız')}>İstifadəyə Yararsız</DropdownMenuItem>
+                                        </DropdownMenuSubContent>
+                                    </DropdownMenuPortal>
+                                </DropdownMenuSub>
+                                <DropdownMenuSeparator />
+                                <DropdownMenuItem className="text-destructive">Sil</DropdownMenuItem>
                             </DropdownMenuContent>
                             </DropdownMenu>
                         </TableCell>

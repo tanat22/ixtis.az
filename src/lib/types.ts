@@ -153,7 +153,7 @@ export type GenericAsset = BaseAsset & {
     type: 'Rack Kabin';
 };
 
-export type Asset = DirekAsset | GenericAsset | DataKabelAsset | ElektrikKabelAsset | KameraAsset | QutuAsset | SwitchAsset;
+export type Asset = DirekAsset | DataKabelAsset | ElektrikKabelAsset | KameraAsset | QutuAsset | SwitchAsset | GenericAsset;
 
 export type Ticket = {
   id: string;
