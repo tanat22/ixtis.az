@@ -2,7 +2,7 @@ export type User = {
   id: string;
   name: string;
   email: string;
-  role: 'Super Admin' | 'Admin' | 'Səhra istifadəçisi';
+  role: 'Super Admin' | 'Admin' | 'Regional Menecer' | 'Təmir üzrə Məsul Şəxs';
   region: string;
   avatar: string;
 };

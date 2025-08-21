@@ -3,9 +3,9 @@ import type { User, Asset, Ticket, AuditLog, TasinmazEmlak } from './types';
 export const mockUsers: User[] = [
   { id: 'user-1', name: 'Əli Vəliyev', email: 'ali.v@example.com', role: 'Super Admin', region: 'Bütün', avatar: '/avatars/01.png' },
   { id: 'user-2', name: 'Sara Qasımlı', email: 'sara.q@example.com', role: 'Admin', region: 'Bakı', avatar: '/avatars/02.png' },
-  { id: 'user-3', name: 'Tural Məmmədov', email: 'tural.m@example.com', role: 'Səhra istifadəçisi', region: 'Bakı', avatar: '/avatars/03.png' },
-  { id: 'user-4', name: 'Leyla Hüseynova', email: 'leyla.h@example.com', role: 'Səhra istifadəçisi', region: 'Gəncə', avatar: '/avatars/04.png' },
-  { id: 'user-5', name: 'Fərid İsmayılov', email: 'farid.i@example.com', role: 'Səhra istifadəçisi', region: 'Sumqayıt', avatar: '/avatars/05.png' },
+  { id: 'user-3', name: 'Tural Məmmədov', email: 'tural.m@example.com', role: 'Regional Menecer', region: 'Bakı', avatar: '/avatars/03.png' },
+  { id: 'user-4', name: 'Leyla Hüseynova', email: 'leyla.h@example.com', role: 'Regional Menecer', region: 'Gəncə', avatar: '/avatars/04.png' },
+  { id: 'user-5', name: 'Fərid İsmayılov', email: 'farid.i@example.com', role: 'Təmir üzrə Məsul Şəxs', region: 'Bütün', avatar: '/avatars/05.png' },
 ];
 
 export const mockNodes: TasinmazEmlak[] = [

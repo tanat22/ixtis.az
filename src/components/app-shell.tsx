@@ -34,25 +34,33 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import type { User } from '@/lib/types';
+
 
 // This is a mock. In a real app, you'd get this from your auth context.
-const user = {
+const user: User = {
+  id: 'user-1',
   name: 'Əli Vəliyev',
   email: 'ali.v@example.com',
   avatar: '/avatars/01.png',
   role: 'Super Admin',
+  region: 'Bütün',
 };
 
-const navItems = [
-  { href: '/dashboard', icon: LayoutDashboard, label: 'İdarə Paneli', roles: ['Super Admin', 'Admin', 'Field User'] },
-  { href: '/assets', icon: Box, label: 'Assetlər', roles: ['Super Admin', 'Admin', 'Field User'] },
-  { href: '/tickets', icon: Ticket, label: 'Tiketlər', roles: ['Super Admin', 'Admin', 'Field User'] },
+const navItems: { href: string; icon: React.ElementType; label: string; roles: User['role'][] }[] = [
+  { href: '/dashboard', icon: LayoutDashboard, label: 'İdarə Paneli', roles: ['Super Admin', 'Admin', 'Regional Menecer', 'Təmir üzrə Məsul Şəxs'] },
+  { href: '/assets', icon: Box, label: 'Assetlər', roles: ['Super Admin', 'Admin', 'Regional Menecer', 'Təmir üzrə Məsul Şəxs'] },
+  { href: '/tickets', icon: Ticket, label: 'Tiketlər', roles: ['Super Admin', 'Admin', 'Regional Menecer'] },
   { href: '/users', icon: Users, label: 'İstifadəçi İdarəetməsi', roles: ['Super Admin', 'Admin'] },
   { href: '/audit-log', icon: FileClock, label: 'Audit Jurnalı', roles: ['Super Admin'] },
 ];
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+
+  const userHasAccess = (allowedRoles: User['role'][]) => {
+    return allowedRoles.includes(user.role);
+  };
 
   return (
     <SidebarProvider>
@@ -67,20 +75,22 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         </SidebarHeader>
         <SidebarContent>
           <SidebarMenu>
-            {navItems.filter(item => item.roles.includes(user.role)).map((item) => (
-              <SidebarMenuItem key={item.href}>
-                <SidebarMenuButton
-                  href={item.href}
-                  asChild
-                  isActive={pathname === item.href}
-                  tooltip={item.label}
-                >
-                  <a href={item.href}>
-                    <item.icon />
-                    <span>{item.label}</span>
-                  </a>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
+            {navItems.map((item) => (
+              userHasAccess(item.roles) && (
+                <SidebarMenuItem key={item.href}>
+                  <SidebarMenuButton
+                    href={item.href}
+                    asChild
+                    isActive={pathname === item.href}
+                    tooltip={item.label}
+                  >
+                    <a href={item.href}>
+                      <item.icon />
+                      <span>{item.label}</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              )
             ))}
           </SidebarMenu>
         </SidebarContent>
