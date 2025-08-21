@@ -34,7 +34,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 import { mockAssets, mockUsers } from '@/lib/data';
-import type { Asset, DirekAsset } from '@/lib/types';
+import type { Asset, DirekAsset, DataKabelAsset, ElektrikKabelAsset } from '@/lib/types';
 
 export default function AssetsPage() {
   const [assets, setAssets] = React.useState<Asset[]>(mockAssets);
@@ -54,6 +54,8 @@ export default function AssetsPage() {
         location: { lat: 40.37, lng: 49.84 }, // Mock coordinates
         addedBy: 'user-1', // Mock user
         addedDate: new Date().toISOString().split('T')[0],
+        qurasdirilmaTarixi: formData.get('qurasdirilmaTarixi') as string,
+        qeyd: formData.get('qeyd') as string,
     };
 
     let newAsset: Asset;
@@ -65,7 +67,30 @@ export default function AssetsPage() {
             istehsalci: formData.get('istehsalci') as DirekAsset['istehsalci'],
             hundurluk: Number(formData.get('hundurluk')),
             reng: formData.get('reng') as string,
+            nov: formData.get('nov') as DirekAsset['nov'],
+            hendesiForma: formData.get('hendesiForma') as DirekAsset['hendesiForma'],
+            material: formData.get('material') as DirekAsset['material'],
         };
+    } else if (assetType === 'Data Kabeli') {
+        newAsset = {
+            ...commonData,
+            type: 'Data Kabeli',
+            ethernetTipi: formData.get('ethernetTipi') as string,
+            ethernetUzunluq: Number(formData.get('ethernetUzunluq')),
+            patchcordTipi: formData.get('patchcordTipi') as string,
+            patchcordUzunluq: Number(formData.get('patchcordUzunluq')),
+            optikYerlesme: formData.get('optikYerlesme') as DataKabelAsset['optikYerlesme'],
+        };
+    } else if (assetType === 'Elektrik Kabeli') {
+        newAsset = {
+            ...commonData,
+            type: 'Elektrik Kabeli',
+            kabelTipi: formData.get('kabelTipi') as string,
+            kabelUzunluq: Number(formData.get('kabelUzunluq')),
+            uzaticiYuvaSayi: Number(formData.get('uzaticiYuvaSayi')),
+            uzaticiUzunluq: Number(formData.get('uzaticiUzunluq')),
+            birlesmeUsulu: formData.get('birlesmeUsulu') as ElektrikKabelAsset['birlesmeUsulu'],
+        }
     } else {
          newAsset = {
             ...commonData,
@@ -91,11 +116,30 @@ export default function AssetsPage() {
     if (asset.type === 'Dirək') {
       return `İstehsalçı: ${asset.istehsalci || 'N/A'}, Hündürlük: ${asset.hundurluk || 'N/A'}m`;
     }
+     if (asset.type === 'Data Kabeli') {
+      return `Ethernet: ${asset.ethernetTipi || 'N/A'}, Optik: ${asset.patchcordTipi || 'N/A'}`;
+    }
+    if (asset.type === 'Elektrik Kabeli') {
+      return `Kabel: ${asset.kabelTipi || 'N/A'}, Birləşmə: ${asset.birlesmeUsulu || 'N/A'}`;
+    }
     return asset.type;
   }
   
   const renderAddAssetFormFields = () => {
     if (!selectedAssetType) return null;
+
+    const commonFields = (
+        <>
+            <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="qurasdirilmaTarixi" className="text-right">Quraşdırılma Tarixi</Label>
+                <Input id="qurasdirilmaTarixi" name="qurasdirilmaTarixi" type="date" className="col-span-3" />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="qeyd" className="text-right">Qeyd</Label>
+                <Input id="qeyd" name="qeyd" className="col-span-3" />
+            </div>
+        </>
+    );
 
     if (selectedAssetType === 'Dirək') {
       return (
@@ -123,12 +167,119 @@ export default function AssetsPage() {
             <Label htmlFor="reng" className="text-right">Rəng</Label>
             <Input id="reng" name="reng" className="col-span-3" />
           </div>
+           <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="nov" className="text-right">Növ</Label>
+             <Select name="nov">
+              <SelectTrigger className="col-span-3">
+                <SelectValue placeholder="Dirək növünü seçin" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="T">T</SelectItem>
+                <SelectItem value="I">I</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="hendesiForma" className="text-right">Həndəsi Forma</Label>
+            <Select name="hendesiForma">
+              <SelectTrigger className="col-span-3">
+                <SelectValue placeholder="Formanı seçin" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="Kvadrat">Kvadrat</SelectItem>
+                <SelectItem value="Dairəvi">Dairəvi</SelectItem>
+                <SelectItem value="Dairəvi Xonçalı">Dairəvi Xonçalı</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+           <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="material" className="text-right">Material</Label>
+            <Select name="material">
+              <SelectTrigger className="col-span-3">
+                <SelectValue placeholder="Materialı seçin" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="Qara metal">Qara metal</SelectItem>
+                <SelectItem value="Qalvanizasiya olunmuş qara metal">Qalvanizasiya olunmuş qara metal</SelectItem>
+                <SelectItem value="Aluminium">Aluminium</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          {commonFields}
         </>
       );
+    } else if (selectedAssetType === 'Data Kabeli') {
+        return (
+            <>
+                <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="ethernetTipi" className="text-right">Ethernet Tipi</Label>
+                    <Input id="ethernetTipi" name="ethernetTipi" className="col-span-3" />
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="ethernetUzunluq" className="text-right">Ethernet Uzunluq (m)</Label>
+                    <Input id="ethernetUzunluq" name="ethernetUzunluq" type="number" className="col-span-3" />
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="patchcordTipi" className="text-right">Patchcord Tipi</Label>
+                    <Input id="patchcordTipi" name="patchcordTipi" className="col-span-3" />
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="patchcordUzunluq" className="text-right">Patchcord Uzunluq (m)</Label>
+                    <Input id="patchcordUzunluq" name="patchcordUzunluq" type="number" className="col-span-3" />
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="optikYerlesme" className="text-right">Optik Yerləşmə</Label>
+                    <Select name="optikYerlesme">
+                        <SelectTrigger className="col-span-3">
+                            <SelectValue placeholder="Yerləşməni seçin" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="Aşağıda">Aşağıda</SelectItem>
+                            <SelectItem value="Yuxarıda">Yuxarıda</SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
+                {commonFields}
+            </>
+        );
+    } else if (selectedAssetType === 'Elektrik Kabeli') {
+        return (
+            <>
+                <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="kabelTipi" className="text-right">Kabel Tipi</Label>
+                    <Input id="kabelTipi" name="kabelTipi" className="col-span-3" />
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="kabelUzunluq" className="text-right">Kabel Uzunluğu (m)</Label>
+                    <Input id="kabelUzunluq" name="kabelUzunluq" type="number" className="col-span-3" />
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="uzaticiYuvaSayi" className="text-right">Uzadıcı Yuva Sayı</Label>
+                    <Input id="uzaticiYuvaSayi" name="uzaticiYuvaSayi" type="number" className="col-span-3" />
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="uzaticiUzunluq" className="text-right">Uzadıcı Uzunluğu (m)</Label>
+                    <Input id="uzaticiUzunluq" name="uzaticiUzunluq" type="number" className="col-span-3" />
+                </div>
+                 <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="birlesmeUsulu" className="text-right">Birləşmə Üsulu</Label>
+                    <Select name="birlesmeUsulu">
+                        <SelectTrigger className="col-span-3">
+                            <SelectValue placeholder="Üsulu seçin" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="Vilka">Vilka</SelectItem>
+                            <SelectItem value="Birbaşa">Birbaşa</SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
+                {commonFields}
+            </>
+        );
     }
     
-    // Placeholder for other asset types if they have specific fields
-    return null;
+    // For other generic types, only show common fields
+    return commonFields;
   }
 
   return (
@@ -147,7 +298,7 @@ export default function AssetsPage() {
               </span>
             </Button>
           </DialogTrigger>
-          <DialogContent>
+          <DialogContent className="max-h-[90vh] overflow-y-auto">
             <form onSubmit={handleAddAsset}>
               <DialogHeader>
                 <DialogTitle>Yeni Asset əlavə et</DialogTitle>
@@ -168,6 +319,8 @@ export default function AssetsPage() {
                         <SelectItem value="Kamera">Kamera</SelectItem>
                         <SelectItem value="Switch">Switch</SelectItem>
                         <SelectItem value="Router">Router</SelectItem>
+                        <SelectItem value="Data Kabeli">Data Kabeli</SelectItem>
+                        <SelectItem value="Elektrik Kabeli">Elektrik Kabeli</SelectItem>
                       </SelectContent>
                     </Select>
                 </div>

@@ -18,6 +18,11 @@ type BaseAsset = {
   status: 'Aktiv' | 'Qeyri-aktiv' | 'Təmir';
   addedBy: string;
   addedDate: string;
+  qurasdirilmaTarixi?: string;
+  ilkinRestovrasiyaTarixi?: string;
+  tekrarRestovrasiyaTarixi?: string;
+  sonIstismarTarixi?: string;
+  qeyd?: string;
 };
 
 export type DirekAsset = BaseAsset & {
@@ -28,10 +33,6 @@ export type DirekAsset = BaseAsset & {
     nov?: 'T' | 'I';
     hendesiForma?: 'Kvadrat' | 'Dairəvi' | 'Dairəvi Xonçalı';
     material?: 'Qara metal' | 'Qalvanizasiya olunmuş qara metal' | 'Aluminium';
-    qurasdirilmaTarixi?: string;
-    ilkinRestovrasiyaTarixi?: string;
-    tekrarRestovrasiyaTarixi?: string;
-    sonIstismarTarixi?: string;
     istismarVeziyyeti?: 'Yararlı' | 'Yararsız' | 'Restovrasiya olunmalıdır';
     qol?: 'Yararlı' | 'Yararsız' | 'Restovrasiya olunmalıdır';
     etek?: 'Yararlı' | 'Yararsız' | 'Restovrasiya olunmalıdır';
@@ -42,14 +43,32 @@ export type DirekAsset = BaseAsset & {
     bunovreNovu?: 'Stasionar' | 'Səyyar basdırılmış' | 'Səyyar yer üstü';
     bunovreVeziyyeti?: 'Yararlı' | 'Aşınmış' | 'Əlçə qüsurlu';
     ankerVeziyyeti?: 'Yararlı' | 'Yararsız';
-    qeyd?: string;
 };
+
+export type DataKabelAsset = BaseAsset & {
+    type: 'Data Kabeli';
+    ethernetTipi?: string;
+    ethernetUzunluq?: number;
+    patchcordTipi?: string;
+    patchcordUzunluq?: number;
+    optikYerlesme?: 'Aşağıda' | 'Yuxarıda';
+};
+
+export type ElektrikKabelAsset = BaseAsset & {
+    type: 'Elektrik Kabeli';
+    kabelTipi?: string;
+    kabelUzunluq?: number;
+    uzaticiYuvaSayi?: number;
+    uzaticiUzunluq?: number;
+    birlesmeUsulu?: 'Vilka' | 'Birbaşa';
+};
+
 
 export type GenericAsset = BaseAsset & {
     type: 'Qutu' | 'Kamera' | 'Switch' | 'Router';
 };
 
-export type Asset = DirekAsset | GenericAsset;
+export type Asset = DirekAsset | GenericAsset | DataKabelAsset | ElektrikKabelAsset;
 
 export type Ticket = {
   id: string;

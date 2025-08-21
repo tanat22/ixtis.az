@@ -24,7 +24,7 @@ export const mockAssets: Asset[] = [
     nov: 'T',
     hendesiForma: 'Kvadrat',
     material: 'Qara metal',
-    qurasdirilmaTarixi: '2020-dən əvvəl',
+    qurasdirilmaTarixi: '2019-01-01',
     istismarVeziyyeti: 'Yararlı',
     qol: 'Yararlı',
     etek: 'Yararlı',
@@ -36,8 +36,8 @@ export const mockAssets: Asset[] = [
     bunovreVeziyyeti: 'Yararlı',
     ankerVeziyyeti: 'Yararlı'
   },
-  { id: 'asset-2', name: '28 May qovşaq qutusu', type: 'Qutu', region: 'Bakı', location: { lat: 40.3798, lng: 49.8499 }, status: 'Aktiv', addedBy: 'user-3', addedDate: '2023-10-02' },
-  { id: 'asset-3', name: 'İçərişəhər Cam 01', type: 'Kamera', region: 'Bakı', location: { lat: 40.3582, lng: 49.8336 }, status: 'Təmir', addedBy: 'user-2', addedDate: '2023-09-15' },
+  { id: 'asset-2', name: '28 May qovşaq qutusu', type: 'Qutu', region: 'Bakı', location: { lat: 40.3798, lng: 49.8499 }, status: 'Aktiv', addedBy: 'user-3', addedDate: '2023-10-02', qurasdirilmaTarixi: '2023-01-10' },
+  { id: 'asset-3', name: 'İçərişəhər Cam 01', type: 'Kamera', region: 'Bakı', location: { lat: 40.3582, lng: 49.8336 }, status: 'Təmir', addedBy: 'user-2', addedDate: '2023-09-15', qurasdirilmaTarixi: '2022-05-20' },
   { 
     id: 'asset-4', 
     name: 'Gəncə dirək 1', 
@@ -53,7 +53,7 @@ export const mockAssets: Asset[] = [
     nov: 'I',
     hendesiForma: 'Dairəvi',
     material: 'Qalvanizasiya olunmuş qara metal',
-    qurasdirilmaTarixi: '2023',
+    qurasdirilmaTarixi: '2023-02-15',
     istismarVeziyyeti: 'Yararsız',
     qol: 'Yararsız',
     etek: 'Yararsız',
@@ -65,8 +65,38 @@ export const mockAssets: Asset[] = [
     bunovreVeziyyeti: 'Aşınmış',
     ankerVeziyyeti: 'Yararsız'
   },
-  { id: 'asset-5', name: 'Bulvar Park Router', type: 'Router', region: 'Sumqayıt', location: { lat: 40.5897, lng: 49.6686 }, status: 'Qeyri-aktiv', addedBy: 'user-5', addedDate: '2023-08-20' },
-  { id: 'asset-6', name: 'Fəvvarələr Meydanı Cam 05', type: 'Kamera', region: 'Bakı', location: { lat: 40.3703, lng: 49.8344 }, status: 'Aktiv', addedBy: 'user-3', addedDate: '2023-11-10' },
+  { id: 'asset-5', name: 'Bulvar Park Router', type: 'Router', region: 'Sumqayıt', location: { lat: 40.5897, lng: 49.6686 }, status: 'Qeyri-aktiv', addedBy: 'user-5', addedDate: '2023-08-20', qurasdirilmaTarixi: '2021-11-11' },
+  { id: 'asset-6', name: 'Fəvvarələr Meydanı Cam 05', type: 'Kamera', region: 'Bakı', location: { lat: 40.3703, lng: 49.8344 }, status: 'Aktiv', addedBy: 'user-3', addedDate: '2023-11-10', qurasdirilmaTarixi: '2023-03-01' },
+  {
+    id: 'asset-7',
+    name: 'Nizami küç. Data Kabeli',
+    type: 'Data Kabeli',
+    region: 'Bakı',
+    location: { lat: 40.3792, lng: 49.8492 },
+    status: 'Aktiv',
+    addedBy: 'user-3',
+    addedDate: '2023-10-01',
+    ethernetTipi: 'CAT6 Kabel Outdoor (Black)',
+    ethernetUzunluq: 150,
+    patchcordTipi: 'FO Patchcord 7m',
+    patchcordUzunluq: 7,
+    optikYerlesme: 'Yuxarıda',
+  },
+  {
+    id: 'asset-8',
+    name: 'Nizami küç. Elektrik Kabeli',
+    type: 'Elektrik Kabeli',
+    region: 'Bakı',
+    location: { lat: 40.3792, lng: 49.8492 },
+    status: 'Aktiv',
+    addedBy: 'user-3',
+    addedDate: '2023-10-01',
+    kabelTipi: 'Elektrik kabeli 2x2.25',
+    kabelUzunluq: 100,
+    uzaticiYuvaSayi: 4,
+    uzaticiUzunluq: 2,
+    birlesmeUsulu: 'Birbaşa'
+  }
 ];
 
 export const mockTickets: Ticket[] = [
