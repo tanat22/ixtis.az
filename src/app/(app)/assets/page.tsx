@@ -37,6 +37,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Textarea } from '@/components/ui/textarea';
 
 import { mockAssets, mockUsers, mockNodes } from '@/lib/data';
 import type { Asset, DirekAsset, DataKabelAsset, ElektrikKabelAsset, KameraAsset, QutuAsset, SwitchAsset, TasinmazEmlak } from '@/lib/types';
@@ -176,9 +177,15 @@ export default function AssetsPage() {
         id: `ts-${Date.now()}`,
         name: formData.get('name') as string,
         type: formData.get('type') as TasinmazEmlak['type'],
-        seherRayon: 'Təyin edilməyib', // This should probably be a form field too
-        layihe: 'Təyin edilməyib',
-        dataMenbeyi: 'Optik' // Default or from form
+        aktivlesmeTarixi: formData.get('aktivlesmeTarixi') as string,
+        seherRayon: formData.get('seherRayon') as string,
+        koordinat: formData.get('koordinat') as string,
+        layihe: formData.get('layihe') as string,
+        dataMenbeyi: formData.get('dataMenbeyi') as TasinmazEmlak['dataMenbeyi'],
+        bagliOlduguNeqte: formData.get('bagliOlduguNeqte') as string,
+        elektrikMenbeyi: formData.get('elektrikMenbeyi') as string,
+        qeyd: formData.get('qeyd') as string,
+        mertebe: formData.get('mertebe') as string,
     };
     setNodes(prev => [newNode, ...prev]);
     setIsNodeDialogOpen(false);
@@ -756,7 +763,7 @@ export default function AssetsPage() {
                         </span>
                     </Button>
                 </DialogTrigger>
-                <DialogContent>
+                <DialogContent className="max-h-[90vh] overflow-y-auto">
                     <form onSubmit={handleAddNode}>
                         <DialogHeader>
                             <DialogTitle>Yeni Təhlükəsizlik Nöqtəsi Yarat</DialogTitle>
@@ -766,7 +773,7 @@ export default function AssetsPage() {
                         </DialogHeader>
                         <div className="grid gap-4 py-4">
                             <div className="grid grid-cols-4 items-center gap-4">
-                                <Label htmlFor="name" className="text-right">Ad</Label>
+                                <Label htmlFor="name" className="text-right">Ad (TŞ Nöqtəsi)</Label>
                                 <Input id="name" name="name" className="col-span-3" required />
                             </div>
                             <div className="grid grid-cols-4 items-center gap-4">
@@ -788,6 +795,52 @@ export default function AssetsPage() {
                                         <SelectItem value="Biznes Mərkəzi">Biznes Mərkəzi (BM)</SelectItem>
                                     </SelectContent>
                                 </Select>
+                            </div>
+                            <div className="grid grid-cols-4 items-center gap-4">
+                                <Label htmlFor="aktivlesmeTarixi" className="text-right">Aktivləşmə Tarixi</Label>
+                                <Input id="aktivlesmeTarixi" name="aktivlesmeTarixi" type="date" className="col-span-3" />
+                            </div>
+                             <div className="grid grid-cols-4 items-center gap-4">
+                                <Label htmlFor="seherRayon" className="text-right">Şəhər/Rayon</Label>
+                                <Input id="seherRayon" name="seherRayon" className="col-span-3" />
+                            </div>
+                             <div className="grid grid-cols-4 items-center gap-4">
+                                <Label htmlFor="koordinat" className="text-right">Koordinat (X, Y)</Label>
+                                <Input id="koordinat" name="koordinat" className="col-span-3" />
+                            </div>
+                             <div className="grid grid-cols-4 items-center gap-4">
+                                <Label htmlFor="layihe" className="text-right">Layihə</Label>
+                                <Input id="layihe" name="layihe" className="col-span-3" />
+                            </div>
+                            <div className="grid grid-cols-4 items-center gap-4">
+                                <Label htmlFor="dataMenbeyi" className="text-right">Data Mənbəyi</Label>
+                                 <Select name="dataMenbeyi">
+                                    <SelectTrigger className="col-span-3">
+                                        <SelectValue placeholder="Data mənbəyini seçin" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectItem value="Optik">Optik</SelectItem>
+                                        <SelectItem value="Anten">Anten</SelectItem>
+                                        <SelectItem value="Sim nömrə">Sim nömrə</SelectItem>
+                                        <SelectItem value="Digər">Digər</SelectItem>
+                                    </SelectContent>
+                                </Select>
+                            </div>
+                             <div className="grid grid-cols-4 items-center gap-4">
+                                <Label htmlFor="bagliOlduguNeqte" className="text-right">Bağlı Olduğu Nöqtə</Label>
+                                <Input id="bagliOlduguNeqte" name="bagliOlduguNeqte" className="col-span-3" />
+                            </div>
+                            <div className="grid grid-cols-4 items-center gap-4">
+                                <Label htmlFor="elektrikMenbeyi" className="text-right">Elektrik Mənbəyi</Label>
+                                <Input id="elektrikMenbeyi" name="elektrikMenbeyi" className="col-span-3" />
+                            </div>
+                             <div className="grid grid-cols-4 items-center gap-4">
+                                <Label htmlFor="mertebe" className="text-right">Mərtəbə</Label>
+                                <Input id="mertebe" name="mertebe" placeholder="Məs: Z3, M3" className="col-span-3" />
+                            </div>
+                             <div className="grid grid-cols-4 items-center gap-4">
+                                <Label htmlFor="qeyd" className="text-right">Qeyd</Label>
+                                <Textarea id="qeyd" name="qeyd" className="col-span-3" />
                             </div>
                         </div>
                         <DialogFooter>
