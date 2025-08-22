@@ -252,9 +252,10 @@ export const mockAuditLogs: AuditLog[] = [
 ];
 
 export const mockMessages: Message[] = [
-    { id: 'msg-1', senderId: 'user-3', receiverId: 'user-2', content: 'TŞ4-952 nöqtəsindəki yeni dirək üçün təsdiq göndərdim. Zəhmət olmasa yoxlayın.', timestamp: '2024-05-23T10:00:00Z', read: true },
-    { id: 'msg-2', senderId: 'user-2', receiverId: 'user-3', content: 'Təsdiqlədim. Hər şey qaydasındadır.', timestamp: '2024-05-23T10:05:00Z', read: true },
-    { id: 'msg-3', senderId: 'user-3', receiverId: 'user-2', content: 'Gənclik Mall-dakı kamera problemi ilə bağlı tiket açmışam. Təcili baxılmalıdır.', timestamp: '2024-05-24T14:30:00Z', read: false },
+    { id: 'msg-1', senderId: 'user-3', receiverId: 'user-2', content: 'TŞ4-952 nöqtəsindəki yeni dirək üçün təsdiq göndərdim. Zəhmət olmasa yoxlayın.', timestamp: '2024-05-23T10:00:00Z', read: true, attachment: null },
+    { id: 'msg-2', senderId: 'user-2', receiverId: 'user-3', content: 'Təsdiqlədim. Hər şey qaydasındadır.', timestamp: '2024-05-23T10:05:00Z', read: true, attachment: null },
+    { id: 'msg-3', senderId: 'user-3', receiverId: 'user-2', content: 'Gənclik Mall-dakı kamera problemi ilə bağlı tiket açmışam. Təcili baxılmalıdır.', timestamp: '2024-05-24T14:30:00Z', read: false, attachment: null },
+    { id: 'msg-4', senderId: 'user-2', receiverId: 'user-3', content: 'Problem həll edildi.', timestamp: '2024-05-25T11:00:00Z', read: false, attachment: { url: 'https://placehold.co/600x400.png', type: 'image' } },
 ];
 
 

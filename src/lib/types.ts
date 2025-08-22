@@ -184,4 +184,8 @@ export type Message = {
     content: string;
     timestamp: string;
     read: boolean;
+    attachment?: {
+      url: string;
+      type: 'image'; // Gələcəkdə fayl tiplərini artırmaq olar
+    } | null;
 };

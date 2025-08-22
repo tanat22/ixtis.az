@@ -7,29 +7,39 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
-import { Send } from 'lucide-react';
+import { Send, Paperclip } from 'lucide-react';
 import { useUser } from '@/context/user-context';
 import { mockUsers, mockMessages } from '@/lib/data';
 import type { User, Message } from '@/lib/types';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 export default function MessagesPage() {
   const { user: currentUser } = useUser();
   const [messages, setMessages] = React.useState<Message[]>(mockMessages);
   const [newMessage, setNewMessage] = React.useState('');
+  const [attachment, setAttachment] = React.useState<File | null>(null);
+  const fileInputRef = React.useRef<HTMLInputElement>(null);
   
-  // For this simulation, we'll let the regional manager talk to the first admin.
-  // In a real app, this would be more dynamic.
   const admin = mockUsers.find(u => u.role === 'Admin');
   
-  // Determine who the other person in the chat is
   const otherUser = currentUser?.role === 'Admin' 
-    ? mockUsers.find(u => u.role === 'Regional Menecer') // Admin talks to the first RM
-    : admin; // RM talks to Admin
+    ? mockUsers.find(u => u.role === 'Regional Menecer')
+    : admin;
 
   const handleSendMessage = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!newMessage.trim() || !currentUser || !otherUser) return;
+    if ((!newMessage.trim() && !attachment) || !currentUser || !otherUser) return;
+
+    let attachmentData: Message['attachment'] = null;
+    if (attachment) {
+      // In a real app, you would upload the file to a storage service (like Firebase Storage)
+      // and get a URL. For this simulation, we'll use a local object URL.
+      attachmentData = {
+        url: URL.createObjectURL(attachment),
+        type: 'image',
+      };
+    }
 
     const message: Message = {
       id: `msg-${Date.now()}`,
@@ -38,10 +48,22 @@ export default function MessagesPage() {
       content: newMessage,
       timestamp: new Date().toISOString(),
       read: false,
+      attachment: attachmentData,
     };
 
     setMessages(prev => [...prev, message]);
     setNewMessage('');
+    setAttachment(null);
+    if(fileInputRef.current) {
+        fileInputRef.current.value = '';
+    }
+  };
+
+  const handleAttachmentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setAttachment(e.target.files[0]);
+      // You could show a preview of the attachment here
+    }
   };
 
   const relevantMessages = messages.filter(
@@ -98,7 +120,18 @@ export default function MessagesPage() {
                         isSender ? 'rounded-br-none bg-primary text-primary-foreground' : 'rounded-bl-none bg-muted'
                       )}
                     >
-                      <p className="text-sm">{msg.content}</p>
+                      {msg.attachment?.type === 'image' && (
+                          <a href={msg.attachment.url} target="_blank" rel="noopener noreferrer">
+                            <Image 
+                                src={msg.attachment.url}
+                                alt="Attachment"
+                                width={200}
+                                height={150}
+                                className="rounded-md mb-2 object-cover cursor-pointer"
+                            />
+                          </a>
+                      )}
+                      {msg.content && <p className="text-sm">{msg.content}</p>}
                        <p className="mt-1 text-xs text-right opacity-70">
                         {new Date(msg.timestamp).toLocaleTimeString('az-AZ', { hour: '2-digit', minute: '2-digit' })}
                       </p>
@@ -121,9 +154,20 @@ export default function MessagesPage() {
             <Input
               value={newMessage}
               onChange={(e) => setNewMessage(e.target.value)}
-              placeholder="Mesajınızı yazın..."
+              placeholder={attachment ? `${attachment.name}` : "Mesajınızı yazın..."}
               autoComplete="off"
+              readOnly={!!attachment}
             />
+            <input 
+              type="file" 
+              ref={fileInputRef}
+              onChange={handleAttachmentChange}
+              className="hidden"
+              accept="image/*"
+            />
+            <Button type="button" variant="ghost" size="icon" onClick={() => fileInputRef.current?.click()}>
+              <Paperclip className="h-4 w-4" />
+            </Button>
             <Button type="submit" size="icon">
               <Send className="h-4 w-4" />
             </Button>
