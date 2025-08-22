@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
   SidebarProvider,
@@ -80,15 +81,14 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               userHasAccess(item.roles) && (
                 <SidebarMenuItem key={item.href}>
                   <SidebarMenuButton
-                    href={item.href}
                     asChild
                     isActive={pathname.startsWith(item.href)}
                     tooltip={item.label}
                   >
-                    <a href={item.href}>
+                    <Link href={item.href}>
                       <item.icon />
                       <span>{item.label}</span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               )
@@ -121,10 +121,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild>
-                 <a href="/" onClick={handleLogout}>
+                 <Link href="/" onClick={handleLogout}>
                     <LogOut className="mr-2 h-4 w-4" />
                     <span>Çıxış</span>
-                 </a>
+                 </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
