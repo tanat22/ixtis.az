@@ -12,7 +12,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { MoreHorizontal, PlusCircle, ChevronLeft, LocateFixed, Camera } from 'lucide-react';
+import { MoreHorizontal, PlusCircle, ChevronLeft, LocateFixed, Camera, FilterX } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -46,9 +46,17 @@ import { mockAssets, mockUsers, mockNodes, azerbaijanCities, cityRayons } from '
 import type { Asset, DirekAsset, DataKabelAsset, ElektrikKabelAsset, KameraAsset, QutuAsset, SwitchAsset, TasinmazEmlak } from '@/lib/types';
 import { useToast } from '@/hooks/use-toast';
 
+type NodeFilterState = {
+  region: string | 'all';
+  rayon: string | 'all';
+  nodeType: TasinmazEmlak['type'] | 'all';
+};
+
+
 export default function AssetsPage() {
   const [assets, setAssets] = React.useState<Asset[]>(mockAssets);
   const [nodes, setNodes] = React.useState<TasinmazEmlak[]>(mockNodes);
+  const [filteredNodes, setFilteredNodes] = React.useState<TasinmazEmlak[]>(mockNodes);
   const [isAssetDialogOpen, setIsAssetDialogOpen] = React.useState(false);
   const [isNodeDialogOpen, setIsNodeDialogOpen] = React.useState(false);
   const [selectedAssetType, setSelectedAssetType] = React.useState<Asset['type'] | ''>('');
@@ -56,6 +64,14 @@ export default function AssetsPage() {
   const [nodeFormData, setNodeFormData] = React.useState<Partial<TasinmazEmlak>>({});
   const [availableRayons, setAvailableRayons] = React.useState<string[]>([]);
   const { toast } = useToast();
+
+  const [nodeFilters, setNodeFilters] = React.useState<NodeFilterState>({
+    region: 'all',
+    rayon: 'all',
+    nodeType: 'all',
+  });
+  const [filterRayons, setFilterRayons] = React.useState<string[]>([]);
+
 
   const videoRef = React.useRef<HTMLVideoElement>(null);
   const photoRef = React.useRef<HTMLCanvasElement>(null);
@@ -105,6 +121,48 @@ export default function AssetsPage() {
       }
     };
   }, [isCameraOpen, toast]);
+
+    React.useEffect(() => {
+    if (nodeFilters.region !== 'all' && cityRayons[nodeFilters.region]) {
+        setFilterRayons(cityRayons[nodeFilters.region]);
+    } else {
+        setFilterRayons([]);
+    }
+    if (nodeFilters.rayon !== 'all' && !cityRayons[nodeFilters.region]?.includes(nodeFilters.rayon)) {
+      handleFilterChange('rayon', 'all');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [nodeFilters.region]);
+
+
+  const handleFilterChange = (filterName: keyof NodeFilterState, value: string) => {
+    setNodeFilters(prev => ({ ...prev, [filterName]: value }));
+  };
+
+  const applyNodeFilters = () => {
+    let data = [...nodes];
+
+    if (nodeFilters.region !== 'all') {
+      data = data.filter(node => node.seher === nodeFilters.region);
+    }
+    if (nodeFilters.rayon !== 'all') {
+      data = data.filter(node => node.rayon === nodeFilters.rayon);
+    }
+    if (nodeFilters.nodeType !== 'all') {
+      data = data.filter(node => node.type === nodeFilters.nodeType);
+    }
+    
+    setFilteredNodes(data);
+  };
+  
+  const resetNodeFilters = () => {
+    setNodeFilters({
+        region: 'all',
+        rayon: 'all',
+        nodeType: 'all',
+    });
+    setFilteredNodes(nodes);
+  }
 
 
   const handleAddAsset = (event: React.FormEvent<HTMLFormElement>) => {
@@ -187,7 +245,7 @@ export default function AssetsPage() {
     } else if (assetType === 'Qutu') {
         const mertebe = formData.get('mertebe') as QutuAsset['mertebe'];
         const existingQutuOnMertebe = assets.filter(a => a.type === 'Qutu' && (a as QutuAsset).mertebe === mertebe && a.nodeId === selectedNode.id);
-        newAssetName = `${mertebe}-Qutu-${existingQutuOnMertebe.length + 1}`;
+        newAssetName = `${mertebe ? mertebe + '-' : ''}Qutu-${existingQutuOnMertebe.length + 1}`;
         newAsset = {
             ...commonData,
             name: newAssetName,
@@ -260,6 +318,7 @@ export default function AssetsPage() {
         photo: capturedImage, // Save the captured image
     };
     setNodes(prev => [newNode, ...prev]);
+    setFilteredNodes(prev => [newNode, ...prev])
     setIsNodeDialogOpen(false);
     setNodeFormData({});
     setCapturedImage(null); // Reset captured image
@@ -938,196 +997,238 @@ export default function AssetsPage() {
   const renderNodeView = () => {
     const existingProjects = [...new Set(nodes.map(node => node.layihe).filter(Boolean))] as string[];
     const existingNodes = [...new Set(nodes.map(node => node.name).filter(Boolean))] as string[];
-
+    const uniqueNodeTypes = [...new Set(nodes.map(node => node.type).filter(Boolean))] as TasinmazEmlak['type'][];
+    
     return (
     <Card>
-        <CardHeader className="flex flex-row items-center justify-between">
-            <div>
-              <CardTitle>Təhlükəsizlik Nöqtələri (Node)</CardTitle>
-              <CardDescription>Assetləri görmək və ya yeni nöqtə yaratmaq üçün seçim edin.</CardDescription>
-            </div>
-            <Dialog open={isNodeDialogOpen} onOpenChange={(isOpen) => {
-              setIsNodeDialogOpen(isOpen);
-              if (!isOpen) {
-                // Reset states when dialog closes
-                setIsCameraOpen(false);
-                setCapturedImage(null);
-                setHasCameraPermission(null);
-              }
-            }}>
-                <DialogTrigger asChild>
-                    <Button size="sm" className="gap-1">
-                        <PlusCircle className="h-3.5 w-3.5" />
-                        <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-                            Yeni Nöqtə Əlavə Et
-                        </span>
-                    </Button>
-                </DialogTrigger>
-                <DialogContent className="max-h-[90vh] overflow-y-auto">
-                    <form onSubmit={handleAddNode}>
-                        <DialogHeader>
-                            <DialogTitle>Yeni Təhlükəsizlik Nöqtəsi Yarat</DialogTitle>
-                            <DialogDescription>
-                                Zəhmət olmasa, yeni nöqtənin təfərrüatlarını daxil edin.
-                            </DialogDescription>
-                        </DialogHeader>
-                        <div className="grid gap-4 py-4">
-                             <div className="grid grid-cols-4 items-center gap-4">
-                                <Label htmlFor="type" className="text-right">Növ</Label>
-                                <Select name="type" required onValueChange={(value) => handleNodeFormSelectChange('type', value)}>
-                                    <SelectTrigger className="col-span-3">
-                                        <SelectValue placeholder="Nöqtə növünü seçin" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectItem value="Təhlükəsizlik Nöqtəsi">Təhlükəsizlik Nöqtəsi (TŞ)</SelectItem>
-                                        <SelectItem value="Alt Keçid">Alt Keçid (AK)</SelectItem>
-                                        <SelectItem value="Üst Keçid">Üst Keçid (UK)</SelectItem>
-                                        <SelectItem value="Məscid">Məscid</SelectItem>
-                                        <SelectItem value="Ticarət Mərkəzi">Ticarət Mərkəzi (TM)</SelectItem>
-                                        <SelectItem value="ASAN">ASAN</SelectItem>
-                                        <SelectItem value="İdman və Konsert">İdman və Konsert (İK)</SelectItem>
-                                        <SelectItem value="POÇT">POÇT</SelectItem>
-                                        <SelectItem value="Metro">Metro</SelectItem>
-                                        <SelectItem value="Biznes Mərkəzi">Biznes Mərkəzi (BM)</SelectItem>
-                                    </SelectContent>
-                                </Select>
-                            </div>
-                            <div className="grid grid-cols-4 items-center gap-4">
-                                <Label htmlFor="name" className="text-right">Ad (TŞ Nöqtəsi)</Label>
-                                <Input id="name" name="name" className="col-span-3" required />
-                            </div>
-                            <div className="grid grid-cols-4 items-center gap-4">
-                                <Label htmlFor="aktivlesmeTarixi" className="text-right">Aktivləşmə Tarixi</Label>
-                                <Input id="aktivlesmeTarixi" name="aktivlesmeTarixi" type="date" className="col-span-3" />
-                            </div>
-                             <div className="grid grid-cols-4 items-center gap-4">
-                                <Label htmlFor="seher" className="text-right">Şəhər</Label>
-                                <Select name="seher" onValueChange={(value) => handleNodeFormSelectChange('seher', value)}>
-                                    <SelectTrigger className="col-span-3">
-                                        <SelectValue placeholder="Şəhər seçin" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        {azerbaijanCities.map(city => <SelectItem key={city} value={city}>{city}</SelectItem>)}
-                                    </SelectContent>
-                                </Select>
-                            </div>
-                            <div className="grid grid-cols-4 items-center gap-4">
-                                <Label htmlFor="rayon" className="text-right">Rayon</Label>
-                                <Select name="rayon" value={nodeFormData.rayon} onValueChange={(value) => handleNodeFormSelectChange('rayon', value)} disabled={!availableRayons.length}>
-                                    <SelectTrigger className="col-span-3">
-                                        <SelectValue placeholder="Rayon seçin" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        {availableRayons.map(rayon => <SelectItem key={rayon} value={rayon}>{rayon}</SelectItem>)}
-                                    </SelectContent>
-                                </Select>
-                            </div>
-                            <div className="grid grid-cols-4 items-center gap-4">
-                                <Label htmlFor="koordinat" className="text-right">Koordinatlar (X, Y)</Label>
-                                <div className="col-span-3 flex items-center gap-2">
-                                    <Input id="koordinatX" name="koordinatX" placeholder="Uzunluq (X)" value={nodeFormData.koordinatX || ''} onChange={handleNodeFormChange} />
-                                    <Input id="koordinatY" name="koordinatY" placeholder="Enlik (Y)" value={nodeFormData.koordinatY || ''} onChange={handleNodeFormChange} />
-                                    <Button type="button" variant="outline" size="icon" onClick={getCoordinates}>
-                                        <LocateFixed className="h-4 w-4" />
-                                    </Button>
+        <CardHeader>
+            <div className="flex flex-row items-start justify-between">
+                <div>
+                <CardTitle>Təhlükəsizlik Nöqtələri (Node)</CardTitle>
+                <CardDescription>Assetləri görmək və ya yeni nöqtə yaratmaq üçün seçim edin. Tapılan nəticə sayı: {filteredNodes.length}</CardDescription>
+                </div>
+                <Dialog open={isNodeDialogOpen} onOpenChange={(isOpen) => {
+                setIsNodeDialogOpen(isOpen);
+                if (!isOpen) {
+                    // Reset states when dialog closes
+                    setIsCameraOpen(false);
+                    setCapturedImage(null);
+                    setHasCameraPermission(null);
+                }
+                }}>
+                    <DialogTrigger asChild>
+                        <Button size="sm" className="gap-1">
+                            <PlusCircle className="h-3.5 w-3.5" />
+                            <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+                                Yeni Nöqtə Əlavə Et
+                            </span>
+                        </Button>
+                    </DialogTrigger>
+                    <DialogContent className="max-h-[90vh] overflow-y-auto">
+                        <form onSubmit={handleAddNode}>
+                            <DialogHeader>
+                                <DialogTitle>Yeni Təhlükəsizlik Nöqtəsi Yarat</DialogTitle>
+                                <DialogDescription>
+                                    Zəhmət olmasa, yeni nöqtənin təfərrüatlarını daxil edin.
+                                </DialogDescription>
+                            </DialogHeader>
+                            <div className="grid gap-4 py-4">
+                                <div className="grid grid-cols-4 items-center gap-4">
+                                    <Label htmlFor="type" className="text-right">Növ</Label>
+                                    <Select name="type" required onValueChange={(value) => handleNodeFormSelectChange('type', value)}>
+                                        <SelectTrigger className="col-span-3">
+                                            <SelectValue placeholder="Nöqtə növünü seçin" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            <SelectItem value="Təhlükəsizlik Nöqtəsi">Təhlükəsizlik Nöqtəsi (TŞ)</SelectItem>
+                                            <SelectItem value="Alt Keçid">Alt Keçid (AK)</SelectItem>
+                                            <SelectItem value="Üst Keçid">Üst Keçid (UK)</SelectItem>
+                                            <SelectItem value="Məscid">Məscid</SelectItem>
+                                            <SelectItem value="Ticarət Mərkəzi">Ticarət Mərkəzi (TM)</SelectItem>
+                                            <SelectItem value="ASAN">ASAN</SelectItem>
+                                            <SelectItem value="İdman və Konsert">İdman və Konsert (İK)</SelectItem>
+                                            <SelectItem value="POÇT">POÇT</SelectItem>
+                                            <SelectItem value="Metro">Metro</SelectItem>
+                                            <SelectItem value="Biznes Mərkəzi">Biznes Mərkəzi (BM)</SelectItem>
+                                        </SelectContent>
+                                    </Select>
                                 </div>
-                            </div>
-                             <div className="grid grid-cols-4 items-center gap-4">
-                                <Label htmlFor="layihe" className="text-right">Layihə</Label>
-                                 <Select name="layihe" onValueChange={(value) => handleNodeFormSelectChange('layihe', value)}>
-                                    <SelectTrigger className="col-span-3">
-                                        <SelectValue placeholder="Layihə seçin və ya yazın" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        {existingProjects.map(proj => <SelectItem key={proj} value={proj}>{proj}</SelectItem>)}
-                                    </SelectContent>
-                                </Select>
-                            </div>
-                             <div className="grid grid-cols-4 items-center gap-4">
-                                <Label htmlFor="dataMenbeyi" className="text-right">Data Mənbəyi</Label>
-                                 <Select name="dataMenbeyi" onValueChange={(value) => handleNodeFormSelectChange('dataMenbeyi', value as any)}>
-                                    <SelectTrigger className="col-span-3">
-                                        <SelectValue placeholder="Data mənbəyini seçin" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectItem value="Optik">Optik</SelectItem>
-                                        <SelectItem value="Anten">Anten</SelectItem>
-                                        <SelectItem value="Sim nömrə">Sim nömrə</SelectItem>
-                                        <SelectItem value="Digər">Digər</SelectItem>
-                                    </SelectContent>
-                                </Select>
-                            </div>
-                             <div className="grid grid-cols-4 items-center gap-4">
-                                <Label htmlFor="bagliOlduguNeqte" className="text-right">Bağlı Olduğu Nöqtə</Label>
-                                <Select name="bagliOlduguNeqte" onValueChange={(value) => handleNodeFormSelectChange('bagliOlduguNeqte', value)}>
-                                    <SelectTrigger className="col-span-3">
-                                        <SelectValue placeholder="Nöqtə seçin və ya yazın" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        {existingNodes.map(node => <SelectItem key={node} value={node}>{node}</SelectItem>)}
-                                    </SelectContent>
-                                </Select>
-                            </div>
-                            <div className="grid grid-cols-4 items-center gap-4">
-                                <Label htmlFor="elektrikMenbeyi" className="text-right">Elektrik Mənbəyi</Label>
-                                <Select name="elektrikMenbeyi" onValueChange={(value) => handleNodeFormSelectChange('elektrikMenbeyi', value as any)}>
-                                    <SelectTrigger className="col-span-3">
-                                        <SelectValue placeholder="Mənbəyi seçin" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectItem value="Transformator">Transformator</SelectItem>
-                                        <SelectItem value="İAŞƏ obyekti">İAŞƏ obyekti</SelectItem>
-                                        <SelectItem value="Vətəndaş">Vətəndaş</SelectItem>
-                                        <SelectItem value="Alternativ">Alternativ (Günəş paneli vs.)</SelectItem>
-                                    </SelectContent>
-                                </Select>
-                            </div>
-                             <div className="grid grid-cols-4 items-start gap-4">
-                                <Label htmlFor="photo" className="text-right pt-2">Nöqtə Şəkli</Label>
-                                <div className="col-span-3">
-                                    {isCameraOpen ? (
-                                        <div className="flex flex-col gap-2">
-                                            <video ref={videoRef} className="w-full aspect-video rounded-md bg-muted" autoPlay muted />
-                                            {hasCameraPermission === false && (
-                                                <Alert variant="destructive">
-                                                    <AlertTitle>Kamera İcazəsi Tələb Olunur</AlertTitle>
-                                                    <AlertDescription>Zəhmət olmasa, şəkil çəkmək üçün kamera icazəsini aktivləşdirin.</AlertDescription>
-                                                </Alert>
-                                            )}
-                                            <div className='flex gap-2'>
-                                               <Button type="button" onClick={takePhoto} disabled={!hasCameraPermission}>Şəkil çək</Button>
-                                               <Button type="button" variant="outline" onClick={() => setIsCameraOpen(false)}>Ləğv et</Button>
+                                <div className="grid grid-cols-4 items-center gap-4">
+                                    <Label htmlFor="name" className="text-right">Ad (TŞ Nöqtəsi)</Label>
+                                    <Input id="name" name="name" className="col-span-3" required />
+                                </div>
+                                <div className="grid grid-cols-4 items-center gap-4">
+                                    <Label htmlFor="aktivlesmeTarixi" className="text-right">Aktivləşmə Tarixi</Label>
+                                    <Input id="aktivlesmeTarixi" name="aktivlesmeTarixi" type="date" className="col-span-3" />
+                                </div>
+                                <div className="grid grid-cols-4 items-center gap-4">
+                                    <Label htmlFor="seher" className="text-right">Şəhər</Label>
+                                    <Select name="seher" onValueChange={(value) => handleNodeFormSelectChange('seher', value)}>
+                                        <SelectTrigger className="col-span-3">
+                                            <SelectValue placeholder="Şəhər seçin" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            {azerbaijanCities.map(city => <SelectItem key={city} value={city}>{city}</SelectItem>)}
+                                        </SelectContent>
+                                    </Select>
+                                </div>
+                                <div className="grid grid-cols-4 items-center gap-4">
+                                    <Label htmlFor="rayon" className="text-right">Rayon</Label>
+                                    <Select name="rayon" value={nodeFormData.rayon} onValueChange={(value) => handleNodeFormSelectChange('rayon', value)} disabled={!availableRayons.length}>
+                                        <SelectTrigger className="col-span-3">
+                                            <SelectValue placeholder="Rayon seçin" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            {availableRayons.map(rayon => <SelectItem key={rayon} value={rayon}>{rayon}</SelectItem>)}
+                                        </SelectContent>
+                                    </Select>
+                                </div>
+                                <div className="grid grid-cols-4 items-center gap-4">
+                                    <Label htmlFor="koordinat" className="text-right">Koordinatlar (X, Y)</Label>
+                                    <div className="col-span-3 flex items-center gap-2">
+                                        <Input id="koordinatX" name="koordinatX" placeholder="Uzunluq (X)" value={nodeFormData.koordinatX || ''} onChange={handleNodeFormChange} />
+                                        <Input id="koordinatY" name="koordinatY" placeholder="Enlik (Y)" value={nodeFormData.koordinatY || ''} onChange={handleNodeFormChange} />
+                                        <Button type="button" variant="outline" size="icon" onClick={getCoordinates}>
+                                            <LocateFixed className="h-4 w-4" />
+                                        </Button>
+                                    </div>
+                                </div>
+                                <div className="grid grid-cols-4 items-center gap-4">
+                                    <Label htmlFor="layihe" className="text-right">Layihə</Label>
+                                    <Select name="layihe" onValueChange={(value) => handleNodeFormSelectChange('layihe', value)}>
+                                        <SelectTrigger className="col-span-3">
+                                            <SelectValue placeholder="Layihə seçin və ya yazın" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            {existingProjects.map(proj => <SelectItem key={proj} value={proj}>{proj}</SelectItem>)}
+                                        </SelectContent>
+                                    </Select>
+                                </div>
+                                <div className="grid grid-cols-4 items-center gap-4">
+                                    <Label htmlFor="dataMenbeyi" className="text-right">Data Mənbəyi</Label>
+                                    <Select name="dataMenbeyi" onValueChange={(value) => handleNodeFormSelectChange('dataMenbeyi', value as any)}>
+                                        <SelectTrigger className="col-span-3">
+                                            <SelectValue placeholder="Data mənbəyini seçin" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            <SelectItem value="Optik">Optik</SelectItem>
+                                            <SelectItem value="Anten">Anten</SelectItem>
+                                            <SelectItem value="Sim nömrə">Sim nömrə</SelectItem>
+                                            <SelectItem value="Digər">Digər</SelectItem>
+                                        </SelectContent>
+                                    </Select>
+                                </div>
+                                <div className="grid grid-cols-4 items-center gap-4">
+                                    <Label htmlFor="bagliOlduguNeqte" className="text-right">Bağlı Olduğu Nöqtə</Label>
+                                    <Select name="bagliOlduguNeqte" onValueChange={(value) => handleNodeFormSelectChange('bagliOlduguNeqte', value)}>
+                                        <SelectTrigger className="col-span-3">
+                                            <SelectValue placeholder="Nöqtə seçin və ya yazın" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            {existingNodes.map(node => <SelectItem key={node} value={node}>{node}</SelectItem>)}
+                                        </SelectContent>
+                                    </Select>
+                                </div>
+                                <div className="grid grid-cols-4 items-center gap-4">
+                                    <Label htmlFor="elektrikMenbeyi" className="text-right">Elektrik Mənbəyi</Label>
+                                    <Select name="elektrikMenbeyi" onValueChange={(value) => handleNodeFormSelectChange('elektrikMenbeyi', value as any)}>
+                                        <SelectTrigger className="col-span-3">
+                                            <SelectValue placeholder="Mənbəyi seçin" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            <SelectItem value="Transformator">Transformator</SelectItem>
+                                            <SelectItem value="İAŞƏ obyekti">İAŞƏ obyekti</SelectItem>
+                                            <SelectItem value="Vətəndaş">Vətəndaş</SelectItem>
+                                            <SelectItem value="Alternativ">Alternativ (Günəş paneli vs.)</SelectItem>
+                                        </SelectContent>
+                                    </Select>
+                                </div>
+                                <div className="grid grid-cols-4 items-start gap-4">
+                                    <Label htmlFor="photo" className="text-right pt-2">Nöqtə Şəkli</Label>
+                                    <div className="col-span-3">
+                                        {isCameraOpen ? (
+                                            <div className="flex flex-col gap-2">
+                                                <video ref={videoRef} className="w-full aspect-video rounded-md bg-muted" autoPlay muted />
+                                                {hasCameraPermission === false && (
+                                                    <Alert variant="destructive">
+                                                        <AlertTitle>Kamera İcazəsi Tələb Olunur</AlertTitle>
+                                                        <AlertDescription>Zəhmət olmasa, şəkil çəkmək üçün kamera icazəsini aktivləşdirin.</AlertDescription>
+                                                    </Alert>
+                                                )}
+                                                <div className='flex gap-2'>
+                                                <Button type="button" onClick={takePhoto} disabled={!hasCameraPermission}>Şəkil çək</Button>
+                                                <Button type="button" variant="outline" onClick={() => setIsCameraOpen(false)}>Ləğv et</Button>
+                                                </div>
                                             </div>
+                                        ) : (
+                                        <div className="flex flex-col gap-2">
+                                            {capturedImage ? (
+                                                <div className='relative w-full max-w-xs'>
+                                                    <Image src={capturedImage} alt="Captured Node" width={400} height={300} className="rounded-md" />
+                                                    <Button type="button" variant="destructive" size="sm" className="absolute top-2 right-2" onClick={() => setCapturedImage(null)}>Sil</Button>
+                                                </div>
+                                            ) : (
+                                                <Button type="button" variant="outline" onClick={() => setIsCameraOpen(true)} className="gap-2">
+                                                    <Camera className="h-4 w-4" />
+                                                    Kamera ilə çək
+                                                </Button>
+                                            )}
                                         </div>
-                                    ) : (
-                                       <div className="flex flex-col gap-2">
-                                          {capturedImage ? (
-                                              <div className='relative w-full max-w-xs'>
-                                                  <Image src={capturedImage} alt="Captured Node" width={400} height={300} className="rounded-md" />
-                                                  <Button type="button" variant="destructive" size="sm" className="absolute top-2 right-2" onClick={() => setCapturedImage(null)}>Sil</Button>
-                                              </div>
-                                          ) : (
-                                            <Button type="button" variant="outline" onClick={() => setIsCameraOpen(true)} className="gap-2">
-                                                <Camera className="h-4 w-4" />
-                                                Kamera ilə çək
-                                            </Button>
-                                          )}
-                                       </div>
-                                    )}
-                                    <canvas ref={photoRef} className="hidden"></canvas>
+                                        )}
+                                        <canvas ref={photoRef} className="hidden"></canvas>
+                                    </div>
+                                </div>
+                                <div className="grid grid-cols-4 items-center gap-4">
+                                    <Label htmlFor="qeyd" className="text-right">Qeyd</Label>
+                                    <Textarea id="qeyd" name="qeyd" className="col-span-3" />
                                 </div>
                             </div>
-                             <div className="grid grid-cols-4 items-center gap-4">
-                                <Label htmlFor="qeyd" className="text-right">Qeyd</Label>
-                                <Textarea id="qeyd" name="qeyd" className="col-span-3" />
-                            </div>
-                        </div>
-                        <DialogFooter>
-                            <Button type="submit">Nöqtəni Yarat</Button>
-                        </DialogFooter>
-                    </form>
-                </DialogContent>
-            </Dialog>
+                            <DialogFooter>
+                                <Button type="submit">Nöqtəni Yarat</Button>
+                            </DialogFooter>
+                        </form>
+                    </DialogContent>
+                </Dialog>
+            </div>
+            <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-5">
+                <div className="space-y-2">
+                    <Label htmlFor="region-filter">Region (Şəhər)</Label>
+                    <Select value={nodeFilters.region} onValueChange={(value) => handleFilterChange('region', value)}>
+                        <SelectTrigger id="region-filter"><SelectValue placeholder="Region seçin" /></SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="all">Bütün Regionlar</SelectItem>
+                            {azerbaijanCities.map(city => <SelectItem key={city} value={city}>{city}</SelectItem>)}
+                        </SelectContent>
+                    </Select>
+                </div>
+                 <div className="space-y-2">
+                    <Label htmlFor="rayon-filter">Rayon</Label>
+                    <Select value={nodeFilters.rayon} onValueChange={(value) => handleFilterChange('rayon', value)} disabled={!filterRayons.length}>
+                        <SelectTrigger id="rayon-filter"><SelectValue placeholder="Rayon seçin" /></SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="all">Bütün Rayonlar</SelectItem>
+                            {filterRayons.map(rayon => <SelectItem key={rayon} value={rayon}>{rayon}</SelectItem>)}
+                        </SelectContent>
+                    </Select>
+                </div>
+                 <div className="space-y-2">
+                    <Label htmlFor="nodetype-filter">Nöqtə Növü</Label>
+                    <Select value={nodeFilters.nodeType} onValueChange={(value) => handleFilterChange('nodeType', value)}>
+                        <SelectTrigger id="nodetype-filter"><SelectValue placeholder="Növ seçin" /></SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="all">Bütün Növlər</SelectItem>
+                            {uniqueNodeTypes.map(type => <SelectItem key={type} value={type}>{type}</SelectItem>)}
+                        </SelectContent>
+                    </Select>
+                </div>
+                 <div className="flex items-end gap-2 col-span-full lg:col-span-2">
+                    <Button onClick={applyNodeFilters} className="w-full">Filtirlə</Button>
+                    <Button onClick={resetNodeFilters} variant="outline" size="icon" className="shrink-0">
+                        <FilterX className="h-4 w-4"/>
+                        <span className="sr-only">Filtrləri təmizlə</span>
+                    </Button>
+                </div>
+            </div>
         </CardHeader>
         <CardContent>
             <Table>
@@ -1140,14 +1241,22 @@ export default function AssetsPage() {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {nodes.map((node) => (
-                        <TableRow key={node.id} onClick={() => setSelectedNode(node)} className="cursor-pointer">
-                            <TableCell className="font-medium">{node.name}</TableCell>
-                            <TableCell>{node.type}</TableCell>
-                            <TableCell>{node.seher ? `${node.seher}${node.rayon ? `, ${node.rayon}` : ''}` : 'N/A'}</TableCell>
-                            <TableCell>{node.layihe}</TableCell>
+                    {filteredNodes.length > 0 ? (
+                        filteredNodes.map((node) => (
+                            <TableRow key={node.id} onClick={() => setSelectedNode(node)} className="cursor-pointer">
+                                <TableCell className="font-medium">{node.name}</TableCell>
+                                <TableCell>{node.type}</TableCell>
+                                <TableCell>{node.seher ? `${node.seher}${node.rayon ? `, ${node.rayon}` : ''}` : 'N/A'}</TableCell>
+                                <TableCell>{node.layihe}</TableCell>
+                            </TableRow>
+                        ))
+                    ) : (
+                         <TableRow>
+                            <TableCell colSpan={4} className="h-24 text-center">
+                                Filtrlərə uyğun nəticə tapılmadı.
+                            </TableCell>
                         </TableRow>
-                    ))}
+                    )}
                 </TableBody>
             </Table>
         </CardContent>
@@ -1168,7 +1277,7 @@ export default function AssetsPage() {
                     Geri
                 </Button>
                 <CardTitle>{selectedNode.name} - Assetlər</CardTitle>
-                <CardDescription>Bu nöqtəyə bağlı assetləri idarə edin.</CardDescription>
+                <CardDescription>Bu nöqtəyə bağlı assetləri idarə edin. Cəmi {filteredAssets.length} asset tapıldı.</CardDescription>
                 </div>
                  <Dialog open={isAssetDialogOpen} onOpenChange={(isOpen) => { setIsAssetDialogOpen(isOpen); if (!isOpen) setSelectedAssetType(''); }}>
                     <DialogTrigger asChild>

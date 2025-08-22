@@ -134,9 +134,9 @@ export default function AnalyticsPage() {
   }
 
   React.useEffect(() => {
-    applyFilters();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // Run once on mount to show initial data if any
+    // Initially, don't apply any filters, show an empty state.
+    // User must click the filter button to see results.
+  }, []);
 
   return (
     <div className="space-y-6">
