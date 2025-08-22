@@ -19,6 +19,7 @@ export default function LoginPage() {
   const { setUser } = useUser();
   const [isLoading, setIsLoading] = React.useState(false);
   const [selectedUserId, setSelectedUserId] = React.useState<string | null>(null);
+  const [password, setPassword] = React.useState('');
   const [serverIp, setServerIp] = React.useState('127.0.0.1');
   const [port, setPort] = React.useState('8080');
 
@@ -41,7 +42,9 @@ export default function LoginPage() {
     console.log(`Connecting to ${serverIp}:${port}...`);
     
     setTimeout(() => {
-      if (selectedUser) {
+      // In a real app, you'd properly validate the password.
+      // For this simulation, we'll just check if the user exists and a password was entered.
+      if (selectedUser && password) { // Simple check for simulation
         setUser(selectedUser);
         toast({
           title: 'Giriş Uğurludur',
@@ -51,8 +54,8 @@ export default function LoginPage() {
       } else {
          toast({
             variant: "destructive",
-            title: "Xəta",
-            description: "İstifadəçi tapılmadı.",
+            title: "Giriş Məlumatları Yanlışdır",
+            description: "İstifadəçi adı və ya parol düzgün deyil.",
         });
       }
       setIsLoading(false);
@@ -99,10 +102,10 @@ export default function LoginPage() {
                 </div>
              </div>
 
-             <div>
+             <div className="space-y-2">
                 <Label htmlFor="user-select">İstifadəçi seçin (Simulyasiya)</Label>
                  <Select onValueChange={setSelectedUserId} required>
-                      <SelectTrigger id="user-select" className="mt-1">
+                      <SelectTrigger id="user-select">
                           <SelectValue placeholder="Daxil olmaq üçün bir istifadəçi profili seçin..." />
                       </SelectTrigger>
                       <SelectContent>
@@ -116,6 +119,16 @@ export default function LoginPage() {
                           ))}
                       </SelectContent>
                   </Select>
+             </div>
+             <div className="space-y-2">
+                <Label htmlFor="password">Parol</Label>
+                <Input
+                    id="password"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
              </div>
            </div>
 

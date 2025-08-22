@@ -88,6 +88,7 @@ export default function AssetsPage() {
         addedDate: new Date().toISOString().split('T')[0],
         qurasdirilmaTarixi: formData.get('qurasdirilmaTarixi') as string,
         qeyd: formData.get('qeyd') as string,
+        parentId: formData.get('parentId') as string || null,
     };
 
     let newAsset: Asset;
@@ -164,8 +165,11 @@ export default function AssetsPage() {
             mertebe: mertebe,
         }
     } else if (assetType === 'Switch') {
+        const existingSwitches = assets.filter(a => a.nodeId === selectedNode.id && a.type === 'Switch');
+        newAssetName = `SW-${existingSwitches.length + 1}`;
         newAsset = {
             ...commonData,
+            name: newAssetName,
             type: 'Switch',
             marka: formData.get('marka') as string,
             model: formData.get('model') as string,
@@ -287,6 +291,14 @@ export default function AssetsPage() {
   };
 
   const renderAssetDetails = (asset: Asset) => {
+    let parentName = '';
+    if (asset.parentId) {
+        const parentAsset = assets.find(a => a.id === asset.parentId);
+        if (parentAsset) {
+            parentName = ` (-> ${parentAsset.name})`;
+        }
+    }
+
     switch (asset.type) {
         case 'Dirək':
             return `İstehsalçı: ${asset.istehsalci || 'N/A'}, Hündürlük: ${asset.hundurluk || 'N/A'}m`;
@@ -295,11 +307,11 @@ export default function AssetsPage() {
         case 'Elektrik Kabeli':
             return `Kabel: ${asset.kabelTipi || 'N/A'}, Birləşmə: ${asset.birlesmeUsulu || 'N/A'}`;
         case 'Kamera':
-            return `Marka: ${asset.marka || 'N/A'}, Model: ${asset.model || 'N/A'}`;
+            return `Marka: ${asset.marka || 'N/A'}, Model: ${asset.model || 'N/A'}${parentName}`;
         case 'Qutu':
             return `İstehsalçı: ${asset.istehsalci || 'N/A'}, Tip: ${asset.tipi || 'N/A'}, Mərtəbə: ${asset.mertebe || 'N/A'}`;
         case 'Switch':
-            return `Marka: ${asset.marka || 'N/A'}, Model: ${asset.model || 'N/A'}`;
+            return `Marka: ${asset.marka || 'N/A'}, Model: ${asset.model || 'N/A'}${parentName}`;
         default:
             return asset.type;
     }
@@ -307,6 +319,11 @@ export default function AssetsPage() {
   
   const renderAddAssetFormFields = () => {
     if (!selectedAssetType) return null;
+    
+    if(!selectedNode) return null;
+    const availableSwitches = assets.filter(a => a.nodeId === selectedNode.id && a.type === 'Switch');
+    const availableQutus = assets.filter(a => a.nodeId === selectedNode.id && a.type === 'Qutu');
+    const showMertebe = selectedNode && !['Təhlükəsizlik Nöqtəsi', 'Alt Keçid', 'Üst Keçid', 'Metro'].includes(selectedNode.type);
 
     const commonFields = (
         <>
@@ -486,6 +503,17 @@ export default function AssetsPage() {
       return (
         <>
             <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="parentId" className="text-right">Bağlı olduğu Cihaz</Label>
+                <Select name="parentId">
+                    <SelectTrigger className="col-span-3">
+                        <SelectValue placeholder="Kameranın qoşulduğu switch-i seçin" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        {availableSwitches.map(sw => <SelectItem key={sw.id} value={sw.id}>{sw.name}</SelectItem>)}
+                    </SelectContent>
+                </Select>
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
                 <Label htmlFor="marka" className="text-right">Marka</Label>
                  <Select name="marka">
                     <SelectTrigger className="col-span-3">
@@ -604,18 +632,20 @@ export default function AssetsPage() {
     } else if (selectedAssetType === 'Qutu') {
         return (
             <>
-                <div className="grid grid-cols-4 items-center gap-4">
-                    <Label htmlFor="mertebe" className="text-right">Mərtəbə</Label>
-                    <Select name="mertebe">
-                        <SelectTrigger className="col-span-3">
-                            <SelectValue placeholder="Mərtəbəni seçin" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            {['M1', 'M2', 'M3', 'M4', 'M5', 'M6'].map(m => <SelectItem key={m} value={m}>{m}</SelectItem>)}
-                            {['Z0', 'Z1', 'Z2', 'Z3'].map(z => <SelectItem key={z} value={z}>{z}</SelectItem>)}
-                        </SelectContent>
-                    </Select>
-                </div>
+                {showMertebe && (
+                     <div className="grid grid-cols-4 items-center gap-4">
+                        <Label htmlFor="mertebe" className="text-right">Mərtəbə</Label>
+                        <Select name="mertebe">
+                            <SelectTrigger className="col-span-3">
+                                <SelectValue placeholder="Mərtəbəni seçin" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                {['M1', 'M2', 'M3', 'M4', 'M5', 'M6'].map(m => <SelectItem key={m} value={m}>{m}</SelectItem>)}
+                                {['Z0', 'Z1', 'Z2', 'Z3'].map(z => <SelectItem key={z} value={z}>{z}</SelectItem>)}
+                            </SelectContent>
+                        </Select>
+                    </div>
+                )}
                 <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="istehsalci" className="text-right">İstehsalçı</Label>
                     <Select name="istehsalci">
@@ -741,6 +771,18 @@ export default function AssetsPage() {
     } else if (selectedAssetType === 'Switch') {
         return (
             <>
+                <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="parentId" className="text-right">Bağlı olduğu Cihaz</Label>
+                    <Select name="parentId">
+                        <SelectTrigger className="col-span-3">
+                            <SelectValue placeholder="Switch-in qoşulduğu qutunu seçin" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            {availableQutus.map(qutu => <SelectItem key={qutu.id} value={qutu.id}>{qutu.name}</SelectItem>)}
+                             {/* We can add Rack Cabin here later if it becomes a separate asset type */}
+                        </SelectContent>
+                    </Select>
+                </div>
                 <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="marka" className="text-right">Marka</Label>
                     <Select name="marka">

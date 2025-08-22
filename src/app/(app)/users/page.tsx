@@ -37,17 +37,22 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { mockUsers } from '@/lib/data';
 import type { User } from '@/lib/types';
 import { useToast } from '@/hooks/use-toast';
+import { useUser } from '@/context/user-context';
+
 
 export default function UsersPage() {
+  const { user: currentUser } = useUser();
   const [users, setUsers] = React.useState<User[]>(mockUsers);
   const [isDialogOpen, setIsDialogOpen] = React.useState(false);
   const [selectedUser, setSelectedUser] = React.useState<User | null>(null);
   const [isNewUser, setIsNewUser] = React.useState(false);
+  const [password, setPassword] = React.useState('');
   const { toast } = useToast();
 
   const handleOpenDialog = (user: User | null = null) => {
     setIsNewUser(!user);
     setSelectedUser(user || { id: '', name: '', email: '', role: 'Regional Menecer', region: 'Bakı', avatar: '/avatars/01.png' });
+    setPassword(''); // Reset password field
     setIsDialogOpen(true);
   };
 
@@ -63,6 +68,11 @@ export default function UsersPage() {
         role: formData.get('role') as User['role'],
         region: formData.get('region') as string,
     };
+    
+    if (password) {
+        updatedUser.password = password;
+    }
+
 
     if (isNewUser) {
         updatedUser.id = `user-${Date.now()}`;
@@ -88,6 +98,9 @@ export default function UsersPage() {
     if (role === 'Admin') return 'secondary';
     return 'default';
   };
+
+  const canEditPassword = currentUser?.role === 'Super Admin';
+
 
   return (
     <>
@@ -180,6 +193,20 @@ export default function UsersPage() {
                         <Label htmlFor="email" className="text-right">E-poçt</Label>
                         <Input id="email" name="email" type="email" defaultValue={selectedUser?.email} className="col-span-3" required />
                     </div>
+                    {canEditPassword && (
+                        <div className="grid grid-cols-4 items-center gap-4">
+                            <Label htmlFor="password" className="text-right">Parol</Label>
+                            <Input 
+                                id="password" 
+                                name="password" 
+                                type="password" 
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                placeholder={isNewUser ? "Yeni parol təyin edin" : "Dəyişmək üçün yeni parol daxil edin"}
+                                className="col-span-3" 
+                            />
+                        </div>
+                    )}
                     <div className="grid grid-cols-4 items-center gap-4">
                         <Label htmlFor="role" className="text-right">Rol</Label>
                          <Select name="role" defaultValue={selectedUser?.role}>

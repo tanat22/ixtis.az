@@ -5,6 +5,7 @@ export type User = {
   role: 'Super Admin' | 'Admin' | 'Regional Menecer' | 'Təmir üzrə Məsul Şəxs';
   region: string;
   avatar: string;
+  password?: string;
 };
 
 export type TasinmazEmlak = {
