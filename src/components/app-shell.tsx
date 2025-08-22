@@ -24,6 +24,7 @@ import {
   ChevronDown,
   Settings,
   User as UserIcon,
+  MessageSquare,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -43,6 +44,7 @@ const navItems: { href: string; icon: React.ElementType; label: string; roles: U
   { href: '/dashboard', icon: LayoutDashboard, label: 'İdarə Paneli', roles: ['Super Admin', 'Admin', 'Regional Menecer', 'Təmir üzrə Məsul Şəxs'] },
   { href: '/assets', icon: Box, label: 'Assetlər', roles: ['Super Admin', 'Admin', 'Regional Menecer', 'Təmir üzrə Məsul Şəxs'] },
   { href: '/tickets', icon: Ticket, label: 'Tiketlər', roles: ['Super Admin', 'Admin', 'Regional Menecer', 'Təmir üzrə Məsul Şəxs'] },
+  { href: '/messages', icon: MessageSquare, label: 'Mesajlar', roles: ['Super Admin', 'Admin', 'Regional Menecer'] },
   { href: '/users', icon: Users, label: 'İstifadəçi İdarəetməsi', roles: ['Super Admin', 'Admin'] },
   { href: '/audit-log', icon: FileClock, label: 'Audit Jurnalı', roles: ['Super Admin'] },
 ];

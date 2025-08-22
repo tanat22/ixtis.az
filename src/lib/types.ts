@@ -32,6 +32,7 @@ export type TasinmazEmlak = {
   bagliOlduguNeqte?: string;
   elektrikMenbeyi?: 'Transformator' | 'İAŞƏ obyekti' | 'Vətəndaş' | 'Alternativ';
   qeyd?: string;
+  photo?: string | null;
 };
 
 
@@ -174,4 +175,13 @@ export type AuditLog = {
   action: string;
   timestamp: string;
   details: string;
+};
+
+export type Message = {
+    id: string;
+    senderId: string;
+    receiverId: string;
+    content: string;
+    timestamp: string;
+    read: boolean;
 };

@@ -1,4 +1,4 @@
-import type { User, Asset, Ticket, AuditLog, TasinmazEmlak, QutuAsset } from './types';
+import type { User, Asset, Ticket, AuditLog, TasinmazEmlak, QutuAsset, Message } from './types';
 
 export const mockUsers: User[] = [
   { id: 'user-1', name: 'Əli Vəliyev', email: 'ali.v@example.com', role: 'Super Admin', region: 'Bütün', avatar: '/avatars/01.png', password: 'password123' },
@@ -9,10 +9,10 @@ export const mockUsers: User[] = [
 ];
 
 export const mockNodes: TasinmazEmlak[] = [
-    { id: 'ts-1', type: 'Təhlükəsizlik Nöqtəsi', name: 'TŞ4-952', seher: 'Bakı', rayon: 'Nəsimi', layihe: '970', dataMenbeyi: 'Optik', koordinatX: '49.8492', koordinatY: '40.3792' },
-    { id: 'ts-2', type: 'Alt Keçid', name: 'Sumqayıt Alt Keçid 1', seher: 'Sumqayıt', layihe: 'Yer altı keçidlər', dataMenbeyi: 'Anten', koordinatX: '49.6676', koordinatY: '40.5917' },
-    { id: 'ts-3', type: 'Ticarət Mərkəzi', name: 'Gənclik Mall', seher: 'Bakı', rayon: 'Nərimanov', layihe: 'Ticarət Mərkəzləri', dataMenbeyi: 'Optik', koordinatX: '49.8532', koordinatY: '40.3981' },
-    { id: 'ts-4', type: 'Metro', name: '28 May Metrosu', seher: 'Bakı', rayon: 'Nəsimi', layihe: 'Metro Stansiyaları', dataMenbeyi: 'Optik', koordinatX: '49.8499', koordinatY: '40.3798' },
+    { id: 'ts-1', type: 'Təhlükəsizlik Nöqtəsi', name: 'TŞ4-952', seher: 'Bakı', rayon: 'Nəsimi', layihe: '970', dataMenbeyi: 'Optik', koordinatX: '49.8492', koordinatY: '40.3792', photo: null },
+    { id: 'ts-2', type: 'Alt Keçid', name: 'Sumqayıt Alt Keçid 1', seher: 'Sumqayıt', layihe: 'Yer altı keçidlər', dataMenbeyi: 'Anten', koordinatX: '49.6676', koordinatY: '40.5917', photo: null },
+    { id: 'ts-3', type: 'Ticarət Mərkəzi', name: 'Gənclik Mall', seher: 'Bakı', rayon: 'Nərimanov', layihe: 'Ticarət Mərkəzləri', dataMenbeyi: 'Optik', koordinatX: '49.8532', koordinatY: '40.3981', photo: null },
+    { id: 'ts-4', type: 'Metro', name: '28 May Metrosu', seher: 'Bakı', rayon: 'Nəsimi', layihe: 'Metro Stansiyaları', dataMenbeyi: 'Optik', koordinatX: '49.8499', koordinatY: '40.3798', photo: null },
 ];
 
 
@@ -250,6 +250,13 @@ export const mockAuditLogs: AuditLog[] = [
   { id: 'log-4', userId: 'user-4', action: 'Asset Statusu Dəyişdirildi', timestamp: '2023-11-21T15:30:00Z', details: 'Asset-4-ün statusu Aktiv olaraq dəyişdirildi' },
   { id: 'log-5', userId: 'user-1', action: 'İstifadəçi Girişi', timestamp: '2023-11-21T15:25:10Z', details: 'Əli Vəliyev daxil oldu' },
 ];
+
+export const mockMessages: Message[] = [
+    { id: 'msg-1', senderId: 'user-3', receiverId: 'user-2', content: 'TŞ4-952 nöqtəsindəki yeni dirək üçün təsdiq göndərdim. Zəhmət olmasa yoxlayın.', timestamp: '2024-05-23T10:00:00Z', read: true },
+    { id: 'msg-2', senderId: 'user-2', receiverId: 'user-3', content: 'Təsdiqlədim. Hər şey qaydasındadır.', timestamp: '2024-05-23T10:05:00Z', read: true },
+    { id: 'msg-3', senderId: 'user-3', receiverId: 'user-2', content: 'Gənclik Mall-dakı kamera problemi ilə bağlı tiket açmışam. Təcili baxılmalıdır.', timestamp: '2024-05-24T14:30:00Z', read: false },
+];
+
 
 export const azerbaijanCities = [
   "Bakı", "Gəncə", "Sumqayıt", "Lənkəran", "Mingəçevir", "Şirvan", "Naxçıvan", 

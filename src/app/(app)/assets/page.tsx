@@ -12,7 +12,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { MoreHorizontal, PlusCircle, ChevronLeft, LocateFixed } from 'lucide-react';
+import { MoreHorizontal, PlusCircle, ChevronLeft, LocateFixed, Camera } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -38,6 +38,9 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
+import Image from 'next/image';
+import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
+
 
 import { mockAssets, mockUsers, mockNodes, azerbaijanCities, cityRayons } from '@/lib/data';
 import type { Asset, DirekAsset, DataKabelAsset, ElektrikKabelAsset, KameraAsset, QutuAsset, SwitchAsset, TasinmazEmlak } from '@/lib/types';
@@ -54,6 +57,12 @@ export default function AssetsPage() {
   const [availableRayons, setAvailableRayons] = React.useState<string[]>([]);
   const { toast } = useToast();
 
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+  const photoRef = React.useRef<HTMLCanvasElement>(null);
+  const [hasCameraPermission, setHasCameraPermission] = React.useState<boolean | null>(null);
+  const [isCameraOpen, setIsCameraOpen] = React.useState(false);
+  const [capturedImage, setCapturedImage] = React.useState<string | null>(null);
+
   React.useEffect(() => {
     if (nodeFormData.seher && cityRayons[nodeFormData.seher]) {
         setAvailableRayons(cityRayons[nodeFormData.seher]);
@@ -65,6 +74,37 @@ export default function AssetsPage() {
       setNodeFormData(prev => ({...prev, rayon: undefined}));
     }
   }, [nodeFormData.seher]);
+
+  React.useEffect(() => {
+    const getCameraPermission = async () => {
+      if (!isCameraOpen) return;
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        setHasCameraPermission(true);
+        if (videoRef.current) {
+          videoRef.current.srcObject = stream;
+        }
+      } catch (error) {
+        console.error('Error accessing camera:', error);
+        setHasCameraPermission(false);
+        toast({
+          variant: 'destructive',
+          title: 'Kamera Xətası',
+          description: 'Kamera icazələrini brauzer ayarlarından aktiv edin.',
+        });
+      }
+    };
+
+    getCameraPermission();
+
+    // Cleanup function to stop the video stream when the component unmounts or the dialog closes
+    return () => {
+      if (videoRef.current && videoRef.current.srcObject) {
+        const stream = videoRef.current.srcObject as MediaStream;
+        stream.getTracks().forEach(track => track.stop());
+      }
+    };
+  }, [isCameraOpen, toast]);
 
 
   const handleAddAsset = (event: React.FormEvent<HTMLFormElement>) => {
@@ -217,10 +257,12 @@ export default function AssetsPage() {
         bagliOlduguNeqte: formData.get('bagliOlduguNeqte') as string,
         elektrikMenbeyi: formData.get('elektrikMenbeyi') as TasinmazEmlak['elektrikMenbeyi'],
         qeyd: formData.get('qeyd') as string,
+        photo: capturedImage, // Save the captured image
     };
     setNodes(prev => [newNode, ...prev]);
     setIsNodeDialogOpen(false);
     setNodeFormData({});
+    setCapturedImage(null); // Reset captured image
     toast({
         title: "Uğurlu Əməliyyat",
         description: `"${newNode.name}" adlı yeni nöqtə yaradıldı.`
@@ -278,6 +320,28 @@ export default function AssetsPage() {
          title: "GPS Dəstəklənmir",
          description: "Brauzeriniz geolokasiyanı dəstəkləmir.",
        });
+    }
+  };
+  
+  const takePhoto = () => {
+    if (videoRef.current && photoRef.current) {
+        const video = videoRef.current;
+        const photo = photoRef.current;
+        
+        // Set canvas dimensions to match video
+        const width = video.videoWidth;
+        const height = video.videoHeight;
+        photo.width = width;
+        photo.height = height;
+
+        const ctx = photo.getContext('2d');
+        if (ctx) {
+            ctx.drawImage(video, 0, 0, width, height);
+            const dataUrl = photo.toDataURL('image/jpeg');
+            setCapturedImage(dataUrl);
+            setNodeFormData(prev => ({ ...prev, photo: dataUrl }));
+            setIsCameraOpen(false); // Close camera view after taking photo
+        }
     }
   };
 
@@ -882,7 +946,15 @@ export default function AssetsPage() {
               <CardTitle>Təhlükəsizlik Nöqtələri (Node)</CardTitle>
               <CardDescription>Assetləri görmək və ya yeni nöqtə yaratmaq üçün seçim edin.</CardDescription>
             </div>
-            <Dialog open={isNodeDialogOpen} onOpenChange={setIsNodeDialogOpen}>
+            <Dialog open={isNodeDialogOpen} onOpenChange={(isOpen) => {
+              setIsNodeDialogOpen(isOpen);
+              if (!isOpen) {
+                // Reset states when dialog closes
+                setIsCameraOpen(false);
+                setCapturedImage(null);
+                setHasCameraPermission(null);
+              }
+            }}>
                 <DialogTrigger asChild>
                     <Button size="sm" className="gap-1">
                         <PlusCircle className="h-3.5 w-3.5" />
@@ -1009,6 +1081,41 @@ export default function AssetsPage() {
                                         <SelectItem value="Alternativ">Alternativ (Günəş paneli vs.)</SelectItem>
                                     </SelectContent>
                                 </Select>
+                            </div>
+                             <div className="grid grid-cols-4 items-start gap-4">
+                                <Label htmlFor="photo" className="text-right pt-2">Nöqtə Şəkli</Label>
+                                <div className="col-span-3">
+                                    {isCameraOpen ? (
+                                        <div className="flex flex-col gap-2">
+                                            <video ref={videoRef} className="w-full aspect-video rounded-md bg-muted" autoPlay muted />
+                                            {hasCameraPermission === false && (
+                                                <Alert variant="destructive">
+                                                    <AlertTitle>Kamera İcazəsi Tələb Olunur</AlertTitle>
+                                                    <AlertDescription>Zəhmət olmasa, şəkil çəkmək üçün kamera icazəsini aktivləşdirin.</AlertDescription>
+                                                </Alert>
+                                            )}
+                                            <div className='flex gap-2'>
+                                               <Button type="button" onClick={takePhoto} disabled={!hasCameraPermission}>Şəkil çək</Button>
+                                               <Button type="button" variant="outline" onClick={() => setIsCameraOpen(false)}>Ləğv et</Button>
+                                            </div>
+                                        </div>
+                                    ) : (
+                                       <div className="flex flex-col gap-2">
+                                          {capturedImage ? (
+                                              <div className='relative w-full max-w-xs'>
+                                                  <Image src={capturedImage} alt="Captured Node" width={400} height={300} className="rounded-md" />
+                                                  <Button type="button" variant="destructive" size="sm" className="absolute top-2 right-2" onClick={() => setCapturedImage(null)}>Sil</Button>
+                                              </div>
+                                          ) : (
+                                            <Button type="button" variant="outline" onClick={() => setIsCameraOpen(true)} className="gap-2">
+                                                <Camera className="h-4 w-4" />
+                                                Kamera ilə çək
+                                            </Button>
+                                          )}
+                                       </div>
+                                    )}
+                                    <canvas ref={photoRef} className="hidden"></canvas>
+                                </div>
                             </div>
                              <div className="grid grid-cols-4 items-center gap-4">
                                 <Label htmlFor="qeyd" className="text-right">Qeyd</Label>
