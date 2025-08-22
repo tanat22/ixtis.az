@@ -1,4 +1,4 @@
-import type { User, Asset, Ticket, AuditLog, TasinmazEmlak } from './types';
+import type { User, Asset, Ticket, AuditLog, TasinmazEmlak, QutuAsset } from './types';
 
 export const mockUsers: User[] = [
   { id: 'user-1', name: 'Əli Vəliyev', email: 'ali.v@example.com', role: 'Super Admin', region: 'Bütün', avatar: '/avatars/01.png' },
@@ -72,7 +72,8 @@ export const mockAssets: Asset[] = [
     kilidIstismarVeziyyeti: 'Yararlı',
     qutununXariciTemizliyi: 'Təmiz',
     qutununDaxiliTemizliyi: 'Təmiz',
-  },
+    mertebe: 'M1',
+  } as QutuAsset,
   { 
     id: 'asset-3', 
     nodeId: 'ts-1',

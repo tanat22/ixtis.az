@@ -107,7 +107,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                     <p className="font-medium">{user?.name || 'İstifadəçi'}</p>
                     <p className="text-xs text-muted-foreground">{user?.email || 'Daxil olun'}</p>
                   </div>
-                  <ChevronDown className="h-4 w-4" />
+                  <ChevronDown className="ml-auto h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-64" align="end">

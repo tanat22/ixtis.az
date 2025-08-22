@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import type { User } from '@/lib/types';
-import { mockUsers } from '@/lib/data';
 
 type UserContextType = {
   user: User | null;
@@ -12,7 +11,7 @@ type UserContextType = {
 const UserContext = React.createContext<UserContextType | undefined>(undefined);
 
 export function UserProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = React.useState<User | null>(mockUsers[0]); // Default to first user for now
+  const [user, setUser] = React.useState<User | null>(null); 
 
   // In a real app, you might check localStorage or a session cookie here
   // to see if a user was previously logged in.

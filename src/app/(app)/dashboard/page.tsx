@@ -18,7 +18,7 @@ const FormattedDate = ({ timestamp }: { timestamp: string }) => {
   }, [timestamp]);
   
   if (!formattedDate) {
-    return <>Yüklənir...</>;
+    return <>{timestamp}</>;
   }
 
   return <>{formattedDate}</>;
@@ -132,7 +132,7 @@ export default function DashboardPage() {
                     </p>
                     <p className="text-sm text-muted-foreground">{log.details}</p>
                     <p className="text-xs text-muted-foreground">
-                      {isClient ? <FormattedDate timestamp={log.timestamp} /> : 'Yüklənir...'}
+                      {isClient ? <FormattedDate timestamp={log.timestamp} /> : log.timestamp}
                     </p>
                   </div>
                 </div>

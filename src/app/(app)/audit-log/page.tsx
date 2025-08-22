@@ -14,7 +14,6 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Input } from '@/components/ui/input';
 import { Search } from 'lucide-react';
 import { mockAuditLogs, mockUsers } from '@/lib/data';
-import type { AuditLog } from '@/lib/types';
 
 const FormattedDate = ({ timestamp }: { timestamp: string }) => {
   const [formattedDate, setFormattedDate] = React.useState('');
@@ -25,7 +24,8 @@ const FormattedDate = ({ timestamp }: { timestamp: string }) => {
   }, [timestamp]);
   
   if (!formattedDate) {
-    return <>Yüklənir...</>;
+    // Return a placeholder or the raw string during server-side rendering or before hydration
+    return <>{timestamp}</>;
   }
 
   return <>{formattedDate}</>;
@@ -101,7 +101,7 @@ export default function AuditLogPage() {
                   <TableCell>{log.action}</TableCell>
                   <TableCell>{log.details}</TableCell>
                   <TableCell>
-                    {isClient ? <FormattedDate timestamp={log.timestamp} /> : 'Yüklənir...'}
+                    {isClient ? <FormattedDate timestamp={log.timestamp} /> : log.timestamp}
                   </TableCell>
                 </TableRow>
               );

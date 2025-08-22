@@ -75,7 +75,7 @@ export default function AssetsPage() {
     const assetType = formData.get('type') as Asset['type'];
 
     const existingAssetsOfType = assets.filter(a => a.nodeId === selectedNode.id && a.type === assetType);
-    const newAssetName = `${assetType}-${existingAssetsOfType.length + 1}`;
+    let newAssetName = `${assetType}-${existingAssetsOfType.length + 1}`;
     
     const commonData = {
         id: `asset-${Date.now()}`,
@@ -124,8 +124,11 @@ export default function AssetsPage() {
             birlesmeUsulu: formData.get('birlesmeUsulu') as ElektrikKabelAsset['birlesmeUsulu'],
         }
     } else if (assetType === 'Kamera') {
+        const existingCameras = assets.filter(a => a.nodeId === selectedNode.id && a.type === 'Kamera');
+        newAssetName = `CAM-${existingCameras.length + 1}`;
         newAsset = {
             ...commonData,
+            name: newAssetName,
             type: 'Kamera',
             marka: formData.get('marka') as string,
             model: formData.get('model') as string,
@@ -141,9 +144,12 @@ export default function AssetsPage() {
             kameraTemizliyi: formData.get('kameraTemizliyi') as KameraAsset['kameraTemizliyi'],
         }
     } else if (assetType === 'Qutu') {
+        const mertebe = formData.get('mertebe') as QutuAsset['mertebe'];
+        const existingQutuOnMertebe = assets.filter(a => a.type === 'Qutu' && (a as QutuAsset).mertebe === mertebe && a.nodeId === selectedNode.id);
+        newAssetName = `${mertebe}-Qutu-${existingQutuOnMertebe.length + 1}`;
         newAsset = {
             ...commonData,
-            name: `${formData.get('mertebe') || 'Qutu'}-${existingAssetsOfType.length + 1}`,
+            name: newAssetName,
             type: 'Qutu',
             istehsalci: formData.get('istehsalci') as QutuAsset['istehsalci'],
             tipi: formData.get('tipi') as QutuAsset['tipi'],
@@ -155,7 +161,7 @@ export default function AssetsPage() {
             berkidilmeUsulu: formData.get('berkidilmeUsulu') as QutuAsset['berkidilmeUsulu'],
             torpaqlanma: formData.get('torpaqlanma') as QutuAsset['torpaqlanma'],
             etiket: formData.get('etiket') as QutuAsset['etiket'],
-            mertebe: formData.get('mertebe') as QutuAsset['mertebe'],
+            mertebe: mertebe,
         }
     } else if (assetType === 'Switch') {
         newAsset = {
@@ -291,7 +297,7 @@ export default function AssetsPage() {
         case 'Kamera':
             return `Marka: ${asset.marka || 'N/A'}, Model: ${asset.model || 'N/A'}`;
         case 'Qutu':
-            return `İstehsalçı: ${asset.istehsalci || 'N/A'}, Tip: ${asset.tipi || 'N/A'}`;
+            return `İstehsalçı: ${asset.istehsalci || 'N/A'}, Tip: ${asset.tipi || 'N/A'}, Mərtəbə: ${asset.mertebe || 'N/A'}`;
         case 'Switch':
             return `Marka: ${asset.marka || 'N/A'}, Model: ${asset.model || 'N/A'}`;
         default:
