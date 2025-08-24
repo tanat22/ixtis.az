@@ -60,7 +60,7 @@ export type DirekAsset = BaseAsset & {
     type: 'Dirək';
     istehsalci?: 'İDEA' | 'OZON' | 'FRANSIZ' | 'BCG' | 'Digər';
     hundurluk?: number;
-    reng?: string;
+    reng?: 'Boz' | 'Qara' | 'Ağ' | 'Boyasız' | 'Digər';
     nov?: 'T' | 'I' | 'Г';
     hendesiForma?: 'Kvadrat' | 'Dairəvi' | 'Dairəvi Xonçalı';
     material?: 'Qara metal' | 'Qalvanizasiya olunmuş qara metal' | 'Aluminium';
