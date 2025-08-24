@@ -94,34 +94,38 @@ export default function DashboardPage() {
   const renderChart = () => {
     if (chartView === 'regional') {
       return (
-        <>
-            <div className="flex items-center gap-2 mb-4">
-                 <Button variant="ghost" size="icon" onClick={handleBackClick}>
-                    <ChevronLeft className="h-4 w-4" />
-                 </Button>
-                 <div>
-                    <CardTitle>{selectedAssetType} Paylanması</CardTitle>
-                    <CardDescription>Seçilmiş asset növünün regionlar üzrə sayı.</CardDescription>
-                 </div>
-            </div>
-            <ChartContainer config={chartConfig} className="h-[300px] w-full">
-              <BarChart accessibilityLayer data={regionalAssetData}>
-                <CartesianGrid vertical={false} />
-                <XAxis dataKey="region" tickLine={false} tickMargin={10} axisLine={false} />
-                <YAxis dataKey="count" />
-                <ChartTooltip
-                  cursor={false}
-                  content={<ChartTooltipContent indicator="dot" />}
-                />
-                <Bar dataKey="count" fill="var(--color-count)" radius={4} />
-              </BarChart>
-            </ChartContainer>
-        </>
+        <Card>
+            <CardHeader>
+                <div className="flex items-center gap-2 mb-4">
+                    <Button variant="ghost" size="icon" onClick={handleBackClick}>
+                        <ChevronLeft className="h-4 w-4" />
+                    </Button>
+                    <div>
+                        <CardTitle>{selectedAssetType} Paylanması</CardTitle>
+                        <CardDescription>Seçilmiş asset növünün regionlar üzrə sayı.</CardDescription>
+                    </div>
+                </div>
+            </CardHeader>
+            <CardContent>
+                <ChartContainer config={chartConfig} className="h-[300px] w-full">
+                <BarChart accessibilityLayer data={regionalAssetData}>
+                    <CartesianGrid vertical={false} />
+                    <XAxis dataKey="region" tickLine={false} tickMargin={10} axisLine={false} />
+                    <YAxis dataKey="count" />
+                    <ChartTooltip
+                    cursor={false}
+                    content={<ChartTooltipContent indicator="dot" />}
+                    />
+                    <Bar dataKey="count" fill="var(--color-count)" radius={4} />
+                </BarChart>
+                </ChartContainer>
+            </CardContent>
+        </Card>
       );
     }
 
     return (
-        <>
+      <Card>
         <CardHeader>
             <CardTitle>Asset Paylanması</CardTitle>
             <CardDescription>Assetlərin növünə görə ümumi sayı. Detallar üçün sütuna klikləyin.</CardDescription>
@@ -140,7 +144,7 @@ export default function DashboardPage() {
             </BarChart>
             </ChartContainer>
         </CardContent>
-      </>
+      </Card>
     );
   }
 
@@ -182,13 +186,11 @@ export default function DashboardPage() {
         </Card>
       </div>
 
-      <div className="grid gap-4 xl:col-span-2">
-        <Card>
-          {renderChart()}
-        </Card>
+      <div className="xl:col-span-2">
+        {renderChart()}
       </div>
       
-      <div>
+      <div className="xl:col-span-1">
         <Card>
           <CardHeader>
             <CardTitle>Son Fəaliyyət</CardTitle>

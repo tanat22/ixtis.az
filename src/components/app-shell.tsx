@@ -68,14 +68,14 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   return (
     <SidebarProvider>
-      <Sidebar>
+      <Sidebar collapsible="icon">
         <SidebarHeader className="p-4">
-          <div className="flex items-center gap-3">
+          <Link href="/dashboard" className="flex items-center gap-3">
              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/20 text-primary">
                 <Box className="h-6 w-6" />
              </div>
              <span className="text-xl font-semibold text-sidebar-foreground">AssetRover</span>
-          </div>
+          </Link>
         </SidebarHeader>
         <SidebarContent>
           <SidebarMenu>
