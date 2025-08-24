@@ -1,9 +1,9 @@
 import type { User, Asset, Ticket, AuditLog, TasinmazEmlak, QutuAsset, Message } from './types';
 
 export const mockUsers: User[] = [
-  { id: 'user-1', name: 'Əli Vəliyev', email: 'ali.v@example.com', role: 'Super Admin', region: 'Bütün', avatar: '/avatars/01.png', password: 'password123', allowedMacs: ['00:1B:44:11:3A:B7', '00:1B:44:11:3A:B8'] },
-  { id: 'user-2', name: 'Sara Qasımlı', email: 'sara.q@example.com', role: 'Admin', region: 'Bütün', avatar: '/avatars/02.png', password: 'password123', allowedMacs: ['A0:C9:A0:C0:FF:EE'] },
-  { id: 'user-3', name: 'Tural Məmmədov', email: 'tural.m@example.com', role: 'Regional Menecer', region: 'Bakı', avatar: '/avatars/03.png', password: 'password123', allowedMacs: ['E0:3F:49:AF:55:C5'] },
+  { id: 'user-1', name: 'Əli Vəliyev', email: 'ali.v@example.com', role: 'Super Admin', region: 'Bütün', avatar: '/avatars/01.png', password: 'password123' },
+  { id: 'user-2', name: 'Sara Qasımlı', email: 'sara.q@example.com', role: 'Admin', region: 'Bütün', avatar: '/avatars/02.png', password: 'password123' },
+  { id: 'user-3', name: 'Tural Məmmədov', email: 'tural.m@example.com', role: 'Regional Menecer', region: 'Bakı', avatar: '/avatars/03.png', password: 'password123' },
   { id: 'user-4', name: 'Leyla Hüseynova', email: 'leyla.h@example.com', role: 'Regional Menecer', region: 'Gəncə', avatar: '/avatars/04.png', password: 'password123' },
   { id: 'user-5', name: 'Fərid İsmayılov', email: 'farid.i@example.com', role: 'Təmir üzrə Məsul Şəxs', region: 'Bütün', avatar: '/avatars/05.png', password: 'password123' },
 ];

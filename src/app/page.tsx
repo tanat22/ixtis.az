@@ -22,7 +22,6 @@ export default function LoginPage() {
   const [password, setPassword] = React.useState('');
   const [serverIp, setServerIp] = React.useState('127.0.0.1');
   const [port, setPort] = React.useState('8080');
-  const [macAddress, setMacAddress] = React.useState('');
 
 
   const handleLogin = (e: React.FormEvent) => {
@@ -53,17 +52,6 @@ export default function LoginPage() {
         });
         setIsLoading(false);
         return;
-      }
-
-      // MAC Address check simulation
-      if (selectedUser.allowedMacs && selectedUser.allowedMacs.length > 0 && !selectedUser.allowedMacs.includes(macAddress)) {
-          toast({
-              variant: "destructive",
-              title: "Girişə İcazə Verilmədi",
-              description: "Bu cihazdan girişə icazə yoxdur. Sistem administratoru ilə əlaqə saxlayın.",
-          });
-          setIsLoading(false);
-          return;
       }
 
       setUser(selectedUser);
@@ -143,19 +131,6 @@ export default function LoginPage() {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                 />
-             </div>
-             <div className="space-y-2">
-                <Label htmlFor="mac-address">MAC Ünvanı (Simulyasiya)</Label>
-                <Input
-                    id="mac-address"
-                    type="text"
-                    value={macAddress}
-                    onChange={(e) => setMacAddress(e.target.value)}
-                    placeholder="00:1B:44:11:3A:B7"
-                />
-                <p className="text-xs text-muted-foreground">
-                    Bu sahə real tətbiqdə avtomatik təyin olunacaq. Simulyasiya üçün daxil edin.
-                </p>
              </div>
            </div>
 

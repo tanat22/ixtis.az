@@ -6,7 +6,6 @@ export type User = {
   region: string;
   avatar: string;
   password?: string;
-  allowedMacs?: string[];
 };
 
 export type TasinmazEmlak = {
