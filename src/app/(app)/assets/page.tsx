@@ -1696,5 +1696,9 @@ export default function AssetsPage() {
     );
   }
 
-  return selectedNode ? renderAssetView() : renderNodeView();
+  return (
+    <div>
+        {selectedNode ? renderAssetView() : renderNodeView()}
+    </div>
+  );
 }
