@@ -98,12 +98,12 @@ export type KameraAsset = BaseAsset & {
   type: 'Kamera';
   marka?: string;
   model?: string;
-  funksiya?: string;
+  funksiya?: 'PTZ musahide' | 'PTZ uz tanima' | 'Fiz' | 'NTS' | 'Termal';
   seriaNomresi?: string;
   kameraNovu?: 'Daxili' | 'Xarici';
   adapter?: string;
   istehsalIli?: string;
-  reng?: string;
+  reng?: 'ağ' | 'boz' | 'qara';
   kameraQolu?: 'Var' | 'Yox';
   qolIstismarVeziyyeti?: 'Yararlı' | 'Yararsız' | 'Restovrasiya olunmalıdır';
   montajAksesuari?: 'Təkli' | 'Üçlü' | 'Düz' | 'Dairəvi' | 'Yoxdur';
@@ -117,7 +117,7 @@ export type QutuAsset = BaseAsset & {
   tipi?: 'Yer' | 'Dirək';
   soyutmaSistemi?: 'Yoxdur' | 'FAN' | 'Kuller' | 'Kondisioner';
   termalSensor?: 'Var' | 'Yoxdur';
-  reng?: string;
+  reng?: 'Boz' | 'Qara' | 'Ağ' | 'Digər';
   acarYeri?: 'Plastik' | 'Metal';
   refSayi?: 'Rəfsiz' | '1 rəfli' | '2 rəfli';
   berkidilmeUsulu?: 'Kələpçə' | 'Anker bolt' | 'Probka şurup';

@@ -197,7 +197,7 @@ export default function AssetsPage() {
             type: 'Dirək',
             istehsalci: formData.get('istehsalci') as DirekAsset['istehsalci'],
             hundurluk: Number(formData.get('hundurluk')),
-            reng: formData.get('reng') as string,
+            reng: formData.get('reng') as DirekAsset['reng'],
             nov: formData.get('nov') as DirekAsset['nov'],
             hendesiForma: formData.get('hendesiForma') as DirekAsset['hendesiForma'],
             material: formData.get('material') as DirekAsset['material'],
@@ -241,11 +241,11 @@ export default function AssetsPage() {
             type: 'Kamera',
             marka: formData.get('marka') as string,
             model: formData.get('model') as string,
-            funksiya: formData.get('funksiya') as string,
+            funksiya: formData.get('funksiya') as KameraAsset['funksiya'],
             seriaNomresi: formData.get('seriaNomresi') as string,
             kameraNovu: formData.get('kameraNovu') as KameraAsset['kameraNovu'],
             adapter: formData.get('adapter') as string,
-            reng: formData.get('reng') as string,
+            reng: formData.get('reng') as KameraAsset['reng'],
             kameraQolu: formData.get('kameraQolu') as KameraAsset['kameraQolu'],
             qolIstismarVeziyyeti: formData.get('qolIstismarVeziyyeti') as KameraAsset['qolIstismarVeziyyeti'],
             montajAksesuari: formData.get('montajAksesuari') as KameraAsset['montajAksesuari'],
@@ -264,7 +264,7 @@ export default function AssetsPage() {
             tipi: formData.get('tipi') as QutuAsset['tipi'],
             soyutmaSistemi: formData.get('soyutmaSistemi') as QutuAsset['soyutmaSistemi'],
             termalSensor: formData.get('termalSensor') as QutuAsset['termalSensor'],
-            reng: formData.get('reng') as string,
+            reng: formData.get('reng') as QutuAsset['reng'],
             acarYeri: formData.get('acarYeri') as QutuAsset['acarYeri'],
             refSayi: formData.get('refSayi') as QutuAsset['refSayi'],
             berkidilmeUsulu: formData.get('berkidilmeUsulu') as QutuAsset['berkidilmeUsulu'],
@@ -1010,7 +1010,17 @@ export default function AssetsPage() {
                 </div>
                  <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="reng" className="text-right">Rəng</Label>
-                    <Input id="reng" name="reng" className="col-span-3" />
+                     <Select name="reng">
+                        <SelectTrigger className="col-span-3">
+                            <SelectValue placeholder="Rəng seçin" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="Boz">Boz</SelectItem>
+                            <SelectItem value="Qara">Qara</SelectItem>
+                            <SelectItem value="Ağ">Ağ</SelectItem>
+                            <SelectItem value="Digər">Digər</SelectItem>
+                        </SelectContent>
+                    </Select>
                 </div>
                  <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="acarYeri" className="text-right">Açar Yeri</Label>
@@ -1453,6 +1463,8 @@ export default function AssetsPage() {
   const renderAssetView = () => {
     if (!selectedNode) return null;
     const filteredAssets = assets.filter(asset => asset.nodeId === selectedNode.id);
+    const nodeHasPole = filteredAssets.some(asset => asset.type === 'Dirək');
+    const nodeHasBox = filteredAssets.some(asset => asset.type === 'Qutu');
 
     return (
         <Card>
@@ -1490,8 +1502,12 @@ export default function AssetsPage() {
                                     <SelectValue placeholder="Asset növünü seçin" />
                                 </SelectTrigger>
                                 <SelectContent>
-                                    {selectedNode.type === 'Təhlükəsizlik Nöqtəsi' && <SelectItem value="Dirək">Dirək</SelectItem>}
-                                    <SelectItem value="Qutu">Qutu</SelectItem>
+                                    {selectedNode.type === 'Təhlükəsizlik Nöqtəsi' && !nodeHasPole && <SelectItem value="Dirək">Dirək</SelectItem>}
+                                    {selectedNode.type !== 'Təhlükəsizlik Nöqtəsi' && <SelectItem value="Dirək">Dirək</SelectItem>}
+                                    
+                                    {selectedNode.type === 'Təhlükəsizlik Nöqtəsi' && !nodeHasBox && <SelectItem value="Qutu">Qutu</SelectItem>}
+                                    {selectedNode.type !== 'Təhlükəsizlik Nöqtəsi' && <SelectItem value="Qutu">Qutu</SelectItem>}
+
                                     <SelectItem value="Kamera">Kamera</SelectItem>
                                     <SelectItem value="Switch">Switch</SelectItem>
                                     <SelectItem value="Data Kabeli">Data Kabeli</SelectItem>
