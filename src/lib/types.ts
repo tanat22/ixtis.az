@@ -137,19 +137,13 @@ export type SwitchAsset = BaseAsset & {
   model?: string;
   adapter?: string;
   seriaNomresi?: string;
-  istehsalIli?: string;
   switchTipi?: 'İndustrial tipli' | 'Kommersiya tipli';
-  ethernetPortSayi?: number;
-  poePortSayi?: number;
   management?: 'idarə olunan' | 'idarə olunmayan';
   switchYeri?: 'Qapı' | 'Rəf' | 'Rack Kabin';
   konfiqurasiya?: 'olunub' | 'olunmayıb';
   sfpModul?: string;
-  sfpModulSayi?: number;
   ups?: string;
-  upsQurasdirilmaTarixi?: string;
   stabilizator?: string;
-  stabilizatorQurasdirilmaTarixi?: string;
 };
 
 
