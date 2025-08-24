@@ -25,14 +25,17 @@ import {
     CardHeader,
     CardTitle,
   } from '@/components/ui/card';
-import { specialties, universities, groups, levels } from '@/lib/data';
+import { Badge } from '@/components/ui/badge';
+import { specialties, universities, groups, levels, years, educationForms } from '@/lib/data';
 import type { Specialty } from '@/lib/types';
 
 export default function InteractiveGuidePage() {
   const [filteredSpecialties, setFilteredSpecialties] = React.useState<Specialty[]>(specialties);
+  const [year, setYear] = React.useState('all');
   const [level, setLevel] = React.useState('all');
   const [university, setUniversity] = React.useState('all');
   const [group, setGroup] = React.useState('all');
+  const [educationForm, setEducationForm] = React.useState('all');
   const [search, setSearch] = React.useState('');
   const [score, setScore] = React.useState(700);
 
@@ -40,15 +43,17 @@ export default function InteractiveGuidePage() {
     const results = specialties.filter(s => {
         const universityName = universities.find(u => u.id === s.universityId)?.name || '';
         return (
+            (year === 'all' || s.year.toString() === year) &&
             (level === 'all' || s.level === level) &&
             (university === 'all' || s.universityId === university) &&
             (group === 'all' || s.groupId === group) &&
+            (educationForm === 'all' || s.educationForm === educationForm) &&
             (s.name.toLowerCase().includes(search.toLowerCase()) || universityName.toLowerCase().includes(search.toLowerCase())) &&
-            s.score <= score
+            (s.score ? s.score <= score : true)
         )
     });
     setFilteredSpecialties(results);
-  }, [level, university, group, search, score]);
+  }, [year, level, university, group, educationForm, search, score]);
 
 
   return (
@@ -65,7 +70,17 @@ export default function InteractiveGuidePage() {
                 <CardDescription>Axtarışınızı dəqiqləşdirmək üçün filtrlərdən istifadə edin.</CardDescription>
             </CardHeader>
             <CardContent>
-                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 items-end">
+                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 items-end">
+                    <div className="space-y-2">
+                        <label className="text-sm font-medium">İl</label>
+                        <Select value={year} onValueChange={setYear}>
+                            <SelectTrigger><SelectValue placeholder="İl" /></SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="all">Bütün İllər</SelectItem>
+                                {years.map(y => <SelectItem key={y} value={y.toString()}>{y}</SelectItem>)}
+                            </SelectContent>
+                        </Select>
+                    </div>
                     <div className="space-y-2">
                         <label className="text-sm font-medium">Təhsil Səviyyəsi</label>
                         <Select value={level} onValueChange={setLevel}>
@@ -80,7 +95,7 @@ export default function InteractiveGuidePage() {
                         <label className="text-sm font-medium">Universitet/Kollec</label>
                          <Select value={university} onValueChange={setUniversity}>
                             <SelectTrigger><SelectValue placeholder="Universitet/Kollec" /></SelectTrigger>
-                            <SelectContent>
+                            <SelectContent className="max-h-80">
                                 <SelectItem value="all">Bütün Təhsil Müəssisələri</SelectItem>
                                 {universities.map(u => <SelectItem key={u.id} value={u.id}>{u.name}</SelectItem>)}
                             </SelectContent>
@@ -96,7 +111,17 @@ export default function InteractiveGuidePage() {
                             </SelectContent>
                         </Select>
                     </div>
-                    <div className="space-y-2 lg:col-span-2">
+                    <div className="space-y-2">
+                        <label className="text-sm font-medium">Tədris Forması</label>
+                         <Select value={educationForm} onValueChange={setEducationForm}>
+                            <SelectTrigger><SelectValue placeholder="Tədris Forması" /></SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="all">Hamısı</SelectItem>
+                                {educationForms.map(f => <SelectItem key={f.id} value={f.id}>{f.name}</SelectItem>)}
+                            </SelectContent>
+                        </Select>
+                    </div>
+                    <div className="space-y-2 lg:col-span-2 xl:col-span-1">
                          <label htmlFor="search" className="text-sm font-medium">İxtisas üzrə axtarış</label>
                          <Input
                             id="search"
@@ -105,8 +130,8 @@ export default function InteractiveGuidePage() {
                             onChange={(e) => setSearch(e.target.value)}
                         />
                     </div>
-                    <div className="lg:col-span-5 space-y-2">
-                         <label htmlFor="score" className="text-sm font-medium">Keçid Balı Diapazonu: {score}</label>
+                    <div className="lg:col-span-full xl:col-span-full space-y-2">
+                         <label htmlFor="score" className="text-sm font-medium">Maksimal Keçid Balı: {score}</label>
                          <Slider
                             id="score"
                             min={0}
@@ -125,13 +150,19 @@ export default function InteractiveGuidePage() {
         </div>
 
         <Card>
+            <div className="overflow-x-auto">
             <Table>
                 <TableHeader>
                     <TableRow>
-                        <TableHead>Təhsil Müəssisəsi</TableHead>
-                        <TableHead>İxtisas</TableHead>
-                        <TableHead className="text-center">Qrup</TableHead>
-                        <TableHead className="text-right">Keçid Balı</TableHead>
+                        <TableHead className="w-1/12 text-center">İl</TableHead>
+                        <TableHead className="w-3/12">Təhsil Müəssisəsi</TableHead>
+                        <TableHead className="w-4/12">İxtisas</TableHead>
+                        <TableHead className="w-1/12 text-center">Qrup</TableHead>
+                        <TableHead className="w-1/12 text-center">Tədris Dili</TableHead>
+                        <TableHead className="w-1/12 text-center">Tədris Forması</TableHead>
+                        <TableHead className="w-1/12 text-center">Plan</TableHead>
+                        <TableHead className="w-1/12 text-center">Ödəniş</TableHead>
+                        <TableHead className="w-1/12 text-right">Keçid Balı</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -139,24 +170,35 @@ export default function InteractiveGuidePage() {
                     filteredSpecialties.map(spec => {
                         const uni = universities.find(u => u.id === spec.universityId);
                         const grp = groups.find(g => g.id === spec.groupId);
+                        const form = educationForms.find(f => f.id === spec.educationForm);
                         return (
                             <TableRow key={spec.id}>
+                                <TableCell className="text-center">{spec.year}</TableCell>
                                 <TableCell className="font-medium">{uni ? uni.name : 'Naməlum'}</TableCell>
                                 <TableCell>{spec.name}</TableCell>
                                 <TableCell className="text-center">{grp ? grp.name : '-'}</TableCell>
-                                <TableCell className="text-right font-mono">{spec.score.toFixed(1)}</TableCell>
+                                <TableCell className="text-center uppercase">{spec.educationLanguage}</TableCell>
+                                <TableCell className="text-center capitalize">{form?.name}</TableCell>
+                                <TableCell className="text-center">{spec.planCount}</TableCell>
+                                <TableCell className="text-center capitalize">
+                                    <Badge variant={spec.paymentType === 'ödənişli' ? 'secondary' : 'default'}>
+                                        {spec.paymentType}
+                                    </Badge>
+                                </TableCell>
+                                <TableCell className="text-right font-mono">{spec.score ? spec.score.toFixed(1) : 'Müsabiqə'}</TableCell>
                             </TableRow>
                         );
                     })
                 ) : (
                     <TableRow>
-                        <TableCell colSpan={4} className="text-center h-24">
+                        <TableCell colSpan={9} className="text-center h-24">
                             Axtarışınıza uyğun nəticə tapılmadı.
                         </TableCell>
                     </TableRow>
                 )}
                 </TableBody>
             </Table>
+            </div>
         </Card>
       </div>
     </div>
