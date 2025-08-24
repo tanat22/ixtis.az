@@ -271,6 +271,11 @@ export default function AssetsPage() {
             torpaqlanma: formData.get('torpaqlanma') as QutuAsset['torpaqlanma'],
             etiket: formData.get('etiket') as QutuAsset['etiket'],
             mertebe: mertebe,
+            istismarVeziyyeti: formData.get('istismarVeziyyeti') as QutuAsset['istismarVeziyyeti'],
+            elaveKilidMexanizmi: formData.get('elaveKilidMexanizmi') as QutuAsset['elaveKilidMexanizmi'],
+            kilidIstismarVeziyyeti: formData.get('kilidIstismarVeziyyeti') as QutuAsset['kilidIstismarVeziyyeti'],
+            qutununXariciTemizliyi: formData.get('qutununXariciTemizliyi') as QutuAsset['qutununXariciTemizliyi'],
+            qutununDaxiliTemizliyi: formData.get('qutununDaxiliTemizliyi') as QutuAsset['qutununDaxiliTemizliyi'],
         }
     } else if (assetType === 'Switch') {
         const existingSwitches = assets.filter(a => a.nodeId === selectedNode.id && a.type === 'Switch');
@@ -1081,6 +1086,58 @@ export default function AssetsPage() {
                         <SelectContent>
                             <SelectItem value="Var">Var</SelectItem>
                             <SelectItem value="Yoxdur">Yoxdur</SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="istismarVeziyyeti" className="text-right">İstismar Vəziyyəti</Label>
+                    <Select name="istismarVeziyyeti">
+                        <SelectTrigger className="col-span-3"><SelectValue placeholder="Vəziyyəti seçin" /></SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="Yararlı">Yararlı</SelectItem>
+                            <SelectItem value="Yararsız">Yararsız</SelectItem>
+                            <SelectItem value="Restovrasiya olunmalıdır">Restovrasiya olunmalıdır</SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="elaveKilidMexanizmi" className="text-right">Əlavə Kilid Mexanizmi</Label>
+                    <Select name="elaveKilidMexanizmi">
+                        <SelectTrigger className="col-span-3"><SelectValue placeholder="Seçin" /></SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="Var">Var</SelectItem>
+                            <SelectItem value="Yoxdur">Yoxdur</SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="kilidIstismarVeziyyeti" className="text-right">Kilid İstismar Vəziyyəti</Label>
+                    <Select name="kilidIstismarVeziyyeti">
+                        <SelectTrigger className="col-span-3"><SelectValue placeholder="Vəziyyəti seçin" /></SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="Yararlı">Yararlı</SelectItem>
+                            <SelectItem value="Yararsız">Yararsız</SelectItem>
+                            <SelectItem value="Restovrasiya olunmalıdır">Restovrasiya olunmalıdır</SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="qutununXariciTemizliyi" className="text-right">Qutunun Xarici Təmizliyi</Label>
+                    <Select name="qutununXariciTemizliyi">
+                        <SelectTrigger className="col-span-3"><SelectValue placeholder="Təmizliyi seçin" /></SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="Təmiz">Təmiz</SelectItem>
+                            <SelectItem value="Çirkli">Çirkli</SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
+                 <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="qutununDaxiliTemizliyi" className="text-right">Qutunun Daxili Təmizliyi</Label>
+                    <Select name="qutununDaxiliTemizliyi">
+                        <SelectTrigger className="col-span-3"><SelectValue placeholder="Təmizliyi seçin" /></SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="Təmiz">Təmiz</SelectItem>
+                            <SelectItem value="Çirkli">Çirkli</SelectItem>
                         </SelectContent>
                     </Select>
                 </div>
