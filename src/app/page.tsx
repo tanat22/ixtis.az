@@ -22,6 +22,8 @@ export default function LoginPage() {
   const [password, setPassword] = React.useState('');
   const [serverIp, setServerIp] = React.useState('127.0.0.1');
   const [port, setPort] = React.useState('8080');
+  const [macAddress, setMacAddress] = React.useState('');
+
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,22 +44,34 @@ export default function LoginPage() {
     console.log(`Connecting to ${serverIp}:${port}...`);
     
     setTimeout(() => {
-      // In a real app, you'd properly validate the password.
-      // For this simulation, we'll just check if the user exists and a password was entered.
-      if (selectedUser && password) { // Simple check for simulation
-        setUser(selectedUser);
+      // Password check
+      if (!selectedUser || selectedUser.password !== password) {
         toast({
-          title: 'Giriş Uğurludur',
-          description: `Xoş gəldiniz, ${selectedUser.name}!`,
-        });
-        router.push('/dashboard');
-      } else {
-         toast({
             variant: "destructive",
             title: "Giriş Məlumatları Yanlışdır",
             description: "İstifadəçi adı və ya parol düzgün deyil.",
         });
+        setIsLoading(false);
+        return;
       }
+
+      // MAC Address check simulation
+      if (selectedUser.allowedMacs && selectedUser.allowedMacs.length > 0 && !selectedUser.allowedMacs.includes(macAddress)) {
+          toast({
+              variant: "destructive",
+              title: "Girişə İcazə Verilmədi",
+              description: "Bu cihazdan girişə icazə yoxdur. Sistem administratoru ilə əlaqə saxlayın.",
+          });
+          setIsLoading(false);
+          return;
+      }
+
+      setUser(selectedUser);
+      toast({
+        title: 'Giriş Uğurludur',
+        description: `Xoş gəldiniz, ${selectedUser.name}!`,
+      });
+      router.push('/dashboard');
       setIsLoading(false);
     }, 1000);
   };
@@ -129,6 +143,19 @@ export default function LoginPage() {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                 />
+             </div>
+             <div className="space-y-2">
+                <Label htmlFor="mac-address">MAC Ünvanı (Simulyasiya)</Label>
+                <Input
+                    id="mac-address"
+                    type="text"
+                    value={macAddress}
+                    onChange={(e) => setMacAddress(e.target.value)}
+                    placeholder="00:1B:44:11:3A:B7"
+                />
+                <p className="text-xs text-muted-foreground">
+                    Bu sahə real tətbiqdə avtomatik təyin olunacaq. Simulyasiya üçün daxil edin.
+                </p>
              </div>
            </div>
 
