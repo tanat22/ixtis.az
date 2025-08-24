@@ -43,8 +43,9 @@ export default function LoginPage() {
     console.log(`Connecting to ${serverIp}:${port}...`);
     
     setTimeout(() => {
-      // Password check
-      if (!selectedUser || selectedUser.password !== password) {
+      // Password check - for simulation, we'll accept any password as long as one is entered.
+      // In a real app, this would be a proper check against a hashed password.
+      if (!selectedUser || !password) {
         toast({
             variant: "destructive",
             title: "Giriş Məlumatları Yanlışdır",
