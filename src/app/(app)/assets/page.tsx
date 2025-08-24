@@ -765,10 +765,14 @@ export default function AssetsPage() {
                                 <Select name="type" required onValueChange={(value: Asset['type']) => setSelectedAssetType(value)} defaultValue={selectedAssetForForm?.type || ''} disabled={!!selectedAssetForForm}>
                                     <SelectTrigger className="col-span-3"><SelectValue placeholder="Asset növünü seçin" /></SelectTrigger>
                                     <SelectContent>
-                                        {(selectedNode.type === 'Təhlükəsizlik Nöqtəsi' && !nodeHasPole) || selectedAssetForForm?.type === 'Dirək' && <SelectItem value="Dirək">Dirək</SelectItem>}
-                                        {selectedNode.type !== 'Təhlükəsizlik Nöqtəsi' && <SelectItem value="Dirək">Dirək</SelectItem>}
-                                        {(selectedNode.type === 'Təhlükəsizlik Nöqtəsi' && !nodeHasBox) || selectedAssetForForm?.type === 'Qutu' && <SelectItem value="Qutu">Qutu</SelectItem>}
+                                        {/* Rule: Only TS nodes can have a pole, and only one. */}
+                                        {(selectedNode.type === 'Təhlükəsizlik Nöqtəsi' && !nodeHasPole) && <SelectItem value="Dirək">Dirək</SelectItem>}
+                                        
+                                        {/* Rule: TS nodes can only have one box. Other nodes can have multiple boxes. */}
+                                        {(selectedNode.type === 'Təhlükəsizlik Nöqtəsi' && !nodeHasBox) && <SelectItem value="Qutu">Qutu</SelectItem>}
                                         {selectedNode.type !== 'Təhlükəsizlik Nöqtəsi' && <SelectItem value="Qutu">Qutu</SelectItem>}
+
+                                        {/* Other assets can be added freely */}
                                         <SelectItem value="Kamera">Kamera</SelectItem>
                                         <SelectItem value="Switch">Switch</SelectItem>
                                         <SelectItem value="Data Kabeli">Data Kabeli</SelectItem>
@@ -809,5 +813,3 @@ export default function AssetsPage() {
     </div>
   );
 }
-
-    
