@@ -466,24 +466,19 @@ export default function AssetsPage() {
     const showMertebe = selectedNode && !['Təhlükəsizlik Nöqtəsi', 'Alt Keçid', 'Üst Keçid', 'Metro'].includes(selectedNode.type);
 
     const cameraModels = [
-        "Dahua DH-SD8A3440GA-HNV",
-        "Dom kamera Tandem VU Hikvision DS-2SF8C442MXG-EIW/26 FO",
-        "Telefunken",
-        "Dom Kamera Hikvision DS-2DF8A442IXS-AEL T5",
-        "Dome kamera AXİS Q6135-LE",
-        "Dome kamera AXİS Q61145-E",
-        "Dome Kamera Telefunken VSC-03561-015c",
-        "Dome kamera Telefunken VSC-1210a",
-        "Dom kamera Ekin (Korpus ekin kamera telefunken)",
-        "Dom kamera Hikvision DS-2DE4425IW-DE",
-        "Dom kamera Hikvision DS-2DE4A425IWG-E",
-        "Dom kamera Aviglon 5,0C-H5A-DO2",
-        "PTZ Camera AXIS P5676-LE 50q",
-        "Fix Kamera Hikvision IDS-2CD7A46G0/P-IZHS (2.8-12mm)",
-        "FİX Kamera AXİS Q1615-LE",
-        "FİX Kamera AXİS Q1615-E",
-        "Sanyo 5600",
-        "Digər"
+        "Dahua DH-SD8A3440GA-HNV", "Dom kamera Tandem VU Hikvision DS-2SF8C442MXG-EIW/26 FO",
+        "Telefunken", "Dom Kamera Hikvision DS-2DF8A442IXS-AEL T5", "Dome kamera AXİS Q6135-LE",
+        "Dome kamera AXİS Q61145-E", "Dome Kamera Telefunken VSC-03561-015c", "Dome kamera Telefunken VSC-1210a",
+        "Dom kamera Ekin (Korpus ekin kamera telefunken)", "Dom kamera Hikvision DS-2DE4425IW-DE",
+        "Dom kamera Hikvision DS-2DE4A425IWG-E", "Dom kamera Aviglon 5,0C-H5A-DO2", "PTZ Camera AXIS P5676-LE 50q",
+        "Fix Kamera Hikvision IDS-2CD7A46G0/P-IZHS (2.8-12mm)", "FİX Kamera AXİS Q1615-LE",
+        "FİX Kamera AXİS Q1615-E", "Sanyo 5600", "Digər"
+    ];
+
+    const switchModels = [
+        "S5735-L8P4X-QA-V2 (8x10/100/1000BASE-T)", "Switch Allied Telesyn AT-iMG606BD", "6000",
+        "Cisco Industrial Switch IE-2000-16PTC-G-E", "Switch Allied Telesyn AT-x230-10GP",
+        "Switch Hikvision DS-3E2510P POE", "8100", "GS950"
     ];
 
     const commonFields = (
@@ -1179,7 +1174,14 @@ export default function AssetsPage() {
                 </div>
                 <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="model" className="text-right">Model</Label>
-                    <Input id="model" name="model" className="col-span-3" />
+                    <Select name="model">
+                        <SelectTrigger className="col-span-3">
+                            <SelectValue placeholder="Model seçin" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            {switchModels.map(model => <SelectItem key={model} value={model}>{model}</SelectItem>)}
+                        </SelectContent>
+                    </Select>
                 </div>
                 <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="adapter" className="text-right">Adapter</Label>
@@ -1243,11 +1245,29 @@ export default function AssetsPage() {
                 </div>
                  <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="ups" className="text-right">UPS</Label>
-                    <Input id="ups" name="ups" placeholder="UPS marka və modelini daxil edin" className="col-span-3" />
+                    <Select name="ups">
+                        <SelectTrigger className="col-span-3">
+                            <SelectValue placeholder="UPS marka və modelini seçin" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="Makelsan">Makelsan</SelectItem>
+                            <SelectItem value="Raptor">Raptor</SelectItem>
+                            <SelectItem value="Digər">Digər</SelectItem>
+                        </SelectContent>
+                    </Select>
                 </div>
                  <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="stabilizator" className="text-right">Stabilizator</Label>
-                    <Input id="stabilizator" name="stabilizator" placeholder="Stabilizator marka və modelini daxil edin" className="col-span-3" />
+                    <Select name="stabilizator">
+                        <SelectTrigger className="col-span-3">
+                            <SelectValue placeholder="Stabilizator marka və modelini seçin" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="Tuncmatik">Tuncmatik</SelectItem>
+                            <SelectItem value="Metinkaya">Metinkaya</SelectItem>
+                            <SelectItem value="Digər">Digər</SelectItem>
+                        </SelectContent>
+                    </Select>
                 </div>
                 {commonFields}
             </>
