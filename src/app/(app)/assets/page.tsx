@@ -472,6 +472,7 @@ export default function AssetsPage() {
              newState.seher = 'Bakı';
              newState.rayon = undefined;
              newState.stansiya = undefined;
+             newState.name = undefined;
          } else {
              newState.stansiya = undefined;
          }
@@ -480,6 +481,7 @@ export default function AssetsPage() {
         const station = bakuMetroStations.find(s => s.name === value);
         if (station) {
             newState.rayon = station.rayon;
+            newState.name = station.name;
         }
      }
      setNodeFormData(prev => ({ ...prev, ...newState }));
@@ -662,7 +664,7 @@ export default function AssetsPage() {
                             <DialogHeader><DialogTitle>Yeni Təhlükəsizlik Nöqtəsi Yarat</DialogTitle><DialogDescription>Zəhmət olmasa, yeni nöqtənin təfərrüatlarını daxil edin.</DialogDescription></DialogHeader>
                             <div className="grid gap-4 py-4">
                                 <div className="grid grid-cols-4 items-center gap-4"><Label htmlFor="type" className="text-right">Növ</Label><Select name="type" required value={nodeFormData.type} onValueChange={(value) => handleNodeFormSelectChange('type', value)}><SelectTrigger className="col-span-3"><SelectValue placeholder="Nöqtə növünü seçin" /></SelectTrigger><SelectContent><SelectItem value="Təhlükəsizlik Nöqtəsi">Təhlükəsizlik Nöqtəsi (TŞ)</SelectItem><SelectItem value="Alt Keçid">Alt Keçid (AK)</SelectItem><SelectItem value="Üst Keçid">Üst Keçid (UK)</SelectItem><SelectItem value="Məscid">Məscid</SelectItem><SelectItem value="Ticarət Mərkəzi">Ticarət Mərkəzi (TM)</SelectItem><SelectItem value="ASAN">ASAN</SelectItem><SelectItem value="İdman və Konsert">İdman və Konsert (İK)</SelectItem><SelectItem value="POÇT">POÇT</SelectItem><SelectItem value="Metro">Metro</SelectItem><SelectItem value="Biznes Mərkəzi">Biznes Mərkəzi (BM)</SelectItem></SelectContent></Select></div>
-                                <div className="grid grid-cols-4 items-center gap-4"><Label htmlFor="name" className="text-right">Ad (TŞ Nöqtəsi)</Label><Input id="name" name="name" className="col-span-3" required /></div>
+                                <div className="grid grid-cols-4 items-center gap-4"><Label htmlFor="name" className="text-right">Ad</Label><Input id="name" name="name" className="col-span-3" required value={nodeFormData.name || ''} onChange={handleNodeFormChange} disabled={nodeFormData.type === 'Metro'} /></div>
                                 {nodeFormData.type === 'Metro' && (
                                      <div className="grid grid-cols-4 items-center gap-4"><Label htmlFor="stansiya" className="text-right">Stansiya</Label><Select name="stansiya" required value={nodeFormData.stansiya} onValueChange={(value) => handleNodeFormSelectChange('stansiya', value)}><SelectTrigger className="col-span-3"><SelectValue placeholder="Metro stansiyasını seçin" /></SelectTrigger><SelectContent>{bakuMetroStations.map(station => <SelectItem key={station.name} value={station.name}>{station.name}</SelectItem>)}</SelectContent></Select></div>
                                 )}
@@ -791,7 +793,7 @@ export default function AssetsPage() {
                                     <SelectContent>
                                         {/* Rule: Only TS nodes can have a pole, and only one. */}
                                         {selectedNode.type === 'Təhlükəsizlik Nöqtəsi' && !nodeHasPole && <SelectItem value="Dirək">Dirək</SelectItem>}
-                                        {selectedNode.type !== 'Təhlükəsizlik Nöqtəsi' && !['Alt Keçid', 'Üst Keçid', 'Metro'].includes(selectedNode.type) && <SelectItem value="Dirək">Dirək</SelectItem>}
+                                        {selectedNode.type !== 'Təhlükəsizlik Nöqtəsi' && !['Alt Keçid', 'Üst Keçid', 'Metro'].includes(selectedNode.type) && !nodeHasPole && <SelectItem value="Dirək">Dirək</SelectItem>}
 
                                         {/* Rule: TS nodes can only have one box. Other nodes can have multiple boxes. */}
                                         {selectedNode.type === 'Təhlükəsizlik Nöqtəsi' && !nodeHasBox && <SelectItem value="Qutu">Qutu</SelectItem>}
