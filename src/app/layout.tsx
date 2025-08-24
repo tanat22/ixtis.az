@@ -1,11 +1,10 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
-import { UserProvider } from '@/context/user-context';
 
 export const metadata: Metadata = {
-  title: 'AssetRover',
-  description: 'Asset İdarəetmə və Ticketing Sistemi',
+  title: 'Təhsil Bələdçisi',
+  description: 'İxtisas seçimi üzrə süni intellekt köməkçiniz',
 };
 
 export default function RootLayout({
@@ -21,10 +20,8 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased">
-        <UserProvider>
-          {children}
-          <Toaster />
-        </UserProvider>
+        {children}
+        <Toaster />
       </body>
     </html>
   );

@@ -1,160 +1,192 @@
 'use client';
 
 import * as React from 'react';
-import { useRouter } from 'next/navigation';
-import { Box, LogIn, Server } from 'lucide-react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import * as z from 'zod';
 import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { useUser } from '@/context/user-context';
-import { mockUsers } from '@/lib/data';
-import type { User } from '@/lib/types';
+import { Loader2, Sparkles, University, BookOpen } from 'lucide-react';
+import { recommendSpecialty } from '@/ai/flows/recommend-specialty-flow';
+import type { SpecialtyRecommendation } from '@/ai/flows/recommend-specialty-flow';
+import { Badge } from '@/components/ui/badge';
+import { Separator } from '@/components/ui/separator';
 
+const formSchema = z.object({
+  group1: z.coerce.number().min(0).max(700).optional(),
+  group2: z.coerce.number().min(0).max(700).optional(),
+  group3: z.coerce.number().min(0).max(700).optional(),
+  group4: z.coerce.number().min(0).max(700).optional(),
+  group5: z.coerce.number().min(0).max(700).optional(),
+  interests: z.string().min(10, {
+    message: 'Maraqlarınız haqqında ən az 10 hərf yazın.',
+  }),
+});
 
-export default function LoginPage() {
-  const router = useRouter();
+export default function AdmissionsHelperPage() {
   const { toast } = useToast();
-  const { setUser } = useUser();
   const [isLoading, setIsLoading] = React.useState(false);
-  const [selectedUserId, setSelectedUserId] = React.useState<string | null>(null);
-  const [password, setPassword] = React.useState('');
-  const [serverIp, setServerIp] = React.useState('127.0.0.1');
-  const [port, setPort] = React.useState('8080');
+  const [recommendations, setRecommendations] = React.useState<SpecialtyRecommendation[] | null>(null);
 
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      interests: '',
+    },
+  });
 
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!selectedUserId) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsLoading(true);
+    setRecommendations(null);
+
+    const scores = [
+        { group: 'I Qrup (Texniki və Təbiət)', score: values.group1 },
+        { group: 'II Qrup (İqtisadiyyat)', score: values.group2 },
+        { group: 'III Qrup (Humanitar)', score: values.group3 },
+        { group: 'IV Qrup (Tibb və Biologiya)', score: values.group4 },
+        { group: 'V Qrup (İdman və İncəsənət)', score: values.group5 },
+    ].filter(s => s.score !== undefined && s.score > 0);
+
+    if (scores.length === 0) {
         toast({
             variant: "destructive",
             title: "Xəta",
-            description: "Zəhmət olmasa, daxil olmaq üçün bir istifadəçi seçin.",
-        });
-        return;
-    }
-    
-    setIsLoading(true);
-
-    const selectedUser = mockUsers.find(u => u.id === selectedUserId);
-
-    // Simulate API call to the provided IP and port
-    console.log(`Connecting to ${serverIp}:${port}...`);
-    
-    setTimeout(() => {
-      // Password check - for simulation, we'll accept any password as long as one is entered.
-      // In a real app, this would be a proper check against a hashed password.
-      if (!selectedUser || !password) {
-        toast({
-            variant: "destructive",
-            title: "Giriş Məlumatları Yanlışdır",
-            description: "İstifadəçi adı və ya parol düzgün deyil.",
+            description: "Zəhmət olmasa ən az bir qrup üzrə balınızı daxil edin.",
         });
         setIsLoading(false);
         return;
-      }
+    }
 
-      setUser(selectedUser);
-      toast({
-        title: 'Giriş Uğurludur',
-        description: `Xoş gəldiniz, ${selectedUser.name}!`,
+
+    try {
+      const response = await recommendSpecialty({
+        examScores: scores as { group: string; score: number; }[],
+        studentInterests: values.interests,
       });
-      router.push('/dashboard');
+      setRecommendations(response.recommendations);
+    } catch (error) {
+      console.error('Error getting recommendations:', error);
+      toast({
+        variant: 'destructive',
+        title: 'Xəta Baş Verdi',
+        description:
+          'Tövsiyələr alınarkən bir problem yarandı. Zəhmət olmasa bir az sonra yenidən cəhd edin.',
+      });
+    } finally {
       setIsLoading(false);
-    }, 1000);
-  };
+    }
+  }
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-background p-4">
-      <div className="w-full max-w-md">
-        <div className="mb-8 flex flex-col items-center">
-          <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
-            <Box className="h-8 w-8" />
+    <div className="flex min-h-screen flex-col items-center justify-center bg-background p-4 sm:p-8">
+      <Card className="w-full max-w-4xl">
+        <CardHeader className="text-center">
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
+            <Sparkles className="h-8 w-8" />
           </div>
-          <h1 className="text-3xl font-bold tracking-tighter text-foreground">
-            AssetRover
-          </h1>
-          <p className="text-muted-foreground">
-            Assetlərinizi idarə etmək üçün daxil olun
-          </p>
-        </div>
-        
-        <form onSubmit={handleLogin} className="space-y-6">
-           <div className='space-y-4'>
-             <div className="grid grid-cols-3 gap-4">
-                <div className="col-span-2">
-                    <Label htmlFor="server-ip">Server IP</Label>
-                    <Input 
-                      id="server-ip" 
-                      value={serverIp}
-                      onChange={(e) => setServerIp(e.target.value)}
-                      placeholder="192.168.1.1"
-                      required
-                    />
+          <CardTitle className="text-3xl font-bold tracking-tight">
+            Təhsil Bələdçisi
+          </CardTitle>
+          <CardDescription className="text-lg text-muted-foreground">
+            Ballarınıza və maraqlarınıza uyğun ixtisasları kəşf edin.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+              <div>
+                <h3 className="mb-4 text-lg font-medium text-center">İmtahan Nəticələriniz (DİM)</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <FormField control={form.control} name="group1" render={({ field }) => (<FormItem><FormLabel>I Qrup</FormLabel><FormControl><Input type="number" placeholder="0-700" {...field} /></FormControl></FormItem>)} />
+                  <FormField control={form.control} name="group2" render={({ field }) => (<FormItem><FormLabel>II Qrup</FormLabel><FormControl><Input type="number" placeholder="0-700" {...field} /></FormControl></FormItem>)} />
+                  <FormField control={form.control} name="group3" render={({ field }) => (<FormItem><FormLabel>III Qrup</FormLabel><FormControl><Input type="number" placeholder="0-700" {...field} /></FormControl></FormItem>)} />
+                  <FormField control={form.control} name="group4" render={({ field }) => (<FormItem><FormLabel>IV Qrup</FormLabel><FormControl><Input type="number" placeholder="0-700" {...field} /></FormControl></FormItem>)} />
+                  <FormField control={form.control} name="group5" render={({ field }) => (<FormItem><FormLabel>V Qrup</FormLabel><FormControl><Input type="number" placeholder="0-700" {...field} /></FormControl></FormItem>)} />
                 </div>
-                <div>
-                    <Label htmlFor="port">Port</Label>
-                    <Input 
-                      id="port" 
-                      value={port}
-                      onChange={(e) => setPort(e.target.value)}
-                      placeholder="8080" 
-                      required
-                    />
+              </div>
+
+              <FormField
+                control={form.control}
+                name="interests"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Maraqlarınız və Bacarıqlarınız</FormLabel>
+                    <FormControl>
+                      <Textarea
+                        placeholder="Hansı fənləri sevirsiniz? Gələcəkdə hansı sahədə işləmək istərdiniz? Kompüterlə işləməyi xoşlayırsınız, yoxsa insanlarla ünsiyyəti?"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormDescription>
+                      Bu məlumatlar sizə daha uyğun tövsiyələr verməyimizə kömək edəcək.
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <Button type="submit" className="w-full" disabled={isLoading}>
+                {isLoading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Analiz edilir...
+                  </>
+                ) : (
+                    <>
+                    <Sparkles className="mr-2 h-4 w-4" />
+                    Tövsiyə al
+                    </>
+                )}
+              </Button>
+            </form>
+          </Form>
+        </CardContent>
+        {recommendations && (
+             <CardFooter className="flex-col items-start gap-4">
+                <Separator />
+                <h3 className="text-2xl font-semibold w-full text-center mt-4">Sizin üçün Tövsiyələr</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+                    {recommendations.map((rec, index) => (
+                        <Card key={index} className="flex flex-col">
+                            <CardHeader>
+                                <Badge variant="secondary" className="w-fit mb-2">{rec.score_range}</Badge>
+                                <CardTitle className="flex items-center gap-2">
+                                   <BookOpen className="h-5 w-5 text-primary"/>
+                                   {rec.specialty_name}
+                                </CardTitle>
+                                <CardDescription className="flex items-center gap-2">
+                                    <University className="h-4 w-4"/>
+                                    {rec.university_name}
+                                </CardDescription>
+                            </CardHeader>
+                            <CardContent className="flex-grow">
+                                <p className="text-sm text-muted-foreground">{rec.justification}</p>
+                            </CardContent>
+                        </Card>
+                    ))}
                 </div>
-             </div>
-
-             <div className="space-y-2">
-                <Label htmlFor="user-select">İstifadəçi seçin (Simulyasiya)</Label>
-                 <Select onValueChange={setSelectedUserId} required>
-                      <SelectTrigger id="user-select">
-                          <SelectValue placeholder="Daxil olmaq üçün bir istifadəçi profili seçin..." />
-                      </SelectTrigger>
-                      <SelectContent>
-                          {mockUsers.map((user) => (
-                              <SelectItem key={user.id} value={user.id}>
-                                 <div className="flex items-center gap-2">
-                                   <span>{user.name}</span>
-                                   <span className="text-xs text-muted-foreground">({user.role})</span>
-                                 </div>
-                              </SelectItem>
-                          ))}
-                      </SelectContent>
-                  </Select>
-             </div>
-             <div className="space-y-2">
-                <Label htmlFor="password">Parol</Label>
-                <Input
-                    id="password"
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-             </div>
-           </div>
-
-
-            <Button type="submit" className="w-full" disabled={isLoading}>
-            {isLoading ? (
-                <div className="flex items-center gap-2">
-                <div className="h-4 w-4 animate-spin rounded-full border-2 border-primary-foreground border-t-transparent"></div>
-                <span>Daxil olunur...</span>
-                </div>
-            ) : (
-                <>
-                <LogIn />
-                Daxil ol
-                </>
-            )}
-            </Button>
-        </form>
-        
-        <p className="mt-8 text-center text-sm text-muted-foreground">
-          &copy; {new Date().getFullYear()} AssetRover. Bütün hüquqlar qorunur.
-        </p>
-      </div>
+            </CardFooter>
+        )}
+      </Card>
     </div>
   );
 }
