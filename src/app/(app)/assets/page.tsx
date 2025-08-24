@@ -814,7 +814,18 @@ export default function AssetsPage() {
             </div>
              <div className="grid grid-cols-4 items-center gap-4">
                 <Label htmlFor="funksiya" className="text-right">Funksiya</Label>
-                <Input id="funksiya" name="funksiya" className="col-span-3" />
+                <Select name="funksiya">
+                    <SelectTrigger className="col-span-3">
+                        <SelectValue placeholder="Funksiya seçin" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="PTZ musahide">PTZ müşahidə</SelectItem>
+                        <SelectItem value="PTZ uz tanima">PTZ üz tanıma</SelectItem>
+                        <SelectItem value="Fiz">Fiz</SelectItem>
+                        <SelectItem value="NTS">NTS</SelectItem>
+                        <SelectItem value="Termal">Termal</SelectItem>
+                    </SelectContent>
+                </Select>
             </div>
              <div className="grid grid-cols-4 items-center gap-4">
                 <Label htmlFor="seriaNomresi" className="text-right">Seria Nömrəsi</Label>
@@ -834,11 +845,30 @@ export default function AssetsPage() {
             </div>
              <div className="grid grid-cols-4 items-center gap-4">
                 <Label htmlFor="adapter" className="text-right">Adapter</Label>
-                <Input id="adapter" name="adapter" className="col-span-3" />
+                <Select name="adapter">
+                    <SelectTrigger className="col-span-3">
+                        <SelectValue placeholder="Adapter seçin" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="yoxdur">Yoxdur</SelectItem>
+                        <SelectItem value="Dom kamera Tandem VU adapter CUV-090S036SP">Dom kamera Tandem VU adapter CUV-090S036SP</SelectItem>
+                        <SelectItem value="Dom Adapter Hikvision TEAC-66-243000V, AC230V,AC24VA3A">Dom Adapter Hikvision TEAC-66-243000V, AC230V,AC24VA3A</SelectItem>
+                        <SelectItem value="POE Injector Adapter">POE Injector Adapter</SelectItem>
+                    </SelectContent>
+                </Select>
             </div>
              <div className="grid grid-cols-4 items-center gap-4">
                 <Label htmlFor="reng" className="text-right">Rəng</Label>
-                <Input id="reng" name="reng" className="col-span-3" />
+                <Select name="reng">
+                    <SelectTrigger className="col-span-3">
+                        <SelectValue placeholder="Rəng seçin" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="ağ">Ağ</SelectItem>
+                        <SelectItem value="boz">Boz</SelectItem>
+                        <SelectItem value="qara">Qara</SelectItem>
+                    </SelectContent>
+                </Select>
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
                 <Label htmlFor="kameraQolu" className="text-right">Kamera Qolu</Label>
