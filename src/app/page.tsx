@@ -49,9 +49,11 @@ export default function InteractiveGuidePage() {
   }, [group]);
 
   React.useEffect(() => {
-    // Reset subgroup when group changes
-    setSubgroup('all');
-  }, [group]);
+    // Reset subgroup when group changes and there are no available subgroups
+    if (availableSubgroups.length === 0) {
+        setSubgroup('all');
+    }
+  }, [group, availableSubgroups]);
 
 
   React.useEffect(() => {
@@ -79,7 +81,7 @@ export default function InteractiveGuidePage() {
       <div className="w-full max-w-7xl">
         <header className="text-center mb-8">
             <h1 className="text-4xl font-bold tracking-tight">İnteraktiv Təhsil Bələdçisi</h1>
-            <p className="text-muted-foreground mt-2">2025-ci il üzrə keçid ballarını kəşf edin</p>
+            <p className="text-muted-foreground mt-2">2024-2025-ci il üzrə keçid ballarını kəşf edin</p>
         </header>
 
         <Card className="mb-8">
@@ -135,7 +137,7 @@ export default function InteractiveGuidePage() {
                             <Select value={subgroup} onValueChange={setSubgroup}>
                                 <SelectTrigger><SelectValue placeholder="Altqrup seçin" /></SelectTrigger>
                                 <SelectContent>
-                                   {group !== 'grp-1' && <SelectItem value="all">Hamısı</SelectItem>}
+                                   <SelectItem value="all">Hamısı</SelectItem>
                                     {availableSubgroups.map(sg => <SelectItem key={sg.id} value={sg.id}>{sg.name}</SelectItem>)}
                                 </SelectContent>
                             </Select>
