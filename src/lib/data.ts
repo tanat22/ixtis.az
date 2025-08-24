@@ -4,6 +4,7 @@ import { specialties as specialtiesG2 } from './data/2024/group2';
 import { specialties as specialtiesG3 } from './data/2024/group3';
 import { specialties as specialtiesG4 } from './data/2024/group4';
 import { specialties as specialtiesG5 } from './data/2024/group5';
+import { specialties as specialtiesCollege11 } from './data/2024/college11';
 
 
 export const years: number[] = [2024, 2023, 2022];
@@ -52,6 +53,60 @@ export const universities: University[] = [
     { id: 'uni-bma', name: 'Hacıbəyov adına Bakı Musiqi Akademiyası' },
     { id: 'uni-amk', name: 'Azərbaycan Milli Konservatoriyası' },
     { id: 'uni-bxa', name: 'Bakı Xoreoqrafiya Akademiyası' },
+    { id: 'uni-azmaliyyekollec', name: 'Azərbaycan Dövlət İqtisad Universitetinin nəznində Azərbaycan Maliyyə-iqtisad Kolleci'},
+    { id: 'uni-bduiqtisadiyyathumanitar', name: 'Bakı Dövlət Universitetinin nəznində İqtisadiyyat və Humanitar Kollec'},
+    { id: 'uni-unecqida', name: 'Azərbaycan Dövlət İqtisad Universitetinin nəznində Qida Sənayesi Kolleci'},
+    { id: 'uni-unecsosialiqtisadi', name: 'Azərbaycan Dövlət İqtisad Universitetinin nəznində Sosial-İqtisadi Kollec'},
+    { id: 'uni-adnsusenayetexnologiya', name: 'Azərbaycan Dövlət Neft və Sənaye Universitetinin nəznində Sənaye və Texnologiya Kolleci'},
+    { id: 'uni-adpupedkollec', name: 'Azərbaycan Dövlət Pedaqoji Universiteti nəznində Azərbaycan Dövlət Pedaqoji Kolleci'},
+    { id: 'uni-azturabitetransport', name: 'Azərbaycan Texniki Universitetinin nəzdində Bakı Dövlət Rabitə və Nəqliyyat Kolleci'},
+    { id: 'uni-baki1tibb', name: '1 nömrəli Bakı Tibb Kolleci'},
+    { id: 'uni-baki2tibb', name: '2 nömrəli Bakı Baza Tibb Kolleci'},
+    { id: 'uni-bxakollec', name: 'Bakı Xoreoqrafiya Akademiyasının orta ixtisas təhsili pilləsi'},
+    { id: 'uni-adimhumanitar', name: 'Azərbaycan Dövlət Mədəniyyət və İncəsənət Universitetinin nəzdində Humanitar Kollec'},
+    { id: 'uni-adraincesenet', name: 'Azərbaycan Dövlət Rəssamlıq Akademiyası nəznində İncəsənət Kolleci'},
+    { id: 'uni-amkmusiqi', name: 'Azərbaycan Milli Konservatoriyası nəznində Musiqi Kolleci'},
+    { id: 'uni-aztutexnikikollec', name: 'Azərbaycan Texniki Universitetinin nəznində Bakı Texniki Kolleci'},
+    { id: 'uni-adnsubakineftenergetika', name: 'Azərbaycan Dövlət Neft və Sənaye Universitetinin nəznində Bakı Neft-Energetika Kolleci'},
+    { id: 'uni-azmiuinsaatkollec', name: 'Azərbaycan Memarlıq və İnşaat Universitetinin nəznində İnşaat Kolleci'},
+    { id: 'uni-addadənizçilik', name: 'Azərbaycan Dövlət Dəniz Akademiyasının nəznində Azərbaycan Dənizçilik Kolleci'},
+    { id: 'uni-naxtibb', name: 'Naxçıvan Tibb Kolleci'},
+    { id: 'uni-naxtexnik', name: 'Naxçıvan Dövlət Texniki Kolleci'},
+    { id: 'uni-gencetibb', name: 'Gəncə Tibb Kolleci'},
+    { id: 'uni-gduregionalkollec', name: 'Gəncə Dövlət Universitetinin nəznində Regional Kollec'},
+    { id: 'uni-qazaxsosialiqtisadi', name: 'Qazax Dövlət Sosial-İqtisadi Kolleci'},
+    { id: 'uni-tovuzsosialiqtisadi', name: 'Tovuz Dövlət Sosial-İqtisadi Kolleci'},
+    { id: 'uni-sumqayittibb', name: 'Ə.Əliyev adına Sumqayıt Tibb Kolleci'},
+    { id: 'uni-sdusumqayitdovlettexniki', name: 'Sumqayıt Dövlət Universitetinin nəznində Sumqayıt Dövlət Texniki Kolleci'},
+    { id: 'uni-amksumqayitmusiqi', name: 'Azərbaycan Milli Konservatoriyası nəznində Sumqayıt Musiqi Kolleci'},
+    { id: 'uni-qubasosialiqtisadi', name: 'Quba Dövlət Sosial-İqtisadi Kolleci'},
+    { id: 'uni-qubatibb', name: 'Quba Tibb Kolleci'},
+    { id: 'uni-samaxiregional', name: 'Şamaxı Dövlət Regional Kolleci'},
+    { id: 'uni-mingecevirtibb', name: 'Mingəçevir Tibb Kolleci'},
+    { id: 'uni-mingecevirturizm', name: 'Mingəçevir Turizm Kolleci'},
+    { id: 'uni-sekitibb', name: 'Şəki Tibb Kolleci'},
+    { id: 'uni-sekiregional', name: 'Şəki Dövlət Regional Kolleci'},
+    { id: 'uni-susahumanitar', name: 'Şuşa Humanitar Kolleci'},
+    { id: 'uni-agdamsosialiqtisadi', name: 'Ağdam Dövlət Sosial-İqtisadi Kolleci'},
+    { id: 'uni-agdammusiqi', name: 'Ağdam Musiqi Kolleci'},
+    { id: 'uni-agdashumanitar', name: 'Ağdaş Dövlət Humanitar Kolleci'},
+    { id: 'uni-agcabedipedaqoji', name: 'Ağcabədi Pedaqoji Kolleci'},
+    { id: 'uni-sirvansosialiqtisadi', name: 'Şirvan Dövlət İqtisadiyyat və Humanitar Kolleci'},
+    { id: 'uni-berdeidareetmetexnologiya', name: 'Bərdə Dövlət İdarəetmə və Texnologiya Kolleci'},
+    { id: 'uni-sabirabadsosialiqtisadi', name: 'Sabirabad Dövlət Sosial-İqtisadi Kolleci'},
+    { id: 'uni-goycayidareetmetexnologiya', name: 'Göyçay Dövlət İdarəetmə və Texnologiya Kolleci'},
+    { id: 'uni-lenkerantibb', name: 'Lənkəran Tibb Kolleci'},
+    { id: 'uni-ldusosialaqrartexnoloji', name: 'Lənkəran Dövlət Universitetinin nəznində Sosial və Aqrar-Texnoloji Kollec'},
+    { id: 'uni-astarapedaqoji', name: 'Astara Pedaqoji Kolleci'},
+    { id: 'uni-ismayillihumanitartexnologiya', name: 'İsmayıllı Dövlət Humanitar və Texnologiya Kolleci'},
+    { id: 'uni-saatlitibb', name: 'Saatlı Tibb Kolleci'},
+    { id: 'uni-celilabadtibb', name: 'Cəlilabad Tibb Kolleci'},
+    { id: 'uni-masalliregional', name: 'Masallı Dövlət Regional Kolleci'},
+    { id: 'uni-bakıilahiyyat', name: 'Azərbaycan Respublikası Dini Qurumlarla İş üzrə Dövlət Komitəsinin Bakı ilahiyyat institutunun yanında Bakı ilahiyyat Kolleci'},
+    { id: 'uni-adauagrar', name: 'Azərbaycan Dövlət Aqrar Universitetinin nəznində Gəncə Dövlət Aqrar Kolleci'},
+    { id: 'uni-bakibizneskooperasiya', name: 'Bakı Biznes və Kooperasiya Kolleci'},
+    { id: 'uni-odlaryurdukollec', name: 'Odlar Yurdu Kolleci'},
+    { id: 'uni-bakiavrasyakollec', name: 'Bakı Avrasiya Kolleci'},
 ];
 
 export const groups: Group[] = [
@@ -60,6 +115,7 @@ export const groups: Group[] = [
     { id: 'grp-3', name: 'III Qrup' },
     { id: 'grp-4', name: 'IV Qrup' },
     { id: 'grp-5', name: 'V Qrup' },
+    { id: 'none', name: 'Qrup Tətbiq Edilmir' },
 ];
 
 export const subgroups: Subgroup[] = [
@@ -85,4 +141,5 @@ export const specialties = [
     ...specialtiesG3,
     ...specialtiesG4,
     ...specialtiesG5,
+    ...specialtiesCollege11,
 ];
