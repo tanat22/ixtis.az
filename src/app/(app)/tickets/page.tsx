@@ -42,11 +42,13 @@ import { useIsMobile } from '@/hooks/use-mobile';
 import { useToast } from '@/hooks/use-toast';
 import { mockTickets, mockAssets, mockUsers } from '@/lib/data';
 import type { Ticket } from '@/lib/types';
+import { useUser } from '@/context/user-context';
 
 
 export default function TicketsPage() {
   const [tickets, setTickets] = React.useState<Ticket[]>(mockTickets);
   const [isNewTicketDialogOpen, setIsNewTicketDialogOpen] = React.useState(false);
+  const { user: currentUser } = useUser();
   const isMobile = useIsMobile();
   const { toast } = useToast();
   const [isClient, setIsClient] = React.useState(false);
@@ -125,6 +127,17 @@ export default function TicketsPage() {
       default: return 'outline';
     }
   };
+
+  const filteredTickets = React.useMemo(() => {
+    if (!currentUser) return [];
+    if (currentUser.role === 'Super Admin' || currentUser.region === 'Bütün') {
+        return tickets;
+    }
+    return tickets.filter(ticket => {
+        const asset = mockAssets.find(a => a.id === ticket.assetId);
+        return asset && asset.region === currentUser.region;
+    });
+  }, [tickets, currentUser]);
 
 
   return (
@@ -206,7 +219,7 @@ export default function TicketsPage() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {tickets.map((ticket) => {
+            {filteredTickets.map((ticket) => {
               const asset = mockAssets.find(a => a.id === ticket.assetId);
               const user = mockUsers.find(u => u.id === ticket.assignedTo);
               return (
