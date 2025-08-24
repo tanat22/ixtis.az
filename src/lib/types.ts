@@ -8,6 +8,12 @@ export interface Group {
     name: string;
 }
 
+export interface Subgroup {
+    id: string;
+    groupId: string;
+    name: string;
+}
+
 export interface Level {
     id: string;
     name: string;
@@ -24,7 +30,8 @@ export interface Specialty {
     name: string;
     universityId: string;
     groupId: string;
-    level: string; // e.g., 'bachelor', 'master'
+    subgroupId?: string; // Optional: For groups like I and III
+    level: 'bachelor' | 'college';
     educationForm: 'əyani' | 'qiyabi';
     educationLanguage: 'az' | 'ru' | 'en' | 'tr';
     paymentType: 'dövlət sifarişli' | 'ödənişli';

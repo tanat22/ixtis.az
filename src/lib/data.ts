@@ -1,4 +1,4 @@
-import type { University, Group, Level, EducationForm } from './types';
+import type { University, Group, Subgroup, Level, EducationForm } from './types';
 import { specialties as specialtiesG1 } from './data/2024/group1';
 import { specialties as specialtiesG2 } from './data/2024/group2';
 import { specialties as specialtiesG3 } from './data/2024/group3';
@@ -44,13 +44,12 @@ export const universities: University[] = [
     { id: 'uni-oyu', name: '“Odlar Yurdu ” Universiteti' },
     { id: 'uni-bbu', name: 'Bakı Biznes Universiteti' },
     { id: 'uni-adim', name: 'Azərbaycan Dövlət Mədəniyyət və İncəsənət Universiteti' },
-    { id: 'uni-idman', name: 'Azərbaycan İdman Akademiyası' },
+    { id: 'uni-idman', name: 'Azərbaycan Dövlət Bədən Tərbiyəsi və İdman Akademiyası' },
     { id: 'uni-aesma', name: 'Azərbaycan Əmək və Sosial Münasibətlər Akademiyası' },
     { id: 'uni-adu', name: 'Azərbaycan Dillər Universiteti' },
     { id: 'uni-bsu', name: 'Bakı Slavyan Universiteti' },
     { id: 'uni-ai', name: 'Azərbaycan İlahiyyat İnstitutu' },
-    { id: 'uni-atu-gəncə', name: 'Azərbaycan Texnologiya Universiteti (Gəncə şəhəri)' },
-    { id: 'uni-bma', name: 'Bakı Musiqi Akademiyası' },
+    { id: 'uni-bma', name: 'Hacıbəyov adına Bakı Musiqi Akademiyası' },
     { id: 'uni-amk', name: 'Azərbaycan Milli Konservatoriyası' },
     { id: 'uni-bxa', name: 'Bakı Xoreoqrafiya Akademiyası' },
 ];
@@ -63,9 +62,15 @@ export const groups: Group[] = [
     { id: 'grp-5', name: 'V Qrup' },
 ];
 
+export const subgroups: Subgroup[] = [
+    { id: 'sub-1-ri', groupId: 'grp-1', name: 'Riyaziyyat-İnformatika (Rİ)' },
+    { id: 'sub-1-rk', groupId: 'grp-1', name: 'Riyaziyyat-Kimya (RK)' },
+    { id: 'sub-3-dt', groupId: 'grp-3', name: 'Dil-Tarix (DT)' },
+    { id: 'sub-3-tc', groupId: 'grp-3', name: 'Tarix-Coğrafiya (TC)' },
+];
+
 export const levels: Level[] = [
     { id: 'bachelor', name: 'Bakalavr' },
-    { id: 'master', name: 'Magistratura' },
     { id: 'college', name: 'Kollec (Subbakalavr)' },
 ];
 

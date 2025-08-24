@@ -27,7 +27,7 @@ import {
     CardTitle,
   } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { specialties, universities, groups, levels, years, educationForms } from '@/lib/data';
+import { specialties, universities, groups, subgroups, levels, years, educationForms } from '@/lib/data';
 import type { Specialty } from '@/lib/types';
 
 export default function InteractiveGuidePage() {
@@ -36,25 +36,42 @@ export default function InteractiveGuidePage() {
   const [level, setLevel] = React.useState('all');
   const [university, setUniversity] = React.useState('all');
   const [group, setGroup] = React.useState('all');
+  const [subgroup, setSubgroup] = React.useState('all');
   const [educationForm, setEducationForm] = React.useState('all');
   const [search, setSearch] = React.useState('');
   const [score, setScore] = React.useState(700);
 
+  const availableSubgroups = React.useMemo(() => {
+    if (group === 'grp-1' || group === 'grp-3') {
+      return subgroups.filter(sg => sg.groupId === group);
+    }
+    return [];
+  }, [group]);
+
+  React.useEffect(() => {
+    // Reset subgroup when group changes
+    setSubgroup('all');
+  }, [group]);
+
+
   React.useEffect(() => {
     const results = specialties.filter(s => {
         const universityName = universities.find(u => u.id === s.universityId)?.name || '';
+        const hasSubgroup = s.groupId === 'grp-1' || s.groupId === 'grp-3';
+
         return (
             (year === 'all' || s.year.toString() === year) &&
             (level === 'all' || s.level === level) &&
             (university === 'all' || s.universityId === university) &&
             (group === 'all' || s.groupId === group) &&
             (educationForm === 'all' || s.educationForm === educationForm) &&
+            (!hasSubgroup || subgroup === 'all' || s.subgroupId === subgroup) &&
             (s.name.toLowerCase().includes(search.toLowerCase()) || universityName.toLowerCase().includes(search.toLowerCase())) &&
             (s.score ? s.score <= score : true)
         )
     });
     setFilteredSpecialties(results);
-  }, [year, level, university, group, educationForm, search, score]);
+  }, [year, level, university, group, subgroup, educationForm, search, score]);
 
 
   return (
@@ -71,7 +88,7 @@ export default function InteractiveGuidePage() {
                 <CardDescription>Axtarışınızı dəqiqləşdirmək üçün filtrlərdən istifadə edin.</CardDescription>
             </CardHeader>
             <CardContent>
-                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 items-end">
+                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 items-end">
                     <div className="space-y-2">
                         <label className="text-sm font-medium">İl</label>
                         <Select value={year} onValueChange={setYear}>
@@ -112,6 +129,18 @@ export default function InteractiveGuidePage() {
                             </SelectContent>
                         </Select>
                     </div>
+                    {availableSubgroups.length > 0 && (
+                        <div className="space-y-2">
+                            <label className="text-sm font-medium">Altqrup</label>
+                            <Select value={subgroup} onValueChange={setSubgroup}>
+                                <SelectTrigger><SelectValue placeholder="Altqrup seçin" /></SelectTrigger>
+                                <SelectContent>
+                                   {group !== 'grp-1' && <SelectItem value="all">Hamısı</SelectItem>}
+                                    {availableSubgroups.map(sg => <SelectItem key={sg.id} value={sg.id}>{sg.name}</SelectItem>)}
+                                </SelectContent>
+                            </Select>
+                        </div>
+                    )}
                     <div className="space-y-2">
                         <label className="text-sm font-medium">Tədris Forması</label>
                          <Select value={educationForm} onValueChange={setEducationForm}>
