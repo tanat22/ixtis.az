@@ -1185,7 +1185,15 @@ export default function AssetsPage() {
                 </div>
                 <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="adapter" className="text-right">Adapter</Label>
-                    <Input id="adapter" name="adapter" className="col-span-3" />
+                    <Select name="adapter">
+                        <SelectTrigger className="col-span-3">
+                            <SelectValue placeholder="Adapter seçin" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="yoxdur">Yoxdur</SelectItem>
+                            <SelectItem value="Cisco Power Adapter PWR-IE 170W-PC-AC">Cisco Power Adapter PWR-IE 170W-PC-AC</SelectItem>
+                        </SelectContent>
+                    </Select>
                 </div>
                 <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="seriaNomresi" className="text-right">Seria Nömrəsi</Label>
