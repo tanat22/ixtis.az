@@ -12,7 +12,7 @@ export const mockNodes: TasinmazEmlak[] = [
     { id: 'ts-1', type: 'Təhlükəsizlik Nöqtəsi', name: 'TŞ4-952', seher: 'Bakı', rayon: 'Nəsimi', layihe: '970', dataMenbeyi: 'Optik', koordinatX: '49.8492', koordinatY: '40.3792', photo: null },
     { id: 'ts-2', type: 'Alt Keçid', name: 'Sumqayıt Alt Keçid 1', seher: 'Sumqayıt', layihe: 'Yer altı keçidlər', dataMenbeyi: 'Anten', koordinatX: '49.6676', koordinatY: '40.5917', photo: null },
     { id: 'ts-3', type: 'Ticarət Mərkəzi', name: 'Gənclik Mall', seher: 'Bakı', rayon: 'Nərimanov', layihe: 'Ticarət Mərkəzləri', dataMenbeyi: 'Optik', koordinatX: '49.8532', koordinatY: '40.3981', photo: null },
-    { id: 'ts-4', type: 'Metro', name: '28 May Metrosu', seher: 'Bakı', rayon: 'Nəsimi', layihe: 'Metro Stansiyaları', dataMenbeyi: 'Optik', koordinatX: '49.8499', koordinatY: '40.3798', photo: null },
+    { id: 'ts-4', type: 'Metro', name: '28 May Metrosu', stansiya: '28 May', seher: 'Bakı', rayon: 'Nəsimi', layihe: 'Metro Stansiyaları', dataMenbeyi: 'Optik', koordinatX: '49.8499', koordinatY: '40.3798', photo: null },
 ];
 
 
@@ -276,3 +276,32 @@ export const cityRayons: { [key: string]: string[] } = {
   "Naxçıvan": ["Babək", "Culfa", "Kəngərli", "Ordubad", "Sədərək", "Şahbuz", "Şərur"],
   // Add other cities with their specific rayons if needed
 };
+
+export const bakuMetroStations: { name: string; rayon: string }[] = [
+    { name: 'İçərişəhər', rayon: 'Səbail' },
+    { name: 'Sahil', rayon: 'Səbail' },
+    { name: '28 May', rayon: 'Nəsimi' },
+    { name: 'Gənclik', rayon: 'Nərimanov' },
+    { name: 'Nəriman Nərimanov', rayon: 'Nərimanov' },
+    { name: 'Bakmil', rayon: 'Nərimanov' },
+    { name: 'Ulduz', rayon: 'Nərimanov' },
+    { name: 'Koroğlu', rayon: 'Nizami' },
+    { name: 'Qara Qarayev', rayon: 'Nizami' },
+    { name: 'Neftçilər', rayon: 'Nizami' },
+    { name: 'Xalqlar Dostluğu', rayon: 'Nizami' },
+    { name: 'Əhmədli', rayon: 'Xətai' },
+    { name: 'Həzi Aslanov', rayon: 'Xətai' },
+    { name: 'Dərnəgül', rayon: 'Binəqədi' },
+    { name: 'Azadlıq prospekti', rayon: 'Binəqədi' },
+    { name: 'Nəsimi', rayon: 'Nəsimi' },
+    { name: 'Memar Əcəmi', rayon: 'Nəsimi' },
+    { name: '20 Yanvar', rayon: 'Nəsimi' },
+    { name: 'İnşaatçılar', rayon: 'Yasamal' },
+    { name: 'Elmlər Akademiyası', rayon: 'Yasamal' },
+    { name: 'Nizami Gəncəvi', rayon: 'Yasamal' },
+    { name: 'Xətai', rayon: 'Xətai' },
+    { name: 'Cəfər Cabbarlı', rayon: 'Nəsimi' },
+    { name: 'Avtovağzal', rayon: 'Binəqədi' },
+    { name: '8 Noyabr', rayon: 'Nəsimi' },
+    { name: 'Xocəsən', rayon: 'Binəqədi' }
+];

@@ -22,6 +22,7 @@ export type TasinmazEmlak = {
     | 'Metro' 
     | 'Biznes Mərkəzi';
   name: string;
+  stansiya?: string;
   aktivlesmeTarixi?: string;
   seher?: string;
   rayon?: string;

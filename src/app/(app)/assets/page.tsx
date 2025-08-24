@@ -41,10 +41,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Textarea } from '@/components/ui/textarea';
 import Image from 'next/image';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
-import { mockAssets, mockUsers, mockNodes, azerbaijanCities, cityRayons } from '@/lib/data';
+import { mockAssets, mockUsers, mockNodes, azerbaijanCities, cityRayons, bakuMetroStations } from '@/lib/data';
 import type { Asset, DirekAsset, DataKabelAsset, ElektrikKabelAsset, KameraAsset, QutuAsset, SwitchAsset, TasinmazEmlak } from '@/lib/types';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 
 type NodeFilterState = {
@@ -369,6 +370,7 @@ export default function AssetsPage() {
         id: `ts-${Date.now()}`,
         name: formData.get('name') as string,
         type: formData.get('type') as TasinmazEmlak['type'],
+        stansiya: formData.get('stansiya') as string | undefined,
         aktivlesmeTarixi: formData.get('aktivlesmeTarixi') as string,
         seher: formData.get('seher') as string,
         rayon: formData.get('rayon') as string,
@@ -463,8 +465,24 @@ export default function AssetsPage() {
     setNodeFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleNodeFormSelectChange = (name: keyof TasinmazEmlak, value: string) => {
-     setNodeFormData(prev => ({ ...prev, [name]: value }));
+  const handleNodeFormSelectChange = (name: keyof TasinmazEmlak, value: any) => {
+     let newState: Partial<TasinmazEmlak> = { [name]: value };
+     if (name === 'type') {
+         if (value === 'Metro') {
+             newState.seher = 'Bakı';
+             newState.rayon = undefined;
+             newState.stansiya = undefined;
+         } else {
+             newState.stansiya = undefined;
+         }
+     }
+     if (name === 'stansiya') {
+        const station = bakuMetroStations.find(s => s.name === value);
+        if (station) {
+            newState.rayon = station.rayon;
+        }
+     }
+     setNodeFormData(prev => ({ ...prev, ...newState }));
   };
 
   const renderAssetDetails = (asset: Asset) => {
@@ -643,11 +661,14 @@ export default function AssetsPage() {
                         <form onSubmit={handleAddNode}>
                             <DialogHeader><DialogTitle>Yeni Təhlükəsizlik Nöqtəsi Yarat</DialogTitle><DialogDescription>Zəhmət olmasa, yeni nöqtənin təfərrüatlarını daxil edin.</DialogDescription></DialogHeader>
                             <div className="grid gap-4 py-4">
-                                <div className="grid grid-cols-4 items-center gap-4"><Label htmlFor="type" className="text-right">Növ</Label><Select name="type" required onValueChange={(value) => handleNodeFormSelectChange('type', value)}><SelectTrigger className="col-span-3"><SelectValue placeholder="Nöqtə növünü seçin" /></SelectTrigger><SelectContent><SelectItem value="Təhlükəsizlik Nöqtəsi">Təhlükəsizlik Nöqtəsi (TŞ)</SelectItem><SelectItem value="Alt Keçid">Alt Keçid (AK)</SelectItem><SelectItem value="Üst Keçid">Üst Keçid (UK)</SelectItem><SelectItem value="Məscid">Məscid</SelectItem><SelectItem value="Ticarət Mərkəzi">Ticarət Mərkəzi (TM)</SelectItem><SelectItem value="ASAN">ASAN</SelectItem><SelectItem value="İdman və Konsert">İdman və Konsert (İK)</SelectItem><SelectItem value="POÇT">POÇT</SelectItem><SelectItem value="Metro">Metro</SelectItem><SelectItem value="Biznes Mərkəzi">Biznes Mərkəzi (BM)</SelectItem></SelectContent></Select></div>
+                                <div className="grid grid-cols-4 items-center gap-4"><Label htmlFor="type" className="text-right">Növ</Label><Select name="type" required value={nodeFormData.type} onValueChange={(value) => handleNodeFormSelectChange('type', value)}><SelectTrigger className="col-span-3"><SelectValue placeholder="Nöqtə növünü seçin" /></SelectTrigger><SelectContent><SelectItem value="Təhlükəsizlik Nöqtəsi">Təhlükəsizlik Nöqtəsi (TŞ)</SelectItem><SelectItem value="Alt Keçid">Alt Keçid (AK)</SelectItem><SelectItem value="Üst Keçid">Üst Keçid (UK)</SelectItem><SelectItem value="Məscid">Məscid</SelectItem><SelectItem value="Ticarət Mərkəzi">Ticarət Mərkəzi (TM)</SelectItem><SelectItem value="ASAN">ASAN</SelectItem><SelectItem value="İdman və Konsert">İdman və Konsert (İK)</SelectItem><SelectItem value="POÇT">POÇT</SelectItem><SelectItem value="Metro">Metro</SelectItem><SelectItem value="Biznes Mərkəzi">Biznes Mərkəzi (BM)</SelectItem></SelectContent></Select></div>
                                 <div className="grid grid-cols-4 items-center gap-4"><Label htmlFor="name" className="text-right">Ad (TŞ Nöqtəsi)</Label><Input id="name" name="name" className="col-span-3" required /></div>
+                                {nodeFormData.type === 'Metro' && (
+                                     <div className="grid grid-cols-4 items-center gap-4"><Label htmlFor="stansiya" className="text-right">Stansiya</Label><Select name="stansiya" required value={nodeFormData.stansiya} onValueChange={(value) => handleNodeFormSelectChange('stansiya', value)}><SelectTrigger className="col-span-3"><SelectValue placeholder="Metro stansiyasını seçin" /></SelectTrigger><SelectContent>{bakuMetroStations.map(station => <SelectItem key={station.name} value={station.name}>{station.name}</SelectItem>)}</SelectContent></Select></div>
+                                )}
                                 <div className="grid grid-cols-4 items-center gap-4"><Label htmlFor="aktivlesmeTarixi" className="text-right">Aktivləşmə Tarixi</Label><Input id="aktivlesmeTarixi" name="aktivlesmeTarixi" type="date" className="col-span-3" /></div>
-                                <div className="grid grid-cols-4 items-center gap-4"><Label htmlFor="seher" className="text-right">Şəhər</Label><Select name="seher" onValueChange={(value) => handleNodeFormSelectChange('seher', value)}><SelectTrigger className="col-span-3"><SelectValue placeholder="Şəhər seçin" /></SelectTrigger><SelectContent>{azerbaijanCities.map(city => <SelectItem key={city} value={city}>{city}</SelectItem>)}</SelectContent></Select></div>
-                                <div className="grid grid-cols-4 items-center gap-4"><Label htmlFor="rayon" className="text-right">Rayon</Label><Select name="rayon" value={nodeFormData.rayon} onValueChange={(value) => handleNodeFormSelectChange('rayon', value)} disabled={!availableRayons.length}><SelectTrigger className="col-span-3"><SelectValue placeholder="Rayon seçin" /></SelectTrigger><SelectContent>{availableRayons.map(rayon => <SelectItem key={rayon} value={rayon}>{rayon}</SelectItem>)}</SelectContent></Select></div>
+                                <div className="grid grid-cols-4 items-center gap-4"><Label htmlFor="seher" className="text-right">Şəhər</Label><Select name="seher" value={nodeFormData.seher} onValueChange={(value) => handleNodeFormSelectChange('seher', value)} disabled={nodeFormData.type === 'Metro'}><SelectTrigger className="col-span-3"><SelectValue placeholder="Şəhər seçin" /></SelectTrigger><SelectContent>{azerbaijanCities.map(city => <SelectItem key={city} value={city}>{city}</SelectItem>)}</SelectContent></Select></div>
+                                <div className="grid grid-cols-4 items-center gap-4"><Label htmlFor="rayon" className="text-right">Rayon</Label><Select name="rayon" value={nodeFormData.rayon} onValueChange={(value) => handleNodeFormSelectChange('rayon', value)} disabled={!availableRayons.length || nodeFormData.type === 'Metro'}><SelectTrigger className="col-span-3"><SelectValue placeholder="Rayon seçin" /></SelectTrigger><SelectContent>{availableRayons.map(rayon => <SelectItem key={rayon} value={rayon}>{rayon}</SelectItem>)}</SelectContent></Select></div>
                                 <div className="grid grid-cols-4 items-center gap-4"><Label htmlFor="koordinat" className="text-right">Koordinatlar (X, Y)</Label><div className="col-span-3 flex items-center gap-2"><Input id="koordinatX" name="koordinatX" placeholder="Uzunluq (X)" value={nodeFormData.koordinatX || ''} onChange={handleNodeFormChange} /><Input id="koordinatY" name="koordinatY" placeholder="Enlik (Y)" value={nodeFormData.koordinatY || ''} onChange={handleNodeFormChange} /><Button type="button" variant="outline" size="icon" onClick={getCoordinates}><LocateFixed className="h-4 w-4" /></Button></div></div>
                                 <div className="grid grid-cols-4 items-center gap-4"><Label htmlFor="layihe" className="text-right">Layihə</Label><Select name="layihe" onValueChange={(value) => handleNodeFormSelectChange('layihe', value)}><SelectTrigger className="col-span-3"><SelectValue placeholder="Layihə seçin və ya yazın" /></SelectTrigger><SelectContent>{existingProjects.map(proj => <SelectItem key={proj} value={proj}>{proj}</SelectItem>)}</SelectContent></Select></div>
                                 <div className="grid grid-cols-4 items-center gap-4"><Label htmlFor="dataMenbeyi" className="text-right">Data Mənbəyi</Label><Select name="dataMenbeyi" onValueChange={(value) => handleNodeFormSelectChange('dataMenbeyi', value as any)}><SelectTrigger className="col-span-3"><SelectValue placeholder="Data mənbəyini seçin" /></SelectTrigger><SelectContent><SelectItem value="Optik">Optik</SelectItem><SelectItem value="Anten">Anten</SelectItem><SelectItem value="Sim nömrə">Sim nömrə</SelectItem><SelectItem value="Digər">Digər</SelectItem></SelectContent></Select></div>
@@ -671,7 +692,7 @@ export default function AssetsPage() {
         <CardContent>
             <Table>
                 <TableHeader><TableRow><TableHead>Ad</TableHead><TableHead>Növ</TableHead><TableHead>Region</TableHead><TableHead>Layihə</TableHead></TableRow></TableHeader>
-                <TableBody>{filteredNodes.length > 0 ? (filteredNodes.map((node) => (<TableRow key={node.id} onClick={() => setSelectedNode(node)} className="cursor-pointer"><TableCell className="font-medium">{node.name}</TableCell><TableCell>{node.type}</TableCell><TableCell>{node.seher ? `${node.seher}${node.rayon ? `, ${node.rayon}` : ''}` : 'N/A'}</TableCell><TableCell>{node.layihe}</TableCell></TableRow>))) : (<TableRow><TableCell colSpan={4} className="h-24 text-center">Filtrlərə uyğun nəticə tapılmadı.</TableCell></TableRow>)}</TableBody>
+                <TableBody>{filteredNodes.length > 0 ? (filteredNodes.map((node) => (<TableRow key={node.id} onClick={() => setSelectedNode(node)} className="cursor-pointer"><TableCell className="font-medium">{node.name}</TableCell><TableCell>{node.stansiya || node.type}</TableCell><TableCell>{node.seher ? `${node.seher}${node.rayon ? `, ${node.rayon}` : ''}` : 'N/A'}</TableCell><TableCell>{node.layihe}</TableCell></TableRow>))) : (<TableRow><TableCell colSpan={4} className="h-24 text-center">Filtrlərə uyğun nəticə tapılmadı.</TableCell></TableRow>)}</TableBody>
             </Table>
         </CardContent>
     </Card>
@@ -690,6 +711,7 @@ export default function AssetsPage() {
     return (
         <Sheet open={isDetailSheetOpen} onOpenChange={setIsDetailSheetOpen}>
             <SheetContent className="w-full sm:max-w-lg">
+              <ScrollArea className="h-full pr-6">
                 <SheetHeader>
                     <SheetTitle>{asset.name} - Detallar</SheetTitle>
                     <SheetDescription>{asset.type} tipli assetin ətraflı məlumatları.</SheetDescription>
@@ -705,17 +727,19 @@ export default function AssetsPage() {
                     
                     {fields.map(([key, value]) => {
                         if (value === null || value === undefined || value === '') return null;
+                        const formattedKey = key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
                         return (
                              <div key={key} className="flex items-center justify-between rounded-lg border p-3">
-                                <span className="font-medium text-sm capitalize">{key.replace(/([A-Z])/g, ' $1')}</span>
+                                <span className="font-medium text-sm capitalize">{formattedKey}</span>
                                 <span>{String(value)}</span>
                             </div>
                         )
                     })}
                 </div>
-                 <SheetFooter>
+                 <SheetFooter className="sticky bottom-0 bg-background py-4">
                     <Button variant="outline" onClick={() => { handleOpenAssetForm(asset); setIsDetailSheetOpen(false); }}><Pencil className="mr-2 h-4 w-4" /> Redaktə et</Button>
                 </SheetFooter>
+                </ScrollArea>
             </SheetContent>
         </Sheet>
     )
@@ -766,10 +790,11 @@ export default function AssetsPage() {
                                     <SelectTrigger className="col-span-3"><SelectValue placeholder="Asset növünü seçin" /></SelectTrigger>
                                     <SelectContent>
                                         {/* Rule: Only TS nodes can have a pole, and only one. */}
-                                        {(selectedNode.type === 'Təhlükəsizlik Nöqtəsi' && !nodeHasPole) && <SelectItem value="Dirək">Dirək</SelectItem>}
-                                        
+                                        {selectedNode.type === 'Təhlükəsizlik Nöqtəsi' && !nodeHasPole && <SelectItem value="Dirək">Dirək</SelectItem>}
+                                        {selectedNode.type !== 'Təhlükəsizlik Nöqtəsi' && !['Alt Keçid', 'Üst Keçid', 'Metro'].includes(selectedNode.type) && <SelectItem value="Dirək">Dirək</SelectItem>}
+
                                         {/* Rule: TS nodes can only have one box. Other nodes can have multiple boxes. */}
-                                        {(selectedNode.type === 'Təhlükəsizlik Nöqtəsi' && !nodeHasBox) && <SelectItem value="Qutu">Qutu</SelectItem>}
+                                        {selectedNode.type === 'Təhlükəsizlik Nöqtəsi' && !nodeHasBox && <SelectItem value="Qutu">Qutu</SelectItem>}
                                         {selectedNode.type !== 'Təhlükəsizlik Nöqtəsi' && <SelectItem value="Qutu">Qutu</SelectItem>}
 
                                         {/* Other assets can be added freely */}
