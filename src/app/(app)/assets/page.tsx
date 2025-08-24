@@ -481,6 +481,12 @@ export default function AssetsPage() {
         "Switch Hikvision DS-3E2510P POE", "8100", "GS950"
     ];
 
+    const sfpModules = [
+        "Allied Telesis 1310/1490", "Allied Telesis 1490/1310", "Huawei 1310/1490",
+        "Huawei 1490/1310", "Hikvision 1330/1550", "Hikvision 1550/1330",
+        "İntellinet 1330", "İntellinet 1550", "İnnova 1310/1490", "İnnova 1490/1310"
+    ];
+
     const commonFields = (
         <>
             <div className="grid grid-cols-4 items-center gap-4">
@@ -1249,7 +1255,14 @@ export default function AssetsPage() {
                 </div>
                  <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="sfpModul" className="text-right">SFP Modul</Label>
-                    <Input id="sfpModul" name="sfpModul" className="col-span-3" />
+                    <Select name="sfpModul">
+                        <SelectTrigger className="col-span-3">
+                            <SelectValue placeholder="SFP Modul seçin" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            {sfpModules.map(modul => <SelectItem key={modul} value={modul}>{modul}</SelectItem>)}
+                        </SelectContent>
+                    </Select>
                 </div>
                  <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="ups" className="text-right">UPS</Label>
