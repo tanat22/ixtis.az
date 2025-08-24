@@ -1,13 +1,16 @@
 'use client';
 
 import * as React from 'react';
-import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
-import { Box, Ticket, Users, FileClock } from 'lucide-react';
-import { mockAssets, mockTickets, mockUsers, mockAuditLogs } from '@/lib/data';
+import { Box, Ticket, Users, FileClock, ChevronLeft } from 'lucide-react';
+import { mockAssets, mockTickets, mockUsers, mockAuditLogs, mockNodes } from '@/lib/data';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import type { Asset } from '@/lib/types';
+
 
 const FormattedDate = ({ timestamp }: { timestamp: string }) => {
   const [formattedDate, setFormattedDate] = React.useState('');
@@ -25,29 +28,121 @@ const FormattedDate = ({ timestamp }: { timestamp: string }) => {
 };
 
 export default function DashboardPage() {
-  const assetData = mockAssets.reduce((acc, asset) => {
-    const existing = acc.find(item => item.type === asset.type);
-    if (existing) {
-      existing.count++;
-    } else {
-      acc.push({ type: asset.type, count: 1 });
-    }
-    return acc;
-  }, [] as { type: string; count: number }[]);
-
-  const chartConfig = {
-    count: {
-      label: 'Assetlər',
-      color: 'hsl(var(--primary))',
-    },
-  };
-
-  const recentLogs = mockAuditLogs.slice(0, 5);
   const [isClient, setIsClient] = React.useState(false);
+  const [chartView, setChartView] = React.useState<'overview' | 'regional'>('overview');
+  const [selectedAssetType, setSelectedAssetType] = React.useState<Asset['type'] | null>(null);
 
   React.useEffect(() => {
     setIsClient(true);
   }, []);
+
+  const assetData = React.useMemo(() => {
+    return mockAssets.reduce((acc, asset) => {
+        const existing = acc.find(item => item.type === asset.type);
+        if (existing) {
+        existing.count++;
+        } else {
+        acc.push({ type: asset.type, count: 1 });
+        }
+        return acc;
+    }, [] as { type: string; count: number }[]);
+  }, []);
+
+  const regionalAssetData = React.useMemo(() => {
+    if (!selectedAssetType) return [];
+    
+    const filteredAssets = mockAssets.filter(asset => asset.type === selectedAssetType);
+    
+    return filteredAssets.reduce((acc, asset) => {
+        const node = mockNodes.find(n => n.id === asset.nodeId);
+        const region = node?.seher || 'Naməlum';
+        const existingRegion = acc.find(item => item.region === region);
+        if(existingRegion) {
+            existingRegion.count++;
+        } else {
+            acc.push({ region: region, count: 1 });
+        }
+        return acc;
+    }, [] as { region: string; count: number }[]);
+
+  }, [selectedAssetType]);
+
+
+  const chartConfig = {
+    count: {
+      label: 'Say',
+      color: 'hsl(var(--primary))',
+    },
+  };
+
+  const handleBarClick = (data: any) => {
+    if (data && data.activePayload && data.activePayload[0]) {
+      const payload = data.activePayload[0].payload;
+      setSelectedAssetType(payload.type);
+      setChartView('regional');
+    }
+  };
+  
+  const handleBackClick = () => {
+    setChartView('overview');
+    setSelectedAssetType(null);
+  }
+
+  const recentLogs = mockAuditLogs.slice(0, 5);
+
+
+  const renderChart = () => {
+    if (chartView === 'regional') {
+      return (
+        <>
+            <div className="flex items-center gap-2 mb-4">
+                 <Button variant="ghost" size="icon" onClick={handleBackClick}>
+                    <ChevronLeft className="h-4 w-4" />
+                 </Button>
+                 <div>
+                    <CardTitle>{selectedAssetType} Paylanması</CardTitle>
+                    <CardDescription>Seçilmiş asset növünün regionlar üzrə sayı.</CardDescription>
+                 </div>
+            </div>
+            <ChartContainer config={chartConfig} className="h-[300px] w-full">
+              <BarChart accessibilityLayer data={regionalAssetData}>
+                <CartesianGrid vertical={false} />
+                <XAxis dataKey="region" tickLine={false} tickMargin={10} axisLine={false} />
+                <YAxis dataKey="count" />
+                <ChartTooltip
+                  cursor={false}
+                  content={<ChartTooltipContent indicator="dot" />}
+                />
+                <Bar dataKey="count" fill="var(--color-count)" radius={4} />
+              </BarChart>
+            </ChartContainer>
+        </>
+      );
+    }
+
+    return (
+        <>
+        <CardHeader>
+            <CardTitle>Asset Paylanması</CardTitle>
+            <CardDescription>Assetlərin növünə görə ümumi sayı. Detallar üçün sütuna klikləyin.</CardDescription>
+        </CardHeader>
+        <CardContent>
+            <ChartContainer config={chartConfig} className="h-[300px] w-full">
+            <BarChart accessibilityLayer data={assetData} onClick={handleBarClick}>
+                <CartesianGrid vertical={false} />
+                <XAxis dataKey="type" tickLine={false} tickMargin={10} axisLine={false} />
+                <YAxis />
+                <ChartTooltip
+                cursor={false}
+                content={<ChartTooltipContent indicator="dot" />}
+                />
+                <Bar dataKey="count" fill="var(--color-count)" radius={4} />
+            </BarChart>
+            </ChartContainer>
+        </CardContent>
+      </>
+    );
+  }
 
 
   return (
@@ -89,24 +184,7 @@ export default function DashboardPage() {
 
       <div className="grid gap-4 xl:col-span-2">
         <Card>
-          <CardHeader>
-            <CardTitle>Asset Paylanması</CardTitle>
-            <CardDescription>Assetlərin növünə görə sayı.</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ChartContainer config={chartConfig} className="h-[300px] w-full">
-              <BarChart accessibilityLayer data={assetData}>
-                <CartesianGrid vertical={false} />
-                <XAxis dataKey="type" tickLine={false} tickMargin={10} axisLine={false} />
-                <YAxis />
-                <ChartTooltip
-                  cursor={false}
-                  content={<ChartTooltipContent indicator="dot" />}
-                />
-                <Bar dataKey="count" fill="var(--color-count)" radius={4} />
-              </BarChart>
-            </ChartContainer>
-          </CardContent>
+          {renderChart()}
         </Card>
       </div>
       
