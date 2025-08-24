@@ -293,6 +293,8 @@ export default function AssetsPage() {
             switchYeri: formData.get('switchYeri') as SwitchAsset['switchYeri'],
             konfiqurasiya: formData.get('konfiqurasiya') as SwitchAsset['konfiqurasiya'],
             sfpModul: formData.get('sfpModul') as string,
+            ups: formData.get('ups') as string,
+            stabilizator: formData.get('stabilizator') as string,
         }
     }
      else {
@@ -1238,6 +1240,14 @@ export default function AssetsPage() {
                  <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="sfpModul" className="text-right">SFP Modul</Label>
                     <Input id="sfpModul" name="sfpModul" className="col-span-3" />
+                </div>
+                 <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="ups" className="text-right">UPS</Label>
+                    <Input id="ups" name="ups" placeholder="UPS marka və modelini daxil edin" className="col-span-3" />
+                </div>
+                 <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="stabilizator" className="text-right">Stabilizator</Label>
+                    <Input id="stabilizator" name="stabilizator" placeholder="Stabilizator marka və modelini daxil edin" className="col-span-3" />
                 </div>
                 {commonFields}
             </>
