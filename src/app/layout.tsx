@@ -3,8 +3,8 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
-  title: 'Təhsil Bələdçisi',
-  description: 'İxtisas seçimi üzrə süni intellekt köməkçiniz',
+  title: 'İnteraktiv Təhsil Bələdçisi',
+  description: 'Azərbaycan üzrə ixtisaslar və keçid balları',
 };
 
 export default function RootLayout({

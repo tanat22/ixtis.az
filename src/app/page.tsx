@@ -1,192 +1,164 @@
 'use client';
 
 import * as React from 'react';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import * as z from 'zod';
-import { Button } from '@/components/ui/button';
 import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { useToast } from '@/hooks/use-toast';
-import { Loader2, Sparkles, University, BookOpen } from 'lucide-react';
-import { recommendSpecialty } from '@/ai/flows/recommend-specialty-flow';
-import type { SpecialtyRecommendation } from '@/ai/flows/recommend-specialty-flow';
-import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
+import { Slider } from '@/components/ui/slider';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
+  } from '@/components/ui/card';
+import { specialties, universities, groups, levels } from '@/lib/data';
+import type { Specialty } from '@/lib/types';
 
-const formSchema = z.object({
-  group1: z.coerce.number().min(0).max(700).optional(),
-  group2: z.coerce.number().min(0).max(700).optional(),
-  group3: z.coerce.number().min(0).max(700).optional(),
-  group4: z.coerce.number().min(0).max(700).optional(),
-  group5: z.coerce.number().min(0).max(700).optional(),
-  interests: z.string().min(10, {
-    message: 'Maraqlarınız haqqında ən az 10 hərf yazın.',
-  }),
-});
+export default function InteractiveGuidePage() {
+  const [filteredSpecialties, setFilteredSpecialties] = React.useState<Specialty[]>(specialties);
+  const [level, setLevel] = React.useState('all');
+  const [university, setUniversity] = React.useState('all');
+  const [group, setGroup] = React.useState('all');
+  const [search, setSearch] = React.useState('');
+  const [score, setScore] = React.useState(700);
 
-export default function AdmissionsHelperPage() {
-  const { toast } = useToast();
-  const [isLoading, setIsLoading] = React.useState(false);
-  const [recommendations, setRecommendations] = React.useState<SpecialtyRecommendation[] | null>(null);
+  React.useEffect(() => {
+    const results = specialties.filter(s => {
+        const universityName = universities.find(u => u.id === s.universityId)?.name || '';
+        return (
+            (level === 'all' || s.level === level) &&
+            (university === 'all' || s.universityId === university) &&
+            (group === 'all' || s.groupId === group) &&
+            (s.name.toLowerCase().includes(search.toLowerCase()) || universityName.toLowerCase().includes(search.toLowerCase())) &&
+            s.score <= score
+        )
+    });
+    setFilteredSpecialties(results);
+  }, [level, university, group, search, score]);
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      interests: '',
-    },
-  });
-
-  async function onSubmit(values: z.infer<typeof formSchema>) {
-    setIsLoading(true);
-    setRecommendations(null);
-
-    const scores = [
-        { group: 'I Qrup (Texniki və Təbiət)', score: values.group1 },
-        { group: 'II Qrup (İqtisadiyyat)', score: values.group2 },
-        { group: 'III Qrup (Humanitar)', score: values.group3 },
-        { group: 'IV Qrup (Tibb və Biologiya)', score: values.group4 },
-        { group: 'V Qrup (İdman və İncəsənət)', score: values.group5 },
-    ].filter(s => s.score !== undefined && s.score > 0);
-
-    if (scores.length === 0) {
-        toast({
-            variant: "destructive",
-            title: "Xəta",
-            description: "Zəhmət olmasa ən az bir qrup üzrə balınızı daxil edin.",
-        });
-        setIsLoading(false);
-        return;
-    }
-
-
-    try {
-      const response = await recommendSpecialty({
-        examScores: scores as { group: string; score: number; }[],
-        studentInterests: values.interests,
-      });
-      setRecommendations(response.recommendations);
-    } catch (error) {
-      console.error('Error getting recommendations:', error);
-      toast({
-        variant: 'destructive',
-        title: 'Xəta Baş Verdi',
-        description:
-          'Tövsiyələr alınarkən bir problem yarandı. Zəhmət olmasa bir az sonra yenidən cəhd edin.',
-      });
-    } finally {
-      setIsLoading(false);
-    }
-  }
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-background p-4 sm:p-8">
-      <Card className="w-full max-w-4xl">
-        <CardHeader className="text-center">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
-            <Sparkles className="h-8 w-8" />
-          </div>
-          <CardTitle className="text-3xl font-bold tracking-tight">
-            Təhsil Bələdçisi
-          </CardTitle>
-          <CardDescription className="text-lg text-muted-foreground">
-            Ballarınıza və maraqlarınıza uyğun ixtisasları kəşf edin.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-              <div>
-                <h3 className="mb-4 text-lg font-medium text-center">İmtahan Nəticələriniz (DİM)</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  <FormField control={form.control} name="group1" render={({ field }) => (<FormItem><FormLabel>I Qrup</FormLabel><FormControl><Input type="number" placeholder="0-700" {...field} /></FormControl></FormItem>)} />
-                  <FormField control={form.control} name="group2" render={({ field }) => (<FormItem><FormLabel>II Qrup</FormLabel><FormControl><Input type="number" placeholder="0-700" {...field} /></FormControl></FormItem>)} />
-                  <FormField control={form.control} name="group3" render={({ field }) => (<FormItem><FormLabel>III Qrup</FormLabel><FormControl><Input type="number" placeholder="0-700" {...field} /></FormControl></FormItem>)} />
-                  <FormField control={form.control} name="group4" render={({ field }) => (<FormItem><FormLabel>IV Qrup</FormLabel><FormControl><Input type="number" placeholder="0-700" {...field} /></FormControl></FormItem>)} />
-                  <FormField control={form.control} name="group5" render={({ field }) => (<FormItem><FormLabel>V Qrup</FormLabel><FormControl><Input type="number" placeholder="0-700" {...field} /></FormControl></FormItem>)} />
+    <div className="flex min-h-screen w-full flex-col items-center bg-background p-4 sm:p-8">
+      <div className="w-full max-w-7xl">
+        <header className="text-center mb-8">
+            <h1 className="text-4xl font-bold tracking-tight">İnteraktiv Təhsil Bələdçisi</h1>
+            <p className="text-muted-foreground mt-2">2025-ci il üzrə keçid ballarını kəşf edin</p>
+        </header>
+
+        <Card className="mb-8">
+            <CardHeader>
+                <CardTitle>Filtrlər</CardTitle>
+                <CardDescription>Axtarışınızı dəqiqləşdirmək üçün filtrlərdən istifadə edin.</CardDescription>
+            </CardHeader>
+            <CardContent>
+                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 items-end">
+                    <div className="space-y-2">
+                        <label className="text-sm font-medium">Təhsil Səviyyəsi</label>
+                        <Select value={level} onValueChange={setLevel}>
+                            <SelectTrigger><SelectValue placeholder="Təhsil Səviyyəsi" /></SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="all">Bütün Səviyyələr</SelectItem>
+                                {levels.map(l => <SelectItem key={l.id} value={l.id}>{l.name}</SelectItem>)}
+                            </SelectContent>
+                        </Select>
+                    </div>
+                    <div className="space-y-2">
+                        <label className="text-sm font-medium">Universitet/Kollec</label>
+                         <Select value={university} onValueChange={setUniversity}>
+                            <SelectTrigger><SelectValue placeholder="Universitet/Kollec" /></SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="all">Bütün Təhsil Müəssisələri</SelectItem>
+                                {universities.map(u => <SelectItem key={u.id} value={u.id}>{u.name}</SelectItem>)}
+                            </SelectContent>
+                        </Select>
+                    </div>
+                     <div className="space-y-2">
+                        <label className="text-sm font-medium">İxtisas Qrupu</label>
+                         <Select value={group} onValueChange={setGroup}>
+                            <SelectTrigger><SelectValue placeholder="İxtisas Qrupu" /></SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="all">Bütün Qruplar</SelectItem>
+                                {groups.map(g => <SelectItem key={g.id} value={g.id}>{g.name}</SelectItem>)}
+                            </SelectContent>
+                        </Select>
+                    </div>
+                    <div className="space-y-2 lg:col-span-2">
+                         <label htmlFor="search" className="text-sm font-medium">İxtisas üzrə axtarış</label>
+                         <Input
+                            id="search"
+                            placeholder="İxtisas adı..."
+                            value={search}
+                            onChange={(e) => setSearch(e.target.value)}
+                        />
+                    </div>
+                    <div className="lg:col-span-5 space-y-2">
+                         <label htmlFor="score" className="text-sm font-medium">Keçid Balı Diapazonu: {score}</label>
+                         <Slider
+                            id="score"
+                            min={0}
+                            max={700}
+                            step={1}
+                            value={[score]}
+                            onValueChange={(value) => setScore(value[0])}
+                        />
+                    </div>
                 </div>
-              </div>
+            </CardContent>
+        </Card>
 
-              <FormField
-                control={form.control}
-                name="interests"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Maraqlarınız və Bacarıqlarınız</FormLabel>
-                    <FormControl>
-                      <Textarea
-                        placeholder="Hansı fənləri sevirsiniz? Gələcəkdə hansı sahədə işləmək istərdiniz? Kompüterlə işləməyi xoşlayırsınız, yoxsa insanlarla ünsiyyəti?"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormDescription>
-                      Bu məlumatlar sizə daha uyğun tövsiyələr verməyimizə kömək edəcək.
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+        <div className="text-sm text-muted-foreground mb-4">
+            Tapılan ixtisas sayı: {filteredSpecialties.length}
+        </div>
 
-              <Button type="submit" className="w-full" disabled={isLoading}>
-                {isLoading ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Analiz edilir...
-                  </>
+        <Card>
+            <Table>
+                <TableHeader>
+                    <TableRow>
+                        <TableHead>Təhsil Müəssisəsi</TableHead>
+                        <TableHead>İxtisas</TableHead>
+                        <TableHead className="text-center">Qrup</TableHead>
+                        <TableHead className="text-right">Keçid Balı</TableHead>
+                    </TableRow>
+                </TableHeader>
+                <TableBody>
+                {filteredSpecialties.length > 0 ? (
+                    filteredSpecialties.map(spec => {
+                        const uni = universities.find(u => u.id === spec.universityId);
+                        const grp = groups.find(g => g.id === spec.groupId);
+                        return (
+                            <TableRow key={spec.id}>
+                                <TableCell className="font-medium">{uni ? uni.name : 'Naməlum'}</TableCell>
+                                <TableCell>{spec.name}</TableCell>
+                                <TableCell className="text-center">{grp ? grp.name : '-'}</TableCell>
+                                <TableCell className="text-right font-mono">{spec.score.toFixed(1)}</TableCell>
+                            </TableRow>
+                        );
+                    })
                 ) : (
-                    <>
-                    <Sparkles className="mr-2 h-4 w-4" />
-                    Tövsiyə al
-                    </>
+                    <TableRow>
+                        <TableCell colSpan={4} className="text-center h-24">
+                            Axtarışınıza uyğun nəticə tapılmadı.
+                        </TableCell>
+                    </TableRow>
                 )}
-              </Button>
-            </form>
-          </Form>
-        </CardContent>
-        {recommendations && (
-             <CardFooter className="flex-col items-start gap-4">
-                <Separator />
-                <h3 className="text-2xl font-semibold w-full text-center mt-4">Sizin üçün Tövsiyələr</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
-                    {recommendations.map((rec, index) => (
-                        <Card key={index} className="flex flex-col">
-                            <CardHeader>
-                                <Badge variant="secondary" className="w-fit mb-2">{rec.score_range}</Badge>
-                                <CardTitle className="flex items-center gap-2">
-                                   <BookOpen className="h-5 w-5 text-primary"/>
-                                   {rec.specialty_name}
-                                </CardTitle>
-                                <CardDescription className="flex items-center gap-2">
-                                    <University className="h-4 w-4"/>
-                                    {rec.university_name}
-                                </CardDescription>
-                            </CardHeader>
-                            <CardContent className="flex-grow">
-                                <p className="text-sm text-muted-foreground">{rec.justification}</p>
-                            </CardContent>
-                        </Card>
-                    ))}
-                </div>
-            </CardFooter>
-        )}
-      </Card>
+                </TableBody>
+            </Table>
+        </Card>
+      </div>
     </div>
   );
 }

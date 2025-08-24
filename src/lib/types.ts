@@ -1,4 +1,23 @@
-// This file is intentionally left blank for the new project.
-// Types are now defined directly within the AI flow and page components
-// to better encapsulate the logic of this simpler application.
-export {};
+export interface University {
+    id: string;
+    name: string;
+}
+
+export interface Group {
+    id: string;
+    name: string;
+}
+
+export interface Level {
+    id: string;
+    name: string;
+}
+
+export interface Specialty {
+    id: string;
+    name: string;
+    universityId: string;
+    groupId: string;
+    level: string; // e.g., 'bachelor', 'master'
+    score: number;
+}
