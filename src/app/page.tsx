@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -97,7 +98,7 @@ export default function InteractiveGuidePage() {
                             <SelectTrigger><SelectValue placeholder="Universitet/Kollec" /></SelectTrigger>
                             <SelectContent className="max-h-80">
                                 <SelectItem value="all">Bütün Təhsil Müəssisələri</SelectItem>
-                                {universities.map(u => <SelectItem key={u.id} value={u.id}>{u.name}</SelectItem>)}
+                                {universities.sort((a, b) => a.name.localeCompare(b.name)).map(u => <SelectItem key={u.id} value={u.id}>{u.name}</SelectItem>)}
                             </SelectContent>
                         </Select>
                     </div>
@@ -167,7 +168,7 @@ export default function InteractiveGuidePage() {
                 </TableHeader>
                 <TableBody>
                 {filteredSpecialties.length > 0 ? (
-                    filteredSpecialties.map(spec => {
+                    filteredSpecialties.sort((a, b) => (b.score || 0) - (a.score || 0)).map(spec => {
                         const uni = universities.find(u => u.id === spec.universityId);
                         const grp = groups.find(g => g.id === spec.groupId);
                         const form = educationForms.find(f => f.id === spec.educationForm);
