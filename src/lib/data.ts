@@ -7,7 +7,7 @@ import { specialties as specialtiesG5 } from './data/2024/group5';
 import { specialties as specialtiesCollege11 } from './data/2024/college11';
 
 
-export const years: number[] = [2024, 2023, 2022];
+export const years: number[] = [2024];
 
 export const universities: University[] = [
     { id: 'uni-bdu', name: 'Bakı Dövlət Universiteti' },
