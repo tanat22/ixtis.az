@@ -18,6 +18,7 @@ import { specialties as specialtiesG1_2022 } from './data/2022/group1';
 import { specialties as specialtiesG2_2022 } from './data/2022/group2';
 import { specialties as specialtiesG3_2022 } from './data/2022/group3';
 import { specialties as specialtiesG4_2022 } from './data/2022/group4';
+import { specialties as specialtiesCollege11_2022 } from './data/2022/college11';
 
 
 export const years: number[] = [2022, 2023, 2024];
@@ -69,7 +70,7 @@ export const universities: University[] = [
     { id: 'uni-amu', name: 'Azərbaycan Tibb Universiteti' },
     { id: 'uni-fhna', name: 'Fövqəladə Hallar Nazirliyinin Akademiyası' },
     { id: 'uni-naxcivan-uni', name: '“Naxçıvan” Universiteti' },
-    { id: 'uni-azmaliyyekollec', name: 'Azərbaycan Dövlət İqtisad Universitetinin nəznində Azərbaycan Maliyyə-iqtisad Kolleci'},
+    { id: 'uni-azmaliyyekollec', name: 'Azərbaycan Dövlət İqtisad Universitetinin nəznində Azərbaycan Maliyyə-İqtisad Kolleci'},
     { id: 'uni-bduiqtisadiyyathumanitar', name: 'Bakı Dövlət Universitetinin nəznində İqtisadiyyat və Humanitar Kollec'},
     { id: 'uni-unecqida', name: 'Azərbaycan Dövlət İqtisad Universitetinin nəznində Qida Sənayesi Kolleci'},
     { id: 'uni-unecsosialiqtisadi', name: 'Azərbaycan Dövlət İqtisad Universitetinin nəznində Sosial-İqtisadi Kollec'},
@@ -123,6 +124,7 @@ export const universities: University[] = [
     { id: 'uni-bakibizneskooperasiya', name: 'Bakı Biznes və Kooperasiya Kolleci'},
     { id: 'uni-odlaryurdukollec', name: 'Odlar Yurdu Kolleci'},
     { id: 'uni-bakiavrasyakollec', name: 'Bakı Avrasiya Kolleci'},
+    { id: 'uni-naxmuskollec', name: 'Naxçıvan Musiqi Kolleci'},
 ];
 
 export const groups: Group[] = [
@@ -170,4 +172,6 @@ export const specialties = [
     ...specialtiesG2_2022,
     ...specialtiesG3_2022,
     ...specialtiesG4_2022,
+    ...specialtiesCollege11_2022,
 ];
+
