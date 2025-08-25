@@ -18,15 +18,25 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
-  } from '@/components/ui/card';
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+} from "@/components/ui/alert-dialog"
 import { Badge } from '@/components/ui/badge';
-import { specialties, universities, groups, subgroups, levels, educationForms, years, educationLanguages } from '@/lib/data';
+import { specialties, universities, groups, subgroups, levels, educationForms, educationLanguages, years } from '@/lib/data';
 import type { Specialty } from '@/lib/types';
+import { specialtyInfo, type SpecialtyInfo } from '@/lib/data/specialty-info';
 import { ArrowUp, ArrowDown } from 'lucide-react';
 
 type CombinedSpecialty = {
@@ -53,6 +63,9 @@ export default function InteractiveGuidePage() {
   const [educationLanguage, setEducationLanguage] = React.useState('all');
   const [specialtyName, setSpecialtyName] = React.useState('all');
   const [score, setScore] = React.useState(700);
+
+  const [isInfoDialogOpen, setIsInfoDialogOpen] = React.useState(false);
+  const [selectedSpecialtyInfo, setSelectedSpecialtyInfo] = React.useState<{ name: string; info: SpecialtyInfo | null } | null>(null);
 
   const availableSubgroups = React.useMemo(() => {
     if (group === 'grp-1' || group === 'grp-3') {
@@ -149,6 +162,12 @@ export default function InteractiveGuidePage() {
   }, [level, university, group, subgroup, educationForm, educationLanguage, specialtyName, score, combinedSpecialties]);
 
   const sortedYears = React.useMemo(() => years.sort((a,b) => a - b), []);
+
+  const handleRowClick = (specialtyName: string) => {
+    const info = specialtyInfo[specialtyName] || null;
+    setSelectedSpecialtyInfo({ name: specialtyName, info });
+    setIsInfoDialogOpen(true);
+  };
 
   return (
     <div className="flex min-h-screen w-full flex-col items-center bg-background p-4 sm:p-8">
@@ -286,7 +305,7 @@ export default function InteractiveGuidePage() {
                         const form = educationForms.find(f => f.id === spec.educationForm);
                         
                         return (
-                            <TableRow key={spec.id}>
+                            <TableRow key={spec.id} onClick={() => handleRowClick(spec.name)} className="cursor-pointer">
                                 <TableCell className="font-medium">{uni ? uni.name : 'Naməlum'}</TableCell>
                                 <TableCell>{spec.name}</TableCell>
                                 <TableCell className="text-center">{grp?.name.replace(' Qrup', '') || '-'}</TableCell>
@@ -336,6 +355,34 @@ export default function InteractiveGuidePage() {
             </div>
         </Card>
       </div>
+
+      <AlertDialog open={isInfoDialogOpen} onOpenChange={setIsInfoDialogOpen}>
+            <AlertDialogContent>
+                <AlertDialogHeader>
+                    <AlertDialogTitle>{selectedSpecialtyInfo?.name}</AlertDialogTitle>
+                    <AlertDialogDescription>
+                        {selectedSpecialtyInfo?.info ? (
+                            <div className="text-left space-y-4 mt-4">
+                                <div>
+                                    <h3 className="font-semibold text-foreground">Tələb Olunan Bacarıqlar</h3>
+                                    <p className="text-muted-foreground">{selectedSpecialtyInfo.info.skills}</p>
+                                </div>
+                                <div>
+                                    <h3 className="font-semibold text-foreground">Gələcək Karyera İmkanları</h3>
+                                    <p className="text-muted-foreground">{selectedSpecialtyInfo.info.careers}</p>
+                                </div>
+                            </div>
+                        ) : (
+                            "Bu ixtisas haqqında əlavə məlumat tapılmadı."
+                        )}
+                    </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                    <AlertDialogAction onClick={() => setIsInfoDialogOpen(false)}>Bağla</AlertDialogAction>
+                </AlertDialogFooter>
+            </AlertDialogContent>
+        </AlertDialog>
+
     </div>
   );
 }
