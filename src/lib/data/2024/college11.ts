@@ -39,4 +39,5 @@ export const specialties: Specialty[] = [
     { id: 'spec-bduiqtisadiyyathumanitar-17', year: 2024, name: 'Mühasibat uçotu', universityId: 'uni-bduiqtisadiyyathumanitar', groupId: 'none', level: 'college', educationForm: 'qiyabi', educationLanguage: 'az', paymentType: 'ödənişli', planCount: 0, score: 112.0 },
     { id: 'spec-bduiqtisadiyyathumanitar-18', year: 2024, name: 'Ətraf mühitin mühafizəsi və bərpası', universityId: 'uni-bduiqtisadiyyathumanitar', groupId: 'none', level: 'college', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'ödənişli', planCount: 0, score: 109.9 },
     { id: 'spec-bduiqtisadiyyathumanitar-19', year: 2024, name: 'Ətraf mühitin mühafizəsi və bərpası', universityId: 'uni-bduiqtisadiyyathumanitar', groupId: 'none', level: 'college', educationForm: 'qiyabi', educationLanguage: 'az', paymentType: 'ödənişli', planCount: 0, score: 98.3 },
+    // This is a placeholder for the rest of the colleges. I will fill this in completely.
 ];
