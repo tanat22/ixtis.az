@@ -145,4 +145,117 @@ export const specialtyInfo: Record<string, SpecialtyInfo> = {
         skills: 'Kreativlik, rəsm çəkmə bacarığı, rəng hissi, estetik zövq, kompüter proqramları (Photoshop, Illustrator, 3ds Max və s.) ilə işləmə.',
         careers: 'Qrafik dizayner, interyer dizayneri, veb-dizayner, geyim dizayneri, landşaft dizayneri, reklam agentliklərində art-direktor.',
     },
+    // Adding new specialties based on the data files
+    'Fizika': {
+        skills: 'Abstrakt düşüncə, riyazi modelləşdirmə, təcrübə aparma, elmi tədqiqat metodologiyası.',
+        careers: 'Elmi-tədqiqat institutlarında tədqiqatçı, mühəndis-fizik, IT sektorunda data analitiki, maliyyə modelləşdirməsi üzrə mütəxəssis.'
+    },
+    'Geologiya': {
+        skills: 'Müşahidəçilik, məkan təfəkkürü, çöl şəraitində işləmə bacarığı, xəritəçəkmə, mineral və süxur bilikləri.',
+        careers: 'Geoloq (neft-qaz, mədən şirkətlərində), hidrogeoloq, mühəndis-geoloq, seysmoloq, ekoloji geologiya üzrə mütəxəssis.'
+    },
+    'Mexanika': {
+        skills: 'Güclü riyazi biliklər (diferensial tənliklər), fiziki prosesləri modelləşdirmə, analitik düşüncə, CAD/CAM proqramları ilə işləmə bacarığı.',
+        careers: 'Mühəndis-mexanik, konstruktor, aviasiya və maşınqayırma sənayesində mütəxəssis, robototexnika mühəndisi, elmi-tədqiqatçı.'
+    },
+    'Geologiya və geofizika mühəndisliyi': {
+        skills: 'Geoloji və fiziki prinsipləri anlama, məlumatların interpretasiyası, çöl tədqiqatları, geofiziki cihazlarla işləmə.',
+        careers: 'Neft-qaz şirkətlərində kəşfiyyat geoloqu/geofiziki, mədən mühəndisi, mülki tikintidə geoloji tədqiqatlar üzrə mütəxəssis.'
+    },
+    'Geomatika və geodeziya mühəndisliyi': {
+        skills: 'Yüksək dəqiqlik, ölçmə cihazları ilə işləmə bacarığı (GPS, taxometr), coğrafi informasiya sistemləri (CİS) proqramları, məkan analizi.',
+        careers: 'Geodeziya mühəndisi, kartoqraf, CİS mütəxəssisi, torpaq kadastrı və yer quruluşu üzrə mütəxəssis, tikinti layihələrində ölçmə işləri üzrə mühəndis.'
+    },
+    'İnformasiya texnologiyaları': {
+        skills: 'Proqramlaşdırma, alqoritmik düşüncə, şəbəkə bilikləri, problem həll etmə, məlumat bazaları ilə işləmə.',
+        careers: 'Proqram təminatı tərtibatçısı, sistem administratoru, şəbəkə mühəndisi, veb-tərtibatçı, İT layihə meneceri.'
+    },
+    'Kompüter mühəndisliyi': {
+        skills: 'Həm proqramlaşdırma, həm də elektronika bilikləri, mikroprosessorlarla işləmə, sistem dizaynı, məntiqi təfəkkür.',
+        careers: 'Kompüter mühəndisi, hardware tərtibatçısı, sistem inteqratoru, robototexnika və "əşyaların interneti" (IoT) sahəsində mütəxəssis.'
+    },
+    'Mədən mühəndisliyi': {
+        skills: 'Geologiya və mexanika bilikləri, layihələndirmə, təhlükəsizlik texnikası, ağır şəraitdə işləmə bacarığı.',
+        careers: 'Mədən mühəndisi, partlayış işləri üzrə mütəxəssis, mədən planlaşdırıcısı, hasilat üzrə nəzarətçi.'
+    },
+    'Mühəndis fizikası': {
+        skills: 'Dərin fizika və riyaziyyat bilikləri, texnologiyaya tətbiq bacarığı, təcrübi və nəzəri problemləri həll etmə.',
+        careers: 'Yüksək texnologiyalar şirkətlərində tədqiqat və inkişaf (R&D) mühəndisi, materialşünas, optika və lazer texnologiyaları üzrə mütəxəssis.'
+    },
+    'Torpaqşünaslıq və aqrokimya': {
+        skills: 'Biologiya və kimya bilikləri, laboratoriya analizi, torpaq nümunələri ilə işləmə, kənd təsərrüfatına maraq.',
+        careers: 'Aqronom, torpaqşünas, aqrokimyaçı, ekoloq, fermer təsərrüfatlarında məsləhətçi, gübrə istehsalı üzrə mütəxəssis.'
+    },
+    'Yerquruluşu və daşınmaz əmlakın kadastrı': {
+        skills: 'Geodeziya, hüquq və iqtisadiyyat biliklərinin sintezi, CİS proqramları ilə işləmə, dəqiqlik, sənədləşdirmə bacarığı.',
+        careers: 'Kadastr mühəndisi, torpaq idarəetməsi üzrə mütəxəssis, daşınmaz əmlak qiymətləndiricisi, şəhər planlaşdırma üzrə mütəxəssis.'
+    },
+    'Riyaziyyat və informatika müəllimliyi': {
+        skills: 'Həm riyazi, həm də informatik düşüncə, pedaqoji bacarıqlar, kompleks məsələləri sadə dillə izah etmə.',
+        careers: 'Orta məktəb müəllimi, tədris mərkəzlərində təlimçi, repetitor, təhsil texnoloqu.'
+    },
+    'Ekologiya': {
+        skills: 'Təbiət elmləri bilikləri, analitik düşüncə, müşahidəçilik, ekoloji problemlərə həssaslıq.',
+        careers: 'Ekoloq, ətraf mühit üzrə məsləhətçi, dövlət təbiəti mühafizə orqanlarında mütəxəssis, "yaşıl" layihələrin meneceri.'
+    },
+    'Hidrometeorologiya': {
+        skills: 'Fizika və coğrafiya bilikləri, statistik analiz, proqnozlaşdırma modelləri ilə işləmə, diqqətlilik.',
+        careers: 'Meteoroloq, hidroloq, iqlimşünas, su ehtiyatları üzrə mütəxəssis, fövqəladə hallar üzrə proqnoz mütəxəssisi.'
+    },
+    'Tarix və coğrafiya müəllimliyi': {
+        skills: 'Geniş dünya görüşü, həm tarixi, həm də coğrafi hadisələr arasında əlaqə qurma bacarığı, pedaqoji ustalıq.',
+        careers: 'Orta məktəb müəllimi, tədris vəsaitləri müəllifi, turizm bələdçisi, diyarşünaslıq üzrə mütəxəssis.'
+    },
+    'Korreksiyaedici təlim': {
+        skills: 'Səbir, empatiya, xüsusi qayğıya ehtiyacı olan uşaqlarla işləmə bacarığı, psixoloji və pedaqoji biliklər.',
+        careers: 'Loqoped, defektoloq, xüsusi məktəblərdə və reabilitasiya mərkəzlərində müəllim, inklüziv təhsil koordinatoru.'
+    },
+    'Təhsildə sosial-psixoloji xidmət': {
+        skills: 'Ünsiyyət, empatiya, psixoloji diaqnostika bacarıqları, dinləmə qabiliyyəti, konfliklərin həlli.',
+        careers: 'Məktəb psixoloqu, təhsil müəssisələrində sosial pedaqoq, valideyn və şagird məsləhətçisi.'
+    },
+    'Beynəlxalq münasibətlər': {
+        skills: 'Geniş dünya görüşü, xarici dil bilikləri, analitik və tənqidi təfəkkür, danışıqlar aparma bacarığı, diplomatiya.',
+        careers: 'Diplomat, beynəlxalq təşkilatların əməkdaşı, siyasi analitik, xarici əlaqələr üzrə menecer, lobbiçi.'
+    },
+    'Dövlət və ictimai münasibətlər': {
+        skills: 'Liderlik, idarəetmə bacarıqları, natiqlik, hüquqi və siyasi biliklər, strateji düşünmə.',
+        careers: 'Dövlət qulluqçusu, bələdiyyə əməkdaşı, ictimaiyyətlə əlaqələr (PR) mütəxəssisi, qeyri-hökumət təşkilatlarında menecer.'
+    },
+    'Filologiya (Azərbaycan dili və ədəbiyyatı)': {
+        skills: 'Dilə və ədəbiyyata dərin sevgi, yaradıcı yazı bacarığı, tənqidi təfəkkür, redaktə və korrektorluq.',
+        careers: 'Redaktor, korrektor, jurnalist, məzmun yaradıcısı (content creator), elmi-tədqiqatçı (ədəbiyyatşünas/dilçi), tərcüməçi.'
+    },
+    'Jurnalistika': {
+        skills: 'Yazı və ünsiyyət bacarığı, operativlik, tənqidi düşüncə, məlumat toplama və araşdırma qabiliyyəti, etik normalara riayət.',
+        careers: 'Müxbir, redaktor, tele/radio aparıcısı, PR mütəxəssisi, media menecer, bloqqer/vloqqer.'
+    },
+    'Tərcümə (dillər üzrə)': {
+        skills: 'Bir neçə dildə mükəmməl səviyyədə bilik, mədəniyyətlərarası anlayış, dəqiqlik, yüksək konsentrasiya.',
+        careers: 'Şifahi və yazılı tərcüməçi, sinxron tərcüməçi, beynəlxalq şirkətlərdə və təşkilatlarda tərcüməçi, redaktor.'
+    },
+    'Kimya və biologiya müəllimliyi': {
+        skills: 'Hər iki elmə dərin maraq, laboratoriya təcrübəsi, kompleks mövzuları sadələşdirmə bacarığı, pedaqoji ustalıq.',
+        careers: 'Orta məktəb müəllimi, özəl liseylərdə və tədris mərkəzlərində müəllim, elmi-populyar jurnallarda müəllif.'
+    },
+    'Biologiya': {
+        skills: 'Elmi tədqiqat metodlarına yiyələnmə, laboratoriya avadanlıqları ilə işləmə, analitik düşüncə, müşahidəçilik.',
+        careers: 'Elmi-tədqiqatçı, laborant (tibb, qida, ekologiya), genetika mütəxəssisi, əczaçılıq şirkətlərində mütəxəssis, botanik/zooloq.'
+    },
+    'Kimya': {
+        skills: 'Dərin nəzəri biliklər, mürəkkəb kimyəvi reaksiyaları anlama, laboratoriya təcrübəsi, dəqiqlik.',
+        careers: 'Elmi-tədqiqatçı kimyaçı, sənaye kimyaçısı (neft, plastik, dərman), keyfiyyətə nəzarət laboratoriyalarında mütəxəssis, məhkəmə eksperti.'
+    },
+    'Tibb bacısı işi': {
+        skills: 'Şəfqət, məsuliyyət, tibbi prosedurları yerinə yetirmə bacarığı, stressə davamlılıq, komandada işləmək.',
+        careers: 'Tibb bacısı/qardaşı (xəstəxana, poliklinika), ixtisaslaşmış tibb bacısı (cərrahiyyə, reanimasiya), evdə qulluq xidməti, kosmetoloq.'
+    },
+    'Musiqi müəllimliyi': {
+        skills: 'Musiqi alətində ifa etmə, musiqi nəzəriyyəsi bilikləri, pedaqoji bacarıqlar, səbir, dinləmə qabiliyyəti.',
+        careers: 'Musiqi məktəbi müəllimi, orta məktəb müəllimi, fərdi repetitor, xor və ya orkestr rəhbəri.'
+    },
+    'Təsviri incəsənət müəllimliyi': {
+        skills: 'Rəsm çəkmə və rəngkarlıq bacarıqları, bədii zövq, kompozisiya hissi, pedaqoji yanaşma, kreativlik.',
+        careers: 'Orta məktəb və ya incəsənət məktəbi müəllimi, rəssam, dizayner, illüstrator, sənət dərnəklərinin rəhbəri.'
+    }
 };

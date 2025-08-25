@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -37,7 +38,7 @@ import { Badge } from '@/components/ui/badge';
 import { specialties, universities, groups, subgroups, levels, educationForms, educationLanguages, years } from '@/lib/data';
 import type { Specialty } from '@/lib/types';
 import { specialtyInfo, type SpecialtyInfo } from '@/lib/data/specialty-info';
-import { ArrowUp, ArrowDown } from 'lucide-react';
+import { ArrowUp, ArrowDown, Sparkles } from 'lucide-react';
 
 type CombinedSpecialty = {
     id: string;
@@ -65,7 +66,7 @@ export default function InteractiveGuidePage() {
   const [score, setScore] = React.useState(700);
 
   const [isInfoDialogOpen, setIsInfoDialogOpen] = React.useState(false);
-  const [selectedSpecialtyInfo, setSelectedSpecialtyInfo] = React.useState<{ name: string; info: SpecialtyInfo | null } | null>(null);
+  const [selectedSpecialtyInfo, setSelectedSpecialtyInfo] = React.useState<{ name: string; info: SpecialtyInfo | null; lang: string } | null>(null);
 
   const availableSubgroups = React.useMemo(() => {
     if (group === 'grp-1' || group === 'grp-3') {
@@ -163,9 +164,9 @@ export default function InteractiveGuidePage() {
 
   const sortedYears = React.useMemo(() => years.sort((a,b) => a - b), []);
 
-  const handleRowClick = (specialtyName: string) => {
-    const info = specialtyInfo[specialtyName] || null;
-    setSelectedSpecialtyInfo({ name: specialtyName, info });
+  const handleRowClick = (spec: CombinedSpecialty) => {
+    const info = specialtyInfo[spec.name] || null;
+    setSelectedSpecialtyInfo({ name: spec.name, info, lang: spec.educationLanguage });
     setIsInfoDialogOpen(true);
   };
 
@@ -305,7 +306,7 @@ export default function InteractiveGuidePage() {
                         const form = educationForms.find(f => f.id === spec.educationForm);
                         
                         return (
-                            <TableRow key={spec.id} onClick={() => handleRowClick(spec.name)} className="cursor-pointer">
+                            <TableRow key={spec.id} onClick={() => handleRowClick(spec)} className="cursor-pointer">
                                 <TableCell className="font-medium">{uni ? uni.name : 'Naməlum'}</TableCell>
                                 <TableCell>{spec.name}</TableCell>
                                 <TableCell className="text-center">{grp?.name.replace(' Qrup', '') || '-'}</TableCell>
@@ -360,21 +361,34 @@ export default function InteractiveGuidePage() {
             <AlertDialogContent>
                 <AlertDialogHeader>
                     <AlertDialogTitle>{selectedSpecialtyInfo?.name}</AlertDialogTitle>
-                    <AlertDialogDescription>
-                        {selectedSpecialtyInfo?.info ? (
-                            <div className="text-left space-y-4 mt-4">
+                    <AlertDialogDescription asChild>
+                        <div className="text-left space-y-4 mt-4 max-h-[60vh] overflow-y-auto pr-4">
+                            {selectedSpecialtyInfo?.info ? (
+                                <>
+                                    <div>
+                                        <h3 className="font-semibold text-foreground">Tələb Olunan Bacarıqlar</h3>
+                                        <p className="text-muted-foreground">{selectedSpecialtyInfo.info.skills}</p>
+                                    </div>
+                                    <div>
+                                        <h3 className="font-semibold text-foreground">Gələcək Karyera İmkanları</h3>
+                                        <p className="text-muted-foreground">{selectedSpecialtyInfo.info.careers}</p>
+                                    </div>
+                                </>
+                            ) : (
+                                <p>Bu ixtisas haqqında əlavə məlumat tapılmadı.</p>
+                            )}
+                             {selectedSpecialtyInfo?.lang === 'en' && (
                                 <div>
-                                    <h3 className="font-semibold text-foreground">Tələb Olunan Bacarıqlar</h3>
-                                    <p className="text-muted-foreground">{selectedSpecialtyInfo.info.skills}</p>
+                                    <h3 className="font-semibold text-foreground flex items-center gap-2">
+                                        <Sparkles className="w-4 h-4 text-yellow-400" />
+                                        İngilis Dilində Təhsilin Üstünlükləri
+                                    </h3>
+                                    <p className="text-muted-foreground">
+                                        Bu ixtisası ingilis dilində təhsil almaq sizə beynəlxalq əmək bazarında rəqabət üstünlüyü qazandırır, ən son elmi mənbələrə və ədəbiyyatlara birbaşa çıxış imkanı yaradır və qlobal karyera qurmaq üçün geniş üfüqlər açır.
+                                    </p>
                                 </div>
-                                <div>
-                                    <h3 className="font-semibold text-foreground">Gələcək Karyera İmkanları</h3>
-                                    <p className="text-muted-foreground">{selectedSpecialtyInfo.info.careers}</p>
-                                </div>
-                            </div>
-                        ) : (
-                            "Bu ixtisas haqqında əlavə məlumat tapılmadı."
-                        )}
+                             )}
+                        </div>
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
