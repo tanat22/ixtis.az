@@ -1,4 +1,4 @@
-import type { University, Group, Subgroup, Level, EducationForm } from './types';
+import type { University, Group, Subgroup, Level, EducationForm, EducationLanguage } from './types';
 import { specialties as specialtiesG1_2024 } from './data/2024/group1';
 import { specialties as specialtiesG2_2024 } from './data/2024/group2';
 import { specialties as specialtiesG3_2024 } from './data/2024/group3';
@@ -155,6 +155,13 @@ export const educationForms: EducationForm[] = [
     { id: 'qiyabi', name: 'Qiyabi' },
 ];
 
+export const educationLanguages: EducationLanguage[] = [
+    { id: 'az', name: 'Azərbaycan' },
+    { id: 'ru', name: 'Rus' },
+    { id: 'en', name: 'İngilis' },
+    { id: 'tr', name: 'Türk' },
+];
+
 export const specialties = [
     ...specialtiesG1_2024,
     ...specialtiesG2_2024,
@@ -176,5 +183,3 @@ export const specialties = [
     ...specialtiesG5_2022,
     ...specialtiesCollege11_2022,
 ];
-
-

@@ -8,7 +8,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Input } from '@/components/ui/input';
 import { Slider } from '@/components/ui/slider';
 import {
   Table,
@@ -26,7 +25,7 @@ import {
     CardTitle,
   } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { specialties, universities, groups, subgroups, levels, educationForms, years } from '@/lib/data';
+import { specialties, universities, groups, subgroups, levels, educationForms, years, educationLanguages } from '@/lib/data';
 import type { Specialty } from '@/lib/types';
 import { ArrowUp, ArrowDown } from 'lucide-react';
 
@@ -51,7 +50,8 @@ export default function InteractiveGuidePage() {
   const [group, setGroup] = React.useState('all');
   const [subgroup, setSubgroup] = React.useState('all');
   const [educationForm, setEducationForm] = React.useState('all');
-  const [search, setSearch] = React.useState('');
+  const [educationLanguage, setEducationLanguage] = React.useState('all');
+  const [specialtyName, setSpecialtyName] = React.useState('all');
   const [score, setScore] = React.useState(700);
 
   const availableSubgroups = React.useMemo(() => {
@@ -78,7 +78,7 @@ export default function InteractiveGuidePage() {
           educationForm: s.educationForm,
           educationLanguage: s.educationLanguage,
           paymentType: s.paymentType,
-          planCount: s.planCount, // Note: this will take the planCount of the first encountered year
+          planCount: s.planCount,
           scores: {},
         });
       }
@@ -91,6 +91,20 @@ export default function InteractiveGuidePage() {
 
     return Array.from(specialtyMap.values());
   }, []);
+  
+  const availableSpecialties = React.useMemo(() => {
+    const filtered = combinedSpecialties.filter(s => {
+        if (level === 'master' || level === 'college') {
+            return s.level === level;
+        }
+        const groupMatch = group === 'all' || s.groupId === group;
+        const subgroupMatch = subgroup === 'all' || s.subgroupId === subgroup;
+        return s.level === 'bachelor' && groupMatch && subgroupMatch;
+    });
+
+    const uniqueNames = [...new Set(filtered.map(s => s.name))];
+    return uniqueNames.sort((a,b) => a.localeCompare(b));
+  }, [group, subgroup, level, combinedSpecialties]);
 
 
   React.useEffect(() => {
@@ -112,7 +126,8 @@ export default function InteractiveGuidePage() {
               s.level === level &&
               (university === 'all' || s.universityId === university) &&
               (educationForm === 'all' || s.educationForm === educationForm) &&
-              (s.name.toLowerCase().includes(search.toLowerCase()) || universityName.toLowerCase().includes(search.toLowerCase())) &&
+              (educationLanguage === 'all' || s.educationLanguage === educationLanguage) &&
+              (specialtyName === 'all' || s.name === specialtyName) &&
               (latestScore !== null && latestScore !== undefined ? latestScore <= score : true)
           )
       }
@@ -124,13 +139,14 @@ export default function InteractiveGuidePage() {
           (university === 'all' || s.universityId === university) &&
           (group === 'all' || s.groupId === group) &&
           (educationForm === 'all' || s.educationForm === educationForm) &&
+          (educationLanguage === 'all' || s.educationLanguage === educationLanguage) &&
           (!hasSubgroup || subgroup === 'all' || s.subgroupId === subgroup) &&
-          (s.name.toLowerCase().includes(search.toLowerCase()) || universityName.toLowerCase().includes(search.toLowerCase())) &&
+          (specialtyName === 'all' || s.name === specialtyName) &&
           (latestScore !== null && latestScore !== undefined ? latestScore <= score : true)
       )
     });
     setFilteredSpecialties(results);
-  }, [level, university, group, subgroup, educationForm, search, score, combinedSpecialties]);
+  }, [level, university, group, subgroup, educationForm, educationLanguage, specialtyName, score, combinedSpecialties]);
 
   const sortedYears = React.useMemo(() => years.sort((a,b) => a - b), []);
 
@@ -151,7 +167,7 @@ export default function InteractiveGuidePage() {
                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 items-end">
                     <div className="space-y-2">
                         <label className="text-sm font-medium">Təhsil Səviyyəsi</label>
-                        <Select value={level} onValueChange={(value) => { setLevel(value); setGroup('all'); setSubgroup('all'); }}>
+                        <Select value={level} onValueChange={(value) => { setLevel(value); setGroup('all'); setSubgroup('all'); setSpecialtyName('all'); }}>
                             <SelectTrigger><SelectValue placeholder="Təhsil Səviyyəsi" /></SelectTrigger>
                             <SelectContent>
                                 {levels.map(l => <SelectItem key={l.id} value={l.id}>{l.name}</SelectItem>)}
@@ -172,7 +188,7 @@ export default function InteractiveGuidePage() {
                         <>
                             <div className="space-y-2">
                                 <label className="text-sm font-medium">İxtisas Qrupu</label>
-                                <Select value={group} onValueChange={setGroup}>
+                                <Select value={group} onValueChange={(value) => { setGroup(value); setSpecialtyName('all'); }}>
                                     <SelectTrigger><SelectValue placeholder="İxtisas Qrupu" /></SelectTrigger>
                                     <SelectContent>
                                         <SelectItem value="all">Bütün Qruplar</SelectItem>
@@ -183,7 +199,7 @@ export default function InteractiveGuidePage() {
                             {availableSubgroups.length > 0 && (
                                 <div className="space-y-2">
                                     <label className="text-sm font-medium">Altqrup</label>
-                                    <Select value={subgroup} onValueChange={setSubgroup}>
+                                    <Select value={subgroup} onValueChange={(value) => { setSubgroup(value); setSpecialtyName('all'); }}>
                                         <SelectTrigger><SelectValue placeholder="Altqrup seçin" /></SelectTrigger>
                                         <SelectContent>
                                         <SelectItem value="all">Hamısı</SelectItem>
@@ -204,14 +220,25 @@ export default function InteractiveGuidePage() {
                             </SelectContent>
                         </Select>
                     </div>
-                    <div className="space-y-2 lg:col-span-2 xl:col-span-1">
+                    <div className="space-y-2">
+                        <label className="text-sm font-medium">Tədris Dili</label>
+                         <Select value={educationLanguage} onValueChange={setEducationLanguage}>
+                            <SelectTrigger><SelectValue placeholder="Tədris Dili" /></SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="all">Hamısı</SelectItem>
+                                {educationLanguages.map(lang => <SelectItem key={lang.id} value={lang.id}>{lang.name}</SelectItem>)}
+                            </SelectContent>
+                        </Select>
+                    </div>
+                    <div className="space-y-2 lg:col-span-2 xl:col-span-2">
                          <label htmlFor="search" className="text-sm font-medium">İxtisas üzrə axtarış</label>
-                         <Input
-                            id="search"
-                            placeholder="İxtisas adı..."
-                            value={search}
-                            onChange={(e) => setSearch(e.target.value)}
-                        />
+                         <Select value={specialtyName} onValueChange={setSpecialtyName}>
+                             <SelectTrigger><SelectValue placeholder="İxtisas adı..." /></SelectTrigger>
+                             <SelectContent className="max-h-80">
+                                 <SelectItem value="all">Bütün İxtisaslar</SelectItem>
+                                 {availableSpecialties.map(specName => <SelectItem key={specName} value={specName}>{specName}</SelectItem>)}
+                             </SelectContent>
+                         </Select>
                     </div>
                     <div className="lg:col-span-full xl:col-span-full space-y-2">
                          <label htmlFor="score" className="text-sm font-medium">Maksimal Keçid Balı: {score}</label>

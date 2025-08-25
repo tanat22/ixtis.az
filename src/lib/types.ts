@@ -24,6 +24,11 @@ export interface EducationForm {
     name: 'Əyani' | 'Qiyabi';
 }
 
+export interface EducationLanguage {
+    id: 'az' | 'ru' | 'en' | 'tr';
+    name: 'Azərbaycan' | 'Rus' | 'İngilis' | 'Türk';
+}
+
 export interface Specialty {
     id: string;
     year: number;
