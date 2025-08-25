@@ -8,6 +8,7 @@ import { specialties as specialtiesCollege11_2024 } from './data/2024/college11'
 import { specialties as specialtiesMaster_2024 } from './data/2024/master';
 
 import { specialties as specialtiesG1_2023 } from './data/2023/group1';
+import { specialties as specialtiesG2_2023 } from './data/2023/group2';
 
 
 export const years: number[] = [2024, 2023];
@@ -58,6 +59,7 @@ export const universities: University[] = [
     { id: 'uni-bxa', name: 'Bakı Xoreoqrafiya Akademiyası' },
     { id: 'uni-amu', name: 'Azərbaycan Tibb Universiteti' },
     { id: 'uni-fhna', name: 'Fövqəladə Hallar Nazirliyinin Akademiyası' },
+    { id: 'uni-naxcivan-uni', name: '“Naxçıvan” Universiteti' },
     { id: 'uni-azmaliyyekollec', name: 'Azərbaycan Dövlət İqtisad Universitetinin nəznində Azərbaycan Maliyyə-iqtisad Kolleci'},
     { id: 'uni-bduiqtisadiyyathumanitar', name: 'Bakı Dövlət Universitetinin nəznində İqtisadiyyat və Humanitar Kollec'},
     { id: 'uni-unecqida', name: 'Azərbaycan Dövlət İqtisad Universitetinin nəznində Qida Sənayesi Kolleci'},
@@ -150,4 +152,5 @@ export const specialties = [
     ...specialtiesCollege11_2024,
     ...specialtiesMaster_2024,
     ...specialtiesG1_2023,
+    ...specialtiesG2_2023,
 ];
