@@ -31,7 +31,7 @@ export interface Specialty {
     universityId: string;
     groupId: string;
     subgroupId?: string; // Optional: For groups like I and III
-    level: 'bachelor' | 'college';
+    level: 'bachelor' | 'college' | 'master';
     educationForm: 'əyani' | 'qiyabi';
     educationLanguage: 'az' | 'ru' | 'en' | 'tr';
     paymentType: 'dövlət sifarişli' | 'ödənişli';

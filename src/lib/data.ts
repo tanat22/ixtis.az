@@ -5,6 +5,7 @@ import { specialties as specialtiesG3 } from './data/2024/group3';
 import { specialties as specialtiesG4 } from './data/2024/group4';
 import { specialties as specialtiesG5 } from './data/2024/group5';
 import { specialties as specialtiesCollege11 } from './data/2024/college11';
+import { specialties as specialtiesMaster } from './data/2024/master';
 
 
 export const years: number[] = [2024];
@@ -54,6 +55,7 @@ export const universities: University[] = [
     { id: 'uni-amk', name: 'Azərbaycan Milli Konservatoriyası' },
     { id: 'uni-bxa', name: 'Bakı Xoreoqrafiya Akademiyası' },
     { id: 'uni-amu', name: 'Azərbaycan Tibb Universiteti' },
+    { id: 'uni-fhna', name: 'Fövqəladə Hallar Nazirliyinin Akademiyası' },
     { id: 'uni-azmaliyyekollec', name: 'Azərbaycan Dövlət İqtisad Universitetinin nəznində Azərbaycan Maliyyə-iqtisad Kolleci'},
     { id: 'uni-bduiqtisadiyyathumanitar', name: 'Bakı Dövlət Universitetinin nəznində İqtisadiyyat və Humanitar Kollec'},
     { id: 'uni-unecqida', name: 'Azərbaycan Dövlət İqtisad Universitetinin nəznində Qida Sənayesi Kolleci'},
@@ -129,6 +131,7 @@ export const subgroups: Subgroup[] = [
 export const levels: Level[] = [
     { id: 'bachelor', name: 'Bakalavr' },
     { id: 'college', name: 'Kollec (Subbakalavr)' },
+    { id: 'master', name: 'Magistratura' },
 ];
 
 export const educationForms: EducationForm[] = [
@@ -143,4 +146,5 @@ export const specialties = [
     ...specialtiesG4,
     ...specialtiesG5,
     ...specialtiesCollege11,
+    ...specialtiesMaster,
 ];

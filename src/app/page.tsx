@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -53,13 +52,30 @@ export default function InteractiveGuidePage() {
     if (availableSubgroups.length === 0) {
         setSubgroup('all');
     }
-  }, [group, availableSubgroups]);
+    // Also reset when level changes to master, as master doesn't have groups/subgroups
+    if (level === 'master') {
+        setGroup('all');
+        setSubgroup('all');
+    }
+
+  }, [group, availableSubgroups, level]);
 
 
   React.useEffect(() => {
     const results = specialties.filter(s => {
         const universityName = universities.find(u => u.id === s.universityId)?.name || '';
         const hasSubgroup = s.groupId === 'grp-1' || s.groupId === 'grp-3';
+
+        if (level === 'master') {
+            return (
+                (year === 'all' || s.year.toString() === year) &&
+                s.level === 'master' &&
+                (university === 'all' || s.universityId === university) &&
+                (educationForm === 'all' || s.educationForm === educationForm) &&
+                (s.name.toLowerCase().includes(search.toLowerCase()) || universityName.toLowerCase().includes(search.toLowerCase())) &&
+                (s.score ? s.score <= score : true)
+            )
+        }
 
         return (
             (year === 'all' || s.year.toString() === year) &&
@@ -121,27 +137,31 @@ export default function InteractiveGuidePage() {
                             </SelectContent>
                         </Select>
                     </div>
-                     <div className="space-y-2">
-                        <label className="text-sm font-medium">İxtisas Qrupu</label>
-                         <Select value={group} onValueChange={setGroup}>
-                            <SelectTrigger><SelectValue placeholder="İxtisas Qrupu" /></SelectTrigger>
-                            <SelectContent>
-                                <SelectItem value="all">Bütün Qruplar</SelectItem>
-                                {groups.map(g => <SelectItem key={g.id} value={g.id}>{g.name}</SelectItem>)}
-                            </SelectContent>
-                        </Select>
-                    </div>
-                    {availableSubgroups.length > 0 && (
-                        <div className="space-y-2">
-                            <label className="text-sm font-medium">Altqrup</label>
-                            <Select value={subgroup} onValueChange={setSubgroup}>
-                                <SelectTrigger><SelectValue placeholder="Altqrup seçin" /></SelectTrigger>
-                                <SelectContent>
-                                   <SelectItem value="all">Hamısı</SelectItem>
-                                    {availableSubgroups.map(sg => <SelectItem key={sg.id} value={sg.id}>{sg.name}</SelectItem>)}
-                                </SelectContent>
-                            </Select>
-                        </div>
+                    {level !== 'master' && (
+                        <>
+                            <div className="space-y-2">
+                                <label className="text-sm font-medium">İxtisas Qrupu</label>
+                                <Select value={group} onValueChange={setGroup}>
+                                    <SelectTrigger><SelectValue placeholder="İxtisas Qrupu" /></SelectTrigger>
+                                    <SelectContent>
+                                        <SelectItem value="all">Bütün Qruplar</SelectItem>
+                                        {groups.map(g => <SelectItem key={g.id} value={g.id}>{g.name}</SelectItem>)}
+                                    </SelectContent>
+                                </Select>
+                            </div>
+                            {availableSubgroups.length > 0 && (
+                                <div className="space-y-2">
+                                    <label className="text-sm font-medium">Altqrup</label>
+                                    <Select value={subgroup} onValueChange={setSubgroup}>
+                                        <SelectTrigger><SelectValue placeholder="Altqrup seçin" /></SelectTrigger>
+                                        <SelectContent>
+                                        <SelectItem value="all">Hamısı</SelectItem>
+                                            {availableSubgroups.map(sg => <SelectItem key={sg.id} value={sg.id}>{sg.name}</SelectItem>)}
+                                        </SelectContent>
+                                    </Select>
+                                </div>
+                            )}
+                        </>
                     )}
                     <div className="space-y-2">
                         <label className="text-sm font-medium">Tədris Forması</label>
@@ -208,7 +228,7 @@ export default function InteractiveGuidePage() {
                                 <TableCell className="text-center">{spec.year}</TableCell>
                                 <TableCell className="font-medium">{uni ? uni.name : 'Naməlum'}</TableCell>
                                 <TableCell>{spec.name}</TableCell>
-                                <TableCell className="text-center">{grp ? grp.name : '-'}</TableCell>
+                                <TableCell className="text-center">{grp?.name.replace(' Qrup', '') || '-'}</TableCell>
                                 <TableCell className="text-center uppercase">{spec.educationLanguage}</TableCell>
                                 <TableCell className="text-center capitalize">{form?.name}</TableCell>
                                 <TableCell className="text-center">{spec.planCount}</TableCell>
