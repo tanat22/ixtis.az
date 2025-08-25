@@ -36,8 +36,9 @@ import {
 } from "@/components/ui/alert-dialog"
 import { Badge } from '@/components/ui/badge';
 import { specialties, universities, groups, subgroups, levels, educationForms, educationLanguages, years } from '@/lib/data';
-import type { Specialty } from '@/lib/types';
+import type { Specialty, University } from '@/lib/types';
 import { specialtyInfo, type SpecialtyInfo } from '@/lib/data/specialty-info';
+import { universityInfo, type UniversityInfo } from '@/lib/data/university-info';
 import { ArrowUp, ArrowDown, Sparkles } from 'lucide-react';
 
 type CombinedSpecialty = {
@@ -67,6 +68,10 @@ export default function InteractiveGuidePage() {
 
   const [isInfoDialogOpen, setIsInfoDialogOpen] = React.useState(false);
   const [selectedSpecialtyInfo, setSelectedSpecialtyInfo] = React.useState<{ name: string; info: SpecialtyInfo | null; lang: string } | null>(null);
+
+  const [isUniversityInfoDialogOpen, setIsUniversityInfoDialogOpen] = React.useState(false);
+  const [selectedUniversityInfo, setSelectedUniversityInfo] = React.useState<{ name: string; info: UniversityInfo | null } | null>(null);
+
 
   const availableSubgroups = React.useMemo(() => {
     if (group === 'grp-1' || group === 'grp-3') {
@@ -164,10 +169,16 @@ export default function InteractiveGuidePage() {
 
   const sortedYears = React.useMemo(() => years.sort((a,b) => a - b), []);
 
-  const handleRowClick = (spec: CombinedSpecialty) => {
+  const handleSpecialtyRowClick = (spec: CombinedSpecialty) => {
     const info = specialtyInfo[spec.name] || null;
     setSelectedSpecialtyInfo({ name: spec.name, info, lang: spec.educationLanguage });
     setIsInfoDialogOpen(true);
+  };
+  
+  const handleUniversityRowClick = (uni: University) => {
+      const info = universityInfo[uni.id] || null;
+      setSelectedUniversityInfo({ name: uni.name, info });
+      setIsUniversityInfoDialogOpen(true);
   };
 
   return (
@@ -306,9 +317,9 @@ export default function InteractiveGuidePage() {
                         const form = educationForms.find(f => f.id === spec.educationForm);
                         
                         return (
-                            <TableRow key={spec.id} onClick={() => handleRowClick(spec)} className="cursor-pointer">
-                                <TableCell className="font-medium">{uni ? uni.name : 'Naməlum'}</TableCell>
-                                <TableCell>{spec.name}</TableCell>
+                            <TableRow key={spec.id} >
+                                <TableCell className="font-medium cursor-pointer" onClick={() => uni && handleUniversityRowClick(uni)}>{uni ? uni.name : 'Naməlum'}</TableCell>
+                                <TableCell onClick={() => handleSpecialtyRowClick(spec)} className="cursor-pointer">{spec.name}</TableCell>
                                 <TableCell className="text-center">{grp?.name.replace(' Qrup', '') || '-'}</TableCell>
                                 <TableCell className="text-center uppercase">{spec.educationLanguage}</TableCell>
                                 <TableCell className="text-center capitalize">{form?.name}</TableCell>
@@ -393,6 +404,34 @@ export default function InteractiveGuidePage() {
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                     <AlertDialogAction onClick={() => setIsInfoDialogOpen(false)}>Bağla</AlertDialogAction>
+                </AlertDialogFooter>
+            </AlertDialogContent>
+        </AlertDialog>
+
+        <AlertDialog open={isUniversityInfoDialogOpen} onOpenChange={setIsUniversityInfoDialogOpen}>
+            <AlertDialogContent>
+                <AlertDialogHeader>
+                    <AlertDialogTitle>{selectedUniversityInfo?.name}</AlertDialogTitle>
+                    <AlertDialogDescription asChild>
+                         <div className="text-left space-y-4 mt-4 max-h-[60vh] overflow-y-auto pr-4">
+                            {selectedUniversityInfo?.info ? (
+                                <>
+                                    <p className="text-muted-foreground">{selectedUniversityInfo.info.description}</p>
+                                    {selectedUniversityInfo.info.website && (
+                                        <a href={selectedUniversityInfo.info.website} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                                            Rəsmi veb-sayta keçid
+                                        </a>
+                                    )}
+                                </>
+                                
+                            ) : (
+                                <p>Bu universitet haqqında məlumat tapılmadı.</p>
+                            )}
+                        </div>
+                    </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                    <AlertDialogAction onClick={() => setIsUniversityInfoDialogOpen(false)}>Bağla</AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>
