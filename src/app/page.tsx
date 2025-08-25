@@ -28,11 +28,12 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { specialties, universities, groups, subgroups, levels, years, educationForms } from '@/lib/data';
 import type { Specialty } from '@/lib/types';
+import { ArrowUp, ArrowDown } from 'lucide-react';
 
 export default function InteractiveGuidePage() {
   const [filteredSpecialties, setFilteredSpecialties] = React.useState<Specialty[]>(specialties);
-  const [year, setYear] = React.useState('all');
-  const [level, setLevel] = React.useState('all');
+  const [year, setYear] = React.useState<string>(years[0].toString());
+  const [level, setLevel] = React.useState('bachelor');
   const [university, setUniversity] = React.useState('all');
   const [group, setGroup] = React.useState('all');
   const [subgroup, setSubgroup] = React.useState('all');
@@ -48,48 +49,73 @@ export default function InteractiveGuidePage() {
   }, [group]);
 
   React.useEffect(() => {
-    // Reset subgroup when group changes and there are no available subgroups
-    if (availableSubgroups.length === 0) {
-        setSubgroup('all');
+    if (availableSubgroups.length > 0 && subgroup === 'all') {
+      // Automatically select the first available subgroup if none is selected
+      // setSubgroup(availableSubgroups[0].id);
+    } else if (availableSubgroups.length === 0) {
+      setSubgroup('all');
     }
-    // Also reset when level changes to master, as master doesn't have groups/subgroups
-    if (level === 'master') {
-        setGroup('all');
-        setSubgroup('all');
-    }
-
-  }, [group, availableSubgroups, level]);
-
+  }, [group, availableSubgroups, subgroup]);
 
   React.useEffect(() => {
     const results = specialties.filter(s => {
-        const universityName = universities.find(u => u.id === s.universityId)?.name || '';
-        const hasSubgroup = s.groupId === 'grp-1' || s.groupId === 'grp-3';
+        const selectedYear = parseInt(year, 10);
+        if (s.year !== selectedYear) return false;
 
-        if (level === 'master') {
-            return (
-                (year === 'all' || s.year.toString() === year) &&
-                s.level === 'master' &&
+        const universityName = universities.find(u => u.id === s.universityId)?.name || '';
+
+        if (level === 'master' || level === 'college') {
+             return (
+                s.level === level &&
                 (university === 'all' || s.universityId === university) &&
                 (educationForm === 'all' || s.educationForm === educationForm) &&
                 (s.name.toLowerCase().includes(search.toLowerCase()) || universityName.toLowerCase().includes(search.toLowerCase())) &&
-                (s.score ? s.score <= score : true)
+                (s.score !== null ? s.score <= score : true)
             )
         }
 
+        const hasSubgroup = s.groupId === 'grp-1' || s.groupId === 'grp-3';
+
         return (
-            (year === 'all' || s.year.toString() === year) &&
             (level === 'all' || s.level === level) &&
             (university === 'all' || s.universityId === university) &&
             (group === 'all' || s.groupId === group) &&
             (educationForm === 'all' || s.educationForm === educationForm) &&
             (!hasSubgroup || subgroup === 'all' || s.subgroupId === subgroup) &&
             (s.name.toLowerCase().includes(search.toLowerCase()) || universityName.toLowerCase().includes(search.toLowerCase())) &&
-            (s.score ? s.score <= score : true)
+            (s.score !== null ? s.score <= score : true)
         )
     });
     setFilteredSpecialties(results);
   }, [year, level, university, group, subgroup, educationForm, search, score]);
+
+
+  const getScoreChange = (currentSpec: Specialty) => {
+    if (currentSpec.year !== 2024) return null;
+
+    const prevYearSpec = specialties.find(
+      (s) =>
+        s.year === 2023 &&
+        s.universityId === currentSpec.universityId &&
+        s.name === currentSpec.name &&
+        s.level === currentSpec.level &&
+        s.educationForm === currentSpec.educationForm &&
+        s.paymentType === currentSpec.paymentType &&
+        s.educationLanguage === currentSpec.educationLanguage &&
+        s.groupId === currentSpec.groupId &&
+        s.subgroupId === currentSpec.subgroupId
+    );
+
+    if (prevYearSpec && prevYearSpec.score !== null && currentSpec.score !== null) {
+      if (currentSpec.score > prevYearSpec.score) {
+        return 'up';
+      }
+      if (currentSpec.score < prevYearSpec.score) {
+        return 'down';
+      }
+    }
+    return null;
+  };
 
 
   return (
@@ -97,7 +123,7 @@ export default function InteractiveGuidePage() {
       <div className="w-full max-w-7xl">
         <header className="text-center mb-8">
             <h1 className="text-4xl font-bold tracking-tight">İnteraktiv Təhsil Bələdçisi</h1>
-            <p className="text-muted-foreground mt-2">2024-2025-ci il üzrə keçid ballarını kəşf edin</p>
+            <p className="text-muted-foreground mt-2">Keçid ballarını kəşf edin və müqayisə edin</p>
         </header>
 
         <Card className="mb-8">
@@ -112,17 +138,15 @@ export default function InteractiveGuidePage() {
                         <Select value={year} onValueChange={setYear}>
                             <SelectTrigger><SelectValue placeholder="İl" /></SelectTrigger>
                             <SelectContent>
-                                <SelectItem value="all">Bütün İllər</SelectItem>
                                 {years.map(y => <SelectItem key={y} value={y.toString()}>{y}</SelectItem>)}
                             </SelectContent>
                         </Select>
                     </div>
                     <div className="space-y-2">
                         <label className="text-sm font-medium">Təhsil Səviyyəsi</label>
-                        <Select value={level} onValueChange={setLevel}>
+                        <Select value={level} onValueChange={(value) => { setLevel(value); setGroup('all'); setSubgroup('all'); }}>
                             <SelectTrigger><SelectValue placeholder="Təhsil Səviyyəsi" /></SelectTrigger>
                             <SelectContent>
-                                <SelectItem value="all">Bütün Səviyyələr</SelectItem>
                                 {levels.map(l => <SelectItem key={l.id} value={l.id}>{l.name}</SelectItem>)}
                             </SelectContent>
                         </Select>
@@ -137,7 +161,7 @@ export default function InteractiveGuidePage() {
                             </SelectContent>
                         </Select>
                     </div>
-                    {level !== 'master' && (
+                    {level === 'bachelor' && (
                         <>
                             <div className="space-y-2">
                                 <label className="text-sm font-medium">İxtisas Qrupu</label>
@@ -145,7 +169,7 @@ export default function InteractiveGuidePage() {
                                     <SelectTrigger><SelectValue placeholder="İxtisas Qrupu" /></SelectTrigger>
                                     <SelectContent>
                                         <SelectItem value="all">Bütün Qruplar</SelectItem>
-                                        {groups.map(g => <SelectItem key={g.id} value={g.id}>{g.name}</SelectItem>)}
+                                        {groups.filter(g => g.id !== 'none').map(g => <SelectItem key={g.id} value={g.id}>{g.name}</SelectItem>)}
                                     </SelectContent>
                                 </Select>
                             </div>
@@ -223,6 +247,8 @@ export default function InteractiveGuidePage() {
                         const uni = universities.find(u => u.id === spec.universityId);
                         const grp = groups.find(g => g.id === spec.groupId);
                         const form = educationForms.find(f => f.id === spec.educationForm);
+                        const scoreChange = getScoreChange(spec);
+
                         return (
                             <TableRow key={spec.id}>
                                 <TableCell className="text-center">{spec.year}</TableCell>
@@ -231,13 +257,19 @@ export default function InteractiveGuidePage() {
                                 <TableCell className="text-center">{grp?.name.replace(' Qrup', '') || '-'}</TableCell>
                                 <TableCell className="text-center uppercase">{spec.educationLanguage}</TableCell>
                                 <TableCell className="text-center capitalize">{form?.name}</TableCell>
-                                <TableCell className="text-center">{spec.planCount}</TableCell>
+                                <TableCell className="text-center">{spec.planCount > 0 ? spec.planCount : '-'}</TableCell>
                                 <TableCell className="text-center capitalize">
                                     <Badge variant={spec.paymentType === 'ödənişli' ? 'secondary' : 'default'}>
                                         {spec.paymentType}
                                     </Badge>
                                 </TableCell>
-                                <TableCell className="text-right font-mono">{spec.score ? spec.score.toFixed(1) : 'Müsabiqə'}</TableCell>
+                                <TableCell className="text-right font-mono">
+                                  <div className="flex items-center justify-end gap-1">
+                                    {scoreChange === 'up' && <ArrowUp className="w-4 h-4 text-red-500" />}
+                                    {scoreChange === 'down' && <ArrowDown className="w-4 h-4 text-green-500" />}
+                                    {spec.score ? spec.score.toFixed(1) : 'Müsabiqə'}
+                                  </div>
+                                </TableCell>
                             </TableRow>
                         );
                     })

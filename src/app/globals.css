@@ -70,3 +70,12 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .score-up {
+    @apply text-red-500;
+  }
+  .score-down {
+    @apply text-green-500;
+  }
+}

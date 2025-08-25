@@ -1,14 +1,16 @@
 import type { University, Group, Subgroup, Level, EducationForm } from './types';
-import { specialties as specialtiesG1 } from './data/2024/group1';
-import { specialties as specialtiesG2 } from './data/2024/group2';
-import { specialties as specialtiesG3 } from './data/2024/group3';
-import { specialties as specialtiesG4 } from './data/2024/group4';
-import { specialties as specialtiesG5 } from './data/2024/group5';
-import { specialties as specialtiesCollege11 } from './data/2024/college11';
-import { specialties as specialtiesMaster } from './data/2024/master';
+import { specialties as specialtiesG1_2024 } from './data/2024/group1';
+import { specialties as specialtiesG2_2024 } from './data/2024/group2';
+import { specialties as specialtiesG3_2024 } from './data/2024/group3';
+import { specialties as specialtiesG4_2024 } from './data/2024/group4';
+import { specialties as specialtiesG5_2024 } from './data/2024/group5';
+import { specialties as specialtiesCollege11_2024 } from './data/2024/college11';
+import { specialties as specialtiesMaster_2024 } from './data/2024/master';
+
+import { specialties as specialtiesG1_2023 } from './data/2023/group1';
 
 
-export const years: number[] = [2024];
+export const years: number[] = [2024, 2023];
 
 export const universities: University[] = [
     { id: 'uni-bdu', name: 'Bakı Dövlət Universiteti' },
@@ -140,11 +142,12 @@ export const educationForms: EducationForm[] = [
 ];
 
 export const specialties = [
-    ...specialtiesG1,
-    ...specialtiesG2,
-    ...specialtiesG3,
-    ...specialtiesG4,
-    ...specialtiesG5,
-    ...specialtiesCollege11,
-    ...specialtiesMaster,
+    ...specialtiesG1_2024,
+    ...specialtiesG2_2024,
+    ...specialtiesG3_2024,
+    ...specialtiesG4_2024,
+    ...specialtiesG5_2024,
+    ...specialtiesCollege11_2024,
+    ...specialtiesMaster_2024,
+    ...specialtiesG1_2023,
 ];
