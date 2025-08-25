@@ -27,14 +27,12 @@ jobs:
         run: npm install
 
       - name: Build Next.js static site
-        run: |
-          npm run build
-          npm run export
+        run: npm run build   # yalnız build kifayətdir
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: ./out   # next.config.js 'output: export' → out/ qovluğunu yaradır
 
   deploy:
     runs-on: ubuntu-latest
