@@ -1,4 +1,157 @@
 import type { Specialty } from '../../types';
 
 export const specialties: Specialty[] = [
+  // Bakı Dövlət Universiteti
+  { id: 'spec-bdu-g4-1', year: 2024, name: 'Biologiya müəllimliyi', universityId: 'uni-bdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 371.7 },
+  { id: 'spec-bdu-g4-2', year: 2024, name: 'Kimya müəllimliyi', universityId: 'uni-bdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 399.8 },
+  { id: 'spec-bdu-g4-3', year: 2024, name: 'Psixologiya', universityId: 'uni-bdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 466.0 },
+  { id: 'spec-bdu-g4-4', year: 2024, name: 'Psixologiya', universityId: 'uni-bdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'qiyabi', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 386.4 },
+  { id: 'spec-bdu-g4-5', year: 2024, name: 'Psixologiya (tədris ingilis dilində)', universityId: 'uni-bdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'en', paymentType: 'dövlət sifarişli', planCount: 0, score: 511.1 },
+  { id: 'spec-bdu-g4-6', year: 2024, name: 'Biologiya', universityId: 'uni-bdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 438.7 },
+  { id: 'spec-bdu-g4-7', year: 2024, name: 'Biologiya', universityId: 'uni-bdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'qiyabi', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 315.9 },
+  { id: 'spec-bdu-g4-8', year: 2024, name: 'Biologiya (tədris ingilis dilində)', universityId: 'uni-bdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'en', paymentType: 'dövlət sifarişli', planCount: 0, score: 460.5 },
+  { id: 'spec-bdu-g4-9', year: 2024, name: 'Biotexnologiya', universityId: 'uni-bdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 481.8 },
+  { id: 'spec-bdu-g4-10', year: 2024, name: 'Ekologiya', universityId: 'uni-bdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 271.7 },
+  { id: 'spec-bdu-g4-11', year: 2024, name: 'Ekologiya', universityId: 'uni-bdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'qiyabi', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 219.1 },
+  { id: 'spec-bdu-g4-12', year: 2024, name: 'Ekologiya (tədris ingilis dilində)', universityId: 'uni-bdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'en', paymentType: 'dövlət sifarişli', planCount: 0, score: 334.1 },
+  { id: 'spec-bdu-g4-13', year: 2024, name: 'Kimya', universityId: 'uni-bdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 418.9 },
+  { id: 'spec-bdu-g4-14', year: 2024, name: 'Kimya (tədris ingilis dilində)', universityId: 'uni-bdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'en', paymentType: 'dövlət sifarişli', planCount: 0, score: 491.8 },
+  { id: 'spec-bdu-g4-15', year: 2024, name: 'Bitki mühafizəsi', universityId: 'uni-bdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 234.9 },
+  { id: 'spec-bdu-g4-16', year: 2024, name: 'Su bioehtiyatları və akvakultura', universityId: 'uni-bdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 232.6 },
+  { id: 'spec-bdu-g4-17', year: 2024, name: 'Kimya və biologiya müəllimliyi (Qazax filialı)', universityId: 'uni-bdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 252.1 },
+
+  // Azərbaycan Tibb Universiteti
+  { id: 'spec-amu-g4-1', year: 2024, name: 'Əczaçılıq', universityId: 'uni-amu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 503.1 },
+  { id: 'spec-amu-g4-2', year: 2024, name: 'Fizioterapiya və tibbi reabilitasiya', universityId: 'uni-amu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 536.5 },
+  { id: 'spec-amu-g4-3', year: 2024, name: 'Tibb bacısı işi', universityId: 'uni-amu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 457.8 },
+  { id: 'spec-amu-g4-4', year: 2024, name: 'İctimai səhiyyə', universityId: 'uni-amu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 528.3 },
+  { id: 'spec-amu-g4-5', year: 2024, name: 'Stomatologiya', universityId: 'uni-amu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 553.8 },
+  { id: 'spec-amu-g4-6', year: 2024, name: 'Tibb', universityId: 'uni-amu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 565.8 },
+  { id: 'spec-amu-g4-7', year: 2024, name: 'Tibb (tədris ingilis dilində)', universityId: 'uni-amu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'en', paymentType: 'dövlət sifarişli', planCount: 0, score: 667.8 },
+  
+  // Azərbaycan Dövlət Pedaqoji Universiteti
+  { id: 'spec-adpu-g4-1', year: 2024, name: 'Biologiya müəllimliyi', universityId: 'uni-adpu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 295.0 },
+  { id: 'spec-adpu-g4-2', year: 2024, name: 'Kimya müəllimliyi', universityId: 'uni-adpu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 304.1 },
+  { id: 'spec-adpu-g4-3', year: 2024, name: 'Kimya və biologiya müəllimliyi', universityId: 'uni-adpu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 362.5 },
+  
+  // Azərbaycan Dövlət İqtisad Universiteti
+  { id: 'spec-unec-g4-1', year: 2024, name: 'Ekologiya', universityId: 'uni-unec', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 248.9 },
+  { id: 'spec-unec-g4-2', year: 2024, name: 'Ekologiya', universityId: 'uni-unec', groupId: 'grp-4', level: 'bachelor', educationForm: 'qiyabi', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 207.0 },
+  
+  // Bakı Slavyan Universiteti
+  { id: 'spec-bsu-g4-1', year: 2024, name: 'Psixologiya', universityId: 'uni-bsu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 421.0 },
+
+  // Azərbaycan Dövlət Bədən Tərbiyəsi və İdman Akademiyası
+  { id: 'spec-adbtia-g4-1', year: 2024, name: 'Bədən tərbiyəsi və idmanda reabilitasiya', universityId: 'uni-adbtia', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 325.7 },
+
+  // Naxçıvan Dövlət Universiteti
+  { id: 'spec-ndu-g4-1', year: 2024, name: 'Biologiya müəllimliyi', universityId: 'uni-ndu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 200.0 },
+  { id: 'spec-ndu-g4-2', year: 2024, name: 'Kimya müəllimliyi', universityId: 'uni-ndu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 200.0 },
+  { id: 'spec-ndu-g4-3', year: 2024, name: 'Psixologiya', universityId: 'uni-ndu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 200.0 },
+  { id: 'spec-ndu-g4-4', year: 2024, name: 'Biologiya', universityId: 'uni-ndu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 238.6 },
+  { id: 'spec-ndu-g4-5', year: 2024, name: 'Biologiya', universityId: 'uni-ndu', groupId: 'grp-4', level: 'bachelor', educationForm: 'qiyabi', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 200.0 },
+  { id: 'spec-ndu-g4-6', year: 2024, name: 'Biologiya', universityId: 'uni-ndu', groupId: 'grp-4', level: 'college', educationForm: 'qiyabi', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 92.6 },
+  { id: 'spec-ndu-g4-7', year: 2024, name: 'Kimya', universityId: 'uni-ndu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 216.4 },
+  { id: 'spec-ndu-g4-8', year: 2024, name: 'Baytarlıq təbabəti', universityId: 'uni-ndu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 150.0 },
+  { id: 'spec-ndu-g4-9', year: 2024, name: 'Baytarlıq təbabəti', universityId: 'uni-ndu', groupId: 'grp-4', level: 'college', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 73.0 },
+  { id: 'spec-ndu-g4-10', year: 2024, name: 'Əczaçılıq', universityId: 'uni-ndu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 477.5 },
+  { id: 'spec-ndu-g4-11', year: 2024, name: 'İctimai səhiyyə', universityId: 'uni-ndu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 507.3 },
+  { id: 'spec-ndu-g4-12', year: 2024, name: 'Stomatologiya', universityId: 'uni-ndu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 535.6 },
+  { id: 'spec-ndu-g4-13', year: 2024, name: 'Tibb', universityId: 'uni-ndu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 544.2 },
+  { id: 'spec-ndu-g4-14', year: 2024, name: 'Tibb (tədris ingilis dilində)', universityId: 'uni-ndu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'en', paymentType: 'dövlət sifarişli', planCount: 0, score: 561.8 },
+  
+  // Azərbaycan Dövlət Aqrar Universiteti
+  { id: 'spec-adau-g4-1', year: 2024, name: 'Biologiya', universityId: 'uni-adau', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 200.0 },
+  { id: 'spec-adau-g4-2', year: 2024, name: 'Biologiya', universityId: 'uni-adau', groupId: 'grp-4', level: 'college', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 89.3 },
+  { id: 'spec-adau-g4-3', year: 2024, name: 'Ekologiya', universityId: 'uni-adau', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 150.0 },
+  { id: 'spec-adau-g4-4', year: 2024, name: 'Ekologiya', universityId: 'uni-adau', groupId: 'grp-4', level: 'college', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 89.3 },
+  { id: 'spec-adau-g4-5', year: 2024, name: 'Ekologiya', universityId: 'uni-adau', groupId: 'grp-4', level: 'bachelor', educationForm: 'qiyabi', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 150.0 },
+  { id: 'spec-adau-g4-6', year: 2024, name: 'Ekologiya', universityId: 'uni-adau', groupId: 'grp-4', level: 'college', educationForm: 'qiyabi', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 93.0 },
+  { id: 'spec-adau-g4-7', year: 2024, name: 'Bağçılıq və tərəvəzçilik', universityId: 'uni-adau', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 150.0 },
+  { id: 'spec-adau-g4-8', year: 2024, name: 'Bağçılıq və tərəvəzçilik', universityId: 'uni-adau', groupId: 'grp-4', level: 'college', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 81.1 },
+  { id: 'spec-adau-g4-9', year: 2024, name: 'Baytarlıq təbabəti', universityId: 'uni-adau', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 150.0 },
+  { id: 'spec-adau-g4-10', year: 2024, name: 'Baytarlıq təbabəti', universityId: 'uni-adau', groupId: 'grp-4', level: 'college', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 75.7 },
+  { id: 'spec-adau-g4-11', year: 2024, name: 'Baytarlıq təbabəti (tədris ingilis dilində)', universityId: 'uni-adau', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'en', paymentType: 'dövlət sifarişli', planCount: 0, score: 245.5 },
+  { id: 'spec-adau-g4-12', year: 2024, name: 'Bitki mühafizəsi', universityId: 'uni-adau', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 150.0 },
+  { id: 'spec-adau-g4-13', year: 2024, name: 'Bitki mühafizəsi', universityId: 'uni-adau', groupId: 'grp-4', level: 'college', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 91.9 },
+  { id: 'spec-adau-g4-14', year: 2024, name: 'Əczaçılıq', universityId: 'uni-adau', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 200.0 },
+  { id: 'spec-adau-g4-15', year: 2024, name: 'Əczaçılıq', universityId: 'uni-adau', groupId: 'grp-4', level: 'college', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 81.4 },
+
+  // Gəncə Dövlət Universiteti
+  { id: 'spec-gdu-g4-1', year: 2024, name: 'Biologiya müəllimliyi', universityId: 'uni-gdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 200.0 },
+  { id: 'spec-gdu-g4-2', year: 2024, name: 'Kimya müəllimliyi', universityId: 'uni-gdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 200.0 },
+  { id: 'spec-gdu-g4-3', year: 2024, name: 'Kimya və biologiya müəllimliyi', universityId: 'uni-gdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 226.8 },
+  { id: 'spec-gdu-g4-4', year: 2024, name: 'Kimya və biologiya müəllimliyi (tədris ingilis dilində)', universityId: 'uni-gdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'en', paymentType: 'dövlət sifarişli', planCount: 0, score: 200.0 },
+  { id: 'spec-gdu-g4-5', year: 2024, name: 'Psixologiya', universityId: 'uni-gdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 200.0 },
+  { id: 'spec-gdu-g4-6', year: 2024, name: 'Biologiya', universityId: 'uni-gdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 200.0 },
+  { id: 'spec-gdu-g4-7', year: 2024, name: 'Biologiya', universityId: 'uni-gdu', groupId: 'grp-4', level: 'college', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 91.8 },
+  { id: 'spec-gdu-g4-8', year: 2024, name: 'Biologiya', universityId: 'uni-gdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 200.0 },
+  { id: 'spec-gdu-g4-9', year: 2024, name: 'Biologiya', universityId: 'uni-gdu', groupId: 'grp-4', level: 'college', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 87.4 },
+  { id: 'spec-gdu-g4-10', year: 2024, name: 'Ekologiya', universityId: 'uni-gdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 202.7 },
+  { id: 'spec-gdu-g4-11', year: 2024, name: 'Kimya', universityId: 'uni-gdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 200.0 },
+  
+  // Azərbaycan Texnologiya Universiteti (Gəncə şəhəri)
+  { id: 'spec-atu-gence-g4-1', year: 2024, name: 'Ekologiya', universityId: 'uni-atu-gence', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 150.0 },
+  { id: 'spec-atu-gence-g4-2', year: 2024, name: 'Ekologiya', universityId: 'uni-atu-gence', groupId: 'grp-4', level: 'college', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 87.5 },
+  { id: 'spec-atu-gence-g4-3', year: 2024, name: 'Ekologiya', universityId: 'uni-atu-gence', groupId: 'grp-4', level: 'bachelor', educationForm: 'qiyabi', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 150.0 },
+  { id: 'spec-atu-gence-g4-4', year: 2024, name: 'Ekologiya', universityId: 'uni-atu-gence', groupId: 'grp-4', level: 'college', educationForm: 'qiyabi', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 92.5 },
+  
+  // Sumqayıt Dövlət Universiteti
+  { id: 'spec-sdu-g4-1', year: 2024, name: 'Biologiya müəllimliyi', universityId: 'uni-sdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 231.1 },
+  { id: 'spec-sdu-g4-2', year: 2024, name: 'Kimya müəllimliyi', universityId: 'uni-sdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 235.6 },
+  { id: 'spec-sdu-g4-3', year: 2024, name: 'Kimya və biologiya müəllimliyi', universityId: 'uni-sdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 263.2 },
+  { id: 'spec-sdu-g4-4', year: 2024, name: 'Psixologiya', universityId: 'uni-sdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 290.4 },
+  { id: 'spec-sdu-g4-5', year: 2024, name: 'Psixologiya', universityId: 'uni-sdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'qiyabi', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 200.0 },
+  { id: 'spec-sdu-g4-6', year: 2024, name: 'Biologiya', universityId: 'uni-sdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 284.2 },
+  { id: 'spec-sdu-g4-7', year: 2024, name: 'Ekologiya', universityId: 'uni-sdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 215.2 },
+  { id: 'spec-sdu-g4-8', year: 2024, name: 'Kimya', universityId: 'uni-sdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 273.1 },
+  
+  // Mingəçevir Dövlət Universiteti
+  { id: 'spec-mdu-g4-1', year: 2024, name: 'Kimya müəllimliyi', universityId: 'uni-mdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 200.0 },
+  { id: 'spec-mdu-g4-2', year: 2024, name: 'Ekologiya', universityId: 'uni-mdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 150.0 },
+  { id: 'spec-mdu-g4-3', year: 2024, name: 'Ekologiya', universityId: 'uni-mdu', groupId: 'grp-4', level: 'college', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 87.2 },
+  { id: 'spec-mdu-g4-4', year: 2024, name: 'Ekologiya', universityId: 'uni-mdu', groupId: 'grp-4', level: 'bachelor', educationForm: 'qiyabi', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 150.0 },
+  { id: 'spec-mdu-g4-5', year: 2024, name: 'Ekologiya', universityId: 'uni-mdu', groupId: 'grp-4', level: 'college', educationForm: 'qiyabi', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 92.1 },
+  
+  // Lənkəran Dövlət Universiteti
+  { id: 'spec-ldu-g4-1', year: 2024, name: 'Kimya və biologiya müəllimliyi', universityId: 'uni-ldu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 200.0 },
+  { id: 'spec-ldu-g4-2', year: 2024, name: 'Psixologiya', universityId: 'uni-ldu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 200.0 },
+  { id: 'spec-ldu-g4-3', year: 2024, name: 'Ekologiya', universityId: 'uni-ldu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 150.0 },
+  { id: 'spec-ldu-g4-4', year: 2024, name: 'Ekologiya', universityId: 'uni-ldu', groupId: 'grp-4', level: 'college', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 84.9 },
+  { id: 'spec-ldu-g4-5', year: 2024, name: 'Ekologiya', universityId: 'uni-ldu', groupId: 'grp-4', level: 'bachelor', educationForm: 'qiyabi', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 150.0 },
+  { id: 'spec-ldu-g4-6', year: 2024, name: 'Ekologiya', universityId: 'uni-ldu', groupId: 'grp-4', level: 'college', educationForm: 'qiyabi', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 91.5 },
+  { id: 'spec-ldu-g4-7', year: 2024, name: 'Bağçılıq və tərəvəzçilik', universityId: 'uni-ldu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 150.0 },
+  { id: 'spec-ldu-g4-8', year: 2024, name: 'Bağçılıq və tərəvəzçilik', universityId: 'uni-ldu', groupId: 'grp-4', level: 'college', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 78.3 },
+  { id: 'spec-ldu-g4-9', year: 2024, name: 'Baytarlıq təbabəti', universityId: 'uni-ldu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 150.0 },
+  { id: 'spec-ldu-g4-10', year: 2024, name: 'Baytarlıq təbabəti', universityId: 'uni-ldu', groupId: 'grp-4', level: 'college', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 72.6 },
+  
+  // Azərbaycan Kooperasiya Universiteti
+  { id: 'spec-aku-g4-1', year: 2024, name: 'Ekologiya', universityId: 'uni-aku', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 159.6 },
+  { id: 'spec-aku-g4-2', year: 2024, name: 'Ekologiya', universityId: 'uni-aku', groupId: 'grp-4', level: 'bachelor', educationForm: 'qiyabi', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 150.0 },
+  { id: 'spec-aku-g4-3', year: 2024, name: 'Ekologiya', universityId: 'uni-aku', groupId: 'grp-4', level: 'college', educationForm: 'qiyabi', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 94.1 },
+
+  // Qərbi Kaspi Universiteti
+  { id: 'spec-qku-g4-1', year: 2024, name: 'Psixologiya', universityId: 'uni-qku', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 279.5 },
+  { id: 'spec-qku-g4-2', year: 2024, name: 'Psixologiya', universityId: 'uni-qku', groupId: 'grp-4', level: 'bachelor', educationForm: 'qiyabi', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 200.0 },
+  { id: 'spec-qku-g4-3', year: 2024, name: 'Biologiya', universityId: 'uni-qku', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 204.4 },
+  { id: 'spec-qku-g4-4', year: 2024, name: 'Ekologiya', universityId: 'uni-qku', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 150.0 },
+  { id: 'spec-qku-g4-5', year: 2024, name: 'Ekologiya', universityId: 'uni-qku', groupId: 'grp-4', level: 'college', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 91.2 },
+  { id: 'spec-qku-g4-6', year: 2024, name: 'Su bioehtiyatları və akvakultura', universityId: 'uni-qku', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 194.1 },
+
+  // Xəzər Universiteti
+  { id: 'spec-xu-g4-1', year: 2024, name: 'Biologiya müəllimliyi', universityId: 'uni-xu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 277.6 },
+  { id: 'spec-xu-g4-2', year: 2024, name: 'Kimya müəllimliyi', universityId: 'uni-xu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 288.1 },
+  { id: 'spec-xu-g4-3', year: 2024, name: 'Kimya və biologiya müəllimliyi', universityId: 'uni-xu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 363.3 },
+  { id: 'spec-xu-g4-4', year: 2024, name: 'Psixologiya (tədris ingilis dilində)', universityId: 'uni-xu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'en', paymentType: 'dövlət sifarişli', planCount: 0, score: 476.4 },
+  { id: 'spec-xu-g4-5', year: 2024, name: 'Baytarlıq təbabəti', universityId: 'uni-xu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 229.4 },
+
+  // Bakı Qızlar Universiteti
+  { id: 'spec-bqu-g4-1', year: 2024, name: 'Psixologiya', universityId: 'uni-bqu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 200.0 },
+
+  // Odlar Yurdu Universiteti
+  { id: 'spec-oyu-g4-1', year: 2024, name: 'Psixologiya', universityId: 'uni-oyu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 200.0 },
+  { id: 'spec-oyu-g4-2', year: 2024, name: 'Biologiya', universityId: 'uni-oyu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 200.0 },
+  { id: 'spec-oyu-g4-3', year: 2024, name: 'Biologiya', universityId: 'uni-oyu', groupId: 'grp-4', level: 'college', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 90.7 },
+  { id: 'spec-oyu-g4-4', year: 2024, name: 'Ekologiya', universityId: 'uni-oyu', groupId: 'grp-4', level: 'bachelor', educationForm: 'qiyabi', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 154.2 },
+  { id: 'spec-oyu-g4-5', year: 2024, name: 'Ekologiya', universityId: 'uni-oyu', groupId: 'grp-4', level: 'bachelor', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 202.3 },
 ];
