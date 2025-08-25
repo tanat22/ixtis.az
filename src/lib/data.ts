@@ -14,8 +14,10 @@ import { specialties as specialtiesG4_2023 } from './data/2023/group4';
 import { specialties as specialtiesG5_2023 } from './data/2023/group5';
 import { specialties as specialtiesCollege11_2023 } from './data/2023/college11';
 
+import { specialties as specialtiesG1_2022 } from './data/2022/group1';
 
-export const years: number[] = [2023, 2024];
+
+export const years: number[] = [2022, 2023, 2024];
 
 export const universities: University[] = [
     { id: 'uni-bdu', name: 'Bakı Dövlət Universiteti' },
@@ -161,4 +163,5 @@ export const specialties = [
     ...specialtiesG4_2023,
     ...specialtiesG5_2023,
     ...specialtiesCollege11_2023,
+    ...specialtiesG1_2022,
 ];
