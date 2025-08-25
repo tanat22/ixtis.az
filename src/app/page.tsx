@@ -104,7 +104,7 @@ export default function InteractiveGuidePage() {
   React.useEffect(() => {
     const results = combinedSpecialties.filter(s => {
       const universityName = universities.find(u => u.id === s.universityId)?.name || '';
-      const latestYear = Math.max(...Object.keys(s.scores).map(Number));
+      const latestYear = Math.max(...Object.keys(s.scores).map(Number).filter(y => s.scores[y] !== null));
       const latestScore = s.scores[latestYear];
 
       if (level === 'master' || level === 'college') {
@@ -113,7 +113,7 @@ export default function InteractiveGuidePage() {
               (university === 'all' || s.universityId === university) &&
               (educationForm === 'all' || s.educationForm === educationForm) &&
               (s.name.toLowerCase().includes(search.toLowerCase()) || universityName.toLowerCase().includes(search.toLowerCase())) &&
-              (latestScore !== null ? latestScore <= score : true)
+              (latestScore !== null && latestScore !== undefined ? latestScore <= score : true)
           )
       }
 
@@ -126,11 +126,13 @@ export default function InteractiveGuidePage() {
           (educationForm === 'all' || s.educationForm === educationForm) &&
           (!hasSubgroup || subgroup === 'all' || s.subgroupId === subgroup) &&
           (s.name.toLowerCase().includes(search.toLowerCase()) || universityName.toLowerCase().includes(search.toLowerCase())) &&
-          (latestScore !== null ? latestScore <= score : true)
+          (latestScore !== null && latestScore !== undefined ? latestScore <= score : true)
       )
     });
     setFilteredSpecialties(results);
   }, [level, university, group, subgroup, educationForm, search, score, combinedSpecialties]);
+
+  const sortedYears = React.useMemo(() => years.sort((a,b) => a - b), []);
 
   return (
     <div className="flex min-h-screen w-full flex-col items-center bg-background p-4 sm:p-8">
@@ -241,9 +243,9 @@ export default function InteractiveGuidePage() {
                         <TableHead className="w-1/12 text-center">Tədris Dili</TableHead>
                         <TableHead className="w-1/12 text-center">Tədris Forması</TableHead>
                         <TableHead className="w-1/12 text-center">Ödəniş</TableHead>
-                        {years.sort((a,b) => a-b).map((year, index) => (
+                        {sortedYears.map((year, index) => (
                            <React.Fragment key={year}>
-                               {index > 0 && <TableHead className="w-auto text-center"></TableHead>}
+                               {index > 0 && <TableHead className="w-auto text-center px-1"></TableHead>}
                                <TableHead className="w-1/12 text-center">{year}</TableHead>
                            </React.Fragment>
                         ))}
@@ -255,8 +257,7 @@ export default function InteractiveGuidePage() {
                         const uni = universities.find(u => u.id === spec.universityId);
                         const grp = groups.find(g => g.id === spec.groupId);
                         const form = educationForms.find(f => f.id === spec.educationForm);
-                        const sortedYears = Object.keys(spec.scores).map(Number).sort((a, b) => a - b);
-
+                        
                         return (
                             <TableRow key={spec.id}>
                                 <TableCell className="font-medium">{uni ? uni.name : 'Naməlum'}</TableCell>
@@ -269,12 +270,12 @@ export default function InteractiveGuidePage() {
                                         {spec.paymentType}
                                     </Badge>
                                 </TableCell>
-                                {years.sort((a,b) => a-b).map((year, index) => {
+                                {sortedYears.map((year, index) => {
                                     const currentScore = spec.scores[year];
-                                    const prevYear = years[index - 1];
+                                    const prevYear = sortedYears[index - 1];
                                     const prevScore = prevYear ? spec.scores[prevYear] : undefined;
                                     let scoreChange: 'up' | 'down' | null = null;
-                                    if (currentScore !== null && prevScore !== null && prevScore !== undefined) {
+                                    if (currentScore != null && prevScore != null) {
                                         if(currentScore > prevScore) scoreChange = 'up';
                                         if(currentScore < prevScore) scoreChange = 'down';
                                     }
@@ -288,7 +289,7 @@ export default function InteractiveGuidePage() {
                                                 </TableCell>
                                             )}
                                             <TableCell className="text-center font-mono">
-                                                {currentScore ? currentScore.toFixed(1) : (spec.scores.hasOwnProperty(year) ? 'Müsabiqə' : '-')}
+                                                {currentScore ? currentScore.toFixed(1) : spec.scores.hasOwnProperty(year) ? 'Müsabiqə' : '-'}
                                             </TableCell>
                                         </React.Fragment>
                                     )
@@ -298,7 +299,7 @@ export default function InteractiveGuidePage() {
                     })
                 ) : (
                     <TableRow>
-                        <TableCell colSpan={7 + years.length * 2 -1} className="text-center h-24">
+                        <TableCell colSpan={6 + sortedYears.length + (sortedYears.length > 1 ? sortedYears.length - 1 : 0)} className="text-center h-24">
                             Axtarışınıza uyğun nəticə tapılmadı.
                         </TableCell>
                     </TableRow>

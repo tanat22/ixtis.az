@@ -72,10 +72,11 @@ body {
 }
 
 @layer utilities {
-  .score-up {
-    @apply text-red-500;
+    .score-up {
+      @apply text-red-500;
+    }
+    .score-down {
+      @apply text-green-500;
+    }
   }
-  .score-down {
-    @apply text-green-500;
-  }
-}
+  
