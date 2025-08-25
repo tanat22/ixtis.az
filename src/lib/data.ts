@@ -53,7 +53,7 @@ export const universities: University[] = [
     { id: 'uni-bma', name: 'Hacıbəyov adına Bakı Musiqi Akademiyası' },
     { id: 'uni-amk', name: 'Azərbaycan Milli Konservatoriyası' },
     { id: 'uni-bxa', name: 'Bakı Xoreoqrafiya Akademiyası' },
-    { id: 'uni-atu', name: 'Azərbaycan Tibb Universiteti' },
+    { id: 'uni-amu', name: 'Azərbaycan Tibb Universiteti' },
     { id: 'uni-azmaliyyekollec', name: 'Azərbaycan Dövlət İqtisad Universitetinin nəznində Azərbaycan Maliyyə-iqtisad Kolleci'},
     { id: 'uni-bduiqtisadiyyathumanitar', name: 'Bakı Dövlət Universitetinin nəznində İqtisadiyyat və Humanitar Kollec'},
     { id: 'uni-unecqida', name: 'Azərbaycan Dövlət İqtisad Universitetinin nəznində Qida Sənayesi Kolleci'},
