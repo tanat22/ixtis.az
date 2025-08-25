@@ -18,6 +18,7 @@ export const specialties: Specialty[] = [
     { id: 'spec-azmaliyyekollec-13', year: 2024, universityId: 'uni-azmaliyyekollec', name: 'Vergi işi', groupId: 'none', level: 'college', educationForm: 'qiyabi', educationLanguage: 'az', paymentType: 'ödənişli', planCount: 0, score: 114.9 },
     { id: 'spec-azmaliyyekollec-14', year: 2024, universityId: 'uni-azmaliyyekollec', name: 'Sosial iş', groupId: 'none', level: 'college', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'ödənişli', planCount: 0, score: 123.9 },
     { id: 'spec-azmaliyyekollec-15', year: 2024, universityId: 'uni-azmaliyyekollec', name: 'Sosial iş', groupId: 'none', level: 'college', educationForm: 'qiyabi', educationLanguage: 'az', paymentType: 'ödənişli', planCount: 0, score: 111.4 },
+
     // Bakı Dövlət Universitetinin nəznində İqtisadiyyat və Humanitar Kollec
     { id: 'spec-bduiqtisadiyyathumanitar-1', year: 2024, universityId: 'uni-bduiqtisadiyyathumanitar', name: 'Ailə və ev təhsili', groupId: 'none', level: 'college', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 128.2 },
     { id: 'spec-bduiqtisadiyyathumanitar-2', year: 2024, universityId: 'uni-bduiqtisadiyyathumanitar', name: 'Məktəbəqədər təhsil', groupId: 'none', level: 'college', educationForm: 'əyani', educationLanguage: 'az', paymentType: 'dövlət sifarişli', planCount: 0, score: 148.0 },
