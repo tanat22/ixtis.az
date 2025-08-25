@@ -15,6 +15,7 @@ import { specialties as specialtiesG5_2023 } from './data/2023/group5';
 import { specialties as specialtiesCollege11_2023 } from './data/2023/college11';
 
 import { specialties as specialtiesG1_2022 } from './data/2022/group1';
+import { specialties as specialtiesG2_2022 } from './data/2022/group2';
 
 
 export const years: number[] = [2022, 2023, 2024];
@@ -164,4 +165,5 @@ export const specialties = [
     ...specialtiesG5_2023,
     ...specialtiesCollege11_2023,
     ...specialtiesG1_2022,
+    ...specialtiesG2_2022,
 ];
