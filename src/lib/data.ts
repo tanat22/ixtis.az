@@ -30,7 +30,7 @@ export const universities: University[] = [
     { id: 'uni-nmi', name: 'Naxçıvan Müəllimlər İnstitutu' },
     { id: 'uni-adau', name: 'Azərbaycan Dövlət Aqrar Universiteti' },
     { id: 'uni-gdu', name: 'Gəncə Dövlət Universiteti' },
-    { id: 'uni-atu', name: 'Azərbaycan Texnologiya Universiteti' },
+    { id: 'uni-atu-gence', name: 'Azərbaycan Texnologiya Universiteti (Gəncə şəhəri)' },
     { id: 'uni-sdu', name: 'Sumqayıt Dövlət Universiteti' },
     { id: 'uni-mdu', name: 'Mingəçevir Dövlət Universiteti' },
     { id: 'uni-ldu', name: 'Lənkəran Dövlət Universiteti' },
