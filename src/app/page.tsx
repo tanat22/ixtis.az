@@ -35,7 +35,7 @@ import {
     AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
 import { Badge } from '@/components/ui/badge';
-import { specialties, universities, groups, subgroups, levels, educationForms, educationLanguages, years } from '@/lib/data';
+import { specialties as allSpecialties, universities as allUniversities, groups, subgroups, levels, educationForms, educationLanguages, years } from '@/lib/data';
 import type { Specialty, University } from '@/lib/types';
 import { specialtyInfo, type SpecialtyInfo } from '@/lib/data/specialty-info';
 import { universityInfo, type UniversityInfo } from '@/lib/data/university-info';
@@ -72,22 +72,16 @@ export default function InteractiveGuidePage() {
   const [isUniversityInfoDialogOpen, setIsUniversityInfoDialogOpen] = React.useState(false);
   const [selectedUniversityInfo, setSelectedUniversityInfo] = React.useState<{ name: string; info: UniversityInfo | null } | null>(null);
 
-
-  const availableSubgroups = React.useMemo(() => {
-    if (group === 'grp-1' || group === 'grp-3') {
-      return subgroups.filter(sg => sg.groupId === group);
-    }
-    return [];
-  }, [group]);
-
   const combinedSpecialties = React.useMemo(() => {
     const specialtyMap = new Map<string, CombinedSpecialty>();
 
-    specialties.forEach(s => {
+    allSpecialties.forEach(s => {
       const key = `${s.name}-${s.universityId}-${s.level}-${s.educationForm}-${s.educationLanguage}-${s.paymentType}-${s.groupId}-${s.subgroupId || ''}`;
       
-      if (!specialtyMap.has(key)) {
-        specialtyMap.set(key, {
+      let existingSpec = specialtyMap.get(key);
+
+      if (!existingSpec) {
+        existingSpec = {
           id: s.id,
           name: s.name,
           universityId: s.universityId,
@@ -99,17 +93,29 @@ export default function InteractiveGuidePage() {
           paymentType: s.paymentType,
           planCount: s.planCount,
           scores: {},
-        });
+        };
+        specialtyMap.set(key, existingSpec);
       }
       
-      const combinedSpec = specialtyMap.get(key);
-      if (combinedSpec) {
-        combinedSpec.scores[s.year] = s.score;
+      if (existingSpec.scores[s.year] === undefined) {
+          existingSpec.scores[s.year] = s.score;
       }
     });
 
     return Array.from(specialtyMap.values());
   }, []);
+
+  const availableUniversities = React.useMemo(() => {
+      const universityIdsInSpecialties = new Set(combinedSpecialties.map(s => s.universityId));
+      return allUniversities.filter(u => universityIdsInSpecialties.has(u.id));
+  }, [combinedSpecialties]);
+
+  const availableSubgroups = React.useMemo(() => {
+    if (group === 'grp-1' || group === 'grp-3') {
+      return subgroups.filter(sg => sg.groupId === group);
+    }
+    return [];
+  }, [group]);
   
   const availableSpecialties = React.useMemo(() => {
     const filtered = combinedSpecialties.filter(s => {
@@ -122,13 +128,13 @@ export default function InteractiveGuidePage() {
     });
 
     const uniqueNames = [...new Set(filtered.map(s => s.name))];
-    return uniqueNames.sort((a,b) => a.localeCompare(b));
+    return uniqueNames.sort((a,b) => a.localeCompare(b, 'az'));
   }, [group, subgroup, level, combinedSpecialties]);
 
 
   React.useEffect(() => {
-    if (availableSubgroups.length > 0 && subgroup === 'all') {
-      // setSubgroup(availableSubgroups[0].id);
+    if (availableSubgroups.length > 0 && !availableSubgroups.find(sg => sg.id === subgroup)) {
+        setSubgroup('all');
     } else if (availableSubgroups.length === 0) {
       setSubgroup('all');
     }
@@ -136,33 +142,25 @@ export default function InteractiveGuidePage() {
 
   React.useEffect(() => {
     const results = combinedSpecialties.filter(s => {
-      const universityName = universities.find(u => u.id === s.universityId)?.name || '';
       const latestYear = Math.max(...Object.keys(s.scores).map(Number).filter(y => s.scores[y] !== null));
       const latestScore = s.scores[latestYear];
 
+      const levelMatch = s.level === level;
+      const universityMatch = university === 'all' || s.universityId === university;
+      const educationFormMatch = educationForm === 'all' || s.educationForm === educationForm;
+      const educationLanguageMatch = educationLanguage === 'all' || s.educationLanguage === educationLanguage;
+      const specialtyNameMatch = specialtyName === 'all' || s.name === specialtyName;
+      const scoreMatch = (latestScore !== null && latestScore !== undefined ? latestScore <= score : true);
+
       if (level === 'master' || level === 'college') {
-           return (
-              s.level === level &&
-              (university === 'all' || s.universityId === university) &&
-              (educationForm === 'all' || s.educationForm === educationForm) &&
-              (educationLanguage === 'all' || s.educationLanguage === educationLanguage) &&
-              (specialtyName === 'all' || s.name === specialtyName) &&
-              (latestScore !== null && latestScore !== undefined ? latestScore <= score : true)
-          )
+           return levelMatch && universityMatch && educationFormMatch && educationLanguageMatch && specialtyNameMatch && scoreMatch;
       }
-
+      
+      const groupMatch = group === 'all' || s.groupId === group;
       const hasSubgroup = s.groupId === 'grp-1' || s.groupId === 'grp-3';
+      const subgroupMatch = !hasSubgroup || subgroup === 'all' || s.subgroupId === subgroup;
 
-      return (
-          (level === 'all' || s.level === level) &&
-          (university === 'all' || s.universityId === university) &&
-          (group === 'all' || s.groupId === group) &&
-          (educationForm === 'all' || s.educationForm === educationForm) &&
-          (educationLanguage === 'all' || s.educationLanguage === educationLanguage) &&
-          (!hasSubgroup || subgroup === 'all' || s.subgroupId === subgroup) &&
-          (specialtyName === 'all' || s.name === specialtyName) &&
-          (latestScore !== null && latestScore !== undefined ? latestScore <= score : true)
-      )
+      return levelMatch && universityMatch && groupMatch && subgroupMatch && educationFormMatch && educationLanguageMatch && specialtyNameMatch && scoreMatch;
     });
     setFilteredSpecialties(results);
   }, [level, university, group, subgroup, educationForm, educationLanguage, specialtyName, score, combinedSpecialties]);
@@ -175,7 +173,9 @@ export default function InteractiveGuidePage() {
     setIsInfoDialogOpen(true);
   };
   
-  const handleUniversityRowClick = (uni: University) => {
+  const handleUniversityRowClick = (uniId: string) => {
+      const uni = allUniversities.find(u => u.id === uniId);
+      if (!uni) return;
       const info = universityInfo[uni.id] || null;
       setSelectedUniversityInfo({ name: uni.name, info });
       setIsUniversityInfoDialogOpen(true);
@@ -206,12 +206,12 @@ export default function InteractiveGuidePage() {
                         </Select>
                     </div>
                     <div className="space-y-2">
-                        <label className="text-sm font-medium">Universitet/Kollec</label>
+                        <label className="text-sm font-medium">Təhsil Müəssisəsi</label>
                          <Select value={university} onValueChange={setUniversity}>
                             <SelectTrigger><SelectValue placeholder="Universitet/Kollec" /></SelectTrigger>
                             <SelectContent className="max-h-80">
                                 <SelectItem value="all">Bütün Təhsil Müəssisələri</SelectItem>
-                                {universities.sort((a, b) => a.name.localeCompare(b.name)).map(u => <SelectItem key={u.id} value={u.id}>{u.name}</SelectItem>)}
+                                {availableUniversities.sort((a, b) => a.name.localeCompare(b.name, 'az')).map(u => <SelectItem key={u.id} value={u.id}>{u.name}</SelectItem>)}
                             </SelectContent>
                         </Select>
                     </div>
@@ -312,14 +312,14 @@ export default function InteractiveGuidePage() {
                 <TableBody>
                 {filteredSpecialties.length > 0 ? (
                     filteredSpecialties.sort((a, b) => (b.scores[2024] || 0) - (a.scores[2024] || 0)).map(spec => {
-                        const uni = universities.find(u => u.id === spec.universityId);
+                        const uni = allUniversities.find(u => u.id === spec.universityId);
                         const grp = groups.find(g => g.id === spec.groupId);
                         const form = educationForms.find(f => f.id === spec.educationForm);
                         
                         return (
                             <TableRow key={spec.id} >
-                                <TableCell className="font-medium cursor-pointer" onClick={() => uni && handleUniversityRowClick(uni)}>{uni ? uni.name : 'Naməlum'}</TableCell>
-                                <TableCell onClick={() => handleSpecialtyRowClick(spec)} className="cursor-pointer">{spec.name}</TableCell>
+                                <TableCell className="font-medium cursor-pointer hover:underline" onClick={() => handleUniversityRowClick(spec.universityId)}>{uni ? uni.name : 'Naməlum'}</TableCell>
+                                <TableCell onClick={() => handleSpecialtyRowClick(spec)} className="cursor-pointer hover:underline">{spec.name}</TableCell>
                                 <TableCell className="text-center">{grp?.name.replace(' Qrup', '') || '-'}</TableCell>
                                 <TableCell className="text-center uppercase">{spec.educationLanguage}</TableCell>
                                 <TableCell className="text-center capitalize">{form?.name}</TableCell>
@@ -439,3 +439,4 @@ export default function InteractiveGuidePage() {
     </div>
   );
 }
+
