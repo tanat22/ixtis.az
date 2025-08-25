@@ -106,9 +106,10 @@ export default function InteractiveGuidePage() {
   }, []);
 
   const availableUniversities = React.useMemo(() => {
-      const universityIdsInSpecialties = new Set(combinedSpecialties.map(s => s.universityId));
-      return allUniversities.filter(u => universityIdsInSpecialties.has(u.id));
-  }, [combinedSpecialties]);
+    const universityIdsInSpecialties = new Set(allSpecialties.map(s => s.universityId));
+    return allUniversities.filter(u => universityIdsInSpecialties.has(u.id));
+  }, []);
+
 
   const availableSubgroups = React.useMemo(() => {
     if (group === 'grp-1' || group === 'grp-3') {
@@ -168,7 +169,8 @@ export default function InteractiveGuidePage() {
   const sortedYears = React.useMemo(() => years.sort((a,b) => a - b), []);
 
   const handleSpecialtyRowClick = (spec: CombinedSpecialty) => {
-    const info = specialtyInfo[spec.name] || null;
+    const baseName = spec.name.replace(/\s*\(tədris .*\)/, '').trim();
+    const info = specialtyInfo[baseName] || null;
     setSelectedSpecialtyInfo({ name: spec.name, info, lang: spec.educationLanguage });
     setIsInfoDialogOpen(true);
   };
@@ -439,4 +441,3 @@ export default function InteractiveGuidePage() {
     </div>
   );
 }
-
