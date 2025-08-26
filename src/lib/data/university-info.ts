@@ -2,20 +2,24 @@
 export interface UniversityInfo {
   description: string;
   website?: string;
+  tuitionInfo?: string;
 }
 
 export const universityInfo: Record<string, UniversityInfo> = {
   'uni-bdu': {
     description: 'Bakı Dövlət Universiteti Azərbaycanın ilk və aparıcı ali təhsil müəssisələrindən biridir. Geniş spektrli fundamental və tətbiqi elmlər üzrə mütəxəssis hazırlığı ilə tanınır. Universitetin güclü elmi-tədqiqat bazası və zəngin tarixi vardır.',
-    website: 'http://bsu.edu.az/'
+    website: 'http://bsu.edu.az/',
+    tuitionInfo: '2024/2025-ci tədris ilində təhsil haqlarında dəyişiklik gözlənilmir.'
   },
   'uni-adnsu': {
     description: 'Azərbaycan Dövlət Neft və Sənaye Universiteti neft-qaz, kimya mühəndisliyi və informasiya texnologiyaları sahəsində yüksək ixtisaslı kadr hazırlığı üzrə ixtisaslaşmışdır. Ölkənin sənaye inkişafında mühüm rol oynayan tarixi bir ali məktəbdir.',
-    website: 'https://asoiu.edu.az/'
+    website: 'https://asoiu.edu.az/',
+    tuitionInfo: '2024/2025-ci tədris ilində təhsil haqlarında dəyişiklik gözlənilmir. Bakalavr pilləsində illik təhsil haqları 2000-2500 AZN, magistr pilləsində isə 2500-3000 AZN arasında dəyişir.'
   },
   'uni-unec': {
     description: 'Azərbaycan Dövlət İqtisad Universiteti (UNEC) iqtisadiyyat, maliyyə, menecment və biznesin idarə edilməsi üzrə regionun ən böyük təhsil mərkəzlərindən biridir. Beynəlxalq standartlara uyğun təhsil proqramları və ikili diplom imkanları təklif edir.',
-    website: 'http://unec.edu.az/'
+    website: 'http://unec.edu.az/',
+    tuitionInfo: '2024/2025-ci tədris ilində təhsil haqlarında artım olacağı bildirilib, lakin artımın dəqiq məbləği hələlik açıqlanmayıb.'
   },
   'uni-ada': {
     description: 'ADA Universiteti müasir təhsil proqramları və beynəlxalq mühiti ilə seçilən, əsasən ingilis dilində tədris aparan bir ali təhsil ocağıdır. Diplomatiya, beynəlxalq münasibətlər, biznes və informasiya texnologiyaları sahələrində güclü mütəxəssislər hazırlayır.',
@@ -23,11 +27,13 @@ export const universityInfo: Record<string, UniversityInfo> = {
   },
   'uni-azmiu': {
     description: 'Azərbaycan Memarlıq və İnşaat Universiteti memarlıq, dizayn, inşaat mühəndisliyi və nəqliyyat sistemləri sahəsində ölkənin əsas ali təhsil müəssisəsidir. Yaradıcı və texniki bilikləri birləşdirən proqramları ilə tanınır.',
-    website: 'https://azmiu.edu.az/'
+    website: 'https://azmiu.edu.az/',
+    tuitionInfo: '2024/2025-ci tədris ilində təhsil haqlarında dəyişiklik gözlənilmir. İllik ödəniş 2000-2500 AZN arasında dəyişir.'
   },
    'uni-adpu': {
     description: 'Azərbaycan Dövlət Pedaqoji Universiteti ölkənin ən qocaman ali təhsil ocaqlarından biridir və əsasən müəllim kadrlarının hazırlanması üzrə ixtisaslaşmışdır. Universitet müxtəlif pedaqoji sahələr üzrə geniş proqramlar təklif edir.',
-    website: 'https://adpu.edu.az/'
+    website: 'https://adpu.edu.az/',
+    tuitionInfo: '2024/2025-ci tədris ilindən bütün ixtisaslar üzrə illik təhsil haqları 2000 manatdan 2300 manata qaldırılıb.'
   },
   'uni-bmu': {
     description: 'Bakı Mühəndislik Universiteti mühəndislik, iqtisadiyyat və memarlıq sahələrində müasir standartlara cavab verən kadrlar hazırlayır. Tədrisin əksəriyyəti ingilis dilində aparılır və beynəlxalq əməkdaşlığa xüsusi önəm verilir.',
@@ -35,7 +41,8 @@ export const universityInfo: Record<string, UniversityInfo> = {
   },
   'uni-aztu': {
     description: 'Azərbaycan Texniki Universiteti (AzTU) ölkənin texniki və texnoloji sahələr üzrə aparıcı ali təhsil müəssisələrindən biridir. Maşınqayırma, metallurgiya, informatika və energetika kimi sahələrdə mühəndis hazırlığı həyata keçirir.',
-    website: 'https://aztu.edu.az/'
+    website: 'https://aztu.edu.az/',
+    tuitionInfo: '2024/2025-ci tədris ilində təhsil haqlarında dəyişiklik gözlənilmir.'
   },
   'uni-dia': {
     description: 'Azərbaycan Respublikası Prezidenti yanında Dövlət İdarəçilik Akademiyası dövlət qulluğu üçün yüksək ixtisaslı menecerlər və idarəçilər hazırlayan ixtisaslaşmış ali təhsil müəssisəsidir.',
@@ -47,7 +54,8 @@ export const universityInfo: Record<string, UniversityInfo> = {
   },
   'uni-adu': {
     description: 'Azərbaycan Dillər Universiteti dilçilik, tərcümə və beynəlxalq münasibətlər sahəsində ixtisaslaşmışdır. Bir çox xarici dilin tədrisi və filologiyası üzrə güclü ənənələrə malikdir.',
-    website: 'https://adu.edu.az/'
+    website: 'https://adu.edu.az/',
+    tuitionInfo: '2024/2025-ci tədris ilində bir sıra ixtisaslarda artım gözlənilir. Məsələn, ingilis dili müəllimliyi ixtisasının illik təhsil haqqı 2500 manatdan 2700 manata qaldırılıb.'
   },
   'uni-bsu': {
     description: 'Bakı Slavyan Universiteti humanitar sahədə, xüsusilə rus dili və ədəbiyyatı, həmçinin digər slavyan və Avropa dilləri üzrə mütəxəssis hazırlığı ilə tanınır.',
@@ -59,7 +67,8 @@ export const universityInfo: Record<string, UniversityInfo> = {
   },
   'uni-adim': {
     description: 'Azərbaycan Dövlət Mədəniyyət və İncəsənət Universiteti aktyor, rejissor, sənətşünas, dizayner və musiqiçi kimi yaradıcı sahələr üzrə peşəkar kadrlar hazırlayır.',
-    website: 'https://admiu.edu.az/'
+    website: 'https://admiu.edu.az/',
+    tuitionInfo: '2024/2025-ci tədris ilində təhsil haqlarında dəyişiklik gözlənilmir. Bakalavr pilləsində illik təhsil haqqı 1950 AZN, magistratura pilləsində isə 1800-2000 AZN arasında dəyişir.'
   },
   'uni-adra': {
     description: 'Azərbaycan Dövlət Rəssamlıq Akademiyası rəngkarlıq, heykəltəraşlıq, dizayn və memarlıq kimi təsviri sənət sahələri üzrə ali təhsilli mütəxəssislər yetişdirir.',
@@ -87,7 +96,8 @@ export const universityInfo: Record<string, UniversityInfo> = {
   },
   'uni-xu': {
     description: 'Xəzər Universiteti Azərbaycanın ilk özəl universitetlərindən biridir və əsasən ingilis dilində tədris aparır. Yüksək təhsil standartları və beynəlxalq mühiti ilə tanınır.',
-    website: 'https://khazar.org/'
+    website: 'https://khazar.org/',
+    tuitionInfo: '2024/2025-ci tədris ilində təhsil haqlarında artım yoxdur. İllik ödəniş 4000-5000 AZN arasında dəyişir.'
   },
   'uni-aku': {
     description: 'Azərbaycan Kooperasiya Universiteti əsasən iqtisadiyyat, ticarət, gömrük işi və ekspertiza sahələri üzrə mütəxəssis hazırlığı həyata keçirən ali təhsil müəssisəsidir.',

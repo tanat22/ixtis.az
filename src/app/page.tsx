@@ -36,10 +36,10 @@ import {
 } from "@/components/ui/alert-dialog"
 import { Badge } from '@/components/ui/badge';
 import { specialties as allSpecialties, universities as allUniversities, groups, subgroups, levels, educationForms, educationLanguages, years } from '@/lib/data';
-import type { Specialty, University } from '@/lib/types';
+import type { Specialty } from '@/lib/types';
 import { specialtyInfo, type SpecialtyInfo } from '@/lib/data/specialty-info';
 import { universityInfo, type UniversityInfo } from '@/lib/data/university-info';
-import { ArrowUp, ArrowDown, Sparkles } from 'lucide-react';
+import { ArrowUp, ArrowDown, Sparkles, University as UniversityIcon, Info } from 'lucide-react';
 
 type CombinedSpecialty = {
     id: string;
@@ -106,9 +106,9 @@ export default function InteractiveGuidePage() {
   }, []);
 
  const availableUniversities = React.useMemo(() => {
-    const universityIdsInSpecialties = new Set(combinedSpecialties.map(s => s.universityId));
+    const universityIdsInSpecialties = new Set(allSpecialties.map(s => s.universityId));
     return allUniversities.filter(u => universityIdsInSpecialties.has(u.id));
-  }, [combinedSpecialties]);
+  }, []);
 
 
   const availableSubgroups = React.useMemo(() => {
@@ -187,7 +187,7 @@ export default function InteractiveGuidePage() {
     <div className="flex min-h-screen w-full flex-col items-center bg-background p-4 sm:p-8">
       <div className="w-full max-w-7xl">
         <header className="text-center mb-8">
-            <h1 className="text-4xl font-bold tracking-tight">İnteraktiv Təhsil Bələdçisi</h1>
+            <h1 className="text-4xl font-bold tracking-tight text-foreground/90">İnteraktiv Təhsil Bələdçisi</h1>
             <p className="text-muted-foreground mt-2">Keçid ballarını kəşf edin və müqayisə edin</p>
         </header>
 
@@ -453,12 +453,12 @@ export default function InteractiveGuidePage() {
                             {selectedSpecialtyInfo?.info ? (
                                 <>
                                     <div>
-                                        <h3 className="font-semibold text-foreground">Tələb Olunan Bacarıqlar</h3>
-                                        <p className="text-muted-foreground">{selectedSpecialtyInfo.info.skills}</p>
+                                        <h3 className="font-semibold text-foreground flex items-center gap-2"><Info className="w-4 h-4" /> Tələb Olunan Bacarıqlar</h3>
+                                        <p className="text-muted-foreground pl-6">{selectedSpecialtyInfo.info.skills}</p>
                                     </div>
                                     <div>
-                                        <h3 className="font-semibold text-foreground">Gələcək Karyera İmkanları</h3>
-                                        <p className="text-muted-foreground">{selectedSpecialtyInfo.info.careers}</p>
+                                        <h3 className="font-semibold text-foreground flex items-center gap-2"><UniversityIcon className="w-4 h-4" /> Gələcək Karyera İmkanları</h3>
+                                        <p className="text-muted-foreground pl-6">{selectedSpecialtyInfo.info.careers}</p>
                                     </div>
                                 </>
                             ) : (
@@ -470,7 +470,7 @@ export default function InteractiveGuidePage() {
                                         <Sparkles className="w-4 h-4 text-yellow-400" />
                                         İngilis Dilində Təhsilin Üstünlükləri
                                     </h3>
-                                    <p className="text-muted-foreground">
+                                    <p className="text-muted-foreground pl-6">
                                         Bu ixtisası ingilis dilində təhsil almaq sizə beynəlxalq əmək bazarında rəqabət üstünlüyü qazandırır, ən son elmi mənbələrə və ədəbiyyatlara birbaşa çıxış imkanı yaradır və qlobal karyera qurmaq üçün geniş üfüqlər açır.
                                     </p>
                                 </div>
@@ -493,8 +493,14 @@ export default function InteractiveGuidePage() {
                             {selectedUniversityInfo?.info ? (
                                 <>
                                     <p className="text-muted-foreground">{selectedUniversityInfo.info.description}</p>
+                                    {selectedUniversityInfo.info.tuitionInfo && (
+                                        <div>
+                                            <h3 className="font-semibold text-foreground">Təhsil Haqqı (2024/2025)</h3>
+                                            <p className="text-muted-foreground">{selectedUniversityInfo.info.tuitionInfo}</p>
+                                        </div>
+                                    )}
                                     {selectedUniversityInfo.info.website && (
-                                        <a href={selectedUniversityInfo.info.website} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                                        <a href={selectedUniversityInfo.info.website} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline block mt-4">
                                             Rəsmi veb-sayta keçid
                                         </a>
                                     )}
