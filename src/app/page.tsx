@@ -105,10 +105,10 @@ export default function InteractiveGuidePage() {
     return Array.from(specialtyMap.values());
   }, []);
 
-  const availableUniversities = React.useMemo(() => {
-    const universityIdsInSpecialties = new Set(allSpecialties.map(s => s.universityId));
+ const availableUniversities = React.useMemo(() => {
+    const universityIdsInSpecialties = new Set(combinedSpecialties.map(s => s.universityId));
     return allUniversities.filter(u => universityIdsInSpecialties.has(u.id));
-  }, []);
+  }, [combinedSpecialties]);
 
 
   const availableSubgroups = React.useMemo(() => {
@@ -292,82 +292,156 @@ export default function InteractiveGuidePage() {
             Tapılan unikal ixtisas sayı: {filteredSpecialties.length}
         </div>
 
-        <Card>
-            <div className="overflow-x-auto">
-            <Table>
-                <TableHeader>
-                    <TableRow>
-                        <TableHead className="w-3/12">Təhsil Müəssisəsi</TableHead>
-                        <TableHead className="w-4/12">İxtisas</TableHead>
-                        <TableHead className="w-1/12 text-center">Qrup</TableHead>
-                        <TableHead className="w-1/12 text-center">Tədris Dili</TableHead>
-                        <TableHead className="w-1/12 text-center">Tədris Forması</TableHead>
-                        <TableHead className="w-1/12 text-center">Ödəniş</TableHead>
-                        {sortedYears.map((year, index) => (
-                           <React.Fragment key={year}>
-                               {index > 0 && <TableHead className="w-auto text-center px-1"></TableHead>}
-                               <TableHead className="w-1/12 text-center">{year}</TableHead>
-                           </React.Fragment>
-                        ))}
-                    </TableRow>
-                </TableHeader>
-                <TableBody>
-                {filteredSpecialties.length > 0 ? (
-                    filteredSpecialties.sort((a, b) => (b.scores[2024] || 0) - (a.scores[2024] || 0)).map(spec => {
-                        const uni = allUniversities.find(u => u.id === spec.universityId);
-                        const grp = groups.find(g => g.id === spec.groupId);
-                        const form = educationForms.find(f => f.id === spec.educationForm);
-                        
-                        return (
-                            <TableRow key={spec.id} >
-                                <TableCell className="font-medium cursor-pointer hover:underline" onClick={() => handleUniversityRowClick(spec.universityId)}>{uni ? uni.name : 'Naməlum'}</TableCell>
-                                <TableCell onClick={() => handleSpecialtyRowClick(spec)} className="cursor-pointer hover:underline">{spec.name}</TableCell>
-                                <TableCell className="text-center">{grp?.name.replace(' Qrup', '') || '-'}</TableCell>
-                                <TableCell className="text-center uppercase">{spec.educationLanguage}</TableCell>
-                                <TableCell className="text-center capitalize">{form?.name}</TableCell>
-                                <TableCell className="text-center capitalize">
-                                    <Badge variant={spec.paymentType === 'ödənişli' ? 'secondary' : 'default'}>
-                                        {spec.paymentType}
-                                    </Badge>
-                                </TableCell>
-                                {sortedYears.map((year, index) => {
-                                    const currentScore = spec.scores[year];
-                                    const prevYear = sortedYears[index - 1];
-                                    const prevScore = prevYear ? spec.scores[prevYear] : undefined;
-                                    let scoreChange: 'up' | 'down' | null = null;
-                                    if (currentScore != null && prevScore != null) {
-                                        if(currentScore > prevScore) scoreChange = 'up';
-                                        if(currentScore < prevScore) scoreChange = 'down';
-                                    }
+        <div className="hidden md:block">
+            <Card>
+                <div className="overflow-x-auto">
+                <Table>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHead className="w-3/12">Təhsil Müəssisəsi</TableHead>
+                            <TableHead className="w-4/12">İxtisas</TableHead>
+                            <TableHead className="w-1/12 text-center">Qrup</TableHead>
+                            <TableHead className="w-1/12 text-center">Tədris Dili</TableHead>
+                            <TableHead className="w-1/12 text-center">Tədris Forması</TableHead>
+                            <TableHead className="w-1/12 text-center">Ödəniş</TableHead>
+                            {sortedYears.map((year, index) => (
+                            <React.Fragment key={year}>
+                                {index > 0 && <TableHead className="w-auto text-center px-1"></TableHead>}
+                                <TableHead className="w-1/12 text-center">{year}</TableHead>
+                            </React.Fragment>
+                            ))}
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                    {filteredSpecialties.length > 0 ? (
+                        filteredSpecialties.sort((a, b) => (b.scores[2024] || 0) - (a.scores[2024] || 0)).map(spec => {
+                            const uni = allUniversities.find(u => u.id === spec.universityId);
+                            const grp = groups.find(g => g.id === spec.groupId);
+                            const form = educationForms.find(f => f.id === spec.educationForm);
+                            
+                            return (
+                                <TableRow key={spec.id} >
+                                    <TableCell className="font-medium cursor-pointer hover:underline" onClick={() => handleUniversityRowClick(spec.universityId)}>{uni ? uni.name : 'Naməlum'}</TableCell>
+                                    <TableCell onClick={() => handleSpecialtyRowClick(spec)} className="cursor-pointer hover:underline">{spec.name}</TableCell>
+                                    <TableCell className="text-center">{grp?.name.replace(' Qrup', '') || '-'}</TableCell>
+                                    <TableCell className="text-center uppercase">{spec.educationLanguage}</TableCell>
+                                    <TableCell className="text-center capitalize">{form?.name}</TableCell>
+                                    <TableCell className="text-center capitalize">
+                                        <Badge variant={spec.paymentType === 'ödənişli' ? 'secondary' : 'default'}>
+                                            {spec.paymentType}
+                                        </Badge>
+                                    </TableCell>
+                                    {sortedYears.map((year, index) => {
+                                        const currentScore = spec.scores[year];
+                                        const prevYear = sortedYears[index - 1];
+                                        const prevScore = prevYear ? spec.scores[prevYear] : undefined;
+                                        let scoreChange: 'up' | 'down' | null = null;
+                                        if (currentScore != null && prevScore != null) {
+                                            if(currentScore > prevScore) scoreChange = 'up';
+                                            if(currentScore < prevScore) scoreChange = 'down';
+                                        }
 
-                                    return (
-                                        <React.Fragment key={year}>
-                                            {index > 0 && (
-                                                <TableCell className="w-auto text-center px-1">
-                                                    {scoreChange === 'up' && <ArrowUp className="w-4 h-4 text-red-500 mx-auto" />}
-                                                    {scoreChange === 'down' && <ArrowDown className="w-4 h-4 text-green-500 mx-auto" />}
+                                        return (
+                                            <React.Fragment key={year}>
+                                                {index > 0 && (
+                                                    <TableCell className="w-auto text-center px-1">
+                                                        {scoreChange === 'up' && <ArrowUp className="w-4 h-4 text-red-500 mx-auto" />}
+                                                        {scoreChange === 'down' && <ArrowDown className="w-4 h-4 text-green-500 mx-auto" />}
+                                                    </TableCell>
+                                                )}
+                                                <TableCell className="text-center font-mono">
+                                                    {currentScore ? currentScore.toFixed(1) : spec.scores.hasOwnProperty(year) ? 'Müsabiqə' : '-'}
                                                 </TableCell>
-                                            )}
-                                            <TableCell className="text-center font-mono">
-                                                {currentScore ? currentScore.toFixed(1) : spec.scores.hasOwnProperty(year) ? 'Müsabiqə' : '-'}
-                                            </TableCell>
-                                        </React.Fragment>
-                                    )
-                                })}
-                            </TableRow>
-                        );
-                    })
-                ) : (
-                    <TableRow>
-                        <TableCell colSpan={6 + sortedYears.length + (sortedYears.length > 1 ? sortedYears.length - 1 : 0)} className="text-center h-24">
-                            Axtarışınıza uyğun nəticə tapılmadı.
-                        </TableCell>
-                    </TableRow>
-                )}
-                </TableBody>
-            </Table>
-            </div>
-        </Card>
+                                            </React.Fragment>
+                                        )
+                                    })}
+                                </TableRow>
+                            );
+                        })
+                    ) : (
+                        <TableRow>
+                            <TableCell colSpan={6 + sortedYears.length + (sortedYears.length > 1 ? sortedYears.length - 1 : 0)} className="text-center h-24">
+                                Axtarışınıza uyğun nəticə tapılmadı.
+                            </TableCell>
+                        </TableRow>
+                    )}
+                    </TableBody>
+                </Table>
+                </div>
+            </Card>
+        </div>
+
+        <div className="md:hidden space-y-4">
+            {filteredSpecialties.length > 0 ? (
+                filteredSpecialties.sort((a, b) => (b.scores[2024] || 0) - (a.scores[2024] || 0)).map(spec => {
+                    const uni = allUniversities.find(u => u.id === spec.universityId);
+                    const grp = groups.find(g => g.id === spec.groupId);
+                    const form = educationForms.find(f => f.id === spec.educationForm);
+                    const latestYear = Math.max(...Object.keys(spec.scores).map(Number).filter(y => spec.scores[y] !== null));
+                    const latestScore = spec.scores[latestYear];
+                    
+                    return (
+                        <Card key={spec.id} className="overflow-hidden">
+                             <CardHeader>
+                                <CardTitle className="cursor-pointer hover:underline text-lg" onClick={() => handleUniversityRowClick(spec.universityId)}>
+                                    {uni ? uni.name : 'Naməlum'}
+                                </CardTitle>
+                                <CardDescription className="cursor-pointer hover:underline" onClick={() => handleSpecialtyRowClick(spec)}>
+                                    {spec.name}
+                                </CardDescription>
+                            </CardHeader>
+                            <CardContent className="space-y-3">
+                                <div className="flex justify-between items-center border-t pt-3">
+                                    <span className="text-sm text-muted-foreground">Son Keçid Balı ({latestYear}):</span>
+                                    <span className="font-bold text-lg">{latestScore ? latestScore.toFixed(1) : 'Müsabiqə'}</span>
+                                </div>
+                                <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
+                                    <div><span className="font-medium">Qrup:</span> {grp?.name.replace(' Qrup', '') || '-'}</div>
+                                    <div><span className="font-medium">Forma:</span> <span className="capitalize">{form?.name}</span></div>
+                                    <div><span className="font-medium">Dil:</span> <span className="uppercase">{spec.educationLanguage}</span></div>
+                                    <div><span className="font-medium">Ödəniş:</span> <Badge variant={spec.paymentType === 'ödənişli' ? 'secondary' : 'default'} className="ml-1">{spec.paymentType}</Badge></div>
+                                </div>
+                                <div className="flex justify-around items-center border-t pt-3 mt-3">
+                                     {sortedYears.map((year, index) => {
+                                        const currentScore = spec.scores[year];
+                                        const prevYear = sortedYears[index - 1];
+                                        const prevScore = prevYear ? spec.scores[prevYear] : undefined;
+                                        let scoreChange: 'up' | 'down' | null = null;
+                                        if (currentScore != null && prevScore != null) {
+                                            if(currentScore > prevScore) scoreChange = 'up';
+                                            if(currentScore < prevScore) scoreChange = 'down';
+                                        }
+
+                                        return (
+                                            <div key={year} className="flex flex-col items-center">
+                                                <span className="text-xs text-muted-foreground">{year}</span>
+                                                <div className="flex items-center gap-1">
+                                                     {index > 0 && (
+                                                        <div className="w-4 h-4">
+                                                            {scoreChange === 'up' && <ArrowUp className="w-4 h-4 text-red-500" />}
+                                                            {scoreChange === 'down' && <ArrowDown className="w-4 h-4 text-green-500" />}
+                                                        </div>
+                                                    )}
+                                                    <span className="font-mono text-base">
+                                                      {currentScore ? currentScore.toFixed(1) : spec.scores.hasOwnProperty(year) ? 'M' : '-'}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        )
+                                     })}
+                                </div>
+                            </CardContent>
+                        </Card>
+                    )
+                })
+            ) : (
+                 <Card>
+                    <CardContent className="h-24 flex items-center justify-center">
+                        Axtarışınıza uyğun nəticə tapılmadı.
+                    </CardContent>
+                </Card>
+            )}
+        </div>
       </div>
 
       <AlertDialog open={isInfoDialogOpen} onOpenChange={setIsInfoDialogOpen}>
