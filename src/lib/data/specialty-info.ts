@@ -222,7 +222,7 @@ export const specialtyInfo: Record<string, SpecialtyInfo> = {
         skills: 'Liderlik, idarəetmə bacarıqları, natiqlik, hüquqi və siyasi biliklər, strateji düşünmə.',
         careers: 'Dövlət qulluqçusu, bələdiyyə əməkdaşı, ictimaiyyətlə əlaqələr (PR) mütəxəssisi, qeyri-hökumət təşkilatlarında menecer.'
     },
-    'Filologiya (Azərbaycan dili və ədəbiyyatı)': {
+    'Filologiya': {
         skills: 'Dilə və ədəbiyyata dərin sevgi, yaradıcı yazı bacarığı, tənqidi təfəkkür, redaktə və korrektorluq.',
         careers: 'Redaktor, korrektor, jurnalist, məzmun yaradıcısı (content creator), elmi-tədqiqatçı (ədəbiyyatşünas/dilçi), tərcüməçi.'
     },
@@ -230,7 +230,7 @@ export const specialtyInfo: Record<string, SpecialtyInfo> = {
         skills: 'Yazı və ünsiyyət bacarığı, operativlik, tənqidi düşüncə, məlumat toplama və araşdırma qabiliyyəti, etik normalara riayət.',
         careers: 'Müxbir, redaktor, tele/radio aparıcısı, PR mütəxəssisi, media menecer, bloqqer/vloqqer.'
     },
-    'Tərcümə (dillər üzrə)': {
+    'Tərcümə': {
         skills: 'Bir neçə dildə mükəmməl səviyyədə bilik, mədəniyyətlərarası anlayış, dəqiqlik, yüksək konsentrasiya.',
         careers: 'Şifahi və yazılı tərcüməçi, sinxron tərcüməçi, beynəlxalq şirkətlərdə və təşkilatlarda tərcüməçi, redaktor.'
     },

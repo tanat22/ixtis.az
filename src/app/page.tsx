@@ -39,7 +39,8 @@ import { specialties as allSpecialties, universities as allUniversities, groups,
 import type { Specialty } from '@/lib/types';
 import { specialtyInfo, type SpecialtyInfo } from '@/lib/data/specialty-info';
 import { universityInfo, type UniversityInfo } from '@/lib/data/university-info';
-import { ArrowUp, ArrowDown, Sparkles, University as UniversityIcon, Info } from 'lucide-react';
+import { educationCosts } from '@/lib/data/education-costs';
+import { ArrowUp, ArrowDown, Sparkles, University as UniversityIcon, Info, School, Wallet } from 'lucide-react';
 
 type CombinedSpecialty = {
     id: string;
@@ -67,7 +68,7 @@ export default function InteractiveGuidePage() {
   const [score, setScore] = React.useState(700);
 
   const [isInfoDialogOpen, setIsInfoDialogOpen] = React.useState(false);
-  const [selectedSpecialtyInfo, setSelectedSpecialtyInfo] = React.useState<{ name: string; info: SpecialtyInfo | null; lang: string } | null>(null);
+  const [selectedSpecialtyInfo, setSelectedSpecialtyInfo] = React.useState<{ name: string; info: SpecialtyInfo | null; lang: string; paymentType: string; cost?: number } | null>(null);
 
   const [isUniversityInfoDialogOpen, setIsUniversityInfoDialogOpen] = React.useState(false);
   const [selectedUniversityInfo, setSelectedUniversityInfo] = React.useState<{ name: string; info: UniversityInfo | null } | null>(null);
@@ -169,9 +170,13 @@ export default function InteractiveGuidePage() {
   const sortedYears = React.useMemo(() => years.sort((a,b) => a - b), []);
 
   const handleSpecialtyRowClick = (spec: CombinedSpecialty) => {
-    const baseName = spec.name.replace(/\s*\(tədris .*\)/, '').trim();
+    const baseName = spec.name.replace(/\s*\(.*\)/, '').trim();
     const info = specialtyInfo[baseName] || null;
-    setSelectedSpecialtyInfo({ name: spec.name, info, lang: spec.educationLanguage });
+    let cost: number | undefined = undefined;
+    if (spec.paymentType === 'dövlət sifarişli') {
+        cost = educationCosts[baseName.replace(/\s*\(.*\)/, '').trim()];
+    }
+    setSelectedSpecialtyInfo({ name: spec.name, info, lang: spec.educationLanguage, paymentType: spec.paymentType, cost });
     setIsInfoDialogOpen(true);
   };
   
@@ -453,7 +458,7 @@ export default function InteractiveGuidePage() {
                             {selectedSpecialtyInfo?.info ? (
                                 <>
                                     <div>
-                                        <h3 className="font-semibold text-foreground flex items-center gap-2"><Info className="w-4 h-4" /> Tələb Olunan Bacarıqlar</h3>
+                                        <h3 className="font-semibold text-foreground flex items-center gap-2"><School className="w-4 h-4" /> Tələb Olunan Bacarıqlar</h3>
                                         <p className="text-muted-foreground pl-6">{selectedSpecialtyInfo.info.skills}</p>
                                     </div>
                                     <div>
@@ -464,6 +469,14 @@ export default function InteractiveGuidePage() {
                             ) : (
                                 <p>Bu ixtisas haqqında əlavə məlumat tapılmadı.</p>
                             )}
+                             {selectedSpecialtyInfo?.paymentType === 'dövlət sifarişli' && selectedSpecialtyInfo.cost && (
+                                <div>
+                                    <h3 className="font-semibold text-foreground flex items-center gap-2"><Wallet className="w-4 h-4" /> Dövlət Sifarişi üzrə Təhsil Xərci</h3>
+                                    <p className="text-muted-foreground pl-6">
+                                        Bu ixtisas üzrə dövlət sifarişli əsaslarla təhsil alan bir tələbə üçün dövlət tərəfindən ayrılan illik vəsait təxminən <b>{selectedSpecialtyInfo.cost} AZN</b> təşkil edir.
+                                    </p>
+                                </div>
+                             )}
                              {selectedSpecialtyInfo?.lang === 'en' && (
                                 <div>
                                     <h3 className="font-semibold text-foreground flex items-center gap-2">
