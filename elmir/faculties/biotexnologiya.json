@@ -1,0 +1,18 @@
+
+{
+  "name": "Biotexnologiya",
+  "slug": "biotexnologiya",
+  "description": "Biotexnologiya, canlı orqanizmlərdən, hüceyrələrdən və ya onların komponentlərindən (məsələn, fermentlər, DNT) insan üçün faydalı məhsullar və ya texnologiyalar yaratmaq məqsədilə istifadə edən bir elm və sənaye sahəsidir. Bu ixtisas molekulyar biologiya, genetika, mikrobiologiya və kimya mühəndisliyinin prinsiplərini birləşdirir. Tətbiq sahələrinə tibb (yeni dərmanlar, diaqnostika), kənd təsərrüfatı (genetik modifikasiya olunmuş bitkilər), qida sənayesi (fermentasiya) və ətraf mühitin qorunması (bioremediasiya) daxildir.",
+  "future": "Biotexnologiya XXI əsrin ən perspektivli və sürətlə inkişaf edən sahələrindən biridir. Gen terapiyası, fərdi tibb, sintetik biologiya, bioyanacaq istehsalı və tullantıların bioloji emalı kimi istiqamətlər bu sahənin gələcəyini müəyyən edir. Biotexnologiya səhiyyədən tutmuş sənayeyə qədər bir çox sahədə inqilabi dəyişikliklər vəd edir və bu sahənin mütəxəssislərinə olan tələbat bütün dünyada sürətlə artır.",
+  "job_opportunities": "Əczaçılıq şirkətləri, biotexnoloji tədqiqat və istehsal mərkəzləri, elmi-tədqiqat institutları, qida və içki istehsalı müəssisələri, kənd təsərrüfatı biotexnologiyası şirkətləri, diaqnostik laboratoriyalar, su təmizləyici qurğular, biotexnoloji startaplar.",
+  "possible_positions": [
+    "Biotexnoloq",
+    "Tədqiqatçı alim (R&D Scientist)",
+    "Proses mühəndisi (bioproseslər üzrə)",
+    "Keyfiyyətə nəzarət/keyfiyyət təminatı mütəxəssisi",
+    "Laboratoriya mütəxəssisi",
+    "Klinik tədqiqatlar üzrə mütəxəssis",
+    "Gen mühəndisi"
+  ],
+  "recommendations": "Təhsil müddətində PCR, gel-elektroforez, DNT klonlaşdırılması, fermentasiya və hüceyrə kulturası kimi fundamental laboratoriya texnikalarını mükəmməl mənimsəmək vacibdir. Bioinformatika və statistik məlumatların analizi bacarıqları (məsələn, Python və ya R ilə) böyük üstünlükdür. Tədqiqat qruplarına qoşulmaq və ya sənaye müəssisələrində təcrübə keçmək nəzəri biliklərinizi praktiki tətbiqlərlə möhkəmləndirəcək. Magistratura və PhD təhsili tədqiqat və inkişaf (R&D) sahəsində karyera qurmaq üçün demək olar ki, mütləqdir."
+}

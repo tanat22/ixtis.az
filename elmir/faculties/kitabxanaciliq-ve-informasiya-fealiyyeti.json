@@ -1,0 +1,19 @@
+
+{
+  "name": "Kitabxanaçılıq və informasiya fəaliyyəti",
+  "slug": "kitabxanaciliq-ve-informasiya-fealiyyeti",
+  "description": "Kitabxanaçılıq və informasiya fəaliyyəti ixtisası, informasiya resurslarının toplanması, sistemləşdirilməsi, saxlanılması, axtarışı və istifadəçilərə çatdırılması ilə məşğul olan bir sahədir. Bu ixtisas təkcə ənənəvi kitabxanalarla deyil, həm də rəqəmsal kitabxanalar, elektron məlumat bazaları, arxivlər və informasiya mərkəzləri ilə işləməyi əhatə edir. Mütəxəssislər informasiyanın effektiv idarə olunması və cəmiyyətin məlumatla təminatında körpü rolunu oynayırlar.",
+  "future": "Rəqəmsal dövrdə informasiyanın həcminin sürətlə artması onu idarə edə bilən peşəkarlara olan tələbatı artırır. Gələcəyin kitabxanaçı-informasiya mütəxəssisi data meneceri, rəqəmsal arxivator və media savadlılığı üzrə təlimçi kimi yeni rollar qazanır. Süni intellektin məlumatların təsnifatı və axtarışında tətbiqi, elektron kitabxanaların və açıq elm (Open Science) platformalarının inkişafı bu sahənin əsas perspektivləridir.",
+  "job_opportunities": "Milli və şəhər kitabxanaları, universitet və məktəb kitabxanaları, dövlət orqanlarının və özəl şirkətlərin arxiv və informasiya şöbələri, nəşriyyatlar, muzeylər, informasiya agentlikləri, elmi-tədqiqat institutları.",
+  "possible_positions": [
+    "Kitabxanaçı",
+    "Biblioqraf",
+    "İnformasiya mütəxəssisi",
+    "Arxiv işçisi (Arxivarius)",
+    "Data meneceri",
+    "Rəqəmsal məzmun kuratoru",
+    "Kitabxana meneceri",
+    "Media savadlılığı üzrə təlimçi"
+  ],
+  "recommendations": "Təhsil müddətində müasir kitabxana-informasiya sistemlərini (məsələn, KOHA, Aleph) və rəqəmsallaşdırma texnologiyalarını öyrənmək vacibdir. Verilənlər bazalarının idarə edilməsi (SQL-in əsasları) və veb-texnologiyalar haqqında biliklər böyük üstünlükdür. Xarici dil bilikləri beynəlxalq məlumat bazaları ilə işləmək üçün vacibdir. Müxtəlif kitabxanalarda və arxivlərdə təcrübə keçmək praktiki biliklərinizi möhkəmləndirmək üçün ən yaxşı yoldur."
+}

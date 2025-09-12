@@ -1,0 +1,16 @@
+
+{
+  "name": "Texnologiya müəllimliyi",
+  "slug": "texnologiya-muellimliyi",
+  "description": "Texnologiya müəllimliyi ixtisası, şagirdlərə təkcə əmək vərdişləri deyil, həm də müasir texnoloji proseslərin əsaslarını, materialşünaslığı, dizayn təfəkkürünü, bədii konstruksiya və layihələndirməni öyrədəcək pedaqoji kadrlar hazırlayır. Bu ixtisas yaradıcılıq, mühəndislik və pedaqogikanın qovuşuğunda yerləşir.",
+  "future": "STEAM (Elm, Texnologiya, Mühəndislik, İncəsənət və Riyaziyyat) təhsilinə artan maraq fonunda texnologiya dərslərinin məzmunu zənginləşir. Artıq bu fənn çərçivəsində robototexnika, 3D çap, modelləşdirmə kimi mövzular tədris olunur. Bu səbəbdən, müasir texoloji avadanlıqlarla işləməyi bacaran və şagirdlərdə yaradıcılıq və layihə düşüncəsini formalaşdıra bilən müəllimlərə olan ehtiyac artacaq.",
+  "job_opportunities": "Ümumtəhsil məktəbləri, peşə liseyləri, uşaq və gənclərin inkişaf mərkəzləri, STEAM mərkəzləri, peşə təhsili mərkəzləri, özəl yaradıcılıq studiyaları.",
+  "possible_positions": [
+    "Texnologiya müəllimi",
+    "STEAM təlimçisi",
+    "Əmək təlimi müəllimi",
+    "Dərnək rəhbəri (robototexnika, aviamodelləşdirmə və s.)",
+    "Peşə təhsili ustası"
+  ],
+  "recommendations": "Təhsil müddətində müxtəlif materiallarla (taxta, metal, parça, polimerlər) işləmə təcrübəsi toplamaq vacibdir. Tinkercad, Fusion 360 kimi 3D modelləşdirmə proqramlarını və 3D printerlə işləməyin əsaslarını öyrənmək böyük üstünlükdür. Arduino və LEGO Mindstorms kimi robototexnika platformaları ilə tanışlıq sizi müasir tədris proqramlarına hazır edəcək. Məzun olduqdan sonra MİQ imtahanına hazırlaşmaqla yanaşı, özəl STEAM mərkəzlərində təlimçi kimi işləmək üçün portfolionuzu (hazırladığınız əl işləri, layihələr) zənginləşdirmək faydalıdır."
+}

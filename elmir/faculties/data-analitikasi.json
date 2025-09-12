@@ -1,0 +1,18 @@
+
+{
+  "name": "Data analitikası",
+  "slug": "data-analitikasi",
+  "description": "Data analitikası, böyük həcmli məlumatlar toplusundan (Big Data) faydalı məlumatlar çıxarmaq, tendensiyaları aşkar etmək və biznes qərarlarını dəstəkləmək üçün statistik, riyazi və kompüter elmləri metodlarını tətbiq edən bir sahədir. Bu ixtisas məlumatların toplanması, təmizlənməsi, emalı, vizuallaşdırılması və interpretasiyası ilə məşğul olur.",
+  "future": "Rəqəmsal dünyada hər saniyə böyük həcmdə data yaranır. Şirkətlər və təşkilatlar bu datadan rəqabət üstünlüyü əldə etmək üçün istifadə etməyə çalışırlar. Bu səbəbdən, datanı 'danışdıra bilən' mütəxəssislərə tələbat bütün sektorlarda (maliyyə, marketinq, səhiyyə, istehsalat) kəskin şəkildə artır. Süni intellekt və maşın öyrənməsinin inkişafı data analitikasının rolunu daha da artıracaq.",
+  "job_opportunities": "Banklar və sığorta şirkətləri, telekommunikasiya operatorları, pərakəndə satış şəbəkələri, marketinq və reklam agentlikləri, texnologiya şirkətləri, konsaltinq firmaları, dövlət qurumları, səhiyyə və əczaçılıq şirkətləri.",
+  "possible_positions": [
+    "Data analitiki (Data Analyst)",
+    "Biznes analitiki (Business Analyst)",
+    "Data mühəndisi (Data Engineer)",
+    "Marketinq analitiki",
+    "Maliyyə analitiki",
+    "Data vizuallaşdırma mütəxəssisi",
+    "BI (Business Intelligence) Developer"
+  ],
+  "recommendations": "Təhsil müddətində Python (Pandas, NumPy, Matplotlib, Scikit-learn kitabxanaları ilə) və R proqramlaşdırma dillərini, həmçinin SQL-i mükəmməl səviyyədə öyrənmək şərtdir. Power BI və ya Tableau kimi data vizuallaşdırma alətləri ilə işləmə bacarığı çox vacibdir. Statistika və ehtimal nəzəriyyəsi fənlərinə xüsusi diqqət yetirmək lazımdır. Kaggle kimi platformalarda real data setləri ilə layihələr hazırlamaq və portfolionuzu zənginləşdirmək işə qəbul şansınızı artıracaq."
+}

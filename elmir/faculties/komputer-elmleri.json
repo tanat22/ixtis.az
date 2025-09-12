@@ -1,0 +1,21 @@
+
+{
+  "name": "Kompüter elmləri",
+  "slug": "komputer-elmleri",
+  "description": "Kompüter elmləri (Computer Science) ixtisası, kompüter sistemlərinin, alqoritmlərin, məlumat strukturlarının, proqram təminatının və süni intellektin nəzəri əsaslarını və praktiki tətbiqini öyrənən fundamental bir sahədir. Bu ixtisas tələbələrə mürəkkəb problemləri hesablama yolu ilə həll etmək üçün analitik və alqoritmik düşüncə tərzi aşılayır.",
+  "future": "Gələcək tamamilə rəqəmsaldır və Kompüter elmləri bu gələcəyin mərkəzindədir. Süni intellekt, maşın öyrənməsi, böyük verilənlər (Big Data), bulud texnologiyaları və blokçeyn kimi sahələr sürətlə inkişaf edir və bu sahədəki mütəxəssislərə olan tələbat həndəsi silsilə ilə artır. Bu ixtisas məzunları demək olar ki, bütün sənaye sahələrində yüksək maaşlı və perspektivli iş imkanlarına malikdirlər.",
+  "job_opportunities": "Texnologiya nəhəngləri (Google, Microsoft, Amazon), yerli və xarici proqram təminatı şirkətləri, bank və maliyyə sektoru, telekommunikasiya şirkətləri, oyun sənayesi (GameDev), startaplar, dövlət qurumları və elmi-tədqiqat mərkəzləri.",
+  "possible_positions": [
+    "Proqram təminatı mühəndisi (Software Engineer)",
+    "Backend Developer",
+    "Frontend Developer",
+    "Full-stack Developer",
+    "Sistem arxitektoru (System Architect)",
+    "Data alimi (Data Scientist)",
+    "Maşın öyrənməsi mühəndisi (Machine Learning Engineer)",
+    "Süni intellekt mütəxəssisi (AI Specialist)",
+    "DevOps mühəndisi",
+    "Tətbiq təhlükəsizliyi mühəndisi"
+  ],
+  "recommendations": "Universitet təhsili ilə paralel olaraq real layihələr üzərində işləmək (portfolio yaratmaq) və GitHub-da aktiv olmaq mütləqdir. LeetCode, HackerRank kimi platformalarda alqoritmik məsələləri həll etmək texniki müsahibələrə hazırlaşmaq üçün çox vacibdir. Python (AI, Data Science üçün), Java/C# (Enterprise sistemlər üçün), JavaScript (Veb üçün) kimi dillərdən bir neçəsini dərindən mənimsəyin. İngilis dilini mükəmməl səviyyədə bilmək bu sahədə beynəlxalq karyera qurmaq üçün şərtdir. Məzun olduqdan sonra AWS, Google Cloud və ya Microsoft Azure kimi bulud platformaları üzrə sertifikatlar almaq karyeranızı sürətləndirəcək."
+}

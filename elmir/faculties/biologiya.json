@@ -1,0 +1,19 @@
+
+{
+  "name": "Biologiya",
+  "slug": "biologiya",
+  "description": "Biologiya, canlı orqanizmləri, onların quruluşunu, funksiyasını, böyüməsini, mənşəyini, təkamülünü və yayılmasını öyrənən fundamental təbiət elmidir. Bu geniş ixtisas molekulyar biologiya və genetikadan tutmuş, zoologiya, botanika və ekologiyaya qədər bir çox sahəni əhatə edir. Bioloqlar canlı təbiətin sirlərini açmaq və bu bilikləri tibb, kənd təsərrüfatı və ətraf mühitin mühafizəsi kimi sahələrdə tətbiq etmək üçün tədqiqatlar aparırlar.",
+  "future": "Genomun redaktəsi (CRISPR), biotexnologiya, sintetik biologiya, neyroelm və bioməlumatların analizi kimi sahələr biologiya elmində inqilab edir. Xərçəng və genetik xəstəliklərlə mübarizə, yeni dərmanların yaradılması, ərzaq təhlükəsizliyinin təmin edilməsi və biomüxtəlifliyin qorunması kimi qlobal problemlərin həlli birbaşa biologiya elminin inkişafından asılıdır. Bu səbəbdən, dərin nəzəri və praktiki biliklərə malik bioloqlara olan tələbat elmdə və yüksək texnologiya sənayesində daim artacaq.",
+  "job_opportunities": "Elmi-tədqiqat institutları (məsələn, AMEA Molekulyar Biologiya və Biotexnologiyalar İnstitutu, Zoologiya İnstitutu, Botanika İnstitutu), universitetlər, əczaçılıq və biotexnologiya şirkətləri, tibbi diaqnostika laboratoriyaları, qida sənayesi müəssisələrinin keyfiyyətə nəzarət laboratoriyaları, milli parklar, qoruqlar və botanika bağları, Ekologiya və Təbii Sərvətlər Nazirliyi.",
+  "possible_positions": [
+    "Elmi işçi/Tədqiqatçı",
+    "Laborant (tibbi, elmi, sənaye)",
+    "Mikrobioloq",
+    "Genetik",
+    "Biokimyaçı",
+    "Biotexnoloq",
+    "Zooloq/Botanist",
+    "Ekoloq"
+  ],
+  "recommendations": "Təhsil müddətində molekulyar biologiya metodları (PCR, DNT sekvenləmə), mikroskopiya, hüceyrə kulturası və bioinformatika (məsələn, BLAST, Python ilə bioloji data analizi) kimi müasir tədqiqat üsullarını öyrənmək çox vacibdir. Universitetin tədqiqat laboratoriyalarında işləmək, elmi məqalələr oxumaq və təcrübə proqramlarında iştirak etmək karyeranız üçün möhkəm təməl yaradacaq. Yüksək səviyyədə ingilis dili bilmək beynəlxalq elmi ədəbiyyatı izləmək və beynəlxalq layihələrdə iştirak etmək üçün mütləqdir. Magistratura və doktorantura təhsili bu sahədə ciddi elmi karyera qurmaq üçün zəruridir."
+}

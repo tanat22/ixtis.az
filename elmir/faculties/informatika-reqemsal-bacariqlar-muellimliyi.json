@@ -1,0 +1,17 @@
+
+{
+  "name": "İnformatika (rəqəmsal bacarıqlar) müəllimliyi",
+  "slug": "informatika-reqemsal-bacariqlar-muellimliyi",
+  "description": "Bu ixtisas rəqəmsal dövrün tələblərinə cavab verərək, şagirdlərə təkcə informatikanın əsaslarını deyil, həm də müasir rəqəmsal bacarıqları (proqramlaşdırma, data analizi, süni intellektin əsasları, kibertəhlükəsizlik) öyrədəcək pedaqoji kadrlar hazırlayır. Məzunlar həm dərin texniki biliklərə, həm də effektiv tədris metodikalarına yiyələnirlər.",
+  "future": "Rəqəmsal transformasiyanın bütün sahələrə nüfuz etdiyi bir zamanda bu ixtisasın gələcəyi son dərəcə parlaqdır. Təhsil sistemində informatika fənninin rolu getdikcə artır və bu sahə üzrə ixtisaslaşmış müəllimlərə olan tələbat yüksəkdir. Məzunlar təkcə məktəblərlə məhdudlaşmır, həm də texnologiya şirkətlərinin təlim departamentlərində, 'coding bootcamp'lərdə və özəl texnologiya təhsili mərkəzlərində karyera qura bilərlər.",
+  "job_opportunities": "Dövlət və özəl məktəblər, liseylər, gimnaziyalar, uşaqlar üçün kodlaşdırma məktəbləri ('bootcamp'lər), təhsil texnologiyaları (EdTech) şirkətləri, böyük şirkətlərin təlim-tədris mərkəzləri, dövlət qurumlarının rəqəmsal savadlılıq layihələri.",
+  "possible_positions": [
+    "İnformatika müəllimi",
+    "STEAM müəllimi",
+    "Təlimçi (Texnologiya şirkətlərində)",
+    "Metodist",
+    "Tədris proqramları üzrə mütəxəssis (Curriculum Developer)",
+    "Təhsil texnoloqu"
+  ],
+  "recommendations": "Təhsil müddətində Python, JavaScript kimi populyar proqramlaşdırma dillərini dərindən öyrənmək, Coursera, edX kimi platformalarda data analitikası, süni intellekt və kibertəhlükəsizlik üzrə kurslar keçmək vacibdir. Arduino, Raspberry Pi kimi mikro-kontrollerlərlə layihələr hazırlamaq, Scratch və ya Tynker kimi platformalarda uşaqlar üçün tədris materialları yaratmaq sizi fərqləndirəcək. Məzun olduqdan sonra MİQ imtahanı ilə yanaşı, Google Certified Educator və ya Microsoft Certified Educator kimi beynəlxalq sertifikatlar almaq karyera imkanlarınızı genişləndirəcək."
+}

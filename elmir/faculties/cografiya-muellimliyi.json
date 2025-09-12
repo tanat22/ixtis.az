@@ -1,0 +1,16 @@
+
+{
+  "name": "Coğrafiya müəllimliyi",
+  "slug": "cografiya-muellimliyi",
+  "description": "Coğrafiya müəllimliyi ixtisası, şagirdlərə təkcə ölkələrin və şəhərlərin yerini deyil, həm də Yer kürəsinin fiziki xüsusiyyətlərini, təbii prosesləri, iqlimi, əhalini, təsərrüfatı və bunlar arasındakı mürəkkəb əlaqələri öyrədən pedaqoji kadrlar hazırlayır. Bu ixtisas fiziki coğrafiya, iqtisadi və sosial coğrafiya, kartoqrafiya ilə yanaşı, pedaqogika və psixologiya kimi fənləri də əhatə edir.",
+  "future": "Qlobal iqlim dəyişikliyi, ətraf mühit problemləri və davamlı inkişaf məsələlərinin aktuallaşması coğrafiya elminə və onun tədrisinə olan marağı artırır. Müasir coğrafiya müəllimi şagirdlərdə məkan təfəkkürü, tənqidi düşüncə və qlobal problemlərə qarşı məsuliyyət hissi formalaşdıran mühüm bir fiqurdur. Coğrafi İnformasiya Sistemlərinin (GIS) tədrisə inteqrasiyası bu fənnin tədrisini daha müasir və maraqlı edir.",
+  "job_opportunities": "Dövlət və özəl ümumtəhsil məktəbləri, liseylər, gimnaziyalar, hazırlıq kursları və repetitor mərkəzləri, turizm şirkətləri (bələdçi kimi), kartoqrafiya və geodeziya ilə bağlı qurumlar (əlavə ixtisaslaşma ilə).",
+  "possible_positions": [
+    "Coğrafiya müəllimi",
+    "Metodist",
+    "Repetitor",
+    "Ekoturizm üzrə bələdçi",
+    "Təhsil mütəxəssisi"
+  ],
+  "recommendations": "Təhsil müddətində ArcGIS və ya QGIS kimi Coğrafi İnformasiya Sistemləri (GIS) proqramlarının əsaslarını öyrənmək böyük üstünlükdür. Dərslərinizi daha vizual və interaktiv etmək üçün Google Earth, online xəritələr və data vizuallaşdırma alətlərindən istifadə etməyi öyrənin. Yay məktəbləri və təbiət qoynunda keçirilən təcrübələrdə iştirak etmək nəzəri biliklərinizi möhkəmləndirəcək. Məzun olduqdan sonra Müəllimlərin İşə Qəbulu (MİQ) imtahanına məqsədyönlü şəkildə hazırlaşmaq vacibdir."
+}

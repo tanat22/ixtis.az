@@ -1,0 +1,18 @@
+
+{
+  "name": "Xüsusi rabitə vasitələri mühəndisliyi",
+  "slug": "xususi-rabite-vasiteleri-muhendisliyi",
+  "description": "Xüsusi rabitə vasitələri mühəndisliyi, dövlət orqanları, hərbi və təhlükəsizlik strukturları üçün nəzərdə tutulmuş, yüksək məxfiliyə, müdaxilədən qorunmaya və etibarlılığa malik rabitə sistemlərinin və qurğularının layihələndirilməsi, quraşdırılması, istismarı və təhlükəsizliyinin təmin edilməsi ilə məşğul olan bir mühəndislik sahəsidir. Bu ixtisas radiotexnika, telekommunikasiya, kriptoqrafiya, siqnalların rəqəmsal emalı və şəbəkə təhlükəsizliyi kimi sahələri birləşdirir.",
+  "future": "Müasir dünyada informasiya təhlükəsizliyi və dövlət idarəçiliyinin fasiləsizliyi birbaşa xüsusi rabitə sistemlərinin dayanıqlılığından asılıdır. Kiberhücumların artması, peyk və mobil rabitə texnologiyalarının inkişafı, məlumatların şifrələnməsi üçün yeni alqoritmlərin yaradılması bu sahənin mütəxəssislərinə olan tələbatı daim yüksək saxlayır. Gələcəkdə kvant kriptoqrafiyası və süni intellektə əsaslanan müdafiə sistemlərinin tətbiqi bu sahənin inkişafının əsas istiqamətləri olacaq.",
+  "job_opportunities": "Azərbaycan Respublikası Xüsusi Rabitə və İnformasiya Təhlükəsizliyi Dövlət Xidməti, Müdafiə Nazirliyi, Dövlət Təhlükəsizliyi Xidməti, Xarici Kəşfiyyat Xidməti, həmçinin digər güc strukturlarının və dövlət orqanlarının müvafiq rabitə və təhlükəsizlik şöbələri.",
+  "possible_positions": [
+    "Rabitə mühəndisi",
+    "Şəbəkə təhlükəsizliyi mütəxəssisi",
+    "Kriptoqrafiya üzrə mütəxəssis",
+    "Radioelektron mübarizə mütəxəssisi",
+    "Rabitə qovşağının rəisi",
+    "Sistem administratoru (xüsusi sistemlər üzrə)",
+    "Texniki dəstək mühəndisi"
+  ],
+  "recommendations": "Təhsil müddətində radiotexnika, siqnallar nəzəriyyəsi və şəbəkə texnologiyalarını dərindən öyrənmək vacibdir. Linux əməliyyat sistemini və Python kimi skript dillərini bilmək üstünlükdür. Cisco (CCNA Security), CompTIA (Security+) kimi beynəlxalq təhlükəsizlik sertifikatları haqqında məlumatlanmaq və onlara hazırlaşmaq karyera üçün çox faydalıdır. Bu sahə yüksək məsuliyyət və dövlət sirrini saxlamaq bacarığı tələb edir."
+}

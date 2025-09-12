@@ -1,0 +1,18 @@
+
+{
+  "name": "Hidrometeorologiya",
+  "slug": "hidrometeorologiya",
+  "description": "Hidrometeorologiya, atmosferada və hidrosferdə (okeanlar, dənizlər, çaylar, göllər) baş verən fiziki prosesləri öyrənən bir elmdir. Bu ixtisas hava proqnozlarının verilməsi, iqlim dəyişikliklərinin təhlili, su ehtiyatlarının qiymətləndirilməsi və təhlükəli təbiət hadisələrinin (quraqlıq, sel, daşqın) öyrənilməsi ilə məşğul olur. Hidrometeoroloqlar atmosfer və su mühitindən toplanan məlumatları analiz edərək müxtəlif sahələr üçün (kənd təsərrüfatı, aviasiya, dənizçilik, energetika) proqnozlar və tövsiyələr hazırlayırlar.",
+  "future": "Qlobal iqlim dəyişikliyi və ekstremal hava hadisələrinin sayının artması dəqiq hava proqnozlarına və iqlim modelləşdirilməsinə olan tələbatı kəskin şəkildə artırır. Gələcəkdə rəqəmsal hava proqnozu modelləri, süni intellektin proqnozların dəqiqləşdirilməsinə tətbiqi, peyk meteorologiyası və iqlim risklərinin idarə olunması bu sahənin əsas inkişaf istiqamətləri olacaq. Kənd təsərrüfatı, bərpaolunan enerji və sığorta kimi sektorlar üçün dəqiq hidrometeoroloji məlumatlar getdikcə daha vacib olacaq.",
+  "job_opportunities": "Ekologiya və Təbii Sərvətlər Nazirliyinin Milli Hidrometeorologiya Xidməti, Fövqəladə Hallar Nazirliyi, AMEA Coğrafiya İnstitutu, 'Azərkosmos' ASC, neft-qaz şirkətlərinin ətraf mühit departamentləri, aviaşirkətlər, dəniz gəmiçiliyi şirkətləri, aqrar holdinqlər, beynəlxalq ekoloji və iqlim layihələri.",
+  "possible_positions": [
+    "Sinoptik (hava proqnozu mütəxəssisi)",
+    "Hidroloq",
+    "Meteoroloq",
+    "Aqrometeoroloq",
+    "İqlimşünas",
+    "Data analitiki (meteoroloji məlumatlar üzrə)",
+    "Elmi işçi"
+  ],
+  "recommendations": "Təhsil müddətində fizika, riyaziyyat və coğrafiya fənlərini dərindən öyrənmək vacibdir. Python və ya R proqramlaşdırma dillərini data analizi və vizuallaşdırılması üçün mənimsəmək böyük üstünlükdür. ArcGIS və ya QGIS kimi Coğrafi İnformasiya Sistemləri (GIS) ilə işləmə bacarıqları məkan məlumatlarının təhlili üçün lazımlıdır. Hava proqnozlarının verilməsi üçün istifadə olunan beynəlxalq proqnoz modelləri (məsələn, GFS, ECMWF) və sinoptik xəritələrin analizi ilə tanış olmaq tövsiyə olunur. Magistratura təhsili bu sahədə dərin elmi biliklər üçün vacibdir."
+}

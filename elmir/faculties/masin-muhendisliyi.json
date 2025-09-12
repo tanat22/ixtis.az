@@ -1,0 +1,19 @@
+
+{
+  "name": "Maşın mühəndisliyi",
+  "slug": "masin-muhendisliyi",
+  "description": "Maşın mühəndisliyi, müxtəlif növ mexaniki sistemlərin, maşınların, avadanlıqların və onların hissələrinin layihələndirilməsi, istehsalı, istismarı və təkmilləşdirilməsi ilə məşğul olan ən fundamental və geniş mühəndislik sahələrindən biridir. Bu ixtisas mexanika, dinamika, termodinamika, materialşünaslıq, konstruksiya və istehsal texnologiyaları kimi bir çox sahəni əhatə edir.",
+  "future": "Maşın mühəndisliyi 'Sənaye 4.0' inqilabının mərkəzində dayanır. Gələcəkdə 3D çap (additiv istehsal), robototexnika, süni intellektin istehsal proseslərinə inteqrasiyası, 'ağıllı' materiallar və kompozitlərin tətbiqi, həmçinin enerji səmərəli və ekoloji təmiz sistemlərin yaradılması bu sahənin əsas inkişaf vektorları olacaq. Maşın mühəndisləri təkcə sənayedə deyil, həmçinin biotibb, bərpaolunan enerji və aerokosmik kimi sahələrdə də getdikcə daha çox rol oynayacaqlar.",
+  "job_opportunities": "Maşınqayırma zavodları, neft-qaz sənayesi müəssisələri (avadanlıqların istismarı və təmiri), cihazqayırma müəssisələri, müdafiə sənayesi, avtomobil sənayesi və servis mərkəzləri, gəmiqayırma və təmir zavodları, istilik və elektrik stansiyaları, layihə-konstruktor büroları, qida sənayesi avadanlıqları istehsalçıları.",
+  "possible_positions": [
+    "Konstruktor mühəndis",
+    "Mühəndis-texnoloq",
+    "İstehsalat mühəndisi",
+    "Servis mühəndisi",
+    "Keyfiyyətə nəzarət mühəndisi",
+    "Layihə mühəndisi",
+    "Mexanik mühəndis",
+    "CAD/CAM mütəxəssisi"
+  ],
+  "recommendations": "Təhsil müddətində AutoCAD, SolidWorks, CATIA, ANSYS kimi mühəndis dizayn (CAD) və analiz (CAE) proqramlarını dərindən mənimsəmək mütləqdir. İstehsalat təcrübəsi zamanı dəzgahlar (CNC daxil olmaqla) və texnoloji proseslərlə yaxından tanış olmaq çox vacibdir. Materialşünaslıq və termodinamika fənlərinə xüsusi diqqət yetirmək lazımdır. İngilis dilini texniki səviyyədə bilmək beynəlxalq standartlar və avadanlıqlarla işləmək üçün vacibdir. Məzun olduqdan sonra ASME (American Society of Mechanical Engineers) kimi beynəlxalq təşkilatların standartları ilə tanışlıq və müvafiq sertifikatlar almaq karyera inkişafına kömək edəcək."
+}

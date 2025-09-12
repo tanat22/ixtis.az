@@ -1,0 +1,18 @@
+
+{
+  "name": "Radiotexnika və telekommunikasiya mühəndisliyi",
+  "slug": "radiotexnika-ve-telekommunikasiya-muhendisliyi",
+  "description": "Radiotexnika və telekommunikasiya mühəndisliyi, informasiyanın radio dalğaları, optik liflər və digər ötürücü mühitlər vasitəsilə ötürülməsi, qəbulu və emalı üçün istifadə olunan sistemlərin və qurğuların (mobil rabitə, peyk rabitəsi, televiziya, radio, Wi-Fi, radar və s.) layihələndirilməsi, istehsalı və istismarı ilə məşğul olan bir mühəndislik sahəsidir.",
+  "future": "5G və gələcək nəsil mobil şəbəkələr (6G), 'Əşyaların İnterneti' (IoT), peyk interneti (məsələn, Starlink) və ağıllı cihazların sürətli inkişafı bu sahənin mütəxəssislərinə olan tələbatı durmadan artırır. Məlumatların ötürülmə sürətinin və həcminin artması, siqnalların emalı üçün daha mürəkkəb alqoritmlərin tətbiqi və elektromaqnit uyğunluğu məsələləri bu sahənin gələcəyini müəyyən edir.",
+  "job_opportunities": "Mobil operatorlar (Azercell, Bakcell, Nar), internet provayderləri, televiziya və radio şirkətləri, Rəqəmsal İnkişaf və Nəqliyyat Nazirliyinin strukturları (Dövlət Radiotezliklər İdarəsi), müdafiə sənayesi müəssisələri, Milli Aviasiya Akademiyası, rabitə avadanlıqları istehsalçıları və təchizatçılarının nümayəndəlikləri (Ericsson, Huawei, Nokia).",
+  "possible_positions": [
+    "Radio mühəndis (RF Engineer)",
+    "Telekommunikasiya mühəndisi",
+    "Şəbəkə mühəndisi",
+    "Antenna-fider qurğuları üzrə mühəndis",
+    "Siqnalların rəqəmsal emalı üzrə mütəxəssis (DSP Engineer)",
+    "Radio-elektron vasitələrin təmiri üzrə mühəndis",
+    "Sistem administratoru (rabitə sistemləri üzrə)"
+  ],
+  "recommendations": "Təhsil müddətində siqnallar və sistemlər, elektromaqnit sahələri və dalğaları, antena nəzəriyyəsi kimi fundamental fənləri dərindən öyrənmək vacibdir. MATLAB, LabVIEW kimi proqramlarda siqnalların modelləşdirilməsi və analizi bacarıqları böyük üstünlükdür. Cisco (CCNA), Huawei (HCIA) kimi şəbəkə sertifikatları və radiotezlik planlaması proqramları (məsələn, ATDI) ilə işləməyi öyrənmək karyeranız üçün faydalı olacaq. İngilis dilini texniki səviyyədə bilmək beynəlxalq standartlar və avadanlıqlarla işləmək üçün şərtdir."
+}

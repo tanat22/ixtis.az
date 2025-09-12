@@ -1,0 +1,18 @@
+
+{
+  "name": "Kommunikasiya sistemləri mühəndisliyi",
+  "slug": "kommunikasiya-sistemleri-muhendisliyi",
+  "description": "Kommunikasiya sistemləri mühəndisliyi, məlumatın (səs, video, data) ötürülməsi, emalı və qəbulu üçün lazım olan sistemlərin və şəbəkələrin layihələndirilməsi, qurulması və idarə olunması ilə məşğul olan bir sahədir. Bu ixtisas telekommunikasiya, radiotexnika, rəqəmsal siqnal emalı, optik rabitə və kompüter şəbəkələri kimi sahələri əhatə edir. Məqsəd məlumatın sürətli, etibarlı və təhlükəsiz şəkildə bir nöqtədən digərinə çatdırılmasını təmin etməkdir.",
+  "future": "5G və gələcək nəsil mobil şəbəkələr, 'Əşyaların İnterneti' (IoT), yüksəksürətli fiber-optik internet, peyk rabitəsi və bulud texnologiyalarının sürətli inkişafı kommunikasiya mühəndislərinə olan tələbatı davamlı olaraq artırır. Rəqəmsal transformasiyanın bütün sahələri əhatə etməsi ilə bu mütəxəssislərin rolu getdikcə daha da strateji əhəmiyyət kəsb edəcək. Şəbəkə təhlükəsizliyi də bu sahənin ayrılmaz və perspektivli bir istiqamətidir.",
+  "job_opportunities": "Mobil operatorlar (Azercell, Bakcell, Nar), internet provayderləri (Aztelekom, Baktelecom), telekommunikasiya avadanlıqları istehsalçıları və təchizatçılarının (məsələn, Ericsson, Huawei) nümayəndəlikləri, televiziya və radio şirkətləri, dövlət qurumlarının rabitə şöbələri (məsələn, Rəqəmsal İnkişaf və Nəqliyyat Nazirliyi, Xüsusi Rabitə və İnformasiya Təhlükəsizliyi Dövlət Xidməti), neft-qaz şirkətlərinin telekommunikasiya departamentləri.",
+  "possible_positions": [
+    "Telekommunikasiya mühəndisi",
+    "Şəbəkə mühəndisi",
+    "Radio tezliklər üzrə mühəndis (RF Engineer)",
+    "Optik şəbəkə mütəxəssisi",
+    "Sistem administratoru (şəbəkə üzrə)",
+    "VoIP mühəndisi",
+    "Telekommunikasiya üzrə layihə meneceri"
+  ],
+  "recommendations": "Təhsil müddətində Cisco (CCNA, CCNP), Huawei (HCIA) kimi şəbəkə sertifikatlarına hazırlaşmaq işə qəbul üçün böyük üstünlükdür. Linux əməliyyat sistemini və Python dilində şəbəkə avtomatlaşdırılması üçün skriptlər yazmağı öyrənmək sizi digər namizədlərdən fərqləndirəcək. Wireshark kimi şəbəkə trafikini analiz edən proqramlarla işləmə bacarıqları, həmçinin radiotezlik planlaması və optik şəbəkələrin əsasları haqqında dərin biliklər çox vacibdir. İngilis dilini texniki səviyyədə bilmək beynəlxalq avadanlıqlarla işləmək və karyera yüksəlişi üçün şərtdir."
+}

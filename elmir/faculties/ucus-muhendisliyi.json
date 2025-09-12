@@ -1,0 +1,18 @@
+
+{
+  "name": "Uçuş mühəndisliyi",
+  "slug": "ucus-muhendisliyi",
+  "description": "Uçuş mühəndisliyi (və ya aviasiya mühəndisliyi), hava gəmilərinin (təyyarələr, helikopterlər) və onların sistemlərinin (mühərriklər, naviqasiya, hidravlik və pnevmatik sistemlər) istismarı, texniki vəziyyətinin monitorinqi və idarə olunması ilə məşğul olan yüksək ixtisaslı mühəndislik sahəsidir. Bu ixtisas aerodinamika, termodinamika, təyyarə konstruksiyası, aviasiya mühərrikləri və bort sistemləri kimi fənləri dərindən əhatə edir. Uçuş mühəndisi pilotla birlikdə uçuşun təhlükəsiz və səmərəli keçməsinə cavabdehdir.",
+  "future": "Müasir hava gəmilərində avtomatlaşdırmanın artması ilə klassik uçuş mühəndisi (bortmühəndis) vəzifəsi bir çox təyyarə tiplərində pilotların funksiyaları ilə birləşsə də, bu ixtisasın verdiyi fundamental biliklər aviasiyanın digər sahələrində yüksək qiymətləndirilir. Gələcəkdə uçuşların yerüstü mərkəzlərdən monitorinqi, texniki vəziyyətin proqnozlaşdırılması (predictive maintenance), uçuş məlumatlarının analizi və uçuşların səmərəliliyinin artırılması kimi sahələrdə bu mütəxəssislərə böyük ehtiyac olacaq.",
+  "job_opportunities": "Aviaşirkətlər ('Azərbaycan Hava Yolları' - AZAL, 'Silk Way'), təyyarələrə texniki xidmət göstərən təşkilatlar (məsələn, 'Silk Way Technics'), hərbi hava qüvvələri, Milli Aviasiya Akademiyası, Dövlət Mülki Aviasiya Agentliyi.",
+  "possible_positions": [
+    "Uçuş-istismar mühəndisi",
+    "Bortmühəndis (köhnə tipli təyyarələrdə)",
+    "Texniki xidmət üzrə mühəndis",
+    "Uçuşların təhlili üzrə mütəxəssis (Flight Data Analyst)",
+    "Planer mühəndis (təyyarələrin texniki xidməti üzrə)",
+    "Keyfiyyətə nəzarət mühəndisi (aviasiya)",
+    "Aviasiya təlim mərkəzində təlimatçı"
+  ],
+  "recommendations": "Bu ixtisas dərin texniki biliklərlə yanaşı, yüksək məsuliyyət, diqqət və stresə davamlılıq tələb edir. İngilis dilini texniki səviyyədə mükəmməl bilmək mütləq şərtdir, çünki bütün texniki sənədləşmə və beynəlxalq kommunikasiya bu dildə aparılır. Təhsil müddətində təyyarə trenajorlarında və real texniki xidmət anqarlarında təcrübə toplamaq çox vacibdir. Məzun olduqdan sonra müəyyən təyyarə tipi (məsələn, Boeing 737, Airbus A320) üzrə beynəlxalq EASA Part-66 lisenziyası almaq karyera üçün ən vacib addımdır."
+}

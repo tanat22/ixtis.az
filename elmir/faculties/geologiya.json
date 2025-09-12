@@ -1,0 +1,19 @@
+
+{
+  "name": "Geologiya",
+  "slug": "geologiya",
+  "description": "Geologiya ixtisası, Yer kürəsinin quruluşunu, tərkibini, tarixini və onun səthində və dərinliklərində baş verən prosesləri öyrənən fundamental elmdir. Bu sahə faydalı qazıntıların (neft, qaz, metal filizləri, yeraltı sular) axtarışı və kəşfiyyatı, təbii fəlakətlərin (zəlzələ, sürüşmə) proqnozlaşdırılması və mühəndisi-geoloji tədqiqatlarla məşğul olur.",
+  "future": "Azərbaycan kimi təbii sərvətlərlə zəngin bir ölkədə geologiya ixtisası həmişə aktual olaraq qalır. Neft və qaz hasilatı ilə yanaşı, qeyri-neft sektorunun inkişafı, xüsusilə də dağ-mədən sənayesinin canlanması (qızıl, mis və s.) geoloqlara olan tələbatı artırır. İnşaat sektorunun genişlənməsi, tunel və su anbarlarının tikintisi mühəndis-geoloqların rolunu önə çıxarır. Həmçinin, alternativ enerji mənbələrindən (geotermal enerji) istifadə və yeraltı suların idarə olunması da bu sahənin yeni perspektivlərindəndir.",
+  "job_opportunities": "SOCAR və onun strukturları (Neftqazelmitədqiqatlayihə İnstitutu), BP və digər xarici neft şirkətləri, Ekologiya və Təbii Sərvətlər Nazirliyi, Milli Geoloji Kəşfiyyat Xidməti, Fövqəladə Hallar Nazirliyi, AMEA Geologiya və Geofizika İnstitutu, dağ-mədən sənayesi şirkətləri ('AzerGold' QSC), tikinti şirkətlərinin mühəndisi-geoloji kəşfiyyat şöbələri.",
+  "possible_positions": [
+    "Axtarış-kəşfiyyat geoloqu",
+    "Neftçi-geoloq",
+    "Mədən geoloqu",
+    "Hidrogeoloq",
+    "Mühəndis-geoloq",
+    "Geofizik",
+    "Petrofizik",
+    "Sedimentoloq"
+  ],
+  "recommendations": "Təhsil müddətində çöl təcrübələrində və ekspedisiyalarda maksimum iştirak etmək çox vacibdir. Süxur və mineralları vizual olaraq tanımaq, geoloji xəritələri tərtib etmək və oxumaq əsas bacarıqlardır. Petrel, ArcGIS, Surfer kimi ixtisaslaşmış proqram təminatlarını öyrənmək sizi rəqabətə davamlı edəcək. Məzun olduqdan sonra neft-qaz və ya mədən sənayesi üzrə beynəlxalq sertifikatlar (məsələn, geoloji modelləşdirmə proqramları üzrə) karyera imkanlarınızı genişləndirə bilər."
+}

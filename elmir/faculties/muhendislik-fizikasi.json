@@ -1,0 +1,19 @@
+
+{
+  "name": "Mühəndislik fizikası",
+  "slug": "muhendislik-fizikasi",
+  "description": "Mühəndislik fizikası, fizikanın fundamental prinsiplərini mühəndislik məsələlərinin həllinə tətbiq edən fənlərarası bir sahədir. Bu ixtisas klassik fizika məzunundan fərqli olaraq, daha çox praktiki tətbiqə, yeni texnologiyaların və cihazların yaradılmasına yönəlir. Tələbələr həm dərin nəzəri fizika biliklərinə, həm də mühəndislik dizaynı və analiz bacarıqlarına yiyələnirlər.",
+  "future": "Yüksək texnologiyaların inkişaf etdiyi bütün sahələrdə mühəndis-fiziklərə ehtiyac var. Optoelektronika, nanotexnologiya, bərpaolunan enerji, tibbi cihazqayırma, sensor texnologiyaları və kvant hesablamaları kimi sahələr bu ixtisasın məzunları üçün geniş karyera imkanları yaradır. Gələcəkdə bu ixtisas elmlə sənaye arasında körpü rolunu daha da gücləndirəcək.",
+  "job_opportunities": "Yüksək texnologiya şirkətləri, elmi-tədqiqat institutları, müdafiə sənayesi, tibbi avadanlıq istehsalçıları, telekommunikasiya şirkətləri, cihazqayırma zavodları, standartlaşdırma və metrologiya mərkəzləri, R&D (Tədqiqat və İnkişaf) departamentləri.",
+  "possible_positions": [
+    "Tədqiqatçı mühəndis (R&D Engineer)",
+    "Sistem mühəndisi",
+    "Proses mühəndisi",
+    "Optika mühəndisi",
+    "Lazer texnologiyaları üzrə mütəxəssis",
+    "Keyfiyyətə nəzarət mühəndisi",
+    "Cihaz mühəndisi",
+    "Elmi işçi"
+  ],
+  "recommendations": "Təhsil müddətində MATLAB, LabVIEW, COMSOL Multiphysics kimi proqramları və Python və ya C++ kimi proqramlaşdırma dillərini öyrənmək çox vacibdir. Elektronika və mikroprosessor texnikasının əsaslarını mənimsəmək praktiki layihələr yaratmaq üçün imkanlar açacaq. Tədqiqat qruplarına qoşulmaq, elmi məqalələr oxumaq və təcrübə proqramlarında iştirak etmək bu sahədə uğurlu olmaq üçün kritik əhəmiyyət kəsb edir. Magistratura və PhD təhsili tədqiqat və inkişaf sahəsində karyera üçün demək olar ki, mütləqdir."
+}

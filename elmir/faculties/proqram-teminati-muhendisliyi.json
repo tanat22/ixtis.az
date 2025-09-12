@@ -1,0 +1,20 @@
+
+{
+  "name": "Proqram təminatı mühəndisliyi",
+  "slug": "proqram-teminati-muhendisliyi",
+  "description": "Proqram təminatı mühəndisliyi (Software Engineering), böyük və mürəkkəb proqram sistemlərinin sistematik, nizamlı və ölçüləbilən bir yanaşma ilə layihələndirilməsi, hazırlanması, sınaqdan keçirilməsi, təkamülü və idarə olunması ilə məşğul olan bir mühəndislik sahəsidir. Bu ixtisas təkcə kod yazmağı deyil, həm də layihə idarəçiliyi, keyfiyyət təminatı, tələblərin analizi və proqram arxitekturası kimi mövzuları əhatə edir.",
+  "future": "Dünyanın rəqəmsal transformasiyası proqram təminatına olan tələbatı hər gün artırır. Veb və mobil tətbiqlərdən tutmuş, bulud texnologiyalarına, süni intellektə və daxilə quraşdırılmış sistemlərə qədər hər sahədə proqram təminatı mühəndislərinin rolu əvəzsizdir. Bu, gələcəyin ən perspektivli, stabil və yüksək gəlirli peşələrindən biri olaraq qalmaqda davam edəcək.",
+  "job_opportunities": "İstənilən proqram təminatı hazırlayan yerli və xarici şirkətlər, startaplar, bank və maliyyə sektoru, telekommunikasiya şirkətləri, oyun sənayesi (GameDev), dövlət qurumlarının İT şöbələri, autsorsinq şirkətləri.",
+  "possible_positions": [
+    "Proqram təminatı mühəndisi (Software Engineer)",
+    "Backend Developer",
+    "Frontend Developer",
+    "Full-stack Developer",
+    "Mobil tətbiq tərtibatçısı (iOS/Android)",
+    "DevOps mühəndisi",
+    "Keyfiyyət təminatı mühəndisi (QA Engineer)",
+    "Proqram arxitektoru (Software Architect)",
+    "Layihə meneceri (Project Manager)"
+  ],
+  "recommendations": "Təhsil müddətində ən azı bir neçə proqramlaşdırma dilini (məsələn, Python, Java, C#, JavaScript) və müvafiq freymvorkları (Django, Spring, .NET, React) dərindən öyrənmək vacibdir. Git versiyaya nəzarət sistemini bilmək mütləqdir. Şəxsi layihələr hazırlayaraq GitHub-da güclü bir portfolio yaratmaq işə qəbul üçün ən vacib amillərdən biridir. LeetCode, HackerRank kimi platformalarda alqoritmik məsələləri həll etmək texniki müsahibə bacarıqlarınızı gücləndirəcək. Agile/Scrum kimi çevik layihə idarəetmə metodologiyaları ilə tanış olmaq komandada işləmək üçün üstünlükdür."
+}

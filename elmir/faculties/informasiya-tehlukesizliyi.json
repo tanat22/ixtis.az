@@ -1,0 +1,18 @@
+
+{
+  "name": "İnformasiya təhlükəsizliyi",
+  "slug": "informasiya-tehlukesizliyi",
+  "description": "İnformasiya təhlükəsizliyi (və ya kibertəhlükəsizlik), kompüter sistemlərini, şəbəkələri və məlumatları icazəsiz girişdən, istifadədən, dəyişdirilmədən və məhv edilmədən qorumaq üçün istifadə olunan texnologiyalar, proseslər və təcrübələr toplusudur. Bu ixtisas kriptoqrafiya, şəbəkə təhlükəsizliyi, veb tətbiqlərin təhlükəsizliyi, zərərli proqramların analizi və rəqəmsal kriminalistika kimi sahələri əhatə edir.",
+  "future": "Kiberhücumların sayı və mürəkkəbliyi artdıqca, kibertəhlükəsizlik mütəxəssislərinə olan tələbat bütün dünyada ən sürətlə artan sahələrdən birinə çevrilmişdir. Banklar, dövlət qurumları, böyük korporasiyalar və texnologiya şirkətləri öz rəqəmsal aktivlərini qorumaq üçün bu sahənin mütəxəssislərinə böyük ehtiyac duyurlar. Süni intellektin təhlükəsizlik sistemlərinə tətbiqi və 'Əşyaların İnterneti' (IoT) cihazlarının təhlükəsizliyi gələcəyin əsas çağırışları və imkanlarıdır.",
+  "job_opportunities": "Banklar və maliyyə təşkilatları, dövlət qurumları (Xüsusi Rabitə və İnformasiya Təhlükəsizliyi Dövlət Xidməti, Rəqəmsal İnkişaf və Nəqliyyat Nazirliyi), böyük texnologiya və telekommunikasiya şirkətləri, kibertəhlükəsizlik üzrə məsləhət və audit xidmətləri göstərən şirkətlər ('Böyük Dördlük' - Deloitte, PwC, EY, KPMG), SOC (Təhlükəsizlik Əməliyyatları Mərkəzi) olan bütün təşkilatlar.",
+  "possible_positions": [
+    "İnformasiya təhlükəsizliyi analitiki",
+    "Penetration Tester (Etik Hacker)",
+    "Kibertəhlükəsizlik mühəndisi",
+    "SOC analitiki",
+    "Rəqəmsal kriminalistika mütəxəssisi (Digital Forensics Analyst)",
+    "Tətbiq təhlükəsizliyi mühəndisi (Application Security Engineer)",
+    "Təhlükəsizlik arxitektoru"
+  ],
+  "recommendations": "Təhsil müddətində şəbəkə texnologiyalarını, əməliyyat sistemlərini (Linux, Windows) və proqramlaşdırma dillərini (Python, Bash) dərindən öyrənmək vacibdir. CompTIA Security+, CEH (Certified Ethical Hacker), OSCP (Offensive Security Certified Professional) kimi beynəlxalq sertifikatlar bu sahədə karyera qurmaq üçün çox önəmlidir. TryHackMe, Hack The Box kimi platformalarda praktiki bacarıqlarınızı artırmaq, CTF (Capture The Flag) yarışmalarında iştirak etmək və təhlükəsizlik bloqlarını (məsələn, Krebs on Security) mütəmadi izləmək tövsiyə olunur."
+}

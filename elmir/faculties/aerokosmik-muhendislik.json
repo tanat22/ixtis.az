@@ -1,0 +1,18 @@
+
+{
+  "name": "Aerokosmik mühəndislik",
+  "slug": "aerokosmik-muhendislik",
+  "description": "Aerokosmik mühəndislik, təyyarələr, peyklər, kosmik gəmilər və raketlər kimi uçan aparatlarn dizaynı, hazırlanması, sınaqdan keçirilməsi və istismarı ilə məşğul olan yüksək texnoloji bir mühəndislik sahəsidir. Bu ixtisas aerodinamika, termodinamika, materialşünaslıq, uçuş mexanikası və idarəetmə sistemləri kimi fundamental fənləri əhatə edir.",
+  "future": "Azərbaycanın kosmik sənayeyə artan marağı (Azərkosmos), hərbi aviasiyanın modernləşdirilməsi və pilotsuz uçuş aparatlarına (dron) olan tələbat bu sahənin gələcəyini çox perspektivli edir. Məzunlar təkcə yerli layihələrdə deyil, həmçinin beynəlxalq aviasiya və kosmos şirkətlərində də karyera qura bilərlər. Naviqasiya, rabitə və Yerin müşahidəsi sistemlərinin inkişafı bu sahəyə olan ehtiyacı daha da artıracaq.",
+  "job_opportunities": "Milli Aviasiya Akademiyası, Azərbaycan Respublikası Müdafiə Sənayesi Nazirliyinin elmi-tədqiqat institutları və müəssisələri, 'Azərkosmos' ASC, hərbi hava qüvvələri, mülki aviasiya şirkətləri, dron texnologiyaları hazırlayan startaplar.",
+  "possible_positions": [
+    "Aerodinamika mühəndisi",
+    "Konstruktor mühəndis (təyyarə/raket)",
+    "Uçuş sınaqları üzrə mühəndis",
+    "Peyk sistemləri mühəndisi",
+    "Naviqasiya və idarəetmə sistemləri mühəndisi",
+    "Dron mühəndisi",
+    "Elmi işçi"
+  ],
+  "recommendations": "Təhsil müddətində CATIA, SolidWorks, ANSYS Fluent kimi mühəndislik proqramlarını dərindən öyrənmək çox vacibdir. MATLAB/Simulink proqramında modelləşdirmə və simulyasiya bacarıqları böyük üstünlükdür. İnsansız uçuş aparatları (dronlar) ilə bağlı həvəskar layihələr üzərində işləmək, robototexnika və aviasiya modelləşdirmə dərnəklərinə qoşulmaq tövsiyə olunur. Məzun olduqdan sonra beynəlxalq EASA (European Union Aviation Safety Agency) və ya FAA (Federal Aviation Administration) sertifikatları haqqında məlumatlanmaq karyera imkanlarınızı genişləndirə bilər."
+}

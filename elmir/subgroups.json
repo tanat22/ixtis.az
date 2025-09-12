@@ -1,0 +1,22 @@
+[
+  {
+    "id": "sub-1-rk",
+    "groupId": "group-1",
+    "name": "RK"
+  },
+  {
+    "id": "sub-1-ri",
+    "groupId": "group-1",
+    "name": "Rİ"
+  },
+  {
+    "id": "sub-3-dt",
+    "groupId": "group-3",
+    "name": "DT"
+  },
+  {
+    "id": "sub-3-tc",
+    "groupId": "group-3",
+    "name": "TC"
+  }
+]

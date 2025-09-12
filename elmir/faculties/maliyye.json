@@ -1,0 +1,19 @@
+
+{
+  "name": "Maliyyə",
+  "slug": "maliyye",
+  "description": "Maliyyə, pul vəsaitlərinin, investisiyaların və digər maliyyə alətlərinin idarə olunması ilə məşğul olan bir sahədir. Bu ixtisas korporativ maliyyə (şirkətlərin maliyyəsinin idarə olunması), investisiya (qiymətli kağızlar bazarı, portfel idarəçiliyi), bank işi, sığorta və dövlət maliyyəsi kimi alt sahələri əhatə edir. Maliyyəçilər maliyyə resurslarını səmərəli şəkildə cəlb etmək, yerləşdirmək və riskləri idarə etməklə məşğul olurlar.",
+  "future": "Texnologiyanın inkişafı maliyyə sektorunu kökündən dəyişir. FinTex (Maliyyə Texnologiyaları), blokçeyn, süni intellektə əsaslanan alqoritmik ticarət və rəqəmsal bankçılıq bu sahənin gələcəyini formalaşdırır. Data analitikası və risk modelləşdirmə bacarıqlarına malik maliyyə mütəxəssislərinə tələbat daim yüksək olacaq. Dayanıqlı maliyyə (Sustainable Finance) və 'yaşıl' investisiyalar da getdikcə daha çox əhəmiyyət kəsb edən yeni istiqamətlərdir.",
+  "job_opportunities": "Kommersiya bankları, investisiya şirkətləri, sığorta şirkətləri, lizinq şirkətləri, Azərbaycan Respublikasının Mərkəzi Bankı, Maliyyə Bazarlarına Nəzarət Palatası, böyük şirkətlərin maliyyə və xəzinədarlıq departamentləri, 'Böyük Dördlük' (Deloitte, PwC, EY, KPMG) kimi audit və məsləhət şirkətləri.",
+  "possible_positions": [
+    "Maliyyə analitiki",
+    "Kredit mütəxəssisi",
+    "İnvestisiya məsləhətçisi",
+    "Portfel meneceri",
+    "Risk meneceri",
+    "Maliyyə meneceri/direktoru (CFO)",
+    "Xəzinədar",
+    "Auditor"
+  ],
+  "recommendations": "Güclü riyazi və analitik bacarıqlar bu ixtisas üçün fundamental şərtdir. MS Excel-i (maliyyə modelləşdirməsi daxil olmaqla) peşəkar səviyyədə bilmək mütləqdir. CFA (Chartered Financial Analyst), ACCA (Association of Chartered Certified Accountants) kimi beynəlxalq sertifikatlar bu sahədə karyera qurmaq üçün qızıl standart hesab olunur. Təhsil müddətindən bu sertifikatların ilkin mərhələlərinə hazırlaşmağa başlamaq böyük üstünlükdür. Python dilini maliyyə datası analizi üçün öyrənmək sizi gələcəyin tələblərinə hazırlayacaq."
+}

@@ -1,0 +1,18 @@
+
+{
+  "name": "Ekologiya mühəndisliyi",
+  "slug": "ekologiya-muhendisliyi",
+  "description": "Ekologiya mühəndisliyi, insan fəaliyyətinin ətraf mühitə mənfi təsirlərini azaltmaq, təbii ehtiyatlardan səmərəli istifadə etmək və ekoloji tarazlığı qorumaq üçün mühəndislik prinsiplərini və texnologiyalarını tətbiq edən bir sahədir. Bu ixtisas suyun və havanın çirklənmədən təmizlənməsi, tullantıların idarə olunması, bərpaolunan enerji və ekoloji qiymətləndirmə kimi mövzuları əhatə edir.",
+  "future": "İqlim dəyişikliyi, resursların tükənməsi və sənaye tullantılarının artması fonunda ekologiya mühəndislərinə olan ehtiyac bütün dünyada olduğu kimi Azərbaycanda da kəskin şəkildə artır. 'Yaşıl' texnologiyaların, tullantıların təkrar emalının və alternativ enerji mənbələrinin inkişafı bu sahənin gələcəyini müəyyən edir. Şirkətlərin ekoloji standartlara (ISO 14001) uyğunlaşma zərurəti bu sahənin mütəxəssisləri üçün stabil iş bazarı yaradır.",
+  "job_opportunities": "Ekologiya və Təbii Sərvətlər Nazirliyi, Fövqəladə Hallar Nazirliyi, SOCAR, BP kimi neft-qaz şirkətlərinin ətraf mühitin mühafizəsi şöbələri, 'Təmiz Şəhər' ASC, 'Azərsu' ASC, məsləhətçi şirkətlər (Ətraf Mühitə Təsirin Qiymətləndirilməsi - ƏMTQ sənədlərinin hazırlanması), sənaye müəssisələri, beynəlxalq təşkilatlar (UN, WB).",
+  "possible_positions": [
+    "Ekologiya mühəndisi",
+    "Ətraf mühit üzrə mütəxəssis",
+    "SƏTƏM (Sağlamlıq, Əməyin Təhlükəsizliyi və Ətraf Mühit) mühəndisi",
+    "Tullantıların idarə olunması üzrə mütəxəssis",
+    "Su və çirkab sularının təmizlənməsi üzrə texnoloq",
+    "Ekoloji auditor",
+    "Bərpaolunan enerji mütəxəssisi"
+  ],
+  "recommendations": "Təhsil alarkən su, torpaq və hava nümunələrinin analizi üzrə laboratoriya təcrübəsi qazanmaq çox vacibdir. ArcGIS və ya QGIS kimi coğrafi informasiya sistemləri (GIS) proqramlarını öyrənmək ətraf mühitə təsirin qiymətləndirilməsi və monitorinqi üçün böyük üstünlükdür. ISO 14001 (Ətraf Mühitin İdarə Edilməsi Sistemi) və ISO 45001 (Əməyin Sağlamlığı və Təhlükəsizliyi İdarəetmə Sistemi) standartları ilə tanışlıq sizi korporativ sektorda cəlbedici namizəd edəcək. Məzun olduqdan sonra NEBOSH IGC kimi beynəlxalq SƏTƏM sertifikatları almaq karyera imkanlarınızı əhəmiyyətli dərəcədə artıracaq."
+}

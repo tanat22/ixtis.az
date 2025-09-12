@@ -1,0 +1,18 @@
+
+{
+  "name": "Nəqliyyat mühəndisliyi",
+  "slug": "neqliyyat-muhendisliyi",
+  "description": "Nəqliyyat mühəndisliyi, müxtəlif nəqliyyat növlərinin (avtomobil, dəmir yolu, hava, su) hərəkətinin təşkili, idarə olunması və təhlükəsizliyinin təmin edilməsi ilə məşğul olan bir sahədir. Bu ixtisas nəqliyyat axınlarının planlaşdırılması, yol hərəkətinin modelləşdirilməsi, nəqliyyat qovşaqlarının layihələndirilməsi, ictimai nəqliyyat sistemlərinin optimallaşdırılması və nəqliyyatda logistika məsələlərini əhatə edir.",
+  "future": "Şəhərlərin böyüməsi və tıxac probleminin artması ilə ağıllı nəqliyyat sistemlərinə (İntelligent Transport Systems - ITS) ehtiyac artır. Nəqliyyat axınlarının real zamanda idarə olunması, ictimai nəqliyyatın prioritetləşdirilməsi, ağıllı işıqforlar, parkinq sistemləri və mobillik xidmətləri (Mobility as a Service - MaaS) bu sahənin gələcəyini müəyyən edir. Ekoloji təmiz və davamlı nəqliyyat növlərinin (elektrikli avtobuslar, velosiped zolaqları) inkişafı da nəqliyyat mühəndisləri üçün yeni fəaliyyət sahələri yaradır.",
+  "job_opportunities": "Azərbaycan Yerüstü Nəqliyyat Agentliyi (AYNA), Bakı Nəqliyyat Agentliyi (BNA), 'Azərbaycan Dəmir Yolları' QSC, Dövlət Avtomobil Yolları Agentliyi, şəhər və rayon icra hakimiyyətlərinin nəqliyyat şöbələri, nəqliyyat və logistika şirkətləri, layihə institutları, nəqliyyat planlaması üzrə məsləhətçi şirkətlər.",
+  "possible_positions": [
+    "Nəqliyyat planlaması üzrə mühəndis",
+    "Yol hərəkətinin təşkili üzrə mühəndis",
+    "İctimai nəqliyyat üzrə mütəxəssis",
+    "Nəqliyyat logisti",
+    "Nəqliyyat modelləşdirilməsi üzrə mütəxəssis",
+    "Layihəçi mühəndis (nəqliyyat qovşaqları)",
+    "Nəqliyyat təhlükəsizliyi üzrə mütəxəssis"
+  ],
+  "recommendations": "Təhsil müddətində AutoCAD, Civil 3D kimi layihələndirmə proqramları ilə yanaşı, PTV Vissim/Visum, Aimsun kimi nəqliyyat axınlarını simulyasiya edən proqramları öyrənmək böyük üstünlükdür. Coğrafi İnformasiya Sistemləri (GIS) bilikləri nəqliyyat analizində geniş istifadə olunur. Statistika və data analizi bacarıqları tələbat proqnozlaşdırılması və sistemlərin optimallaşdırılması üçün vacibdir. Şəhər nəqliyyatının idarəolunması ilə bağlı real layihələrdə iştirak etmək və ya təcrübə keçmək karyeranız üçün faydalı olacaq."
+}

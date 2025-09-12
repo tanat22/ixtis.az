@@ -1,0 +1,18 @@
+
+{
+  "name": "Şəhərsalma",
+  "slug": "sehersalma",
+  "description": "Şəhərsalma, şəhərlərin və digər yaşayış məntəqələrinin fiziki, sosial və iqtisadi inkişafının planlaşdırılması ilə məşğul olan bir sahədir. Bu ixtisas memarlıq, mühəndislik, sosiologiya, iqtisadiyyat və ekologiyanı birləşdirərək, insanların rahat yaşaması, işləməsi və istirahəti üçün dayanıqlı, funksional və estetik mühitlərin yaradılmasını hədəfləyir. Şəhərsalma torpaqdan istifadə, nəqliyyat sistemləri, ictimai məkanlar və infrastrukturun planlaşdırılmasını əhatə edir.",
+  "future": "Urbanizasiyanın sürətlə davam etdiyi dünyada şəhərlərin planlaşdırılması və idarə olunması getdikcə daha da aktuallaşır. 'Ağıllı şəhərlər' (Smart Cities), 'yaşıl' infrastruktur, iqlim dəyişikliyinə uyğunlaşma və tarixi şəhər mərkəzlərinin qorunaraq yenidən canlandırılması bu sahənin gələcək inkişaf istiqamətləridir. Məkan məlumatlarının analizi (GIS) və ictimai iştirakçılığa əsaslanan planlaşdırma metodları şəhərsalmanın ayrılmaz hissəsinə çevrilir.",
+  "job_opportunities": "Dövlət Şəhərsalma və Arxitektura Komitəsi, yerli icra hakimiyyəti orqanlarının memarlıq və şəhərsalma şöbələri, memarlıq və layihə şirkətləri, daşınmaz əmlakın inkişafı (development) şirkətləri, nəqliyyat planlaması üzrə məsləhətçi şirkətlər, beynəlxalq təşkilatların şəhər inkişafı layihələri (məsələn, Dünya Bankı, BMT-Habitat).",
+  "possible_positions": [
+    "Şəhərsalma üzrə mütəxəssis (Urban Planner)",
+    "Baş plançı",
+    "Nəqliyyat planlaması üzrə mütəxəssis",
+    "GIS analitiki",
+    "Layihə rəhbəri (şəhərsalma)",
+    "Torpaqdan istifadə üzrə məsləhətçi",
+    "Elmi işçi"
+  ],
+  "recommendations": "Təhsil müddətində ArcGIS və ya QGIS kimi Coğrafi İnformasiya Sistemləri (GIS), həmçinin AutoCAD, SketchUp, Revit kimi layihələndirmə proqramlarını dərindən öyrənmək mütləqdir. Şəhərsalma qanunvericiliyi və normaları ilə tanış olmaq vacibdir. Müxtəlif şəhərlərin inkişaf modellərini analiz etmək, urbanistika sahəsindəki beynəlxalq təcrübəni öyrənmək dünyagörüşünüzü genişləndirəcək. Magistratura təhsili bu sahədə daha dərin ixtisaslaşma üçün tövsiyə olunur."
+}

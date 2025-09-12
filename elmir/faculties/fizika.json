@@ -1,0 +1,20 @@
+
+{
+  "name": "Fizika",
+  "slug": "fizika",
+  "description": "Fizika ixtisası, maddə, enerji və onların qarşılıqlı təsirini öyrənən fundamental təbiət elmidir. Bu sahə tələbələrə klassik mexanikadan kvant mexanikasına, termodinamikadan astrofizikaya qədər kainatın fundamental qanunlarını anlamaq üçün dərin nəzəri biliklər və eksperimental bacarıqlar verir. Bu ixtisas təkcə nəzəriyyə deyil, həm də analitik düşüncə, problem həll etmə və mürəkkəb modelləşdirmə qabiliyyətlərini inkişaf etdirir.",
+  "future": "Fizikanın gələcəyi çoxşaxəlidir. Süni intellekt, kvant kompüterləri, bərpaolunan enerji texnologiyaları, tibbi fizika (məsələn, yeni diaqnostika və müalicə üsulları) və materialşünaslıq kimi sahələr fizikanın fundamental prinsiplərinə əsaslanır. Bu səbəbdən, dərin fizika biliyinə malik mütəxəssislərə təkcə akademik çevrələrdə deyil, həm də yüksək texnologiya sənayesində, maliyyə sektorunda (quantitative analysis) və data elmində tələbat getdikcə artır.",
+  "job_opportunities": "Məzunlar elmi-tədqiqat institutlarında (AMEA Fizika İnstitutu), universitetlərdə, yüksək texnologiya şirkətlərində (məsələn, yarımkeçirici istehsalı, telekommunikasiya), tibbi avadanlıq istehsal edən şirkətlərdə, enerji sektorunda (neft-qaz, alternativ enerji), maliyyə qurumlarında (risk analizi, alqoritmik ticarət) və təhsil mərkəzlərində işləyə bilərlər.",
+  "possible_positions": [
+    "Elmi işçi",
+    "Tədqiqatçı mühəndis (R&D Engineer)",
+    "Data analitiki (Data Analyst)",
+    "Kvantitativ analitik (Quant)",
+    "Tibbi fizik",
+    "Sistem mühəndisi",
+    "Laboratoriya mütəxəssisi",
+    "Proses mühəndisi",
+    "Fizika müəllimi/Repetitor"
+  ],
+  "recommendations": "Təhsil müddətində Python, C++ və ya MATLAB kimi proqramlaşdırma dillərini öyrənmək çox vacibdir, çünki müasir fizika tədqiqatları və data analizi hesablama bacarıqları tələb edir. COMSOL, LabVIEW və ya ANSYS kimi simulyasiya proqramları ilə işləmə təcrübəsi böyük üstünlükdür. Universitetdəki tədqiqat qruplarına qoşulmaq, yay məktəblərində və təcrübə proqramlarında iştirak etmək həm praktiki biliklərinizi artıracaq, həm də gələcək karyeranız üçün əlaqələr qurmağa kömək edəcək. Məzun olduqdan sonra magistratura və ya PhD təhsili almaqla akademik və ya yüksək ixtisaslı sənaye karyerası üçün daha geniş imkanlar əldə etmək olar."
+}

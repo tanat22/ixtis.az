@@ -1,0 +1,16 @@
+
+{
+  "name": "Tibb",
+  "slug": "tibb",
+  "description": "Tibb (Müalicə işi) ixtisası, insan orqanizminin quruluşunu və funksiyalarını, xəstəliklərin səbəblərini, inkişaf mexanizmlərini, onların diaqnostikası, müalicəsi və profilaktikası üsullarını öyrənən fundamental bir elmdir. Bu ixtisas gələcəyin həkimləri üçün baza təhsili rolunu oynayır və məzunlar təhsillərini rezidenturada davam etdirərək müxtəlif tibbi sahələr üzrə (cərrahiyyə, terapiya, pediatriya, kardiologiya və s.) ixtisaslaşırlar.",
+  "future": "Tibb elmi daim inkişaf edir. Gələcəkdə genetik mühəndislik, süni intellektin diaqnostikada tətbiqi, fərdiləşdirilmiş tibb (hər xəstəyə fərdi müalicə), robotlaşdırılmış cərrahiyyə və regenerativ tibb (orqanların bərpası) kimi sahələr səhiyyədə inqilab edəcək. Pandemiyalar və qlobal sağlamlıq çağırışları həkim peşəsinin nə qədər həyati və əvəzolunmaz olduğunu bir daha sübut etdi.",
+  "job_opportunities": "Məzunlar rezidentura təhsilini bitirdikdən sonra dövlət və özəl xəstəxanalarda, poliklinikalarda, diaqnostika mərkəzlərində, elmi-tədqiqat institutlarında, universitetlərdə və əczaçılıq şirkətlərində fəaliyyət göstərə bilərlər.",
+  "possible_positions": [
+    "Həkim (rezidenturadan sonra ixtisaslaşaraq: terapevt, cərrah, kardioloq, nevroloq, pediatr və s.)",
+    "Elmi işçi",
+    "Klinik tədqiqatlar üzrə mütəxəssis",
+    "Səhiyyə meneceri (əlavə təhsillə)",
+    "Tibbi məsləhətçi"
+  ],
+  "recommendations": "Bu ixtisas dərin bilik, yüksək məsuliyyət, daimi özünüinkişaf, insan sevgisi və stresə davamlılıq tələb edir. Təhsil müddətində anatomiyanı, fiziologiyanı, farmakologiyanı və digər fundamental fənləri mükəmməl öyrənmək vacibdir. Universitetin klinikalarında növbələrdə iştirak etmək, həkimləri müşahidə etmək və praktiki bacarıqlara yiyələnmək çox önəmlidir. İngilis dilini bilmək beynəlxalq tibbi ədəbiyyatı izləmək və müasir müalicə metodlarından xəbərdar olmaq üçün mütləqdir."
+}

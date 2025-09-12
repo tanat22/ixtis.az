@@ -1,0 +1,18 @@
+
+{
+  "name": "Geologiya və geofizika mühəndisliyi",
+  "slug": "geologiya-ve-geofizika-muhendisliyi",
+  "description": "Geologiya və geofizika mühəndisliyi, neft, qaz, yeraltı sular və digər faydalı qazıntı yataqlarının axtarışı, kəşfiyyatı və işlənməsi zamanı Yer təkinin fiziki xüsusiyyətlərini öyrənmək üçün mühəndislik və texnologiyanı tətbiq edən bir sahədir. Bu ixtisas seysmik kəşfiyyat, quyu geofizikası (karotaj), qravimetriya, maqnito-metriya kimi üsullarla yeraltı strukturların modellərini qurur və faydalı qazıntıların yerini və miqdarını təyin edir.",
+  "future": "Azərbaycanın neft və qaz sənayesinin əsasını bu ixtisas təşkil edir. Mövcud yataqların səmərəli işlənməsi və Xəzərin dərinliklərində yeni perspektivli strukturların axtarışı geofizika mühəndislərinə olan tələbatı daimi edir. Gələcəkdə süni intellekt və 'Big Data' texnologiyalarının geofiziki məlumatların emalına və interpretasiyasına tətbiqi bu sahədə yeni imkanlar yaradacaq. Həmçinin, mühəndis-geoloji tədqiqatlar və ekoloji monitorinq sahələrində də geofiziki metodların rolu artır.",
+  "job_opportunities": "SOCAR və onun elmi-tədqiqat institutları, BP, Equinor, TotalEnergies kimi beynəlxalq neft-qaz şirkətləri, Schlumberger, Halliburton, Baker Hughes kimi neft-servis şirkətləri, AMEA Geologiya və Geofizika İnstitutu, Ekologiya və Təbii Sərvətlər Nazirliyinin strukturları.",
+  "possible_positions": [
+    "Geofizik-mühəndis",
+    "İnterpretator-geofizik (seysmik məlumatlar üzrə)",
+    "Petrofizik (quyu geofizikası mütəxəssisi)",
+    "Mədən geofiziki",
+    "Sahə geofiziki",
+    "Məlumatların emalı üzrə mütəxəssis (Data Processor)",
+    "Elmi işçi"
+  ],
+  "recommendations": "Təhsil müddətində Petrel, GeoFrame, OpendTect kimi ixtisaslaşmış proqram təminatlarını dərindən öyrənmək mütləqdir. Python proqramlaşdırma dilini və onun data analitikası üçün kitabxanalarını (NumPy, Pandas, Matplotlib) mənimsəmək geofiziki məlumatların emalı və analizi üçün böyük üstünlükdür. Çöl təcrübələrində və istehsalat təcrübələrində fəal iştirak etmək, real seysmik və karotaj məlumatları ilə işləmək bacarıqlarınızı artıracaq. Məzun olduqdan sonra beynəlxalq neft-servis şirkətlərinin təcrübə proqramlarına müraciət etmək karyeranız üçün uğurlu başlanğıc ola bilər."
+}
