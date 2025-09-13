@@ -22,21 +22,21 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Building, MapPin, Calendar, User, Link as LinkIcon } from 'lucide-react';
 import Link from 'next/link';
 
-export default function UniversitiesPage() {
-  const [universities, setUniversities] = React.useState<UniversityInfo[]>([]);
+export default function CollegesPage() {
+  const [colleges, setColleges] = React.useState<UniversityInfo[]>([]);
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
     async function fetchData() {
       setLoading(true);
-      const { universities: uniData } = await getUniversityInfo();
-      setUniversities(uniData);
+      const { colleges: collegeData } = await getUniversityInfo();
+      setColleges(collegeData);
       setLoading(false);
     }
     fetchData();
   }, []);
 
-  const renderUniversityCard = (uni: UniversityInfo) => (
+  const renderCollegeCard = (uni: UniversityInfo) => (
     <Card key={uni.id}>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
@@ -58,7 +58,7 @@ export default function UniversitiesPage() {
                 {uni.details.rector && (
                   <p className="flex items-center">
                     <User className="inline-block mr-2 h-4 w-4" />
-                    <strong>Rektor:</strong> <span className="ml-2">{uni.details.rector}</span>
+                    <strong>Direktor:</strong> <span className="ml-2">{uni.details.rector}</span>
                   </p>
                 )}
                 {uni.details.founded && (
@@ -75,19 +75,6 @@ export default function UniversitiesPage() {
                       {uni.details.website}
                     </Link>
                   </p>
-                )}
-                {uni.details.branches && uni.details.branches.length > 0 && (
-                   <div className="pt-2">
-                     <p className="flex items-center font-semibold text-foreground/90">
-                        <MapPin className="inline-block mr-2 h-4 w-4" />
-                        Filiallar:
-                      </p>
-                     <ul className="list-disc pl-8 mt-1 space-y-1">
-                       {uni.details.branches.map((branch, index) => (
-                         <li key={index}>{branch}</li>
-                       ))}
-                     </ul>
-                   </div>
                 )}
               </AccordionContent>
             </AccordionItem>
@@ -110,14 +97,6 @@ export default function UniversitiesPage() {
               </AccordionContent>
             </AccordionItem>
           )}
-          {uni.details?.history && (
-            <AccordionItem value="item-3">
-              <AccordionTrigger>Tarixçə</AccordionTrigger>
-              <AccordionContent className="text-muted-foreground whitespace-pre-line">
-                {uni.details.history}
-              </AccordionContent>
-            </AccordionItem>
-          )}
         </Accordion>
       </CardContent>
     </Card>
@@ -127,15 +106,18 @@ export default function UniversitiesPage() {
     <div className="container mx-auto max-w-5xl px-4 sm:px-8 py-8">
       <div className="space-y-6">
         {loading
-          ? Array.from({ length: 5 }).map((_, i) => (
-              <Card key={i}>
+          ? Array.from({ length: 10 }).map((_, i) => (
+              <Card key={`skel-coll-${i}`}>
                 <CardHeader>
-                  <Skeleton className="h-7 w-2/3" />
-                  <Skeleton className="h-4 w-1/3" />
+                    <Skeleton className="h-7 w-2/3 mb-2" />
+                    <Skeleton className="h-4 w-1/2" />
                 </CardHeader>
+                 <CardContent>
+                    <Skeleton className="h-10 w-full" />
+                </CardContent>
               </Card>
             ))
-          : universities.map(renderUniversityCard)}
+          : colleges.map(renderCollegeCard)}
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ export interface Specialty {
   facultyCode: number; // The official 6-digit code for the specialty
   year: number; // The year the data is relevant for
   name: string; // Name of the specialty
+  note?: string; // Optional note for the specialty
   slug: string; // URL-friendly name
   universityId: number; // Foreign key to the University
   groupId: string; // Foreign key to the Group

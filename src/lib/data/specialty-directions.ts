@@ -26,7 +26,7 @@ export const specialtyDirections: SpecialtyDirection[] = [
   { id: 23, name: 'Antropologiya' },
   { id: 24, name: 'İqtisad elmləri' },
   { id: 25, name: 'Coğrafiya' },
-  { id_ 26, name: 'Tarix' },
+  { id: 26, name: 'Tarix' },
   { id: 27, name: 'Hüquq elmləri' },
   { id: 28, name: 'Filologiya elmləri' },
   { id: 29, name: 'Pedaqogika' },

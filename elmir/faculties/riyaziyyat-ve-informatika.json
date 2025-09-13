@@ -1,0 +1,17 @@
+
+{
+  "name": "Riyaziyyat və informatika (rəqəmsal bacarıqlar) müəllimliyi",
+  "slug": "riyaziyyat-ve-informatika-reqemsal-bacariqlar-muellimliyi",
+  "description": "Bu ixtisas iki fundamental fənni - riyaziyyat və informastikanı bir araya gətirərək, tələbələrə həm dərin nəzəri biliklər, həm də müasir rəqəmsal texnologiyaları tədris etmək üçün pedaqoji bacarıqlar verir. Məzunlar şagirdlərdə məntiqi-analitik təfəkkürü və alqoritmik düşüncəni eyni anda inkişaf etdirmək qabiliyyətinə malik olurlar.",
+  "future": "STEM (Elm, Texnologiya, Mühəndislik, Riyaziyyat) təhsilinin prioritet olduğu bir dövrdə hər iki fənni yüksək səviyyədə bilən müəllimlərə böyük ehtiyac var. Bu ixtisas məzunları təhsil sektorunda ən çox axtarılan kadrlardan biridir. Onlar həmçinin təhsil texnologiyaları (EdTech) sahəsində dərs vəsaitlərinin və proqramların hazırlanmasında da fəal iştirak edə bilərlər.",
+  "job_opportunities": "Dövlət və özəl ümumtəhsil məktəbləri, liseylər, gimnaziyalar, STEAM mərkəzləri, hazırlıq kursları, repetitor mərkəzləri, təhsil texnologiyaları şirkətləri.",
+  "possible_positions": [
+    "Riyaziyyat müəllimi",
+    "İnformatika müəllimi",
+    "Riyaziyyat və informatika müəllimi",
+    "STEAM təlimçisi",
+    "Metodist",
+    "Təhsil proqramları üzrə mütəxəssis"
+  ],
+  "recommendations": "Təhsil müddətində hər iki fənn üzrə olimpiada hazırlığı metodikaları ilə tanış olmaq vacibdir. GeoGebra, Desmos kimi riyazi proqramlarla yanaşı, Python, Scratch və Arduino kimi proqramlaşdırma və robototexnika alətlərini öyrənmək böyük üstünlükdür. İki fənnin inteqrasiyasına əsaslanan layihə əsaslı dərs nümunələri hazırlamaq portfolio üçün faydalıdır. MİQ imtahanına məqsədyönlü hazırlaşmaqla yüksək nəticə göstərmək mümkündür."
+}

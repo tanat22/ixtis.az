@@ -1,14 +1,29 @@
-
 'use client';
 
 import * as React from 'react';
+import Link from 'next/link';
+import { Check, ChevronsUpDown, PlusCircle } from "lucide-react"
+
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+} from "@/components/ui/command"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-  CardFooter,
 } from '@/components/ui/card';
 import {
   Table,
@@ -25,472 +40,420 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Checkbox } from '@/components/ui/checkbox';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
-import { X, PlusCircle, ArrowUp, ArrowDown } from 'lucide-react';
-import type { Specialty, Group } from '@/lib/types';
+import { Input } from '@/components/ui/input';
+import type { Specialty } from '@/lib/types';
 import { getAllSpecialties } from '@/lib/data';
-import { universities } from '@/lib/data/universities';
-import { getAllGroups } from '@/lib/data/groups';
+import { universities as allUniversities } from '@/lib/data/universities';
 import { Skeleton } from '@/components/ui/skeleton';
+import { useSelection } from '@/context/SelectionContext';
+
+// Helper function to calculate admission probability
+const calculateProbability = (userScore: number, specialtyScore: number | null | undefined): number => {
+  if (userScore === 0 || specialtyScore === null || specialtyScore === undefined) {
+    return 0; // Return 0 if no scores are available
+  }
+  
+  const scoreDiff = userScore - specialtyScore;
+  
+  // Sigmoid-like function to map score difference to a probability
+  if (scoreDiff >= 20) return 99;
+  if (scoreDiff > 0) return 80 + Math.round(scoreDiff / 20 * 19);
+  if (scoreDiff > -20) return 40 + Math.round((scoreDiff + 20) / 20 * 40);
+  if (scoreDiff > -50) return 10 + Math.round((scoreDiff + 50) / 30 * 30);
+  return Math.max(1, Math.round(10 + (scoreDiff + 50) / 5)); // Ensure a minimum of 1% for very low scores
+};
+
 
 export default function CodingPage() {
   const [specialties, setSpecialties] = React.useState<Specialty[]>([]);
-  const [groups, setGroups] = React.useState<Group[]>([]);
-  const [filteredSpecialties, setFilteredSpecialties] = React.useState<
-    Specialty[]
-  >([]);
-  const [selectedList, setSelectedList] = React.useState<Specialty[]>([]);
+  const [filteredSpecialties, setFilteredSpecialties] = React.useState<Specialty[]>([]);
   const [loading, setLoading] = React.useState(true);
+  
+  const { selectedList, addToSelection, userScore, setUserScore } = useSelection();
 
   // Filters State
-  const [educationLevel, setEducationLevel] = React.useState<
-    'bachelor' | 'master' | 'college'
-  >('bachelor');
-  const [educationLang, setEducationLang] = React.useState<'az' | 'ru' | 'en' | 'tr' | 'all'>('all');
+  const [educationLevel, setEducationLevel] = React.useState('bachelor');
+  const [educationLang, setEducationLang] = React.useState('all');
   const [selectedGroup, setSelectedGroup] = React.useState('all');
+  const [selectedSubGroup, setSelectedSubGroup] = React.useState('all');
   const [selectedUniversity, setSelectedUniversity] = React.useState('all');
-  const [searchQuery, setSearchQuery] = React.useState('');
-  const [educationForms, setEducationForms] = React.useState<string[]>(['əyani']);
-  const [educationTypes, setEducationTypes] = React.useState<string[]>([]);
+  const [educationForm, setEducationForm] = React.useState('all');
+  const [educationType, setEducationType] = React.useState('all');
+  const [selectedSpecialtyName, setSelectedSpecialtyName] = React.useState('');
+  
+  const [popoverOpen, setPopoverOpen] = React.useState(false)
+
+  const uniqueSpecialtyNames = React.useMemo(() => {
+    if (loading) return [];
+    const names = new Set(specialties.map(s => s.name));
+    return Array.from(names).sort();
+  }, [specialties, loading]);
 
   React.useEffect(() => {
     async function fetchData() {
       setLoading(true);
-      const [specialtiesData, groupsData] = await Promise.all([
-        getAllSpecialties(),
-        getAllGroups(),
-      ]);
+      const specialtiesData = await getAllSpecialties();
       setSpecialties(specialtiesData);
-      setGroups(groupsData);
+      setFilteredSpecialties(specialtiesData);
       setLoading(false);
     }
     fetchData();
   }, []);
 
   React.useEffect(() => {
-    const applyFilters = () => {
-      let tempSpecialties = specialties.filter(
-        (s) => s.level === educationLevel
-      );
+    const applyFiltersAndSort = () => {
+      let tempSpecialties = specialties;
 
-      if (educationLang && educationLang !== 'all') {
+      tempSpecialties = tempSpecialties.filter(s => s.level === educationLevel);
+      
+      if (educationLang !== 'all') {
           tempSpecialties = tempSpecialties.filter(s => s.educationLanguage === educationLang);
       }
       
       if (educationLevel === 'bachelor') {
         if (selectedGroup !== 'all') {
-            tempSpecialties = tempSpecialties.filter(
-            (s) => s.groupId === selectedGroup
-            );
+            tempSpecialties = tempSpecialties.filter(s => s.groupId === `group-${selectedGroup}`);
+            if ((selectedGroup === '1' || selectedGroup === '3') && selectedSubGroup !== 'all'){
+                tempSpecialties = tempSpecialties.filter(s => s.subGroupId === selectedSubGroup)
+            }
         }
       }
 
       if (selectedUniversity !== 'all') {
-        tempSpecialties = tempSpecialties.filter(
-          (s) => s.universityId === parseInt(selectedUniversity, 10)
-        );
+        tempSpecialties = tempSpecialties.filter(s => s.universityId === parseInt(selectedUniversity, 10));
       }
-      if (searchQuery.trim() !== '') {
-        tempSpecialties = tempSpecialties.filter((s) =>
-          s.name.toLowerCase().includes(searchQuery.toLowerCase())
-        );
+
+      if (educationForm !== 'all') {
+        tempSpecialties = tempSpecialties.filter(s => s.educationForm === educationForm);
       }
-      if (educationForms.length > 0) {
-        tempSpecialties = tempSpecialties.filter((s) =>
-          educationForms.includes(s.educationForm)
-        );
+
+      if (educationType !== 'all') {
+        tempSpecialties = tempSpecialties.filter(s => s.educationType === educationType);
       }
-      if (educationTypes.length > 0) {
-        tempSpecialties = tempSpecialties.filter((s) =>
-          educationTypes.includes(s.educationType)
-        );
+
+      if (selectedSpecialtyName) {
+          tempSpecialties = tempSpecialties.filter(s => s.name === selectedSpecialtyName);
       }
+      
+      tempSpecialties.sort((a, b) => (b.score ?? 0) - (a.score ?? 0));
+
       setFilteredSpecialties(tempSpecialties);
     };
 
     if (!loading) {
-      applyFilters();
+      applyFiltersAndSort();
     }
   }, [
-    specialties,
-    educationLevel,
-    educationLang,
-    selectedGroup,
-    selectedUniversity,
-    searchQuery,
-    educationForms,
-    educationTypes,
-    loading,
+    specialties, educationLevel, educationLang, selectedGroup, selectedSubGroup, 
+    selectedUniversity, educationForm, educationType, selectedSpecialtyName, loading
   ]);
 
-  const handleAddToSelection = (spec: Specialty) => {
-    if (!selectedList.find((s) => s.id === spec.id) && selectedList.length < 15) {
-      setSelectedList((prev) => [...prev, spec]);
-    }
+  const getUniversityName = (id: number) => {
+    const university = allUniversities.find((u) => u.id === id);
+    return university ? university.name : 'Naməlum';
   };
 
-  const handleRemoveFromSelection = (specId: string) => {
-    setSelectedList((prev) => prev.filter((s) => s.id !== specId));
-  };
-
-  const moveSelection = (index: number, direction: 'up' | 'down') => {
-    if (
-      (direction === 'up' && index === 0) ||
-      (direction === 'down' && index === selectedList.length - 1)
-    )
-      return;
-
-    const newList = [...selectedList];
-    const item = newList[index];
-    const swapIndex = direction === 'up' ? index - 1 : index + 1;
-    newList[index] = newList[swapIndex];
-    newList[swapIndex] = item;
-    setSelectedList(newList);
-  };
-
-  const getUniversityName = (id: number) =>
-    universities.find((u) => u.id === id)?.name || 'Naməlum';
-  const handleFormChange = (form: 'əyani' | 'qiyabi') =>
-    setEducationForms((prev) =>
-      prev.includes(form) ? prev.filter((f) => f !== form) : [...prev, form]
-    );
-  const handleTypeChange = (type: 'Dövlət sifarişli' | 'Ödənişli') =>
-    setEducationTypes((prev) =>
-      prev.includes(type) ? prev.filter((t) => t !== type) : [...prev, type]
-    );
-    
   const renderCost = (spec: Specialty) => {
     if (typeof spec.cost === 'number' && spec.cost > 0) {
         return `${spec.cost} AZN`;
     }
-    return '-';
+    return spec.cost || '-';
   };
 
   const renderTypeBadge = (spec: Specialty) => {
     const cost = spec.cost;
     const type = spec.educationType;
-
-    if (cost === 'YDS' || cost === 'DH') {
-        return <Badge variant="success">{cost}</Badge>;
-    }
-    if (cost === 'YÖ') {
-        return <Badge variant="info">{cost}</Badge>;
-    }
-    if (type === 'Dövlət sifarişli') {
-        return <Badge variant="success">DS</Badge>;
-    }
-    if (type === 'Ödənişli') {
-        return <Badge variant="info">Ödənişli</Badge>;
-    }
+    if (cost === 'YDS' || cost === 'DH') return <Badge variant="success">{cost}</Badge>;
+    if (cost === 'YÖ') return <Badge variant="info">{cost}</Badge>;
+    if (type === 'Dövlət sifarişli') return <Badge variant="success">DS</Badge>;
+    if (type === 'Ödənişli') return <Badge variant="info">Ödənişli</Badge>;
     return <Badge variant="secondary">-</Badge>;
   };
 
+  const showSubGroupFilter = selectedGroup === '1' || selectedGroup === '3';
+
   return (
-    <main className="container mx-auto grid max-w-7xl grid-cols-1 items-start gap-8 px-4 py-8 sm:px-8 lg:grid-cols-3">
-      <div className="space-y-8 lg:col-span-2">
-        <Card>
-          <CardHeader>
-            <CardTitle>Filtrlər</CardTitle>
-            <CardDescription>
-              Axtarışınızı dəqiqləşdirin.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-              <div className="space-y-2">
-                <Label>Təhsil Səviyyəsi və Dili</Label>
-                <div className="flex gap-2">
-                  <RadioGroup
-                    value={educationLevel}
-                    onValueChange={(value) =>
-                      setEducationLevel(value as 'bachelor' | 'master' |'college')
-                    }
-                    className="flex-1"
-                  >
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="bachelor" id="bachelor" />
-                      <Label htmlFor="bachelor">Bakalavriat</Label>
-                    </div>
-                     <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="master" id="master" />
-                      <Label htmlFor="master">Magistratura</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="college" id="college" disabled/>
-                      <Label htmlFor="college" className="text-muted-foreground">Orta ixtisas (tezliklə)</Label>
-                    </div>
-                  </RadioGroup>
-                  <Select
-                    value={educationLang}
-                    onValueChange={(value) =>
-                      setEducationLang(value as 'az' | 'ru' | 'en' | 'tr' | 'all')
-                    }
-                  >
-                    <SelectTrigger className="w-[100px]">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="all">Hamısı</SelectItem>
-                      <SelectItem value="az">AZ</SelectItem>
-                      <SelectItem value="ru">RU</SelectItem>
-                      <SelectItem value="en">EN</SelectItem>
-                      <SelectItem value="tr">TR</SelectItem>
-                    </SelectContent>
-                  </Select>
+    <main className="flex min-h-screen w-full flex-col items-center bg-gray-50 dark:bg-gray-950 p-4 sm:p-6 md:p-8">
+      <div className="w-full max-w-7xl">
+        <header className="mb-8 text-center">
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground/90">
+            İxtisas Seçimi
+          </h1>
+          <p className="mt-2 text-muted-foreground">
+            Seçim etmək üçün təkmil filtrlərdən istifadə edin.
+          </p>
+        </header>
+
+        <Card className="mb-8">
+           <CardHeader>
+             <div className="flex flex-wrap justify-between items-center gap-4">
+                <CardTitle>Filtrlər</CardTitle>
+                <div className="flex items-center gap-2">
+                    <Label htmlFor="user-score" className="shrink-0 text-sm font-medium">Topladığınız bal:</Label>
+                    <Input
+                    id="user-score"
+                    type="number"
+                    placeholder="Balınızı daxil edin"
+                    className="w-36"
+                    value={userScore || ''}
+                    onChange={(e) => setUserScore(Number(e.target.value))}
+                    />
                 </div>
+             </div>
+          </CardHeader>
+          <CardContent className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 pt-6">
+               <div className="space-y-2">
+                  <Label>Tədris Dili</Label>
+                  <Select value={educationLang} onValueChange={setEducationLang}>
+                      <SelectTrigger><SelectValue /></SelectTrigger>
+                      <SelectContent>
+                          <SelectItem value="all">Hamısı</SelectItem>
+                          <SelectItem value="az">Azərbaycan</SelectItem>
+                          <SelectItem value="ru">Rus</SelectItem>
+                          <SelectItem value="en">İngilis</SelectItem>
+                          <SelectItem value="tr">Türk</SelectItem>
+                      </SelectContent>
+                  </Select>
               </div>
+
               <div className="space-y-2">
-                <Label htmlFor="group-select">İxtisas Qrupu</Label>
-                <Select
-                  onValueChange={setSelectedGroup}
-                  value={selectedGroup}
-                  disabled={educationLevel !== 'bachelor'}
-                >
-                  <SelectTrigger id="group-select">
-                    <SelectValue placeholder="Bütün Qruplar" />
-                  </SelectTrigger>
+                <Label>İxtisas Qrupu</Label>
+                <Select value={selectedGroup} onValueChange={val => {setSelectedGroup(val); setSelectedSubGroup('all');}} disabled={educationLevel !== 'bachelor'}>
+                  <SelectTrigger><SelectValue /></SelectTrigger>
                   <SelectContent>
                     <SelectItem value="all">Bütün Qruplar</SelectItem>
-                    {groups.map((group) => (
-                      <SelectItem key={group.id} value={group.id}>
-                        {group.name}
-                      </SelectItem>
+                    <SelectItem value="1">I Qrup</SelectItem>
+                    <SelectItem value="2">II Qrup</SelectItem>
+                    <SelectItem value="3">III Qrup</SelectItem>
+                    <SelectItem value="4">IV Qrup</SelectItem>
+                    <SelectItem value="5">V Qrup</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              
+              <div className={cn("space-y-2 transition-opacity duration-300", showSubGroupFilter ? "opacity-100" : "opacity-50 pointer-events-none")}>
+                <Label>Alt Qrup {showSubGroupFilter && <span className="text-red-500">*</span>}</Label>
+                <Select value={selectedSubGroup} onValueChange={setSelectedSubGroup} disabled={!showSubGroupFilter}>
+                  <SelectTrigger><SelectValue /></SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">Seçin...</SelectItem>
+                    {selectedGroup === '1' && <><SelectItem value="I (RK)">I (RK)</SelectItem><SelectItem value="I (Rİ)">I (Rİ)</SelectItem></>}
+                    {selectedGroup === '3' && <><SelectItem value="III (DT)">III (DT)</SelectItem><SelectItem value="III (TC)">III (TC)</SelectItem></>}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="space-y-2">
+                <Label>Təhsil Müəssisəsi</Label>
+                <Select value={selectedUniversity} onValueChange={setSelectedUniversity}>
+                  <SelectTrigger><SelectValue /></SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">Bütün Müəssisələr</SelectItem>
+                    {allUniversities.map((uni) => (
+                      <SelectItem key={uni.id} value={String(uni.id)}>{uni.name}</SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
               </div>
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="university-select">Təhsil Müəssisəsi</Label>
-              <Select onValueChange={setSelectedUniversity} defaultValue="all">
-                <SelectTrigger id="university-select">
-                  <SelectValue placeholder="Bütün Müəssisələr" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">Bütün Müəssisələr</SelectItem>
-                  {universities.map((uni) => (
-                    <SelectItem key={uni.id} value={String(uni.id)}>
-                      {uni.name}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="search-query">İxtisas Adı ilə Axtar</Label>
-              <Input
-                id="search-query"
-                placeholder="Məsələn, Kompüter mühəndisliyi"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-            </div>
-            <div className="flex gap-6 pt-4">
-              <div className="space-y-2">
-                <Label>Təhsil Forması</Label>
-                <div className="flex items-center space-x-2">
-                  <Checkbox
-                    id="form-ayani"
-                    checked={educationForms.includes('əyani')}
-                    onCheckedChange={() => handleFormChange('əyani')}
-                  />
-                  <Label htmlFor="form-ayani">Əyani</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Checkbox
-                    id="form-qiyabi"
-                    checked={educationForms.includes('qiyabi')}
-                    onCheckedChange={() => handleFormChange('qiyabi')}
-                  />
-                  <Label htmlFor="form-qiyabi">Qiyabi</Label>
-                </div>
+
+              <div className="space-y-2 sm:col-span-2 lg:col-span-3">
+                  <Label>İxtisas Adı</Label>
+                    <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
+                        <PopoverTrigger asChild>
+                        <Button
+                            variant="outline"
+                            role="combobox"
+                            aria-expanded={popoverOpen}
+                            className="w-full justify-between font-normal text-left"
+                        >
+                            <span className='truncate'>
+                            {selectedSpecialtyName
+                            ? selectedSpecialtyName
+                            : "İxtisas seçin..."}
+                            </span>
+                            <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                        </Button>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-[var(--radix-popover-trigger-width)] p-0">
+                        <Command>
+                            <CommandInput placeholder="İxtisas axtar..." />
+                            <CommandEmpty>İxtisas tapılmadı.</CommandEmpty>
+                            <CommandGroup className="max-h-60 overflow-y-auto">
+                            <CommandItem
+                                onSelect={() => {
+                                    setSelectedSpecialtyName("");
+                                    setPopoverOpen(false);
+                                }}
+                                >
+                                Bütün İxtisaslar
+                            </CommandItem>
+                            {uniqueSpecialtyNames.map((name) => (
+                                <CommandItem
+                                key={name}
+                                onSelect={(currentValue) => {
+                                    setSelectedSpecialtyName(name === selectedSpecialtyName ? "" : name)
+                                    setPopoverOpen(false)
+                                }}
+                                >
+                                <Check
+                                    className={cn(
+                                    "mr-2 h-4 w-4",
+                                    selectedSpecialtyName === name ? "opacity-100" : "opacity-0"
+                                    )}
+                                />
+                                {name}
+                                </CommandItem>
+                            ))}
+                            </CommandGroup>
+                        </Command>
+                        </PopoverContent>
+                    </Popover>
               </div>
-              <div className="space-y-2">
-                <Label>Təhsil Növü</Label>
-                <div className="flex items-center space-x-2">
-                  <Checkbox
-                    id="type-state"
-                    checked={educationTypes.includes('Dövlət sifarişli')}
-                    onCheckedChange={() => handleTypeChange('Dövlət sifarişli')}
-                  />
-                  <Label htmlFor="type-state">Dövlət sifarişli</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Checkbox
-                    id="type-paid"
-                    checked={educationTypes.includes('Ödənişli')}
-                    onCheckedChange={() => handleTypeChange('Ödənişli')}
-                  />
-                  <Label htmlFor="type-paid">Ödənişli</Label>
-                </div>
-              </div>
-            </div>
+
           </CardContent>
         </Card>
+
         <Card>
           <CardHeader>
-            <CardTitle>Axtarış Nəticələri</CardTitle>
+            <CardTitle>Nəticələr</CardTitle>
             <CardDescription>
               {filteredSpecialties.length} ixtisas tapıldı.
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Kod</TableHead>
-                  <TableHead>İxtisas</TableHead>
-                  <TableHead className="text-center">Keçid Balı</TableHead>
-                  <TableHead className="text-center">Plan</TableHead>
-                   <TableHead className="text-center">Növ</TableHead>
-                  <TableHead className="text-right">
-                    İllik Təhsil Haqqı
-                  </TableHead>
-                  <TableHead className="w-[80px]"></TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {loading ? (
-                  Array.from({ length: 5 }).map((_, i) => (
-                    <TableRow key={i}>
-                      <TableCell><Skeleton className="h-5 w-16" /></TableCell>
-                      <TableCell><Skeleton className="h-5 w-40" /></TableCell>
-                      <TableCell><Skeleton className="mx-auto h-5 w-16" /></TableCell>
-                      <TableCell><Skeleton className="mx-auto h-5 w-12" /></TableCell>
-                      <TableCell><Skeleton className="mx-auto h-5 w-16" /></TableCell>
-                      <TableCell><Skeleton className="ml-auto h-5 w-20" /></TableCell>
-                      <TableCell><Skeleton className="h-9 w-20" /></TableCell>
-                    </TableRow>
-                  ))
-                ) : filteredSpecialties.length > 0 ? (
-                  filteredSpecialties.map((spec) => (
-                    <TableRow key={spec.id}>
-                      <TableCell className="font-mono text-xs">{spec.facultyCode}</TableCell>
-                      <TableCell className="font-medium space-x-2">
-                         <Link href={`/faculty/${spec.slug}`} className="hover:underline">
-                            {spec.name}
-                        </Link>
-                         <Badge
-                          variant="outline"
-                          className="uppercase"
-                        >
-                          {spec.educationLanguage}
-                        </Badge>
-                      </TableCell>
-                       <TableCell className="text-center font-mono">
-                        {spec.score ?? '-'}
-                      </TableCell>
-                      <TableCell className="text-center font-mono">
-                        {spec.planCount ?? '-'}
-                      </TableCell>
-                       <TableCell className="text-center">
-                        {renderTypeBadge(spec)}
-                      </TableCell>
-                      <TableCell className="text-right font-mono">
-                        {renderCost(spec)}
-                      </TableCell>
-                      <TableCell>
-                        <Button
-                          size="sm"
-                          onClick={() => handleAddToSelection(spec)}
-                          disabled={
-                            !!selectedList.find((s) => s.id === spec.id) ||
-                            selectedList.length >= 15
-                          }
-                        >
-                          <PlusCircle className="mr-2 h-4 w-4" />
-                          Seç
-                        </Button>
-                      </TableCell>
-                    </TableRow>
-                  ))
-                ) : (
+            {/* Desktop Table */}
+            <div className="hidden md:block">
+              <Table>
+                <TableHeader>
                   <TableRow>
-                    <TableCell
-                      colSpan={8}
-                      className="h-24 text-center text-muted-foreground"
-                    >
-                      Seçilmiş filtrlərə uyğun nəticə tapılmadı.
-                    </TableCell>
+                    <TableHead>Kod</TableHead>
+                    <TableHead>İxtisas</TableHead>
+                    <TableHead>Qrup</TableHead>
+                    <TableHead className="text-center">Keçid Balı</TableHead>
+                    <TableHead className="text-center">Növ</TableHead>
+                    <TableHead className="text-right">Seçim</TableHead>
                   </TableRow>
-                )}
-              </TableBody>
-            </Table>
+                </TableHeader>
+                <TableBody>
+                  {loading ? (
+                    Array.from({ length: 5 }).map((_, i) => (
+                      <TableRow key={i}>
+                        <TableCell colSpan={6}><Skeleton className="h-10 w-full" /></TableCell>
+                      </TableRow>
+                    ))
+                  ) : filteredSpecialties.length > 0 ? (
+                    filteredSpecialties.map((spec) => {
+                      const probability = calculateProbability(userScore, spec.score);
+                      const isSelected = !!selectedList.find(s => s.id === spec.id);
+                      return (
+                        <TableRow key={spec.id}>
+                          <TableCell className="font-mono text-xs">{spec.facultyCode}</TableCell>
+                          <TableCell className="font-medium">
+                            <Link href={`/faculty/${spec.slug}`} className="hover:underline">{spec.name}</Link>
+                            <p className="text-xs text-muted-foreground">{getUniversityName(spec.universityId)}</p>
+                          </TableCell>
+                          <TableCell>{spec.subGroupId ? spec.subGroupId : spec.groupId.replace('group-', '')}</TableCell>
+                          <TableCell className="text-center font-mono">{spec.score ?? '-'}</TableCell>
+                          <TableCell className="text-center">{renderTypeBadge(spec)}</TableCell>
+                          <TableCell className="text-right">
+                            <Button 
+                                size="sm" 
+                                onClick={() => addToSelection(spec)} 
+                                disabled={isSelected || selectedList.length >= 15}
+                                className={cn({
+                                    'bg-green-600 hover:bg-green-700 text-white': userScore > 0 && probability > 80,
+                                    'bg-yellow-500 hover:bg-yellow-600 text-white': userScore > 0 && probability > 50 && probability <= 80,
+                                    'bg-red-600 hover:bg-red-700 text-white': userScore > 0 && probability <= 50,
+                                })}
+                            >
+                                {userScore > 0 ? (
+                                  <span className="flex items-center">
+                                    <span className="mr-2 font-semibold">Ehtimal: {probability}%</span> | <PlusCircle className="ml-2 h-4 w-4"/> Seç
+                                  </span>
+                                ) : (
+                                  <span className="flex items-center">
+                                    <PlusCircle className="mr-2 h-4 w-4"/> Seç
+                                  </span>
+                                )}
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      )
+                    })
+                  ) : (
+                    <TableRow>
+                      <TableCell colSpan={6} className="h-24 text-center">Nəticə tapılmadı.</TableCell>
+                    </TableRow>
+                  )}
+                </TableBody>
+              </Table>
+            </div>
+
+            {/* Mobile Card List */}
+            <div className="grid grid-cols-1 gap-4 md:hidden">
+              {loading ? (
+                  Array.from({ length: 5 }).map((_, i) => (
+                     <Card key={i}><CardContent className="pt-6"><Skeleton className="h-28 w-full" /></CardContent></Card>
+                  ))
+              ) : filteredSpecialties.length > 0 ? (
+                  filteredSpecialties.map((spec) => {
+                      const probability = calculateProbability(userScore, spec.score);
+                      const isSelected = !!selectedList.find(s => s.id === spec.id);
+                      return(
+                        <Card key={spec.id} className="overflow-hidden">
+                          <CardContent className="p-4 space-y-3">
+                            <div className="flex justify-between items-start">
+                                <h3 className="font-bold text-base leading-tight pr-2">
+                                  <Link href={`/faculty/${spec.slug}`} className="hover:underline">{spec.name}</Link>
+                                </h3>
+                                <div className="flex-shrink-0">{renderTypeBadge(spec)}</div>
+                            </div>
+                            <p className="text-sm text-muted-foreground">{getUniversityName(spec.universityId)}</p>
+                            
+                            <div className="grid grid-cols-3 gap-x-2 gap-y-3 text-xs pt-2">
+                                <div className='space-y-1'><p className="text-muted-foreground">Qrup</p><p className="font-bold">{spec.subGroupId ? spec.subGroupId : spec.groupId.replace('group-', '')}</p></div>
+                                <div className='space-y-1'><p className="text-muted-foreground">Keçid Balı</p><p className="font-bold font-mono">{spec.score ?? '-'}</p></div>
+                                <div className='space-y-1'><p className="text-muted-foreground">Plan</p><p className="font-bold font-mono">{spec.planCount ?? '-'}</p></div>
+                                <div className='space-y-1'><p className="text-muted-foreground">Dil</p><p className="font-bold uppercase">{spec.educationLanguage}</p></div>
+                                <div className='space-y-1'><p className="text-muted-foreground">Kod</p><p className="font-bold font-mono">{spec.facultyCode}</p></div>
+                                <div className='space-y-1'><p className="text-muted-foreground">Təhsil haqqı</p><p className="font-bold font-mono">{renderCost(spec)}</p></div>
+                            </div>
+
+                            <div className="pt-4">
+                                <Button 
+                                    className={cn("w-full", {
+                                        'bg-green-600 hover:bg-green-700 text-white': userScore > 0 && probability > 80,
+                                        'bg-yellow-500 hover:bg-yellow-600 text-white': userScore > 0 && probability > 50 && probability <= 80,
+                                        'bg-red-600 hover:bg-red-700 text-white': userScore > 0 && probability <= 50,
+                                    })}
+                                    onClick={() => addToSelection(spec)} 
+                                    disabled={isSelected || selectedList.length >= 15}
+                                >
+                                   {userScore > 0 ? (
+                                      <span className="flex items-center justify-center">
+                                        <span className="mr-2 font-semibold">Ehtimal: {probability}%</span> | <PlusCircle className="ml-2 h-4 w-4"/> Seç
+                                      </span>
+                                    ) : (
+                                      <span className="flex items-center justify-center">
+                                        <PlusCircle className="mr-2 h-4 w-4"/> Seç
+                                      </span>
+                                    )}
+                                </Button>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      )
+                  })
+              ) : (
+                  <div className="h-24 text-center flex items-center justify-center">
+                     <p>Nəticə tapılmadı.</p>
+                  </div>
+              )}
+            </div>
+
           </CardContent>
-        </Card>
-      </div>
-      <div className="sticky top-24 lg:col-span-1">
-        <Card>
-          <CardHeader>
-            <CardTitle>Seçilmiş İxtisaslar</CardTitle>
-            <CardDescription>
-              Maksimum 15 ixtisas seçə bilərsiniz. ({selectedList.length}/15)
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="max-h-[60vh] overflow-y-auto">
-            {selectedList.length > 0 ? (
-              <ul className="space-y-2">
-                {selectedList.map((spec, index) => (
-                  <li
-                    key={spec.id}
-                    className="flex items-center justify-between rounded-md border bg-muted/50 p-2"
-                  >
-                    <div className="flex-1">
-                       <Link href={`/faculty/${spec.slug}`} className="hover:underline text-sm font-semibold">
-                         {index + 1}. {spec.name}
-                      </Link>
-                      <p className="text-xs text-muted-foreground">
-                        {getUniversityName(spec.universityId)}
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="h-7 w-7"
-                        onClick={() => moveSelection(index, 'up')}
-                        disabled={index === 0}
-                      >
-                        <ArrowUp className="h-4 w-4" />
-                      </Button>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="h-7 w-7"
-                        onClick={() => moveSelection(index, 'down')}
-                        disabled={index === selectedList.length - 1}
-                      >
-                        <ArrowDown className="h-4 w-4" />
-                      </Button>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="h-7 w-7 text-destructive hover:text-destructive"
-                        onClick={() => handleRemoveFromSelection(spec.id)}
-                      >
-                        <X className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <div className="py-10 text-center text-sm text-muted-foreground">
-                İxtisas seçimi edin.
-              </div>
-            )}
-          </CardContent>
-          {selectedList.length > 0 && (
-            <CardFooter>
-              <Button className="w-full">Seçimləri Təsdiqlə</Button>
-            </CardFooter>
-          )}
         </Card>
       </div>
     </main>
