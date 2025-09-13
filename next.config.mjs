@@ -1,7 +1,5 @@
-
-import type { NextConfig } from 'next';
-
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -9,9 +7,6 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    // GitHub Pages ve ya bənzər statik hostinqlər üçün "unoptimized: true" lazım deyil,
-    // çünki tətbiq artıq dinamik rejimdə işləyəcək.
-    // unoptimized: true, 
     remotePatterns: [
       {
         protocol: 'https',
