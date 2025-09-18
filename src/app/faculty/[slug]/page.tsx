@@ -4,35 +4,29 @@ import type { FacultyDetails, Specialty } from '@/lib/types';
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, Briefcase, TrendingUp, Lightbulb, Target, BookOpen, GraduationCap, Building, BarChart, FileText, Wallet, Info, Code } from 'lucide-react';
+import { ArrowLeft, Briefcase, TrendingUp, BookOpen, GraduationCap, Building, BarChart, FileText, Wallet, Info, Code } from 'lucide-react';
 import Link from 'next/link';
 import { universities } from '@/lib/data/universities';
 import { notFound } from 'next/navigation';
 import { Skeleton } from '@/components/ui/skeleton';
-
-// Import Node.js modules for file system access
 import * as fs from 'fs/promises';
 import * as path from 'path';
 
-
 const SKILLS_KEYWORDS = ['R', 'Python', 'SQL', 'Power BI', 'Tableau', 'Excel', 'SPSS', 'Stata', 'Pandas', 'NumPy', 'Scikit-learn', 'TensorFlow', 'PyTorch', 'Git'];
 
-function extractSkills(text: string): string[] {
+function extractSkills(text: string | undefined): string[] {
     if (!text) return [];
     const lowerText = text.toLowerCase();
     const foundSkills = new Set<string>();
-    
     SKILLS_KEYWORDS.forEach(skill => {
         if (lowerText.includes(skill.toLowerCase())) {
             foundSkills.add(skill);
         }
     });
-    
     return Array.from(foundSkills);
 }
 
@@ -69,7 +63,7 @@ function FacultyDetailsClient({ faculty, relatedSpecialties }: { faculty: Facult
                             </div>
                             <div className="flex-grow">
                                 <CardTitle className="text-2xl sm:text-3xl font-bold">
-                                    {faculty.name}
+                                    {faculty.name || 'İxtisas Adı Yüklənir...'}
                                 </CardTitle>
                             </div>
                         </div>
@@ -77,38 +71,37 @@ function FacultyDetailsClient({ faculty, relatedSpecialties }: { faculty: Facult
                  </Card>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-                   {/* Left Column */}
                    <div className="md:col-span-2 space-y-8">
-                        <Card>
+                        {faculty.description && <Card>
                             <CardHeader><CardTitle className="flex items-center gap-3 text-xl"><Info className="h-6 w-6 text-primary"/>Haqqında</CardTitle></CardHeader>
                             <CardContent><p className="text-muted-foreground text-base">{faculty.description}</p></CardContent>
-                        </Card>
+                        </Card>}
                         
-                         <Card>
+                         {(faculty.job_opportunities || (faculty.possible_positions && faculty.possible_positions.length > 0)) && <Card>
                             <CardHeader><CardTitle className="flex items-center gap-3 text-xl"><Briefcase className="h-6 w-6 text-primary"/>İş Dünyası</CardTitle></CardHeader>
                             <CardContent className="space-y-6">
-                                <div>
+                                {faculty.job_opportunities && <div>
                                     <h4 className="font-semibold mb-2">İş İmkanları</h4>
                                     <p className="text-muted-foreground">{faculty.job_opportunities}</p>
-                                </div>
-                                 <div>
+                                </div>}
+                                 {faculty.possible_positions && faculty.possible_positions.length > 0 && <div>
                                     <h4 className="font-semibold mb-2">Mümkün Vəzifələr</h4>
                                     <div className="flex flex-wrap gap-2">
                                         {faculty.possible_positions.map((pos, index) => (
                                             <Badge key={index} variant="secondary" className="text-sm font-medium">{pos}</Badge>
                                         ))}
                                     </div>
-                                </div>
+                                </div>}
                             </CardContent>
-                        </Card>
+                        </Card>}
 
-                        <Card>
+                        {(faculty.future || skills.length > 0) && <Card>
                             <CardHeader><CardTitle className="flex items-center gap-3 text-xl"><TrendingUp className="h-6 w-6 text-primary"/>Gələcək və Bacarıqlar</CardTitle></CardHeader>
                             <CardContent className="space-y-6">
-                                <div>
+                                {faculty.future && <div>
                                     <h4 className="font-semibold mb-2">Gələcək Perspektivləri</h4>
                                     <p className="text-muted-foreground">{faculty.future}</p>
-                                </div>
+                                </div>}
                                 {skills.length > 0 && (
                                     <div>
                                         <h4 className="font-semibold mb-2 flex items-center gap-2"><Code className="h-5 w-5"/>Tövsiyə Olunan Texnologiyalar</h4>
@@ -121,12 +114,11 @@ function FacultyDetailsClient({ faculty, relatedSpecialties }: { faculty: Facult
                                     </div>
                                 )}
                             </CardContent>
-                        </Card>
+                        </Card>}
                    </div>
 
-                    {/* Right Column */}
                     <div className="md:col-span-1 space-y-8">
-                         {relatedSpecialties.length > 0 && (
+                         {relatedSpecialties && relatedSpecialties.length > 0 && (
                             <Card>
                                 <CardHeader>
                                     <CardTitle className="flex items-center gap-3 text-xl"><BookOpen className="h-6 w-6 text-primary"/>Universitetlər</CardTitle>
@@ -163,7 +155,6 @@ function FacultyDetailsClient({ faculty, relatedSpecialties }: { faculty: Facult
 }
 
 
-// This is the main page component, now a Server Component.
 export default async function FacultyDetailPage({ params }: { params: { slug: string } }) {
   const slug = params.slug;
 
@@ -182,35 +173,25 @@ export default async function FacultyDetailPage({ params }: { params: { slug: st
 }
 
 
-// generateStaticParams is required for static site generation.
-// This new version reads the file system to only generate pages for existing faculty JSON files.
 export async function generateStaticParams() {
   try {
-    // Construct the absolute path to the directory containing faculty JSON files
     const facultiesDir = path.join(process.cwd(), 'elmir', 'faculties');
-    
-    // Read all filenames from the directory
     const files = await fs.readdir(facultiesDir);
 
-    // Filter for files that end with .json and map them to the expected slug structure
     const slugs = files
       .filter(file => file.endsWith('.json'))
       .map(file => ({
-        // Remove the .json extension to get the slug
         slug: file.replace('.json', ''),
       }));
 
     return slugs;
   } catch (error) {
-    // If the directory doesn't exist or another error occurs, log it and return an empty array.
-    // This prevents the entire build from failing.
     console.error("Error generating static params for faculties:", error);
     return [];
   }
 }
 
 
-// Add a loading component for better user experience
 export function Loading() {
     return (
        <main className="bg-gray-50 dark:bg-gray-950 min-h-screen">
