@@ -1,0 +1,16 @@
+{
+  "name": "Kompüter Elmləri və Texnologiyaları",
+  "description": "Kompüter elmləri və texnologiyaları proqramı, alqoritmlər, proqramlaşdırma dilləri, əməliyyat sistemləri, verilənlər bazası və kompüter şəbəkələri kimi fundamental mövzuları əhatə edir. Tələbələr proqram təminatının dizaynı, inkişafı və sınaqdan keçirilməsi proseslərini dərindən öyrənirlər. Bu sahə həm nəzəri, həm də tətbiqi bilikləri özündə birləşdirir.",
+  "job_opportunities": "Məzunlar proqram təminatı şirkətlərində, startaplarda, banklarda, telekommunikasiya şirkətlərində və demək olar ki, bütün sektorlarda fəaliyyət göstərən böyük şirkətlərin İT departamentlərində işləyə bilərlər. Sərbəst (freelance) işləmək üçün də geniş imkanlar mövcuddur.",
+  "possible_positions": [
+    "Proqram təminatı mühəndisi (Backend, Frontend, Full-stack)",
+    "Mobil tətbiq developer (iOS/Android)",
+    "DevOps mühəndisi",
+    "Verilənlər bazası administratoru (DBA)",
+    "Sistem administratoru",
+    "Oyun developer",
+    "Proqram təminatı üzrə keyfiyyət təminatı (QA) mühəndisi"
+  ],
+  "future": "Süni intellekt, maşın öyrənməsi, bulud texnologiyaları (cloud computing) və blokçeyn kimi sahələr kompüter elmlərinin gələcəyini formalaşdırır. Bu sahələrdə ixtisaslaşan mütəxəssislərə olan tələbat sürətlə artır. Avtomatlaşdırma və rəqəmsallaşma prosesləri kompüter elmləri məzunları üçün davamlı olaraq yeni karyera yolları açır.",
+  "recommendations": "Problem həll etmə bacarığı, məntiqi düşüncə və davamlı öyrənməyə həvəs bu sahənin əsas tələbləridir. Ən azı bir neçə proqramlaşdırma dilini (məsələn, Python, Java, C++, JavaScript) dərindən bilmək vacibdir. Git kimi versiyalara nəzarət sistemləri ilə işləmə bacarığı və açıq mənbəli layihələrdə iştirak etmək (portfolio üçün) yüksək qiymətləndirilir."
+}

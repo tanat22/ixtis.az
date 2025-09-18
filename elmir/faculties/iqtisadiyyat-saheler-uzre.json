@@ -1,0 +1,16 @@
+{
+  "name": "İqtisadiyyat (sahələr üzrə)",
+  "description": "İqtisadiyyat proqramı, məhdud resursların istehsalı, bölgüsü və istehlakı proseslərini öyrənir. Tələbələr mikroiqtisadiyyat, makroiqtisadiyyat, ekonometrika, beynəlxalq iqtisadiyyat və maliyyə bazarları kimi fundamental mövzuları mənimsəyir, iqtisadi hadisələri təhlil etmək və proqnozlaşdırmaq üçün modellər qurmağı öyrənirlər.",
+  "job_opportunities": "Məzunlar bank və maliyyə sektorunda, dövlət qurumlarında (Mərkəzi Bank, İqtisadiyyat Nazirliyi, Maliyyə Nazirliyi), beynəlxalq maliyyə təşkilatlarında, audit və konsaltinq şirkətlərində, eləcə də istənilən özəl şirkətin maliyyə və analiz departamentlərində işləyə bilərlər.",
+  "possible_positions": [
+    "İqtisadçı-analitik",
+    "Maliyyə analitiki",
+    "Auditor",
+    "Risk menecer",
+    "Büdcə planlaması üzrə mütəxəssis",
+    "İnvestisiya məsləhətçisi",
+    "Data analitiki"
+  ],
+  "future": "Böyük verilənlər (Big Data) və süni intellektin iqtisadiyyata tətbiqi, iqtisadçılardan yeni bacarıqlar tələb edir. Davranış iqtisadiyyatı (behavioral economics) və yaşıl iqtisadiyyat kimi yeni istiqamətlər populyarlaşır. Rəqəmsal iqtisadiyyat şəraitində iqtisadi prosesləri anlayan və data ilə işləyə bilən mütəxəssislərə tələbat daim yüksək olacaq.",
+  "recommendations": "Güclü riyazi və analitik düşüncə tərzi bu sahə üçün kritikdir. Statistik proqram təminatları (məsələn, R, Python, Stata, Eviews) və vizuallaşdırma alətləri (Tableau, Power BI) ilə işləmə bacarığı böyük üstünlükdür. İqtisadi nəzəriyyələri real dünya hadisələrinə tətbiq etmə qabiliyyəti və qlobal iqtisadi trendləri izləmək vacibdir."
+}
