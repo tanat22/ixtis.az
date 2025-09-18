@@ -15,6 +15,11 @@ import { universities } from '@/lib/data/universities';
 import { notFound } from 'next/navigation';
 import { Skeleton } from '@/components/ui/skeleton';
 
+// Import Node.js modules for file system access
+import * as fs from 'fs/promises';
+import * as path from 'path';
+
+
 const SKILLS_KEYWORDS = ['R', 'Python', 'SQL', 'Power BI', 'Tableau', 'Excel', 'SPSS', 'Stata', 'Pandas', 'NumPy', 'Scikit-learn', 'TensorFlow', 'PyTorch', 'Git'];
 
 function extractSkills(text: string): string[] {
@@ -176,15 +181,34 @@ export default async function FacultyDetailPage({ params }: { params: { slug: st
   return <FacultyDetailsClient faculty={facultyData} relatedSpecialties={relatedSpecialties} />;
 }
 
-// generateStaticParams is required for static site generation
-export async function generateStaticParams() {
-  const specialties = await getAllSpecialties();
-  const uniqueSlugs = [...new Set(specialties.map(s => s.slug).filter(Boolean))];
 
-  return uniqueSlugs.map((slug) => ({
-    slug: slug,
-  }));
+// generateStaticParams is required for static site generation.
+// This new version reads the file system to only generate pages for existing faculty JSON files.
+export async function generateStaticParams() {
+  try {
+    // Construct the absolute path to the directory containing faculty JSON files
+    const facultiesDir = path.join(process.cwd(), 'elmir', 'faculties');
+    
+    // Read all filenames from the directory
+    const files = await fs.readdir(facultiesDir);
+
+    // Filter for files that end with .json and map them to the expected slug structure
+    const slugs = files
+      .filter(file => file.endsWith('.json'))
+      .map(file => ({
+        // Remove the .json extension to get the slug
+        slug: file.replace('.json', ''),
+      }));
+
+    return slugs;
+  } catch (error) {
+    // If the directory doesn't exist or another error occurs, log it and return an empty array.
+    // This prevents the entire build from failing.
+    console.error("Error generating static params for faculties:", error);
+    return [];
+  }
 }
+
 
 // Add a loading component for better user experience
 export function Loading() {
