@@ -1,0 +1,17 @@
+
+{
+  "name": "İnformatika müəllimliyi",
+  "slug": "informatika-muellimliyi",
+  "description": "İnformatika müəllimliyi ixtisası, şagirdlərə yalnız kompüterdən istifadəni deyil, həm də alqoritmik düşüncəni, proqramlaşdırmanın məntiqini, verilənlər bazası ilə işləməyi və müasir rəqəmsal texnologiyaların əsaslarını öyrədən pedaqoji kadrlar hazırlayır. Bu ixtisas dəqiq elmlərlə pedaqogikanın qovuşuğunda yerləşir.",
+  "future": "Rəqəmsallaşmanın sürətləndiyi bir dövrdə informatika müəllimlərinə tələbat durmadan artır. Yeni məktəblərin tikilməsi, STEAM mərkəzlərinin yaradılması və özəl təhsil sektorunun böyüməsi bu sahənin məzunları üçün geniş iş imkanları yaradır. Gələcəkdə tədris proqramlarına süni intellekt, data elmi və robototexnika kimi mövzuların daha dərindən inteqrasiyası gözlənilir ki, bu da müəllimlərin rolunu daha da artıracaq.",
+  "job_opportunities": "Məzunlar üçün əsas iş yerləri dövlət və özəl ümumtəhsil məktəbləri, liseylər və gimnaziyalardır. Bundan əlavə, onlar təhsil mərkəzlərində, hazırlıq kurslarında, uşaqlar üçün kodlaşdırma məktəblərində (bootcamp) və təhsil texnologiyaları (EdTech) şirkətlərində fəaliyyət göstərə bilərlər.",
+  "possible_positions": [
+    "İnformatika müəllimi",
+    "STEAM təlimçisi",
+    "Metodist",
+    "Tədris proqramları üzrə mütəxəssis",
+    "Təhsil texnoloqu",
+    "Repetitor"
+  ],
+  "recommendations": "Universitetdə təhsil alarkən Python və ya C++ kimi fundamental proqramlaşdırma dillərini dərindən öyrənmək çox vacibdir. Məktəblilər arasında populyar olan Scratch, Tynker kimi vizual proqramlaşdırma mühitlərini və Arduino kimi mikro-kontroller platformalarını mənimsəmək sizi digər məzunlardan fərqləndirəcək. Olimpiada hazırlığı metodikaları ilə tanışlıq və öz kiçik tədris layihələrinizi (məsələn, sadə veb-sayt, kiçik oyun) yaratmaq təcrübənizi artıracaq. Məzun olduqdan sonra Müəllimlərin İşə Qəbulu (MİQ) imtahanına ciddi hazırlaşmaqla yanaşı, Google Certified Educator və ya Microsoft Certified Educator kimi beynəlxalq sertifikatlar almaq karyeranızda əlavə üstünlüklər yarada bilər."
+}

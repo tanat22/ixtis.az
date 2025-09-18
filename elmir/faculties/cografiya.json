@@ -1,0 +1,19 @@
+
+{
+  "name": "Coğrafiya",
+  "slug": "cografiya",
+  "description": "Coğrafiya, Yer kürəsini, onun landşaftlarını, sakinlərini, məkanlarını və ətraf mühitini öyrənən bir elmdir. Bu fundamental ixtisas fiziki coğrafiya (relyef, iqlim, hidrologiya, torpaqlar) və sosial-iqtisadi coğrafiya (əhali, təsərrüfat, nəqliyyat, siyasi coğrafiya) kimi iki əsas sahəni əhatə edir. Coğrafiyaçılar məkan analizi və sintezi vasitəsilə təbii və sosial hadisələr arasındakı mürəkkəb əlaqələri araşdırırlar.",
+  "future": "Müasir coğrafiyanın gələcəyi Coğrafi İnformasiya Sistemləri (GIS), məsafədən zondlama (peyklər və dronlarla məlumat toplama) və məkan analitikası (spatial analysis) ilə sıx bağlıdır. İqlim dəyişikliyinin monitorinqi, şəhərlərin planlaşdırılması, təbii resursların idarə olunması, logistika marşrutlarının optimallaşdırılması və bazar analizində coğrafi məlumatların rolu getdikcə artır. Bu səbəbdən, güclü analitik və texnoloji bacarıqlara malik coğrafiyaçılara olan tələbat artmaqdadır.",
+  "job_opportunities": "Ekologiya və Təbii Sərvətlər Nazirliyi, Dövlət Şəhərsalma və Arxitektura Komitəsi, Əmlak Məsələləri Dövlət Xidməti, Dövlət Statistika Komitəsi, AMEA Coğrafiya İnstitutu, hidrometeoroloji xidmətlər, kartoqrafiya müəssisələri, tikinti və neft-qaz şirkətlərinin tədqiqat şöbələri, turizm şirkətləri, logistika və nəqliyyat şirkətləri.",
+  "possible_positions": [
+    "Coğrafiyaşünas",
+    "GIS mütəxəssisi/analitiki",
+    "Kartoqraf",
+    "Məsafədən zondlama mütəxəssisi",
+    "Landşaftşünas",
+    "Hidrometeoroloq",
+    "Ətraf mühit üzrə məsləhətçi",
+    "Elmi işçi"
+  ],
+  "recommendations": "Təhsil müddətində ArcGIS və ya QGIS kimi GIS proqram təminatlarını dərindən öyrənmək bu sahədə karyera qurmaq üçün demək olar ki, mütləqdir. Python dilini GIS proseslərini avtomatlaşdırmaq üçün öyrənmək böyük üstünlükdür. Çöl təcrübələri və ekspedisiyalarda iştirak etmək, müxtəlif landşaftları yerində öyrənmək və xəritələşdirmə bacarıqlarını inkişaf etdirmək çox vacibdir. Magistratura təhsili iqlimşünaslıq, hidrologiya, urbanistika və ya geoinformatika kimi sahələrdə daha dərin ixtisaslaşma üçün tövsiyə olunur."
+}

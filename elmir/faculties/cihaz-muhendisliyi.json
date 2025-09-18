@@ -1,0 +1,18 @@
+
+{
+  "name": "Cihaz mühəndisliyi",
+  "slug": "cihaz-muhendisliyi",
+  "description": "Cihaz mühəndisliyi, sənayenin müxtəlif sahələrində (neft-qaz, tibb, aviasiya, qida və s.) istifadə olunan ölçmə, nəzarət və idarəetmə cihazlarının, sensorların və sistemlərin layihələndirilməsi, istehsalı, quraşdırılması və istismarı ilə məşğul olan bir mühəndislik sahəsidir. Bu ixtisas elektronika, metrologiya (ölçmə elmi), avtomatika və proqramlaşdırma kimi fənləri özündə birləşdirir.",
+  "future": "Sənayenin avtomatlaşdırılması ('Sənaye 4.0'), 'Əşyaların İnterneti' (IoT) və 'ağıllı' sistemlərin inkişafı ilə dəqiq ölçmə və nəzarət cihazlarına olan tələbat sürətlə artır. Neft-qaz sektorunda quyu parametrlərinə nəzarətdən tutmuş, tibdə pasiyentin vəziyyətini izləyən monitorlara qədər hər yerdə cihaz mühəndislərinin rolu əvəzsizdir. Bu sahənin gələcəyi daha kiçik, daha dəqiq və daha 'ağıllı' sensorların yaradılması ilə bağlıdır.",
+  "job_opportunities": "SOCAR, BP kimi neft-qaz şirkətləri və onlara xidmət göstərən podratçı təşkilatlar (məsələn, Schlumberger, Halliburton), sənaye avtomatlaşdırılması ilə məşğul olan şirkətlər (Siemens, Schneider Electric nümayəndəlikləri), tibbi avadanlıqların təmiri və servisi mərkəzləri, Milli Aviasiya Akademiyası, standartlaşdırma və metrologiya institutları, qida və içki istehsalı müəssisələri.",
+  "possible_positions": [
+    "Nəzarət-ölçü cihazları və avtomatika (NÖC&A) mühəndisi",
+    "Metrologiya mühəndisi",
+    "Avtomatlaşdırma mühəndisi",
+    "Servis mühəndisi (sahələr üzrə)",
+    "Kalibrləmə mütəxəssisi",
+    "Diaqnostika mühəndisi",
+    "Sistem inteqratoru"
+  ],
+  "recommendations": "Təhsil müddətində Arduino və ya Raspberry Pi kimi mikro-kontroller platformaları ilə işləməyi öyrənmək, sensorlardan gələn siqnalların emalı üçün C++ və ya Python dillərində proqramlaşdırma bacarıqlarına yiyələnmək çox vacibdir. LabVIEW proqramı ilə virtual cihazların yaradılması təcrübəsi böyük üstünlükdür. SCADA və PLC sistemlərinin əsaslarını öyrənmək sizi sənaye avtomatlaşdırılması sahəsində güclü namizəd edəcək. Məzun olduqdan sonra müxtəlif istehsalçıların (məsələn, Siemens, Rockwell Automation) avadanlıqları üzrə sertifikatlar almaq karyera inkişafınızı sürətləndirəcək."
+}

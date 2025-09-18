@@ -1,0 +1,18 @@
+
+{
+  "name": "Kənd təsərrüfatı texnologiyaları",
+  "slug": "kend-teserrufati-texnologiyalari",
+  "description": "Kənd təsərrüfatı texnologiyaları ixtisası, müasir elmi nailiyyətləri və innovativ üsulları kənd təsərrüfatı istehsalına tətbiq edərək məhsuldarlığı və səmərəliliyi artırmağı hədəfləyən bir sahədir. Bu, 'Ağıllı Kənd Təsərrüfatı' (Smart Agriculture) konsepsiyasını əhatə edir və dəqiq əkinçilik, dron texnologiyaları, sensorlar, avtomatlaşdırılmış suvarma, biotexnologiya və data analitikası kimi mövzuları birləşdirir.",
+  "future": "Kənd təsərrüfatının gələcəyi tamamilə texnologiyaya bağlıdır. İqlim dəyişikliyi və artan əhali şəraitində resurslardan (su, torpaq, gübrə) minimum istifadə ilə maksimum məhsul əldə etmək əsas çağırışdır. Bu səbəbdən, müasir aqrotexnologiyaları bilən və tətbiq edə bilən mütəxəssislərə tələbat kəskin şəkildə artacaq. Məzunlar təkcə ənənəvi təsərrüfatlarda deyil, həm də texnoloji startaplarda və tədqiqat mərkəzlərində çalışa biləcəklər.",
+  "job_opportunities": "İnnovativ aqrar holdinqlər, istixana kompleksləri, kənd təsərrüfatı texnologiyaları və avadanlıqları satan şirkətlər, Aqrar İnnovasiyalar Mərkəzi, Kənd Təsərrüfatı Nazirliyinin müvafiq qurumları, dron və sensor texnologiyaları üzrə ixtisaslaşmış şirkətlər, aqrar məsləhət xidmətləri.",
+  "possible_positions": [
+    "Aqrar texnoloq",
+    "Dəqiq əkinçilik üzrə mütəxəssis",
+    "Ağıllı istixana meneceri",
+    "Dron operatoru (aqrar sahədə)",
+    "GIS mütəxəssisi (kənd təsərrüfatı)",
+    "Aqrar startap təsisçisi",
+    "Aqrar layihələr üzrə menecer"
+  ],
+  "recommendations": "Bu ixtisas üzrə təhsil alan tələbənin həm aqronomiyanın, həm də informasiya texnologiyalarının əsaslarına yiyələnməsi vacibdir. GIS proqramlarını (QGIS, ArcGIS), dronların idarə edilməsini və onlardan alınan məlumatların emalını (məsələn, Pix4DFields proqramı ilə NDVI indeksinin hesablanması) öyrənmək böyük üstünlükdür. Sensorlar və IoT cihazları ilə işləmə bacarıqları, həmçinin Python dilində sadə data analizi apara bilmək sizi digər məzunlardan fərqləndirəcək. Startap ekosistemini izləmək və innovativ aqrar layihələrdə iştirak etmək tövsiyə olunur."
+}

@@ -1,0 +1,19 @@
+
+{
+  "name": "Sənaye mühəndisliyi",
+  "slug": "senaye-muhendisliyi",
+  "description": "Sənaye mühəndisliyi, insan, material, avadanlıq və enerji kimi resurslardan ibarət olan mürəkkəb sistemlərin və proseslərin optimallaşdırılması, layihələndirilməsi və təkmilləşdirilməsi ilə məşğul olan bir mühəndislik sahəsidir. Bu ixtisasın əsas məqsədi məhsuldarlığı artırmaq, xərcləri azaltmaq, keyfiyyəti yüksəltmək və təhlükəsizliyi təmin etməkdir. Sənaye mühəndisliyi mühəndislik, biznes və idarəetmənin kəsişməsində yerləşir.",
+  "future": "Müasir rəqabətli bazarda bütün şirkətlər öz fəaliyyətlərini daha səmərəli etməyə çalışırlar. Bu səbəbdən, prosesləri analiz edib optimallaşdıra bilən sənaye mühəndislərinə olan tələbat bütün sektorlarda artır. Təchizat zəncirinin idarə olunması, 'Lean Manufacturing' (İqtisadlı İstehsalat), 'Six Sigma' kimi keyfiyyətə nəzarət metodologiyaları, data analitikası və proseslərin avtomatlaşdırılması bu sahənin gələcəyini müəyyən edir.",
+  "job_opportunities": "İstehsalat müəssisələri (yüngül və ağır sənaye), logistika və nəqliyyat şirkətləri, bank və maliyyə sektoru (proseslərin optimallaşdırılması), konsaltinq şirkətləri, pərakəndə satış şəbəkələri, səhiyyə müəssisələri, dövlət qurumları.",
+  "possible_positions": [
+    "Sənaye mühəndisi",
+    "Proses mühəndisi",
+    "Keyfiyyətə nəzarət mühəndisi",
+    "Layihə meneceri",
+    "Təchizat zənciri analitiki",
+    "İstehsalat planlaması üzrə mütəxəssis",
+    "Biznes proseslər üzrə analitik",
+    "Əməliyyatlar meneceri"
+  ],
+  "recommendations": "Təhsil müddətində statistika, ehtimal nəzəriyyəsi və əməliyyatlar tədqiqi kimi fənləri dərindən öyrənmək vacibdir. MS Excel-i peşəkar səviyyədə bilmək, həmçinin Minitab və ya SPSS kimi statistik proqram paketləri ilə işləmək bacarıqları tələb olunur. ERP (Enterprise Resource Planning) sistemləri (məsələn, SAP) haqqında biliklər böyük üstünlükdür. Lean və Six Sigma (məsələn, Green Belt sertifikatı) metodologiyaları üzrə sertifikatlar əldə etmək karyera imkanlarınızı əhəmiyyətli dərəcədə artıracaq."
+}

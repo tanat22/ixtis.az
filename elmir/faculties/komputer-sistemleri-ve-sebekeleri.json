@@ -1,0 +1,18 @@
+
+{
+  "name": "Kompüter sistemləri və şəbəkələri",
+  "slug": "komputer-sistemleri-ve-sebekeleri",
+  "description": "Kompüter sistemləri və şəbəkələri ixtisası, müasir informasiya infrastrukturunun onurğasını təşkil edən kompüter şəbəkələrinin (lokal və qlobal) və onlara qoşulmuş sistemlərin dizaynı, qurulması, idarə edilməsi və təhlükəsizliyinin təmin edilməsini əhatə edir. Bura router, switch kimi şəbəkə avadanlıqlarının konfiqurasiyası, TCP/IP kimi protokolların dərindən anlaşılması və şəbəkə əməliyyat sistemlərinin idarəsi daxildir.",
+  "future": "Bulud texnologiyaları (Cloud Computing), Əşyaların İnterneti (IoT) və 5G kimi texnologiyaların sürətli inkişafı, daha dayanıqlı, sürətli və ağıllı şəbəkə infrastrukturlarına tələbatı kəskin şəkildə artırır. Proqram təminatı ilə idarə olunan şəbəkələr (SDN) və şəbəkə avtomatlaşdırılması bu sahənin gələcəyini formalaşdıran əsas trendlərdir. Mütəxəssislər fiziki avadanlıqların idarəsindən daha çox, şəbəkələri kod vasitəsilə idarə etməyə doğru irəliləyirlər.",
+  "job_opportunities": "Telekommunikasiya şirkətləri (məsələn, Azercell, Bakcell, Nar), internet servis provayderləri (ISP), data mərkəzləri, banklar, böyük korporasiyaların IT departamentləri, dövlət qurumları və şəbəkə avadanlıqları satan və dəstək verən şirkətlər (məsələn, Cisco, Juniper tərəfdaşları).",
+  "possible_positions": [
+    "Şəbəkə mühəndisi (Network Engineer)",
+    "Şəbəkə administratoru (Network Administrator)",
+    "Sistem administratoru (System Administrator)",
+    "Bulud mühəndisi (Cloud Engineer)",
+    "DevOps mühəndisi",
+    "VoIP mühəndisi (Voice over IP Engineer)",
+    "Şəbəkə təhlükəsizliyi mühəndisi"
+  ],
+  "recommendations": "Bu sahədə uğurlu olmaq üçün Cisco (CCNA, CCNP) və ya Juniper (JNCIA) kimi beynəlxalq səviyyədə tanınan sertifikatları almaq çox önəmlidir. Linux əməliyyat sistemini dərindən bilmək, Python və ya Bash kimi skript dillərində sərbəst işləmək bacarığı şəbəkə avtomatlaşdırılması üçün vacibdir. GNS3 və ya EVE-NG kimi simulyasiya proqramlarında praktiki təcrübə toplamaq və Wireshark kimi alətlərlə şəbəkə trafikini analiz etmək tövsiyə olunur."
+}

@@ -1,0 +1,17 @@
+
+{
+  "name": "Metallurgiya mühəndisliyi",
+  "slug": "metallurgiya-muhendisliyi",
+  "description": "Metallurgiya mühəndisliyi, metalların filizlərdən çıxarılması, saflaşdırılması, ərintilərin hazırlanması, onlara istənilən forma və xassələrin verilməsi proseslərini öyrənən və tətbiq edən fundamental mühəndislik sahəsidir. Bu ixtisas metalların fiziki-kimyəvi xassələrini, tökmə, təzyiqlə emal, qaynaq və termiki emal texnologiyalarını əhatə edir.",
+  "future": "Azərbaycanın ağır sənaye komplekslərinin (məsələn, Sumqayıt Texnologiyalar Parkı, Bakı Poladtökmə) modernləşdirilməsi və yeni metallurgiya müəssisələrinin yaradılması bu sahənin mütəxəssislərinə olan tələbatı artırır. Gələcəkdə toz metallurgiyası, kompozit materialların və xüsusi xassəli ərintilərin istehsalı, həmçinin metallurgiya tullantılarının təkrar emalı kimi sahələr daha da aktuallaşacaq.",
+  "job_opportunities": "Metallurgiya kombinatları və zavodları, maşınqayırma və cihazqayırma müəssisələri, müdafiə sənayesi, gəmiqayırma zavodları, elmi-tədqiqat institutları və metal konstruksiya istehsal edən şirkətlər.",
+  "possible_positions": [
+    "Mühəndis-metallurq",
+    "Mühəndis-texnoloq (tökmə, yayma, termiki emal üzrə)",
+    "Keyfiyyətə nəzarət mühəndisi",
+    "Laboratoriya rəhbəri",
+    "Materialşünas",
+    "Qaynaq mühəndisi"
+  ],
+  "recommendations": "Təhsil müddətində materialşünaslıq, termodinamika və kimya fənlərini dərindən öyrənmək vacibdir. AutoCAD, SolidWorks kimi dizayn proqramları ilə yanaşı, ProCAST, MAGMASoft kimi tökmə proseslərini simulyasiya edən proqramlarla tanışlıq böyük üstünlükdür. İstehsalat təcrübəsini metallurgiya zavodlarında keçmək nəzəri bilikləri praktika ilə əlaqələndirmək üçün ən yaxşı yoldur. Qeyri-dağıdıcı sınaq (Non-destructive testing - NDT) metodları üzrə sertifikatlar almaq karyera imkanlarınızı genişləndirəcək."
+}

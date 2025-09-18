@@ -1,0 +1,18 @@
+
+{
+  "name": "Proseslərin avtomatlaşdırılması mühəndisliyi",
+  "slug": "proseslerin-avtomatlasdirilmasi-muhendisliyi",
+  "description": "Proseslərin avtomatlaşdırılması mühəndisliyi, sənayedə (neft-qaz, kimya, energetika, qida və s.) texnoloji proseslərin insan müdaxiləsi olmadan və ya minimum müdaxilə ilə idarə olunmasını təmin edən sistemlərin layihələndirilməsi, quraşdırılması və istismarı ilə məşğul olur. Bu ixtisas idarəetmə nəzəriyyəsi, sensorlar, icraedici mexanizmlər, PLC (Məntiqi Programlaşdırıla bilən Kontrollerlər), SCADA (Supervisory Control and Data Acquisition) sistemləri və sənaye şəbəkələri kimi sahələri əhatə edir.",
+  "future": "'Sənaye 4.0' konsepsiyasının tətbiqi, istehsalatın rəqəmsallaşması və robotlaşdırılması proseslərin avtomatlaşdırılması mühəndislərinə olan tələbatı kəskin şəkildə artırır. Gələcəkdə istehsal proseslərinin süni intellektə əsaslanan alqoritmlərlə optimallaşdırılması, uzaqdan idarəetmə və monitorinq sistemlərinin təkmilləşdirilməsi bu sahənin əsas inkişaf istiqamətləri olacaq.",
+  "job_opportunities": "SOCAR, BP kimi neft-qaz şirkətləri, neft emalı və neft-kimya zavodları, elektrik stansiyaları, qida və içki istehsalı müəssisələri, sement zavodları, sənaye avtomatlaşdırılması üzrə ixtisaslaşmış mühəndislik şirkətləri (məsələn, Siemens, Schneider Electric, ABB, Emerson nümayəndəlikləri).",
+  "possible_positions": [
+    "Nəzarət-ölçü cihazları və avtomatika (NÖC&A) mühəndisi",
+    "Avtomatlaşdırma mühəndisi",
+    "PLC/SCADA mühəndisi",
+    "İdarəetmə sistemləri mühəndisi",
+    "Layihəçi mühəndis (avtomatlaşdırma üzrə)",
+    "Servis mühəndisi",
+    "Test və sazlama mühəndisi"
+  ],
+  "recommendations": "Təhsil müddətində PLC proqramlaşdırma dillərini (məsələn, Ladder Logic, FBD) və SCADA sistemlərini (məsələn, WinCC, InTouch) öyrənmək mütləqdir. Sənaye şəbəkələri (Profibus, Modbus) və elektrik sxemlərini oxuma bacarığı vacibdir. Arduino və ya Raspberry Pi ilə kiçik avtomatlaşdırma layihələri hazırlamaq praktiki biliklərinizi artıracaq. İstehsalat müəssisələrində təcrübə keçmək nəzəriyyəni praktika ilə birləşdirmək üçün ən yaxşı fürsətdir."
+}

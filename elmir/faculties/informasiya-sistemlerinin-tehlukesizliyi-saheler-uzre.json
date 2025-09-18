@@ -1,0 +1,15 @@
+{
+    "name": "İnformasiya sistemlərinin təhlükəsizliyi (sahələr üzrə)",
+    "slug": "informasiya-sistemlerinin-tehlukesizliyi-saheler-uzre",
+    "description": "Bu ixtisas, müxtəlif sahələrdə (məsələn, bank, dövlət idarəçiliyi, telekommunikasiya) fəaliyyət göstərən informasiya sistemlərinin və məlumat bazalarının təhlükəsizliyinin təmin edilməsi üzrə ixtisaslaşmış mütəxəssislər hazırlayır. Bu, 'Telekommunikasiya və informasiya təhlükəsizliyi' ixtisasına yaxın olsa da, daha çox tətbiqi proqram təminatı, məlumat bazaları və spesifik sahənin iş prosesləri kontekstində təhlükəsizliyə fokuslanır.",
+    "future": "Hər bir təşkilatın özünəməxsus informasiya sistemləri və biznes prosesləri var. Bu sistemlərin təhlükəsizliyini təmin etmək üçün həm İT təhlükəsizliyini, həm də konkret sahənin spesifikasını bilən mütəxəssislərə ehtiyac var. Məzunlar, demək olar ki, bütün sektorlarda - banklardan sənaye müəssisələrinə qədər - işləyə bilərlər.",
+    "job_opportunities": "Banklar (İT təhlükəsizlik departamentləri), dövlət qurumları (Elektron Hökumətin İnkişafı Mərkəzi, nazirliklərin İT şöbələri), İT-audit və konsaltinq şirkətləri, sığorta şirkətləri, e-ticarət platformaları, proqram təminatı istehsal edən şirkətlər.",
+    "possible_positions": [
+        "İnformasiya təhlükəsizliyi mütəxəssisi/administratoru",
+        "Tətbiq təhlükəsizliyi mühəndisi (AppSec Engineer)",
+        "Məlumat bazası təhlükəsizliyi üzrə mütəxəssis",
+        "İT risk meneceri",
+        "Təhlükəsizlik üzrə sistem administratoru"
+    ],
+    "recommendations": "Bu ixtisas üçün təhlükəsizlik prinsiplərini dərindən bilməklə yanaşı, sahənin biznes proseslərini də anlamaq vacibdir. Proqramlaşdırma dillərini (məsələn, veb təhlükəsizliyi üçün JavaScript, Python) və məlumat bazaları ilə işləmə (SQL) bacarıqları tələb olunur. Analitik düşüncə və problem həll etmə qabiliyyəti əsasdır."
+}

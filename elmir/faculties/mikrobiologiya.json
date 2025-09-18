@@ -1,0 +1,15 @@
+{
+    "name": "Mikrobiologiya",
+    "slug": "mikrobiologiya",
+    "description": "Mikrobiologiya, mikroorqanizmləri (bakteriyalar, viruslar, göbələklər, ibtidailər) və onların həyat fəaliyyətini öyrənən bir elm sahəsidir. Bu sahə tibb, qida sənayesi, kənd təsərrüfatı və ətraf mühitin mühafizəsi üçün böyük əhəmiyyət kəsb edir.",
+    "future": "Məzunlar tibbi laboratoriyalarda, əczaçılıq şirkətlərində, qida təhlükəsizliyi qurumlarında, kənd təsərrüfatı müəssisələrində və elmi-tədqiqat institutlarında çalışa bilərlər.",
+    "job_opportunities": "Klinik laboratoriyalar, Sanitar Epidemioloji Mərkəzlər, əczaçılıq və biotexnologiya şirkətləri, qida istehsalı müəssisələri, su təmizləyici qurğular, elmi-tədqiqat institutları.",
+    "possible_positions": [
+        "Mikrobioloq",
+        "Laborant-həkim",
+        "Biotexnoloq",
+        "Keyfiyyətə nəzarət mütəxəssisi (qida/dərman)",
+        "Tədqiqatçı alim"
+    ],
+    "recommendations": "Bu ixtisas dəqiq müşahidə qabiliyyəti, laboratoriya işlərinə maraq, steril şəraitdə işləmə bacarığı və bioloji təhlükəsizlik qaydalarına ciddi əməl etməyi tələb edir."
+}

@@ -1,0 +1,15 @@
+{
+    "name": "Çoxkanallı telekommunikasiya sistemləri",
+    "slug": "coxkanalli-telekommunikasiya-sistemleri",
+    "description": "Bu ixtisas, böyük həcmli informasiyanın (səs, video, məlumatlar) yüksək sürətlə ötürülməsini təmin edən magistral və regional rabitə sistemlərinin, xüsusən də optik lifli rabitə xətlərinin (DWDM, OTN texnologiyaları) və radio-rele xətlərinin layihələndirilməsi, qurulması və istismarı üzrə mühəndislər hazırlayır. Proqram rəqəmsal rabitə nəzəriyyəsi, şəbəkə protokolları, optik və mikrodalğalı texnologiyalar kimi sahələri əhatə edir.",
+    "future": "İnternetin və mobil rabitənin inkişafı data trafikinin həcmini durmadan artırır. Bu da öz növbəsində yüksək ötürmə qabiliyyətli magistral şəbəkələrin əhəmiyyətini artırır və bu sahənin mütəxəssislərinə olan tələbatı sabit saxlayır. Məzunlar telekommunikasiya operatorları, internet provayderlər, dövlət rabitə qurumları və iri korporasiyaların rabitə şöbələrində çalışa bilərlər.",
+    "job_opportunities": "Delta Telecom, Aztelekom, Baktelecom, Azərtelekom, mobil operatorlar (Azercell, Bakcell, Nar), dövlət güc strukturlarının rabitə idarələri, neft şirkətlərinin rabitə departamentləri, dəmir yolu və energetika sistemlərinin rabitə təsərrüfatı.",
+    "possible_positions": [
+        "Rabitə şəbəkələri üzrə mühəndis",
+        "Magistral şəbəkə mühəndisi (NOC mühəndisi)",
+        "Optik rabitə sistemləri üzrə mühəndis",
+        "Radio-rele rabitəsi üzrə mühəndis",
+        "Şəbəkə administratoru"
+    ],
+    "recommendations": "Bu ixtisas üçün şəbəkə texnologiyalarına dərin maraq, analitik təfəkkür, məsuliyyət və komandada işləmək bacarığı vacibdir. Fizika (optika, elektromaqnetizm) və riyaziyyat fənlərini yaxşı bilmək, həmçinin Cisco (CCNA, CCNP) və ya digər istehsalçıların sertifikatlarını əldə etmək karyera üçün böyük üstünlükdür."
+}

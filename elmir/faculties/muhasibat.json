@@ -1,0 +1,18 @@
+
+{
+  "name": "Mühasibat",
+  "slug": "muhasibat",
+  "description": "Mühasibat, bir təşkilatın maliyyə əməliyyatlarının qeydə alınması, təsnifləşdirilməsi, ümumiləşdirilməsi və təhlili ilə məşğul olan bir sistemdir. Bu ixtisasın məqsədi şirkətin maliyyə vəziyyəti, fəaliyyətinin nəticələri və pul vəsaitlərinin hərəkəti haqqında dəqiq və etibarlı məlumat hazırlamaqdır. Mühasibat maliyyə uçotu, idarəetmə uçotu, audit və vergi uçotu kimi sahələri əhatə edir.",
+  "future": "Mühasibat artıq yalnız rəqəmlərin qeydiyyatı deyil, həm də strateji qərarvermə prosesinin vacib bir hissəsidir. Mühasibat uçotu proqramlarının (məsələn, 1C, Logo) və ERP sistemlərinin (məsələn, SAP, Oracle) geniş tətbiqi ilə məlumatların emalı avtomatlaşır və mühasiblərin rolu daha çox analiz və maliyyə məsləhətçiliyi istiqamətində dəyişir. Beynəlxalq Maliyyə Hesabatları Standartlarını (IFRS) bilən və data analitikası bacarıqlarına malik mütəxəssislərə tələbat daim artacaq.",
+  "job_opportunities": "Bütün dövlət və özəl təşkilatlar, istehsalat müəssisələri, ticarət və xidmət şirkətləri, banklar, sığorta şirkətləri, audit və konsaltinq şirkətləri ('Böyük Dördlük' daxil olmaqla), dövlət vergi və maliyyə orqanları.",
+  "possible_positions": [
+    "Mühasib",
+    "Baş mühasib",
+    "Maliyyə nəzarətçisi (Financial Controller)",
+    "Auditor (daxili və ya xarici)",
+    "Vergi mütəxəssisi",
+    "Maliyyə analitiki",
+    "1C operatoru/mütəxəssisi"
+  ],
+  "recommendations": "Təhsil müddətində yerli vergi qanunvericiliyi və Beynəlxalq Maliyyə Hesabatları Standartları (IFRS) dərindən öyrənilməlidir. MS Excel-i (xüsusilə pivot cədvəlləri və mürəkkəb funksiyalar) peşəkar səviyyədə bilmək mütləqdir. 1C və ya digər mühasibat proqramları ilə işləmə təcrübəsi böyük üstünlükdür. Məzun olduqdan sonra ACCA (Association of Chartered Certified Accountants) və ya CIMA (Chartered Institute of Management Accountants) kimi beynəlxalq sertifikasiya proqramlarına başlamaq karyeranızda sıçrayış etməyə imkan verəcək."
+}

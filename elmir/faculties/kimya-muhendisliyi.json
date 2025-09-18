@@ -1,0 +1,18 @@
+
+{
+  "name": "Kimya mühəndisliyi",
+  "slug": "kimya-muhendisliyi",
+  "description": "Kimya mühəndisliyi, kimyəvi və biokimyəvi prosesləri sənaye miqyasında həyata keçirmək üçün avadanlıqların və qurğuların layihələndirilməsi, istehsalı və istismarı ilə məşğul olan fundamental mühəndislik sahəsidir. Bu ixtisas kimyəvi reaksiyalar, istilik və kütlə mübadiləsi, hidrodinamika və proseslərin modelləşdirilməsi kimi fənləri birləşdirir. Kimya mühəndisləri xammalı dəyərli məhsullara (yanacaq, plastik, dərman, gübrə və s.) çevirən texnoloji sxemlər yaradırlar.",
+  "future": "Neft-kimya sənayesi Azərbaycan iqtisadiyyatının əsaslarından biridir və bu sahədəki modernləşmə və yeni zavodların tikintisi kimya mühəndislərinə olan tələbatı stabil saxlayır. Gələcəkdə 'yaşıl kimya', tullantıların təkrar emalı, bərpaolunan mənbələrdən kimyəvi məhsulların alınması və yeni materialların (məsələn, polimer kompozitlər) sintezi kimi sahələr daha da aktuallaşacaq. Proseslərin avtomatlaşdırılması və optimallaşdırılması da bu sahənin mühüm inkişaf istiqamətidir.",
+  "job_opportunities": "SOCAR-ın neft emalı və neft-kimya kompleksləri (məsələn, 'Azərikimya' İB, SOCAR Polymer, SOCAR Carbamide), BP və digər xarici şirkətlər, əczaçılıq zavodları, gübrə istehsalı müəssisələri, sement və tikinti materialları zavodları, qida sənayesi müəssisələri, layihə institutları, elmi-tədqiqat mərkəzləri.",
+  "possible_positions": [
+    "Mühəndis-texnoloq",
+    "Proses mühəndisi (Process Engineer)",
+    "Layihəçi mühəndis (kimya texnologiyası üzrə)",
+    "Keyfiyyətə nəzarət mühəndisi",
+    "Laboratoriya rəhbəri/mütəxəssisi",
+    "Elmi işçi",
+    "SƏTƏM mühəndisi (kimya sənayesində)"
+  ],
+  "recommendations": "Təhsil müddətində Aspen HYSYS, ChemCAD kimi kimyəvi proseslərin modelləşdirilməsi və simulyasiyası proqramlarını öyrənmək çox vacibdir. AutoCAD (xüsusilə P&ID sxemləri üçün) və laboratoriya analiz metodları (xromatoqrafiya, spektroskopiya) haqqında biliklər böyük üstünlükdür. Real istehsalatda təcrübə keçmək nəzəri biliklərinizi möhkəmləndirmək üçün ən yaxşı yoldur. İngilis dilini texniki səviyyədə bilmək beynəlxalq şirkətlərdə və layihələrdə işləmək üçün mütləqdir."
+}

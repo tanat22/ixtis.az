@@ -1,0 +1,15 @@
+{
+    "name": "İntellektual ölçmə və idarəetmə sistemləri",
+    "slug": "intellektual-olcme-ve-idareetme-sistemleri",
+    "description": "Bu ixtisas, müasir sensorlar, mikroprosessorlar və süni intellekt elementlərindən istifadə edərək mürəkkəb texnoloji prosesləri və obyektləri idarə edən 'ağıllı' sistemlərin yaradılması və tətbiqi üzrə mütəxəssislər hazırlayır. Proqram rəqəmsal siqnal emalı, avtomatik idarəetmə nəzəriyyəsi, proqramlaşdırılan məntiq kontrollerləri (PLC), SCADA sistemləri və süni neyron şəbəkələri kimi sahələri əhatə edir.",
+    "future": "Sənayenin rəqəmsallaşması (Sənaye 4.0) və 'Əşyaların İnterneti' (IoT) konsepsiyasının geniş yayılması ilə bu sahənin mütəxəssislərinə tələbat sürətlə artır. Məzunlar neft-qaz, energetika, kimya, metallurgiya və digər sənaye sahələrində avtomatlaşdırma və idarəetmə sistemlərinin tətbiqi və istismarı ilə məşğul ola bilərlər.",
+    "job_opportunities": "İri sənaye müəssisələri (SOCAR, Azərenerji, Azərkimya), proseslərin avtomatlaşdırılması üzrə mühəndislik şirkətləri (məs., Avtomatika MMC, Schneider Electric, Siemens nümayəndəlikləri), İT şirkətləri (sənaye üçün proqram təminatı), elmi-tədqiqat mərkəzləri.",
+    "possible_positions": [
+        "Avtomatlaşdırma və idarəetmə sistemləri üzrə mühəndis",
+        "Nəzarət-ölçü cihazları və avtomatika (NÖC və A) üzrə mühəndis",
+        "PLC/SCADA proqramçısı",
+        "Sistem inteqratoru",
+        "Proseslərin idarə edilməsi üzrə mütəxəssis"
+    ],
+    "recommendations": "Bu ixtisas üçün güclü alqoritmik və məntiqi düşüncə, proqramlaşdırma bacarıqları (C++, Python, Ladder Logic), elektronika və sxemotexnika üzrə biliklər, həmçinin texnoloji prosesləri anlamaq qabiliyyəti vacibdir. Daim yenilikləri izləmək və komandada işləmək bacarığı əsasdır."
+}

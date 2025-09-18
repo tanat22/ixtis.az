@@ -1,0 +1,18 @@
+
+{
+  "name": "Mexanika",
+  "slug": "mexanika",
+  "description": "Mexanika ixtisası, cisimlərin hərəkətini, sükunətini və onlara təsir edən qüvvələri öyrənən fundamental bir elm sahəsidir. Bu ixtisas klassik mexanikadan (Nyuton qanunları) tutmuş, bərk cisim mexanikasına, hidrodinamikaya (maye və qazların hərəkəti) və deformasiya olunan mühitlərin mexanikasına qədər geniş bir spektri əhatə edir. Tələbələr mürəkkəb sistemlərin riyazi modellərini qurmağı, gərginlik və deformasiyaları analiz etməyi və dinamik prosesləri proqnozlaşdırmağı öyrənirlər.",
+  "future": "Mexanika mühəndisliyin bütün sahələrinin – maşınqayırma, inşaat, aviasiya, gəmiqayırma, robototexnika – təməlini təşkil edir. Kompüter texnologiyalarının inkişafı ilə hesablama mexanikası (computational mechanics) getdikcə daha da aktuallaşır. Yeni materialların (kompozitlər, nanomateriallar) yaradılması və onların mexaniki xassələrinin öyrənilməsi, həmçinin biomexanika (canlı orqanizmlərin mexanikası) kimi sahələr bu ixtisasın gələcəyini çox perspektivli edir. Mürəkkəb sistemlərin analizini apara bilən mexanika mütəxəssislərinə həmişə ehtiyac olacaq.",
+  "job_opportunities": "Elmi-tədqiqat institutları (AMEA Riyaziyyat və Mexanika İnstitutu), maşınqayırma və cihazqayırma müəssisələri, neft-qaz sənayesi (boru kəmərlərinin, konstruksiyaların möhkəmlik hesablamaları), inşaat şirkətlərinin layihə-konstruktor büroları, aviasiya və müdafiə sənayesi, universitetlər və təhsil mərkəzləri.",
+  "possible_positions": [
+    "Mexanika üzrə elmi işçi",
+    "Hesablama mühəndisi (CAE Engineer)",
+    "Möhkəmlik üzrə mühəndis (Stress Engineer)",
+    "Konstruktor mühəndis",
+    "Hidrodinamika mütəxəssisi",
+    "Materialşünas",
+    "R&D (Tədqiqat və İnkişaf) mühəndisi"
+  ],
+  "recommendations": "Təhsil müddətində ANSYS, Abaqus, SolidWorks Simulation kimi sonlu elementlər metodu (Finite Element Method - FEM) proqram paketlərini dərindən öyrənmək mütləqdir. MATLAB/Simulink və ya Python (NumPy, SciPy kitabxanaları ilə) kimi proqramlaşdırma dillərində riyazi modelləşdirmə və hesablama bacarıqlarına yiyələnmək sizi əmək bazarında fərqləndirəcək. Hidrodinamika ilə maraqlanırsınızsa, CFD (Computational Fluid Dynamics) proqramlarını öyrənmək tövsiyə olunur. Magistratura və doktorantura təhsili bu sahədə dərin ixtisaslaşma və yüksək karyera imkanları üçün vacibdir."
+}

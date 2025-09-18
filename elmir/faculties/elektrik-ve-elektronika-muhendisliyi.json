@@ -1,0 +1,20 @@
+
+{
+  "name": "Elektrik və elektronika mühəndisliyi",
+  "slug": "elektrik-ve-elektronika-muhendisliyi",
+  "description": "Elektrik və elektronika mühəndisliyi, elektrik enerjisinin istehsalı, ötürülməsi, paylanması və istifadəsindən tutmuş, kiçik elektron sxemlərin, mikroprosessorların, rabitə sistemlərinin və idarəetmə qurğularının layihələndirilməsinə qədər çox geniş bir spektri əhatə edən fundamental mühəndislik sahəsidir. Bu ixtisas həm güclü cərəyan (energetika), həm də zəif cərəyan (elektronika, rabitə) sahələrini birləşdirir.",
+  "future": "Gələcək elektriklə işləyir. Bərpaolunan enerji mənbələri (günəş, külək), 'ağıllı' elektrik şəbəkələri (Smart Grids), elektromobillər, 'Əşyaların İnterneti' (IoT), robototexnika və süni intellekt kimi bütün müasir texnologiyaların əsasında elektrik və elektronika mühəndisliyi dayanır. Bu səbəbdən, bu sahənin məzunlarına olan tələbat həm yerli, həm də beynəlxalq əmək bazarında daim yüksək olacaq.",
+  "job_opportunities": "'Azərenerji' ASC, 'Azərişıq' ASC, SOCAR, BP, neft-qaz və sənaye müəssisələrinin energetika şöbələri, mobil operatorlar (Azercell, Bakcell), telekommunikasiya şirkətləri, sənaye avtomatlaşdırılması ilə məşğul olan şirkətlər (məsələn, Schneider Electric, Siemens), müasir bina və komplekslərin idarəetmə sistemlərinə xidmət edən təşkilatlar, startaplar.",
+  "possible_positions": [
+    "Energetika mühəndisi",
+    "Elektrik mühəndisi",
+    "Elektronika mühəndisi",
+    "Avtomatika və idarəetmə sistemləri mühəndisi",
+    "Layihəçi mühəndis (elektrik təchizatı üzrə)",
+    "Rabitə mühəndisi",
+    "Test mühəndisi",
+    "Servis mühəndisi",
+    "PCB dizayneri"
+  ],
+  "recommendations": "Təhsil müddətində AutoCAD Electrical, EPLAN kimi layihələndirmə proqramlarını, MATLAB/Simulink ilə modelləşdirməni və Proteus, Multisim kimi sxem simulyasiya proqramlarını öyrənmək çox vacibdir. PLC (Məntiqi Programlaşdırıla bilən Kontroller) və SCADA sistemlərinin əsaslarını mənimsəmək sizi sənaye avtomatlaşdırılması sahəsində güclü namizəd edəcək. Arduino və ya Raspberry Pi ilə praktiki layihələr həyata keçirmək elektronika biliklərinizi möhkəmləndirəcək. Məzun olduqdan sonra müvafiq sahə üzrə (məsələn, yüksəkgərginlikli avadanlıqlara xidmət, şəbəkə inzibatçılığı - CCNA) sertifikatlar almaq karyera inkişafınıza böyük təkan verəcək."
+}

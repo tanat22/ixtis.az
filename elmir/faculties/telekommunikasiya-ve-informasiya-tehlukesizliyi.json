@@ -1,0 +1,16 @@
+{
+    "name": "Telekommunikasiya və informasiya təhlükəsizliyi",
+    "slug": "telekommunikasiya-ve-informasiya-tehlukesizliyi",
+    "description": "Bu ixtisas, telekommunikasiya şəbəkələrinin (kompüter, mobil, internet) və sistemlərinin kənar müdaxilələrdən, məlumat sızmalarından və kiberhücumlardan qorunmasını təmin edən mütəxəssislər hazırlayır. Proqram şəbəkə texnologiyaları, kriptoqrafiya (şifrləmə), təhlükəsizlik protokolları, zərərli proqram təminatı ilə mübarizə, veb tətbiqlərin təhlükəsizliyi və kiberhücumların aşkarlanması və qarşısının alınması (IDS/IPS) kimi mövzuları əhatə edir.",
+    "future": "Rəqəmsal dünyada məlumatların həcminin və dəyərinin artması ilə kiber təhlükəsizlik ən aktual və tələb olunan peşələrdən birinə çevrilib. Bütün dövlət qurumları, banklar, telekommunikasiya şirkətləri və bizneslər öz məlumatlarını qorumaq üçün bu sahənin mütəxəssislərinə ehtiyac duyur. Karyera perspektivləri çox geniş və yüksək gəlirlidir.",
+    "job_opportunities": "Banklar və maliyyə qurumları, mobil operatorlar, internet provayderlər, dövlət qurumları (xüsusilə Xüsusi Rabitə və İnformasiya Təhlükəsizliyi Dövlət Xidməti, Müdafiə və Təhlükəsizlik orqanları), ixtisaslaşmış kiber təhlükəsizlik şirkətləri ('pentest' və audit xidmətləri), iri İT şirkətləri.",
+    "possible_positions": [
+        "İnformasiya təhlükəsizliyi mütəxəssisi/analitiki",
+        "Şəbəkə təhlükəsizliyi mühəndisi",
+        "Penetration tester ('etik haker')",
+        "Təhlükəsizlik Əməliyyatları Mərkəzinin (SOC) analitiki",
+        "Kriptoqraf",
+        "Təhlükəsizlik üzrə auditor"
+    ],
+    "recommendations": "Bu ixtisas üçün güclü analitik düşüncə, problem həll etmə bacarığı, detallara diqqət, daimi öyrənmə və araşdırma həvəsi, yüksək etik məsuliyyət hissi mütləqdir. Şəbəkə texnologiyalarını (TCP/IP), əməliyyat sistemlərini (Linux, Windows) dərindən bilmək və skript dillərini (Python, Bash) öyrənmək vacibdir."
+}

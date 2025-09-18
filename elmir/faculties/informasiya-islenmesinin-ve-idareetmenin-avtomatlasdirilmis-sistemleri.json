@@ -1,0 +1,16 @@
+{
+    "name": "İnformasiya emalı və idarəetmənin avtomatlaşdırılmış sistemləri",
+    "slug": "informasiya-islenmesinin-ve-idareetmenin-avtomatlasdirilmis-sistemleri",
+    "description": "Bu ixtisas, müxtəlif proseslərdə (texnoloji, iqtisadi, təşkilati) informasiyanın toplanması, emalı, ötürülməsi və idarə edilməsi üçün avtomatlaşdırılmış sistemlərin yaradılması və istismarı ilə məşğul olur. Proqramlaşdırma, verilənlər bazası, idarəetmə nəzəriyyəsi və süni intellekt mövzularını əhatə edir.",
+    "future": "Məzunlar İT şirkətlərində, banklarda, dövlət qurumlarında, sənaye müəssisələrində və telekommunikasiya şirkətlərində sistem analitiki, proqramçı, verilənlər bazası administratoru və ya layihə meneceri kimi çalışa bilərlər. Bu sahə sürətlə inkişaf etdiyi üçün daim yeni biliklər əldə etmək vacibdir.",
+    "job_opportunities": "İT şirkətləri (proqram təminatı, sistem inteqrasiyası), bank və maliyyə sektoru, telekommunikasiya operatorları, dövlət elektron hökumət layihələri, iri sənaye müəssisələrinin İT şöbələri.",
+    "possible_positions": [
+        "Sistem analitiki",
+        "Biznes analitik",
+        "Proqram mühəndisi",
+        "Verilənlər bazası administratoru (DBA)",
+        "İT layihə meneceri",
+        "SCADA/PLC mühəndisi"
+    ],
+    "recommendations": "Bu ixtisas güclü alqoritmik düşüncə, proqramlaşdırma dillərini (məsələn, Python, Java, C#) bilməyi, məntiqi təfəkkür, sistemli yanaşma və davamlı öyrənməyə həvəs tələb edir."
+}

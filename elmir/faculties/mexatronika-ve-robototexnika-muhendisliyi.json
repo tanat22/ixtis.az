@@ -1,0 +1,18 @@
+
+{
+  "name": "Mexatronika və robototexnika mühəndisliyi",
+  "slug": "mexatronika-ve-robototexnika-muhendisliyi",
+  "description": "Mexatronika və robototexnika mühəndisliyi, mexanika, elektronika, kompüter elmləri və idarəetmə sistemlərini birləşdirərək 'ağıllı' maşınlar və avtomatlaşdırılmış sistemlər yaradan sinergetik bir mühəndislik sahəsidir. Bu ixtisasın məqsədi sensorlardan məlumat alan, bu məlumatı emal edən və mexaniki hərəkətlər icra edən sistemlər (robotlar, CNC dəzgahları, dronlar, avtopilot sistemləri) yaratmaqdır.",
+  "future": "'Sənaye 4.0' və avtomatlaşdırmanın geniş yayılması ilə mexatronika və robototexnika mühəndisləri ən çox tələb olunan peşəkarlara çevrilirlər. Gələcəkdə süni intellektə malik əməkdaşlıq edən robotlar (cobots), tibbi cərrahiyyə robotları, avtonom nəqliyyat vasitələri və xidmət robotları bu sahənin əsas inkişaf istiqamətləri olacaq. Bu ixtisas gələcəyin istehsalatını və gündəlik həyatını formalaşdıracaq.",
+  "job_opportunities": "Sənaye avtomatlaşdırılması ilə məşğul olan şirkətlər, robototexnika şirkətləri, müdafiə sənayesi, avtomobilqayırma, cihazqayırma müəssisələri, neft-qaz sənayesinin avtomatlaşdırılmış sistemləri, aqrar sektorda 'ağıllı' texnologiyalar tətbiq edən şirkətlər, elmi-tədqiqat mərkəzləri və startaplar.",
+  "possible_positions": [
+    "Robototexnika mühəndisi",
+    "Mexatronika mühəndisi",
+    "Avtomatlaşdırma mühəndisi",
+    "İdarəetmə sistemləri mühəndisi (Control Systems Engineer)",
+    "Daxilə quraşdırılmış sistemlər mühəndisi (Embedded Systems Engineer)",
+    "Maşın görməsi mühəndisi (Computer Vision Engineer)",
+    "Test və sınaq mühəndisi"
+  ],
+  "recommendations": "Təhsil müddətində həm mexaniki dizayn proqramlarını (SolidWorks, CATIA), həm də elektron sxem dizaynı proqramlarını (Altium Designer, Eagle) öyrənmək vacibdir. C++ və Python proqramlaşdırma dillərini, həmçinin PLC (Məntiqi Programlaşdırıla bilən Kontroller) proqramlaşdırmasını mənimsəmək şərtdir. ROS (Robot Operating System), Arduino və Raspberry Pi platformaları ilə real layihələr (məsələn, kiçik mobil robot, robot qolu) hazırlamaq praktiki təcrübə üçün əvəzsizdir. Müxtəlif növ sensorlar və hərəkət ötürücüləri (aktuatorlar) ilə işləməyi öyrənmək tövsiyə olunur."
+}

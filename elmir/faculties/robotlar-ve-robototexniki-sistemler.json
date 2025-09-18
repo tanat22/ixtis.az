@@ -1,0 +1,16 @@
+{
+    "name": "Robotlar və robototexniki sistemlər",
+    "slug": "robotlar-ve-robototexniki-sistemler",
+    "description": "Bu ixtisas, sənaye, xidmət, tibb, hərbi və digər sahələr üçün nəzərdə tutulmuş robotların və robotlaşdırılmış komplekslərin layihələndirilməsi, proqramlaşdırılması, istismarı və tətbiqi üzrə mühəndislər hazırlayır. Proqram mexanika, elektronika, avtomatik idarəetmə, sensor texnologiyaları, maşın görməsi (computer vision) və süni intellekt kimi fənləri inteqrasiya edir.",
+    "future": "Robototexnika sənayenin avtomatlaşdırılması, logistika, səhiyyə və məişət sahələrində inqilab yaradan ən perspektivli sahələrdən biridir. Məzunlar müasir sənaye müəssisələrində, elmi-tədqiqat mərkəzlərində, hərbi sənaye kompleksində, startaplarda və sistem inteqratoru olan şirkətlərdə geniş karyera imkanlarına malikdirlər.",
+    "job_opportunities": "Sənaye avtomatlaşdırılması ilə məşğul olan şirkətlər, Müdafiə Sənayesi Nazirliyinin müəssisələri, ANAMA (minaaxtaran robotlar), aqrar sektorda avtomatlaşdırma, İT şirkətləri, elmi-tədqiqat institutları (məs., AMEA-nın İdarəetmə Sistemləri İnstitutu), robototexnika üzrə tədris mərkəzləri.",
+    "possible_positions": [
+        "Robototexnika mühəndisi",
+        "Mühəndis-proqramçı (robotlar üçün)",
+        "Avtomatlaşdırma mühəndisi",
+        "Servis mühəndisi (robot kompleksləri)",
+        "Mühəndis-konstruktor (mexatronika)",
+        "Elmi işçi"
+    ],
+    "recommendations": "Bu ixtisas proqramlaşdırmaya (xüsusilə Python, C++), mexanika və elektronikaya dərin həvəs tələb edir. Alqoritmik düşüncə, yaradıcılıq, problem həll etmə bacarığı və komandada işləmək qabiliyyəti mütləqdir. ROS (Robot Operating System) platformasını öyrənmək bu sahədə fundamental bacarıqlardandır."
+}

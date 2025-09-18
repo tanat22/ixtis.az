@@ -1,0 +1,18 @@
+
+{
+  "name": "Maliyyə-mühasibatlığı",
+  "slug": "maliyye-muhasibatligi",
+  "description": "Maliyyə və mühasibatlıq ixtisası, təşkilatın maliyyə vəziyyətini və fəaliyyətinin nəticələrini əks etdirən məlumatların qeydə alınması, təsnifləşdirilməsi, ümumiləşdirilməsi və təqdim edilməsi proseslərini öyrənir. Bu ixtisas maliyyə hesabatlarının (balans, mənfəət və zərər haqqında hesabat) hazırlanması, vergi qanunvericiliyi, audit, büdcə planlaması və maliyyə təhlili kimi fundamental sahələri əhatə edir.",
+  "future": "Mühasibatlıq sahəsi rəqəmsal transformasiyanın təsiri ilə köklü şəkildə dəyişir. Bulud əsaslı mühasibatlıq proqramları, süni intellekt və avtomatlaşdırma (RPA - Robotic Process Automation) gündəlik əməliyyatları (məlumatların daxil edilməsi, hesablaşmalar) avtomatlaşdırır. Bu, gələcəyin mühasiblərinin və maliyyəçilərinin daha çox məlumatların təhlili, strateji maliyyə məsləhətlərinin verilməsi və fırıldaqçılığın aşkarlanması kimi daha dəyərli vəzifələrə fokuslanmasını tələb edəcək.",
+  "job_opportunities": "Audit və konsaltinq şirkətləri ('Böyük Dördlük' - Deloitte, PwC, EY, KPMG), bütün növ kommersiya şirkətlərinin mühasibatlıq və maliyyə departamentləri, banklar və maliyyə təşkilatları, dövlət qurumları (Vergilər Nazirliyi, Maliyyə Nazirliyi, Hesablama Palatası), mühasibatlıq və autsorsinq xidmətləri göstərən şirkətlər.",
+  "possible_positions": [
+    "Mühasib",
+    "Auditor (daxili və ya xarici)",
+    "Maliyyə nəzarətçisi (Financial Controller)",
+    "Maliyyə analitiki (Financial Analyst)",
+    "Vergi mütəxəssisi",
+    "Baş mühasib",
+    "Maliyyə direktoru (CFO - Chief Financial Officer) (karyera yüksəlişi ilə)"
+  ],
+  "recommendations": "Diqqətlilik, detallara önəm vermək və analitik düşüncə bu sahədə ən vacib şəxsi keyfiyyətlərdir. Milli Mühasibat Uçotu Standartlarını və Beynəlxalq Maliyyə Hesabatları Standartlarını (IFRS) dərindən öyrənmək şərtdir. Excel proqramını çox yüksək səviyyədə bilmək, 1C və ya SAP kimi mühasibatlıq proqramları ilə işləmək bacarığı vacibdir. ACCA (the Association of Chartered Certified Accountants) kimi beynəlxalq peşəkar sertifikatlaşdırma proqramına başlamaq bu sahədə uğurlu karyera qurmaq üçün ən etibarlı yollardan biridir."
+}

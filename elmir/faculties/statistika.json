@@ -1,0 +1,19 @@
+
+{
+  "name": "Statistika",
+  "slug": "statistika",
+  "description": "Statistika, məlumatların toplanması, emalı, təhlili, interpretasiyası və təqdim edilməsi ilə məşğul olan bir riyazi elm sahəsidir. Bu ixtisas tələbələrə ehtimal nəzəriyyəsi, riyazi statistika, ekonometrika, sosioloji tədqiqat metodları və data analizi kimi fənləri öyrədir. Statistiklər müxtəlif sahələrdə (iqtisadiyyat, sosiologiya, tibb, biznes) məlumatlar əsasında obyektiv nəticələr çıxarmaq və proqnozlar vermək bacarığına yiyələnirlər.",
+  "future": "Böyük verilənlər (Big Data) dövründə statistik biliklərə malik mütəxəssislərə olan tələbat bütün sahələrdə kəskin şəkildə artır. Statistika artıq Data Elminin (Data Science) fundamental tərkib hissəsidir. Süni intellekt və maşın öyrənməsi modellərinin qurulması, biznes qərarlarının data əsasında verilməsi, sosial tendensiyaların analizi və elmi tədqiqatların aparılması statistik metodlar olmadan mümkün deyil. Bu, gələcəyin ən perspektivli və yüksək gəlirli sahələrindən biridir.",
+  "job_opportunities": "Dövlət Statistika Komitəsi, Mərkəzi Bank, marketinq və sosial tədqiqat mərkəzləri, bank və sığorta şirkətləri (risk menecmenti, aktuari), böyük şirkətlərin analitika departamentləri, əczaçılıq şirkətləri (kliniki sınaqların analizi), konsaltinq firmaları, elmi-tədqiqat institutları.",
+  "possible_positions": [
+    "Statistik",
+    "Data analitiki (Data Analyst)",
+    "Data alimi (Data Scientist)",
+    "Biznes analitiki",
+    "Risk analitiki",
+    "Ekonometrist",
+    "Aktuari (sığorta riyaziyyatçısı)",
+    "Bazar araşdırmaları üzrə mütəxəssis"
+  ],
+  "recommendations": "Güclü riyazi hazırlıq bu ixtisas üçün əsasdır. Təhsil müddətində R və Python proqramlaşdırma dillərini (Pandas, NumPy, Scikit-learn kitabxanaları ilə) mükəmməl səviyyədə öyrənmək mütləqdir. SQL verilənlər bazası ilə işləməyi bacarmaq vacibdir. Power BI və ya Tableau kimi data vizuallaşdırma alətləri ilə tanışlıq böyük üstünlükdür. Kaggle kimi platformalarda real data ilə işləmək və layihələr hazırlamaq portfolionuzu zənginləşdirəcək və işə qəbul şansınızı artıracaq. Magistratura təhsili data elmi və ya ekonometrika kimi sahələrdə daha dərin ixtisaslaşma üçün tövsiyə olunur."
+}

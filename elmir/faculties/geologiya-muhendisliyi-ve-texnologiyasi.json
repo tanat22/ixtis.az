@@ -1,0 +1,16 @@
+{
+    "name": "Geologiya mühəndisliyi və texnologiyası",
+    "slug": "geologiya-muhendisliyi-ve-texnologiyasi",
+    "description": "Bu ixtisas, neft-qaz, filiz və qeyri-filiz faydalı qazıntı yataqlarının axtarışı, kəşfiyyatı və qiymətləndirilməsi ilə məşğul olan mühəndis-geoloqlar hazırlayır. Onlar süxur və mineralları öyrənir, geoloji xəritələr tərtib edir, quyu məlumatları əsasında yataqların geoloji modellərini qurur və ehtiyatları hesablayırlar. Həmçinin, mühəndisi-geoloji axtarışlar (tikinti üçün) da bu sahəyə aiddir.",
+    "future": "Təbii sərvətlər ölkə iqtisadiyyatının mühüm hissəsidir və onların axtarışı və kəşfiyyatı geoloqların əsas vəzifəsidir. Neft-qaz geologiyası ilə yanaşı, Azərbaycanda qızıl, mis və digər metal yataqlarının kəşfiyyatı və istismarı da bu peşəni aktual edir. Geoloqlar həm çöl ekspedisiyalarında, həm də ofis şəraitində geoloji məlumatların analizi ilə məşğul olurlar.",
+    "job_opportunities": "SOCAR (Geofizika və Geologiya İdarəsi), BP və digər neft şirkətləri, AzerGold QSC, Anglo Asian Mining PLC, Ekologiya və Təbii Sərvətlər Nazirliyinin Milli Geoloji Kəşfiyyat Xidməti, AMEA Geologiya və Geofizika İnstitutu, tikinti şirkətlərinin mühəndisi-geoloji axtarışlar departamentləri.",
+    "possible_positions": [
+        "Geoloq mühəndis",
+        "Neftçi-geoloq",
+        "Mədən geoloqu",
+        "Hidrogeoloq",
+        "Mühəndis-geoloq (tikintidə)",
+        "Petrofizik"
+    ],
+    "recommendations": "Bu ixtisas üçün təbiətə və səyahətlərə (ekspedisiyalara) maraq, müşahidə qabiliyyəti, analitik təfəkkür və çöl şəraitində işləməyə hazırlıq vacibdir. Kimya, fizika və coğrafiya fənlərini yaxşı bilmək lazımdır. Xəritələrlə işləmək, süxur nümunələrini təsvir etmək və geoloji modelləşdirmə proqramları ilə (məs., Petrel) işləmək bacarığı tələb olunur."
+}

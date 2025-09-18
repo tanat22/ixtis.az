@@ -1,0 +1,15 @@
+{
+    "name": "Sənaye qurğuları və texnoloji komplekslərin elektrik intiqalı",
+    "slug": "senaye-qurgulari-ve-texnoloji-komplekslerin-elektrik-intiqali",
+    "description": "Bu ixtisas, sənayenin müxtəlif sahələrində (metallurgiya, maşınqayırma, kimya, neft-qaz) istifadə olunan dəzgahların, konveyerlərin, nasosların, kompressorların və digər mexanizmlərin hərəkətini təmin edən elektrik mühərrikləri və onları idarə edən sistemlər (elektrik intiqalı) üzrə mühəndislər hazırlayır. Proqram elektrik maşınları, güc elektronikası, avtomatik idarəetmə nəzəriyyəsi kimi fənləri birləşdirir.",
+    "future": "İstehsalın avtomatlaşdırılması birbaşa idarə olunan elektrik intiqalının inkişafı ilə bağlıdır. Müasir sənayedə tezlik çeviriciləri ilə idarə olunan asinxron mühərriklər və servo-mühərriklər geniş tətbiq olunur. Bu sistemlərin layihələndirilməsi, sazlanması və istismarı üzrə bilikli mütəxəssislərə tələbat daim artır.",
+    "job_opportunities": "İri sənaye müəssisələrinin (məsələn, Bakı Neft Maşınqayırma Zavodu, Sumqayıt Texnologiyalar Parkı, SOCAR-ın zavodları) baş mexanik və baş energetik şöbələri, avtomatlaşdırma və mühəndislik şirkətləri (Siemens, ABB, Schneider Electric nümayəndəlikləri), elektrik mühərriklərinin və idarəetmə sistemlərinin təmiri və servisi ilə məşğul olan şirkətlər, layihə institutları.",
+    "possible_positions": [
+        "Elektrik intiqalı üzrə mühəndis",
+        "Sazlayıcı mühəndis (avtomatika, elektrik)",
+        "İstismar üzrə elektrik mühəndisi",
+        "Layihəçi mühəndis (elektrik hissəsi)",
+        "Servis mühəndisi"
+    ],
+    "recommendations": "Bu ixtisas üçün elektrik maşınlarını, güc elektronikası sxemlərini və avtomatik idarəetmə prinsiplərini dərindən bilmək, məntiqi təfəkkür, sxemləri 'oxumaq' və analiz etmək bacarığı vacibdir. Həm nəzəri biliklər, həm də praktiki sazlama və diaqnostika işlərinə həvəs tələb olunur. Proqramlaşdırılan məntiq kontrollerləri (PLC) ilə tanışlıq böyük üstünlükdür."
+}

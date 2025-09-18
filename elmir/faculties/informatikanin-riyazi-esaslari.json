@@ -1,0 +1,14 @@
+{
+    "name": "İnformatikanın riyazi əsasları",
+    "slug": "informatikanin-riyazi-esaslari",
+    "description": "İnformatikanın riyazi əsasları, alqoritmlər, verilənlər strukturları, diskret riyaziyyat və hesablama nəzəriyyəsi kimi fundamental mövzuları əhatə edir.",
+    "future": "Məzunlar proqram təminatı, alqoritmlərin hazırlanması, verilənlər bazası idarəetməsi və kiber təhlükəsizlik sahələrində işləyə bilərlər.",
+    "job_opportunities": "Proqram təminatı şirkətləri, İT departamentləri, elmi-tədqiqat mərkəzləri, startaplar.",
+    "possible_positions": [
+        "Proqramçı",
+        "Alqoritm mühəndisi",
+        "Verilənlər bazası administratoru",
+        "Sistem analitiki"
+    ],
+    "recommendations": "Bu ixtisas güclü məntiq, alqoritmik düşüncə və riyazi biliklər tələb edir. Python, C++ və Java kimi proqramlaşdırma dillərini öyrənmək vacibdir."
+}

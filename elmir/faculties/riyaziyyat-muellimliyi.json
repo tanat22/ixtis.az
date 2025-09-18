@@ -1,0 +1,17 @@
+
+{
+  "name": "Riyaziyyat müəllimliyi",
+  "slug": "riyaziyyat-muellimliyi",
+  "description": "Riyaziyyat müəllimliyi ixtisası, tələbələrə riyaziyyatın fundamental sahələrini (cəbr, həndəsə, riyazi analiz, ehtimal nəzəriyyəsi) dərindən öyrətməklə yanaşı, bu bilikləri şagirdlərə effektiv şəkildə ötürmək üçün pedaqoji və psixoloji bacarıqlar verir. Məzunlar məntiqi və analitik düşüncəni təşviq edən, problemləri həll etməyi öyrədən peşəkar təhsilverənlər olurlar.",
+  "future": "Riyaziyyat bütün dəqiq elmlərin və texnologiyaların təməlidir. Analitik düşüncə və problem həll etmə bacarıqlarına olan tələbatın artdığı müasir dövrdə güclü riyaziyyat müəllimlərinə həmişə ehtiyac var. Təhsil sektoru ilə yanaşı, riyazi biliklərin tətbiq olunduğu maliyyə və data analitikası kimi sahələrdə də karyera imkanları mövcuddur.",
+  "job_opportunities": "Dövlət və özəl ümumtəhsil məktəbləri, liseylər, gimnaziyalar, hazırlıq kursları, repetitor mərkəzləri, təhsil nəşriyyatları. Riyazi biliklərini fərqli sahədə tətbiq etmək istəyənlər üçün banklar, sığorta şirkətləri və data analitikası şöbələri də potensial iş yerləridir.",
+  "possible_positions": [
+    "Riyaziyyat müəllimi",
+    "Metodist",
+    "Təhsil proqramları mütəxəssisi",
+    "Repetitor",
+    "Kiçik analitik (əlavə bacarıqlarla)",
+    "Elmi işçi (magistratura və doktorantura təhsili sonrası)"
+  ],
+  "recommendations": "Universitet illərində olimpiada hazırlığı metodikalarını öyrənmək və məktəblilərlə işləmək böyük təcrübə qazandırır. GeoGebra, Desmos kimi müasir riyazi proqram təminatlarından istifadə etməyi öyrənmək dərslərinizi daha interaktiv edəcək. Məntiq və alqoritmik düşüncəni inkişaf etdirmək üçün Python kimi bir proqramlaşdırma dilinin əsaslarını öyrənmək gələcək karyeranız üçün əlavə üstünlük yaradacaq. Məzun olduqdan sonra Müəllimlərin İşə Qəbulu (MİQ) imtahanı ilə yanaşı, data analitikası və ya maliyyə üzrə əlavə sertifikatlar almaq karyera yolunuzu şaxələndirə bilər."
+}

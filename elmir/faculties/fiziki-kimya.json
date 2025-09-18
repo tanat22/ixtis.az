@@ -1,0 +1,14 @@
+{
+    "name": "Fiziki kimya",
+    "slug": "fiziki-kimya",
+    "description": "Fiziki kimya, kimyəvi hadisələri və sistemləri fizikanın qanunları və prinsipləri əsasında öyrənən bir sahədir. Termodinamika, kinetika, kvant kimyası və spektroskopiya kimi mövzuları əhatə edir.",
+    "future": "Məzunlar materialşünaslıq, kataliz, elektrokimya, farmakologiya və ətraf mühit elmləri kimi sahələrdə fəaliyyət göstərə bilərlər.",
+    "job_opportunities": "Elmi-tədqiqat institutları, universitetlər, kimya sənayesi, əczaçılıq şirkətləri, enerji sektoru.",
+    "possible_positions": [
+        "Kimyaçı-tədqiqatçı",
+        "Analitik kimyaçı",
+        "Proses mühəndisi",
+        "Materialşünas"
+    ],
+    "recommendations": "Bu ixtisas güclü riyazi hazırlıq, abstrakt düşünmə qabiliyyəti və kompleks problemləri analiz etmə bacarığı tələb edir."
+}

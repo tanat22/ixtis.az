@@ -1,0 +1,19 @@
+
+{
+  "name": "İqtisadiyyat",
+  "slug": "iqtisadiyyat",
+  "description": "İqtisadiyyat, məhdud resurslar şəraitində insanların və cəmiyyətin ehtiyaclarını ödəmək üçün sərvətlərin necə istehsal olunduğunu, bölüşdürüldüyünü və istehlak edildiyini öyrənən bir sosial elmdir. Bu fundamental ixtisas mikroiqtisadiyyat (fərdi firmaların və ev təsərrüfatlarının davranışı), makroiqtisadiyyat (inflyasiya, işsizlik, iqtisadi artım kimi ümumi göstəricilər), ekonometrika (statistik metodların iqtisadiyyata tətbiqi) və beynəlxalq iqtisadiyyat kimi sahələri əhatə edir.",
+  "future": "Qlobal iqtisadiyyatın mürəkkəbləşməsi, rəqəmsal transformasiya, maliyyə bazarlarının dəyişkənliyi və davamlı inkişaf problemləri iqtisadçılara olan tələbatı artırır. Gələcəkdə davranış iqtisadiyyatı (behavioral economics), data analitikası və süni intellektin iqtisadi proqnozlaşdırmaya tətbiqi kimi sahələr daha da ön plana çıxacaq. Güclü analitik təfəkkürə və modelləşdirmə bacarığına malik iqtisadçılar həm dövlət, həm də özəl sektorda yüksək qiymətləndiriləcək.",
+  "job_opportunities": "Dövlət qurumları (Mərkəzi Bank, İqtisadiyyat Nazirliyi, Maliyyə Nazirliyi, Dövlət Statistika Komitəsi), kommersiya bankları, sığorta şirkətləri, beynəlxalq təşkilatlar (Dünya Bankı, Beynəlxalq Valyuta Fondu), böyük şirkətlərin analitika və strateji planlaşdırma departamentləri, konsaltinq firmaları, elmi-tədqiqat mərkəzləri və universitetlər.",
+  "possible_positions": [
+    "İqtisadçı-analitik",
+    "Makroiqtisadi təhlilçi",
+    "Maliyyə analitiki",
+    "Biznes analitiki",
+    "Risk meneceri",
+    "Data analitiki",
+    "Ekonometrist",
+    "Elmi işçi"
+  ],
+  "recommendations": "Təhsil müddətində riyaziyyat, statistika və ekonometrika fənlərinə xüsusi diqqət yetirmək mütləqdir. Excel-i mükəmməl səviyyədə bilməklə yanaşı, R və ya Python kimi proqramlaşdırma dillərini və EViews, Stata kimi statistik proqram paketlərini öyrənmək sizi digər məzunlardan kəskin şəkildə fərqləndirəcək. Beynəlxalq maliyyə və iqtisadiyyat xəbərlərini (məsələn, The Economist, Financial Times) mütəmadi izləmək və tədqiqat işləri aparmaq analitik bacarıqlarınızı inkişaf etdirəcək. Magistratura təhsili bu sahədə daha dərin ixtisaslaşma üçün çox tövsiyə olunur."
+}

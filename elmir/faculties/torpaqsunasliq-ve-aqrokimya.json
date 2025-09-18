@@ -1,0 +1,18 @@
+
+{
+  "name": "Torpaqşünaslıq və aqrokimya",
+  "slug": "torpaqsunasliq-ve-aqrokimya",
+  "description": "Torpaqşünaslıq və aqrokimya ixtisası, torpağın tərkibini, xassələrini, münbitliyini, coğrafi yayılmasını və təkamülünü öyrənən, həmçinin torpaq münbitliyini artırmaq, bitkilərin qidalanmasını optimallaşdırmaq və gübrələrdən səmərəli istifadə etmək yollarını araşdıran bir elm sahəsidir. Bu ixtisas torpaq fizikası, torpaq kimyası, torpaq biologiyası, aqrokimya və torpaqların meliorasiyası kimi sahələri əhatə edir.",
+  "future": "Kənd təsərrüfatında dayanıqlı və intensiv istehsalın təşkili birbaşa torpaq resurslarının vəziyyətindən asılıdır. Torpaqların şoranlaşması, eroziyası və münbitliyinin azalması kimi qlobal problemlər bu sahənin mütəxəssislərini həmişəkindən daha aktual edir. 'Dəqiq əkinçilik' (precision farming) texnologiyalarının tətbiqi, torpağın vəziyyətini sensorlar və dronlarla analiz edərək hər bir sahəyə fərdi gübrələmə proqramının tətbiqi bu sahənin gələcəyini müəyyən edir.",
+  "job_opportunities": "Kənd Təsərrüfatı Nazirliyinin strukturları (məsələn, Aqrar Xidmətlər Agentliyi və onun laboratoriyaları), Ekologiya və Təbii Sərvətlər Nazirliyi, AMEA Torpaqşünaslıq və Aqrokimya İnstitutu, böyük aqroparklar və fermer təsərrüfatları, gübrə istehsalı və satışı ilə məşğul olan şirkətlər, torpaq analizi laboratoriyaları, meliorasiya və su təsərrüfatı idarələri.",
+  "possible_positions": [
+    "Torpaqşünas",
+    "Aqrokimyaçı",
+    "Laboratoriya mütəxəssisi (torpaq və gübrə analizi)",
+    "Aqronom-məsləhətçi",
+    "Meliorasiya üzrə mütəxəssis",
+    "Elmi işçi",
+    "Gübrə və pestisidlər üzrə satış təmsilçisi"
+  ],
+  "recommendations": "Təhsil müddətində kimya və biologiya fənlərini dərindən öyrənmək, çöl təcrübələrində aktiv iştirak edərək torpaq profillərini açmaq və təsvir etmək bacarıqlarına yiyələnmək vacibdir. Torpaq, su və bitki nümunələrinin laborator analizini aparmağı öyrənmək əsas tələblərdəndir. ArcGIS və ya QGIS kimi proqramlar vasitəsilə torpaq xəritələrinin tərtibi və analizi bacarığı sizi müasir əmək bazarında rəqabətə davamlı edəcək."
+}

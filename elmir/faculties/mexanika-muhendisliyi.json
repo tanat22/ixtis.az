@@ -1,0 +1,19 @@
+
+{
+  "name": "Mexanika mühəndisliyi",
+  "slug": "mexanika-muhendisliyi",
+  "description": "Mexanika mühəndisliyi, maşın və mexanizmlərin, istilik və enerji sistemlərinin, nəqliyyat vasitələrinin və istehsalat avadanlıqlarının dizaynı, analizi, istehsalı və istismarı ilə məşğul olan geniş və fundamental mühəndislik sahəsidir. Bu ixtisas statika, dinamika, termodinamika, materiallar müqaviməti, hidravlika və maşın detalları kimi klassik mühəndislik fənlərinə əsaslanır.",
+  "future": "Robototexnika və avtomatlaşdırmanın inkişafı, alternativ enerji mənbələrinin (külək turbinləri, hidravlik sistemlər) layihələndirilməsi, biotibbi cihazların (protezlər, cərrahi alətlər) yaradılması və nəqliyyat vasitələrinin (o cümlədən elektromobillərin) təkmilləşdirilməsi mexanika mühəndisliyi üçün yeni üfüqlər açır. Kompüter dəstəkli dizayn (CAD) və mühəndislik analizləri (CAE) bu sahənin ayrılmaz hissəsinə çevrilib və gələcəkdə rolu daha da artacaq.",
+  "job_opportunities": "Maşınqayırma və cihazqayırma müəssisələri, neft-qaz şirkətlərinin texniki şöbələri, energetika sektoru (elektrik stansiyaları), gəmiqayırma, avtomobil təmiri və servisi mərkəzləri, müdafiə sənayesi, layihə-konstruktor büroları, istilik və havalandırma (HVAC) sistemləri ilə məşğul olan şirkətlər.",
+  "possible_positions": [
+    "Konstruktor mühəndis",
+    "Layihəçi mühəndis",
+    "Texnoloq mühəndis",
+    "Servis mühəndisi",
+    "Keyfiyyətə nəzarət mühəndisi",
+    "İstehsalat rəisi",
+    "Hesablama mühəndisi (CAE)",
+    "HVAC mühəndisi"
+  ],
+  "recommendations": "Təhsil müddətində SolidWorks, AutoCAD, CATIA, ANSYS kimi CAD/CAE proqramlarını mükəmməl səviyyədə öyrənmək şərtdir. Termodinamika, materiallar müqaviməti və maşın detalları fənlərinə xüsusi diqqət yetirilməlidir. İstehsalat təcrübəsi zamanı real avadanlıqlar və texnoloji proseslərlə tanış olmaq çox faydalıdır. Məzun olduqdan sonra müəyyən bir sahə (məsələn, hidravlik sistemlər, istilik sistemləri, qaynaq texnologiyaları) üzrə ixtisaslaşmaq və müvafiq sertifikatlar əldə etmək karyera inkişafını sürətləndirəcək."
+}

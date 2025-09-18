@@ -1,0 +1,18 @@
+
+{
+  "name": "Energetika mühəndisliyi",
+  "slug": "energetika-muhendisliyi",
+  "description": "Energetika mühəndisliyi, elektrik enerjisinin istehsalı (İstilik Elektrik Stansiyaları, Su Elektrik Stansiyaları, Günəş və Külək Elektrik Stansiyaları), ötürülməsi (yüksəkgərginlikli xətlər), paylanması və səmərəli istifadəsi ilə məşğul olan mühəndislik sahəsidir. Bu ixtisas elektrik maşınları, elektrik şəbəkələri, rele mühafizəsi və avtomatika, yüksək gərginliklər texnikası kimi fundamental fənləri əhatə edir.",
+  "future": "Bərpaolunan enerji mənbələrinə (günəş, külək) qlobal keçid energetika mühəndisləri üçün yeni və geniş üfüqlər açır. 'Ağıllı şəbəkələr'in (Smart Grid) tətbiqi, enerjiyə qənaət texnologiyaları və enerji saxlama sistemlərinin (böyük akkumulyatorlar) inkişafı bu sahənin gələcəyini formalaşdırır. Azərbaycanın yaşıl enerjiyə keçid strategiyası çərçivəsində bu sahənin mütəxəssislərinə olan tələbat artmaqda davam edəcək.",
+  "job_opportunities": "'Azərenerji' ASC, 'Azərişıq' ASC, Dövlət Neft Şirkəti (SOCAR) və onun müəssisələri, BP kimi xarici enerji şirkətləri, sənaye müəssisələrinin energetika şöbələri, elektrik avadanlıqları istehsal edən və satan şirkətlər, layihə institutları, alternativ və bərpa olunan enerji agentlikləri.",
+  "possible_positions": [
+    "Energetika mühəndisi",
+    "Rele mühafizəsi və avtomatika mühəndisi",
+    "Elektrik şəbəkələri üzrə mühəndis",
+    "Baş energetik",
+    "Layihəçi mühəndis (elektrik təchizatı)",
+    "Dispetçer (enerji sistemində)",
+    "Bərpaolunan enerji üzrə mütəxəssis"
+  ],
+  "recommendations": "Təhsil dövründə AutoCAD Electrical, ETAP, PSCAD kimi proqramları öyrənmək layihələndirmə və analiz bacarıqlarınızı artıracaq. PLC (Məntiqi Programlaşdırıla bilən Kontroller) və SCADA sistemlərinin əsasları ilə tanış olmaq müasir idarəetmə sistemləri ilə işləmək üçün vacibdir. Elektrik təhlükəsizliyi qaydalarını dərindən bilmək və müvafiq qrup üzrə sertifikat almaq işə qəbul üçün əsas şərtlərdən biridir. Məzun olduqdan sonra müasir avadanlıqlar üzrə istehsalçıların təlimlərinə qatılmaq və beynəlxalq standartlar (IEC, IEEE) haqqında bilikləri artırmaq karyera inkişafı üçün faydalıdır."
+}

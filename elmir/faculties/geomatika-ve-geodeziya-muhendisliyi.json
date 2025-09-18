@@ -1,0 +1,19 @@
+
+{
+  "name": "Geomatika və geodeziya mühəndisliyi",
+  "slug": "geomatika-ve-geodeziya-muhendisliyi",
+  "description": "Geomatika və geodeziya mühəndisliyi, Yer səthinin və onun üzərindəki obyektlərin ölçülməsi, analizi, idarə olunması və vizuallaşdırılması ilə məşğul olan müasir bir mühəndislik sahəsidir. Bu ixtisas ənənəvi geodeziya (torpaq ölçmə), kartoqrafiya, fotogrammetriya (şəkillər əsasında ölçmə) ilə yanaşı, Coğrafi İnformasiya Sistemləri (GIS), Qlobal Naviqasiya Peyk Sistemləri (GNSS, məsələn, GPS) və məsafədən zondlama (peyklər və dronlarla məlumat toplama) kimi müasir texnologiyaları əhatə edir.",
+  "future": "Rəqəmsal dünyanın məkan məlumatlarına olan ehtiyacı sürətlə artır. 'Ağıllı şəhərlər', naviqasiya sistemləri, əmlak kadastrı, infrastruktur layihələrinin idarə olunması, kənd təsərrüfatı və ətraf mühitin monitorinqi kimi sahələrdə geomatika mühəndislərinin rolu əvəzsizdir. Dron texnologiyalarının və süni intellektin məkan məlumatlarının toplanması və analizində tətbiqi bu sahənin gələcəyini parlaq edir.",
+  "job_opportunities": "İqtisadiyyat Nazirliyi yanında Əmlak Məsələləri Dövlət Xidməti, Ekologiya və Təbii Sərvətlər Nazirliyi, Rəqəmsal İnkişaf və Nəqliyyat Nazirliyi, tikinti şirkətləri, neft-qaz şirkətləri (boru kəmərlərinin və infrastrukturanın monitorinqi), geodeziya və kartoqrafiya ilə məşğul olan özəl şirkətlər, telekommunikasiya şirkətləri (baza stansiyalarının yerləşdirilməsi).",
+  "possible_positions": [
+    "Geodeziya mühəndisi",
+    "GIS mütəxəssisi (Coğrafi İnformasiya Sistemləri)",
+    "Kartoqraf",
+    "Fotogrammetriya mütəxəssisi",
+    "Torpaq quruluşu və kadastr mühəndisi",
+    "Topoqraf",
+    "Məsafədən zondlama mütəxəssisi",
+    "Dron operatoru (xəritəçəkmə üzrə)"
+  ],
+  "recommendations": "Təhsil müddətində ArcGIS, QGIS, Civil 3D və ya Trimble Business Center kimi proqram təminatlarını dərindən öyrənmək şərtdir. Python proqramlaşdırma dilini öyrənmək, GIS proqramlarında avtomatlaşdırma və məkan analizi üçün skriptlər yazmaq imkanı verəcək. Müasir geodeziya alətləri (elektron taxometrlər, GNSS qəbulediciləri, lazer skanerləri) və dronlarla işləmə təcrübəsi böyük üstünlükdür. Sahə təcrübələrində fəal iştirak etmək və praktiki ölçmə bacarıqlarına yiyələnmək çox vacibdir. Məzun olduqdan sonra ixtisaslaşmış proqram təminatları (məsələn, Esri və ya Autodesk sertifikatları) üzrə sertifikatlar almaq karyeranız üçün faydalı olacaq."
+}

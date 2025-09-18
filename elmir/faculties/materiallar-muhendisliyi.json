@@ -1,0 +1,19 @@
+
+{
+  "name": "Materiallar mühəndisliyi",
+  "slug": "materiallar-muhendisliyi",
+  "description": "Materiallar mühəndisliyi, materialların (metalllar, keramikalar, polimerlər, kompozitlər) atom və molekulyar səviyyədə quruluşu, xassələri, emalı və tətbiqi arasındakı əlaqəni öyrənən fənlərarası bir mühəndislik sahəsidir. Bu ixtisasın məqsədi mövcud materialları təkmilləşdirmək və müəyyən bir tətbiq üçün lazım olan xassələrə malik tamamilə yeni materiallar yaratmaqdır.",
+  "future": "Gələcəyin texnologiyaları yeni materiallar tələb edir. Nanotexnologiya, biotibb mühəndisliyi (implantlar, toxuma mühəndisliyi), aerokosmik sənaye (yüngül və möhkəm kompozitlər), bərpaolunan enerji (günəş panelləri, batareyalar) və 3D çap üçün xüsusi materialların hazırlanması bu sahənin ən perspektivli istiqamətləridir. 'Ağıllı' materiallar (smart materials) və özünü bərpa edən materialların yaradılması materiallar mühəndisliyinin gələcəyini müəyyən edəcək.",
+  "job_opportunities": "Metallurgiya və maşınqayırma zavodları, müdafiə sənayesi müəssisələri, aerokosmik sənaye, tikinti materialları istehsal edən şirkətlər, polimer və plastik emalı müəssisələri, elmi-tədqiqat mərkəzləri və universitetlər, keyfiyyətə nəzarət və sınaq laboratoriyaları, tibbi implant və avadanlıq istehsalçıları.",
+  "possible_positions": [
+    "Materialşünas mühəndis",
+    "Proses mühəndisi",
+    "Keyfiyyətə nəzarət mühəndisi",
+    "Tədqiqat və inkişaf (R&D) mühəndisi",
+    "Korroziya mühəndisi",
+    "Kompozit materiallar üzrə mütəxəssis",
+    "Metalurq mühəndis",
+    "Laboratoriya mütəxəssisi"
+  ],
+  "recommendations": "Təhsil müddətində materialların xarakterizə olunması üçün istifadə olunan avadanlıqlarla (məsələn, elektron mikroskop, rentgen difraktometri, mexaniki sınaq maşınları) işləmə təcrübəsi qazanmaq çox vacibdir. Kimya, fizika və termodinamika fənlərini dərindən öyrənmək bu sahənin təməlini təşkil edir. MATLAB, Python kimi proqramlaşdırma dillərini və ya materialların modelləşdirilməsi üçün ixtisaslaşmış proqramları (məsələn, COMSOL, Abaqus) öyrənmək böyük üstünlükdür. Magistratura və doktorantura təhsili bu sahədə dərin elmi biliklər və yüksək karyera imkanları üçün vacibdir."
+}

@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Təhsil Bələdçisi (ixtis.az klonu)
 
-## Getting Started
+Bu, abituriyentlər üçün Azərbaycanda ali təhsil müəssisələrinə ixtisas seçimi prosesini asanlaşdırmaq məqsədilə yaradılmış bir veb-tətbiqdir. Layihə, populyar ixtisas seçimi platforması olan ixtis.az-dan ilhamlanaraq, müasir texnologiyalarla daha interaktiv və funksional bir təcrübə təqdim etməyi hədəfləyir.
 
-First, run the development server:
+## Əsas Xüsusiyyətlər
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **İxtisasların Axtarışı və Filtrasiyası:** Universitet, ixtisas qrupu, təhsil haqqı və s. kimi bir çox parametrə görə detallı axtarış.
+- **Qəbul Ehtimalının Hesablanması:** İstifadəçinin topladığı bala əsasən seçdiyi ixtisaslara qəbul olma şansının proqnozlaşdırılması.
+- **Seçim Səbəti:** Bəyənilən ixtisasları bir siyahıya əlavə edərək onları müqayisə etmək və sıralamaq imkanı.
+- **PDF Yükləmə:** Yekun ixtisas siyahısını qəbul ehtimalı ilə birlikdə PDF formatında yükləmə funksiyası.
+- **Mobil-uyğun Dizayn:** Bütün cihazlarda (desktop, tablet, mobil) rahat istifadə üçün tam responsiv interfeys.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Texnoloji Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework:** [Next.js](https://nextjs.org/) (App Router)
+- **Dil:** [TypeScript](https://www.typescriptlang.org/)
+- **Stil:** [Tailwind CSS](https://tailwindcss.com/)
+- **Komponentlər:** [shadcn/ui](https://ui.shadcn.com/)
+- **Deployment:** Vercel, Netlify, və ya digər Node.js dəstəkləyən platformalar.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Başlamaq
 
-## Learn More
+Layihəni yerli kompüterinizdə işə salmaq üçün:
 
-To learn more about Next.js, take a look at the following resources:
+1.  Deponu klonlayın:
+    ```sh
+    git clone https://github.com/tanat22/ixtis.az.git
+    ```
+2.  Qovluğa daxil olun:
+    ```sh
+    cd ixtis.az
+    ```
+3.  Paketləri quraşdırın:
+    ```sh
+    npm install
+    ```
+4.  Development server-i başladın:
+    ```sh
+    npm run dev
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Artıq layihəni `http://localhost:3000` ünvanında görə bilərsiniz.

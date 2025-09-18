@@ -1,0 +1,19 @@
+
+{
+  "name": "İnformasiya texnologiyaları",
+  "slug": "informasiya-texnologiyalari",
+  "description": "İnformasiya texnologiyaları (İT) ixtisası, kompüter sistemlərinin, şəbəkələrinin, proqram təminatının və verilənlər bazalarının biznes və təşkilati məqsədlər üçün tətbiqi, idarə olunması və dəstəklənməsi ilə məşğul olan geniş bir sahədir. Kompüter elmlərindən fərqli olaraq, İT daha çox mövcud texnologiyaların tətbiqinə və idarəçiliyinə fokuslanır.",
+  "future": "Rəqəmsal transformasiya bütün şirkətlər və təşkilatlar üçün qaçılmazdır. Bu səbəbdən, İT infrastrukturasını qura, idarə edə və təhlükəsizliyini təmin edə bilən mütəxəssislərə olan tələbat hər zaman yüksək olacaq. Bulud texnologiyaları (Cloud Computing), kibertəhlükəsizlik, şəbəkə idarəçiliyi və İT layihələrinin idarə olunması bu sahənin ən perspektivli istiqamətləridir.",
+  "job_opportunities": "Demək olar ki, bütün orta və böyük şirkətlərin İT departamentləri, banklar, dövlət qurumları, telekommunikasiya şirkətləri, sistem inteqratorları və İT autsorsinq xidmətləri göstərən şirkətlər, təhsil və səhiyyə müəssisələri.",
+  "possible_positions": [
+    "Sistem administratoru (System Administrator)",
+    "Şəbəkə administratoru (Network Administrator)",
+    "İT dəstək mütəxəssisi (IT Support Specialist)",
+    "Verilənlər bazası administratoru (DBA)",
+    "DevOps mühəndisi",
+    "Bulud mühəndisi (Cloud Engineer)",
+    "İT menecer",
+    "İT layihə meneceri"
+  ],
+  "recommendations": "Təhsil müddətində şəbəkə texnologiyaları və protokollarını (TCP/IP) dərindən öyrənmək, Windows Server və Linux əməliyyat sistemləri ilə işləmə bacarıqlarına yiyələnmək vacibdir. Cisco (CCNA), Microsoft (Azure Administrator) və ya CompTIA (A+, Network+, Security+) kimi beynəlxalq sertifikatlar almaq işə qəbul şansınızı kəskin artırır. Bulud platformaları (AWS, Azure, Google Cloud) ilə tanışlıq müasir əmək bazarında böyük üstünlükdür. Python və ya PowerShell kimi skript dillərini bilmək tapşırıqları avtomatlaşdırmaq üçün faydalıdır."
+}

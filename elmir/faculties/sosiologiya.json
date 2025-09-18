@@ -1,0 +1,19 @@
+
+{
+  "name": "Sosiologiya",
+  "slug": "sosiologiya",
+  "description": "Sosiologiya, insan cəmiyyətini, onun strukturunu, sosial davranışları, sosial qrupları, institutları və onlar arasındakı qarşılıqlı münasibətləri sistematik şəkildə öyrənən bir sosial elmdir. Sosioloqlar cəmiyyətdə baş verən hadisələri (məsələn, bərabərsizlik, cinayətkarlıq, ailə dəyişiklikləri, ictimai rəy) anlamaq və izah etmək üçün nəzəriyyələr və tədqiqat metodlarından istifadə edirlər.",
+  "future": "Məlumat əsrində cəmiyyətin nəbzini tutmaq, ictimai rəyi anlamaq, bazar tendensiyalarını proqnozlaşdırmaq və sosial problemlərin həlli üçün effektiv siyasətlər hazırlamaq getdikcə daha vacib olur. Bu səbəbdən, sosial tədqiqat metodlarını (sorğular, müsahibələr, fokus qrupları) və data analizi bacarıqlarını bilən sosioloqlara marketinq, insan resursları, media, dövlət idarəçiliyi və qeyri-hökumət təşkilatları kimi bir çox sahədə tələbat artır.",
+  "job_opportunities": "Marketinq və sosial tədqiqat mərkəzləri, dövlət qurumlarının analitik şöbələri (məsələn, Dövlət Statistika Komitəsi, Əmək və Əhalinin Sosial Müdafiəsi Nazirliyi), insan resursları departamentləri, reklam və PR agentlikləri, qeyri-hökumət təşkilatları (QHT), beynəlxalq təşkilatlar, elmi-tədqiqat institutları və universitetlər.",
+  "possible_positions": [
+    "Sosioloq-tədqiqatçı",
+    "Marketinq analitiki",
+    "İctimaiyyətlə əlaqələr (PR) mütəxəssisi",
+    "İnsan resursları (HR) mütəxəssisi",
+    "Biznes analitiki",
+    "Layihə koordinatoru (sosial layihələr üzrə)",
+    "Siyasi məsləhətçi",
+    "Data analitiki"
+  ],
+  "recommendations": "Təhsil müddətində SPSS, R və ya Python kimi statistik analiz proqramlarını öyrənmək çox vacibdir. Bu, sizi ənənəvi sosioloqlardan fərqləndirəcək və data analitikasına yaxınlaşdıracaq. Sorğu anketlərinin tərtibi, fokus qrupların aparılması və dərin müsahibə texnikaları kimi keyfiyyət və kəmiyyət tədqiqat metodlarını praktiki olaraq tətbiq edin. Müxtəlif sosial layihələrdə könüllü kimi iştirak etmək həm təcrübənizi artıracaq, həm də faydalı əlaqələr qurmağınıza kömək edəcək."
+}

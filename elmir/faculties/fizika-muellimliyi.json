@@ -1,0 +1,17 @@
+
+{
+  "name": "Fizika müəllimliyi",
+  "slug": "fizika-muellimliyi",
+  "description": "Fizika müəllimliyi ixtisası, orta və peşə təhsili müəssisələrində fizika fənnini tədris etmək üçün nəzəri biliklər və pedaqoji bacarıqlar təqdim edən bir sahədir. Bu ixtisas tələbələrə klassik mexanikadan tutmuş kvant fizikasına qədər geniş bir elmi bazanı, həmçinin tədris metodikasını, psixologiyanı və sinif idarəetməsini öyrədir.",
+  "future": "Elm və texnologiyanın sürətlə inkişaf etdiyi bir dövrdə fizika elminə olan tələbat artmaqdadır. STEM (Elm, Texnologiya, Mühəndislik və Riyaziyyat) sahələrinə marağın artması ilə keyfiyyətli fizika müəllimlərinə həmişə ehtiyac olacaq. Məzunlar təkcə məktəblərdə deyil, həmçinin hazırlıq kurslarında, özəl təhsil mərkəzlərində və elmi-populyar layihələrdə də fəaliyyət göstərə bilərlər.",
+  "job_opportunities": "Məzunlar əsasən dövlət və özəl ümumtəhsil məktəblərində, liseylərdə, gimnaziyalarda, peşə məktəblərində və kolleclərdə işləyə bilərlər. Bundan əlavə, təhsil mərkəzləri, repetitorluq fəaliyyəti və təhsil texnologiyaları (EdTech) startapları da potensial iş yerləridir.",
+  "possible_positions": [
+    "Fizika müəllimi",
+    "Metodist",
+    "Təhsil mütəxəssisi",
+    "Laborant",
+    "Repetitor",
+    "Elmi işçi (magistratura və doktorantura təhsili sonrası)"
+  ],
+  "recommendations": "Universitetdə oxuyarkən tədris təcrübəsi proqramlarında fəal iştirak etmək çox vacibdir. Müasir tədris metodologiyalarını (məsələn, layihə əsaslı təlim, interaktiv dərs modelləri) öyrənmək və tətbiq etmək sizi digər məzunlardan fərqləndirəcək. Phyphox, Algodoo kimi simulyasiya proqramlarını və onlayn laboratoriyaları mənimsəmək dərslərinizi daha maraqlı etməyə kömək edəcək. Məzun olduqdan sonra isə müəllimlərin işə qəbulu (MİQ) imtahanına hazırlaşmaq və ya magistratura pilləsində təhsili davam etdirərək elmi fəaliyyətə yönəlmək olar."
+}

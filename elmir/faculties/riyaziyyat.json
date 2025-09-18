@@ -1,0 +1,19 @@
+
+{
+  "name": "Riyaziyyat",
+  "slug": "riyaziyyat",
+  "description": "Riyaziyyat ixtisası sadəcə rəqəmlər və formullar toplusu deyil, abstrakt strukturları, məntiqi əlaqələri və modelləri öyrənən fundamental bir elmdir. Bu sahə tələbələrə dərin analitik düşüncə, mürəkkəb problemləri formal dillə ifadə etmə və onları ciddi məntiqi ardıcıllıqla həll etmə bacarıqları aşılayır. Riyaziyyat bütün dəqiq elmlərin, mühəndisliyin, kompüter elmlərinin və hətta iqtisadiyyatın dilidir.",
+  "future": "Böyük verilənlər (Big Data), süni intellekt, maliyyə modelləşdirilməsi və kibertəhlükəsizlik kimi sahələrin inkişafı ilə riyazi düşüncə və modelləşdirmə bacarıqlarına malik mütəxəssislərə olan tələbat sürətlə artır. Riyaziyyatçılar artıq təkcə akademik çevrələrdə deyil, həm də texnologiya, maliyyə, sığorta və məsləhət şirkətlərində ən çox axtarılan kadrlara çevrilirlər. Gələcək, mürəkkəb sistemləri riyazi olaraq modelləşdirə bilən beyinlərə aiddir.",
+  "job_opportunities": "AMEA Riyaziyyat və Mexanika İnstitutu, universitetlər, banklar və maliyyə qurumları (risk analitikası, kvantitativ analiz), sığorta şirkətləri (aktuar riyaziyyatı), proqram təminatı şirkətləri (alqoritm tərtibatı), data analitikası şöbələri olan böyük şirkətlər, konsaltinq firmaları, dövlət statistika orqanları.",
+  "possible_positions": [
+    "Elmi işçi (riyaziyyatçı)",
+    "Data analitiki (Data Analyst)",
+    "Kvantitativ analitik (Quantitative Analyst/Quant)",
+    "Aktuari (Actuary)",
+    "Alqoritm tərtibatçısı",
+    "Biznes analitik",
+    "Statistik",
+    "Riyaziyyat müəllimi/Repetitor"
+  ],
+  "recommendations": "Universitet təhsili ilə paralel olaraq Python (NumPy, Pandas, Scikit-learn kitabxanaları ilə), R və SQL kimi proqramlaşdırma dillərini və verilənlər bazalarını öyrənmək mütləqdir. Bu, sizin nəzəri biliklərinizi praktiki məsələlərin həllinə tətbiq etməyə imkan verəcək. Kaggle kimi platformalarda data analitikası yarışmalarında iştirak etmək və GitHub-da portfolio yaratmaq sizi digər məzunlardan fərqləndirəcək. Maliyyə sahəsinə marağınız varsa, CFA (Chartered Financial Analyst) proqramının ilk səviyyələrinə hazırlaşmaq, sığorta sahəsinə marağınız varsa, aktuar imtahanları haqqında məlumat toplamaq faydalı olardı."
+}

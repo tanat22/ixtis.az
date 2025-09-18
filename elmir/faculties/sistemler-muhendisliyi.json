@@ -1,0 +1,18 @@
+
+{
+  "name": "Sistemlər mühəndisliyi",
+  "slug": "sistemler-muhendisliyi",
+  "description": "Sistemlər mühəndisliyi, mürəkkəb sistemlərin (məsələn, rabitə şəbəkəsi, nəqliyyat sistemi, istehsalat xətti) bütün həyat dövrü boyunca - dizayn, inkişaf, sınaq, istismar və təkmilləşdirmə - idarə olunması üçün fənlərarası yanaşmanı tətbiq edən bir sahədir. Bu ixtisas ayrı-ayrı komponentləri deyil, onların bir-biri ilə qarşılıqlı əlaqəsini və ümumi sistemin davranışını analiz etməyə fokuslanır. Layihə idarəçiliyi, risk analizi, tələblərin idarə olunması və sistem arxitekturası bu sahənin əsas komponentləridir.",
+  "future": "Texnologiyalar mürəkkəbləşdikcə, böyük şəkli görə bilən, müxtəlif mühəndislik sahələrini (mexanika, elektronika, proqramlaşdırma) əlaqələndirə bilən sistem mühəndislərinə olan tələbat artır. Aerokosmik, müdafiə sənayesi, telekommunikasiya, səhiyyə və nəqliyyat kimi mürəkkəb layihələrin həyata keçirilməsi bu mütəxəssislər olmadan mümkün deyil. Gələcəkdə süni intellekt və modelləşdirmənin sistem dizaynına daha dərindən inteqrasiyası gözlənilir.",
+  "job_opportunities": "Müdafiə sənayesi müəssisələri, aerokosmik şirkətlər, telekommunikasiya operatorları, böyük infrastruktur layihələri həyata keçirən şirkətlər, sistem inteqratorları, böyük İT şirkətləri, nəqliyyat və logistika şirkətləri, elmi-tədqiqat mərkəzləri.",
+  "possible_positions": [
+    "Sistem mühəndisi (Systems Engineer)",
+    "Layihə meneceri/mühəndisi",
+    "Sistem arxitektoru",
+    "Tələblər üzrə mühəndis (Requirements Engineer)",
+    "İnteqrasiya mühəndisi",
+    "Test və yoxlama mühəndisi (Verification & Validation Engineer)",
+    "Konfiqurasiya meneceri"
+  ],
+  "recommendations": "Təhsil müddətində layihə idarəetməsi metodologiyalarını (məsələn, PMP, Agile) öyrənmək çox vacibdir. MATLAB/Simulink, SysML və ya digər sistem modelləşdirmə alətləri ilə işləmə bacarıqları böyük üstünlükdür. Ünsiyyət, komandada işləmə və sənədləşdirmə kimi 'yumşaq bacarıqlar' (soft skills) texniki biliklər qədər önəmlidir. INCOSE (International Council on Systems Engineering) kimi beynəlxalq təşkilatların sertifikatları (məsələn, CSEP) karyera inkişafı üçün çox faydalıdır."
+}

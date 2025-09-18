@@ -1,0 +1,14 @@
+{
+    "name": "Diferensial tənliklər",
+    "slug": "diferensial-tenlikler",
+    "description": "Diferensial tənliklər, funksiyalar və onların törəmələri arasındakı əlaqəni öyrənən riyaziyyatın bir sahəsidir. Bu sahə fizika, mühəndislik, biologiya və iqtisadiyyat kimi bir çox elmlərdə hadisələrin modelləşdirilməsində geniş tətbiq olunur.",
+    "future": "Məzunlar elmi-tədqiqat mərkəzlərində, universitetlərdə, sənaye və maliyyə sektorlarında riyazi modelləşdirmə və analizlə məşğul ola bilərlər.",
+    "job_opportunities": "Elmi-tədqiqat institutları, universitetlər, mühəndislik şirkətləri, maliyyə qurumları, proqram təminatı şirkətləri.",
+    "possible_positions": [
+        "Riyaziyyatçı-tədqiqatçı",
+        "Analitik",
+        "Sistem mühəndisi",
+        "Alqoritm mühəndisi"
+    ],
+    "recommendations": "Bu ixtisas dərin analitik düşüncə, abstrakt riyazi qabiliyyət və müxtəlif sahələrə tətbiq üçün güclü problem həll etmə bacarıqları tələb edir. MATLAB, Python və ya R kimi proqramlaşdırma dillərini bilmək vacibdir."
+}

@@ -1,0 +1,16 @@
+{
+    "name": "Elektrik mühəndisliyi və energetika",
+    "slug": "elektrik-muhendisliyi-ve-energetika",
+    "description": "Bu geniş profilli ixtisas elektrik enerjisinin istehsalı (elektrik stansiyaları), ötürülməsi (yüksək gərginlikli xətlər, yarımstansiyalar), paylanması (şəhər və rayon elektrik şəbəkələri) və istehlakı (sənaye və məişət) ilə bağlı bütün məsələləri əhatə edir. Proqram elektrik maşınları, elektrik aparatları, elektrik şəbəkələri və sistemləri, rele mühafizəsi və avtomatika kimi fənləri öyrədir.",
+    "future": "Elektrik enerjisi olmadan müasir həyatı və sənayeni təsəvvür etmək mümkün deyil. Bu səbəbdən elektrik mühəndislərinə tələbat həmişə və hər yerdə yüksəkdir. Bərpa olunan enerji mənbələrinin (günəş, külək) inkişafı, 'ağıllı şəbəkələr' (Smart Grid) texnologiyalarının tətbiqi bu sahəni daha da perspektivli edir.",
+    "job_opportunities": "Azərenerji ASC, Azərişıq ASC, metro, dəmir yolu, neft-qaz sənayesinin bütün müəssisələri, iri sənaye zavodları, tikinti şirkətləri, layihə institutları, elektrik avadanlıqlarının satışı və quraşdırılması ilə məşğul olan özəl şirkətlər.",
+    "possible_positions": [
+        "Elektrik mühəndisi",
+        "Yarımstansiya rəisi/növbətçisi",
+        "Rele mühafizəsi və avtomatika üzrə mühəndis",
+        "Elektrik şəbəkələri üzrə mühəndis",
+        "Layihəçi mühəndis (elektrik təchizatı)",
+        "Energetik"
+    ],
+    "recommendations": "Bu ixtisas üçün fizikanın elektrik və maqnetizm bölmələrini dərindən bilmək, riyazi təfəkkür, məsuliyyət və dəqiqlik tələb olunur. Elektrik təhlükəsizliyi qaydalarını bilmək və onlara ciddi riayət etmək həyati əhəmiyyət kəsb edir. Kompüterdə layihələndirmə (AutoCAD, DIgSILENT) proqramlarını bilmək böyük üstünlükdür."
+}

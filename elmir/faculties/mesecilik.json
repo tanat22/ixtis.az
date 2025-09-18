@@ -1,0 +1,18 @@
+
+{
+  "name": "Meşəçilik",
+  "slug": "mesecilik",
+  "description": "Meşəçilik ixtisası, meşələrin salınması, bərpası, mühafizəsi, səmərəli istifadəsi və ekoloji funksiyalarının qorunması ilə məşğul olan bir elm sahəsidir. Bu ixtisas meşə botanikası (dendrologiya), meşə torpaqşünaslığı, meşə taksasiyası (meşənin ölçülməsi və qiymətləndirilməsi), meşə mühafizəsi (yanğınlar və zərərvericilərlə mübarizə) və meşə təsərrüfatının idarə edilməsi kimi fənləri əhatə edir.",
+  "future": "İqlim dəyişikliyi ilə mübarizə və biomüxtəlifliyin qorunması fonunda meşələrin rolu getdikcə artır. 'Yaşıl dünya' naminə həyata keçirilən layihələr, yeni meşə massivlərinin salınması, səhralaşma ilə mübarizə və ekoturizmin inkişafı meşəçilik mütəxəssislərinə olan tələbatı artıracaq. Coğrafi İnformasiya Sistemləri (GIS) və dronların meşə monitorinqi və yanğınların erkən aşkarlanmasında istifadəsi bu sahənin gələcəyini müəyyən edir.",
+  "job_opportunities": "Ekologiya və Təbii Sərvətlər Nazirliyinin Meşələrin İnkişafı Xidməti və onun regional idarələri, xüsusi mühafizə olunan təbiət əraziləri (milli parklar, qoruqlar), elmi-tədqiqat institutları, yaşıllaşdırma və landşaft dizaynı şirkətləri, ağac emalı və mebel sənayesi müəssisələri (xammal tədarükü üzrə).",
+  "possible_positions": [
+    "Meşə təsərrüfatı mühəndisi",
+    "Meşəbəyi",
+    "Meşə mühafizəsi mühəndisi",
+    "Taksator (meşə quruluşu mütəxəssisi)",
+    "Milli parkın əməkdaşı (reyncer)",
+    "Dendroloq",
+    "Ekoturizm üzrə mütəxəssis"
+  ],
+  "recommendations": "Təhsil müddətində botanika və ekologiya fənlərinə xüsusi diqqət yetirmək lazımdır. Çöl təcrübələrində və meşə təsərrüfatlarında aktiv iştirak etmək, ağac və kol növlərini tanımaq, meşə xəstəlikləri və zərərvericiləri haqqında məlumatlı olmaq vacibdir. ArcGIS və ya QGIS kimi GIS proqramlarını və GPS cihazları ilə işləməyi öyrənmək sizi müasir əmək bazarında fərqləndirəcək. Meşə yanğınları ilə mübarizə və ilk yardım üzrə təlimlər keçmək də faydalıdır."
+}

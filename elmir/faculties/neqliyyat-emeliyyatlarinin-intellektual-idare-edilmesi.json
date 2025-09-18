@@ -1,0 +1,16 @@
+{
+    "name": "Nəqliyyat əməliyyatlarının intellektual idarə edilməsi",
+    "slug": "neqliyyat-emeliyyatlarinin-intellektual-idare-edilmesi",
+    "description": "Bu müasir ixtisas, nəqliyyat axınlarının optimallaşdırılması, yol hərəkətinin idarə edilməsi və nəqliyyat sistemlərinin səmərəliliyinin artırılması üçün informasiya texnologiyaları və avtomatlaşdırılmış sistemlərin tətbiqi üzrə mütəxəssislər hazırlayır. Proqram nəqliyyat modelləşdirilməsi, coğrafi informasiya sistemləri (GIS), GPS naviqasiya, svetoforların idarə edilməsi, ağıllı parklanma sistemləri kimi mövzuları əhatə edir.",
+    "future": "'Ağıllı şəhər' konsepsiyasının tətbiqi ilə əlaqədar bu sahənin mütəxəssislərinə böyük ehtiyac yaranır. Məzunlar dövlət nəqliyyat agentliklərində, yol hərəkətini idarəetmə mərkəzlərində, logistika şirkətlərində və bu sahədə proqram təminatı hazırlayan İT şirkətlərində çalışa bilərlər.",
+    "job_opportunities": "Bakı Nəqliyyat Agentliyi (BNA), Azərbaycan Yerüstü Nəqliyyat Agentliyi (AYNA), Dövlət Yol Polisinin Nəqliyyatın İntellektual İdarəetmə Mərkəzi (NİİM), logistika və daşıma şirkətləri, şəhərsalma və layihələndirmə institutları, İT şirkətləri.",
+    "possible_positions": [
+        "Nəqliyyat planlaşdırıcısı",
+        "Yol hərəkətinin idarə edilməsi üzrə mühəndis",
+        "İntellektual nəqliyyat sistemləri (İNS) mütəxəssisi",
+        "GIS mütəxəssisi (nəqliyyat)",
+        "Nəqliyyat analitiki",
+        "Logistika mühəndisi"
+    ],
+    "recommendations": "Bu ixtisas üçün güclü analitik və sistemli düşüncə, riyaziyyat və informatika üzrə dərin biliklər, alqoritmləşdirmə və proqramlaşdırma bacarıqları (məs., Python) vacibdir. Problemlərə innovativ yanaşma və böyük həcmli məlumatlarla (Big Data) işləmək bacarığı karyera üçün əhəmiyyətlidir."
+}

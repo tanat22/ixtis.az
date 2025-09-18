@@ -1,0 +1,16 @@
+{
+    "name": "Radiotexnika",
+    "slug": "radiotexnika",
+    "description": "Bu fundamental ixtisas, geniş tezlik diapazonunda işləyən radioelektron qurğuların və sistemlərin - radiolokasiya və radionaviqasiya sistemləri, məlumatların radio kanalları ilə ötürülməsi sistemləri, radioidarəetmə və digər xüsusi təyinatlı radiotexniki vasitələrin işlənməsi, istehsalı və istismarı üzrə mühəndislər hazırlayır. Tədrisdə sxemotexnika, mikroelektronika, siqnalların rəqəmsal emalı, mikrodalğalı texnika və antenalar kimi fənlərə xüsusi diqqət yetirilir.",
+    "future": "Radiotexnika mülki və hərbi sahələrdə geniş tətbiqlərə malikdir. Radarlar, naviqasiya sistemləri, pilotsuz uçuş aparatları (PUA), mobil rabitə və Əşyaların İnterneti (IoT) kimi sahələrin inkişafı radiotexnika mühəndislərinə olan tələbatı artırır. Məzunlar müdafiə sənayesi müəssisələrində, elmi-tədqiqat institutlarında, mobil operatorlarda və telekommunikasiya şirkətlərində işləyə bilərlər.",
+    "job_opportunities": "Müdafiə Sənayesi Nazirliyinin müəssisələri, elmi-tədqiqat institutları (məs., AMEA-nın Fizika İnstitutu), Azərkosmos, mobil operatorlar, naviqasiya və telemetriya xidmətləri göstərən şirkətlər, tibbi avadanlıqların (MRT, ultrasəs) servisi ilə məşğul olan şirkətlər.",
+    "possible_positions": [
+        "Radio mühəndis",
+        "Mühəndis-konstruktor (radioelektron avadanlıqlar üzrə)",
+        "Sxemo-texnik",
+        "Radiolokasiya və radionaviqasiya üzrə mühəndis",
+        "Radio ölçmələr üzrə mühəndis",
+        "Elmi işçi"
+    ],
+    "recommendations": "Bu ixtisas dərin nəzəri biliklər, riyazi təfəkkür, tədqiqat və layihələndirməyə meyl tələb edir. Fizika və riyaziyyatı sevmək, mürəkkəb sxemləri anlamaq və yaratmaq bacarığı, həmçinin proqramlaşdırma dillərini (məs., C++, Python, MATLAB) bilmək bu sahədə uğur qazanmaq üçün vacib amillərdir."
+}

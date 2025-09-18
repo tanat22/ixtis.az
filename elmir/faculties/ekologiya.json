@@ -1,0 +1,18 @@
+
+{
+  "name": "Ekologiya",
+  "slug": "ekologiya",
+  "description": "Ekologiya, canlı orqanizmlərin bir-biri ilə və ətraf mühitlə (hava, su, torpaq) qarşılıqlı əlaqəsini öyrənən bir biologiya elmidir. Bu ixtisas populyasiyaların dinamikası, ekosistemlərin strukturu və funksiyası, biomüxtəlifliyin qorunması, çirklənmənin təsirləri və təbii resursların davamlı idarə olunması kimi mövzuları əhatə edir. Ekoloqlar insan fəaliyyətinin təbiətə təsirini qiymətləndirir və bu təsirləri minimuma endirmək üçün yollar axtarırlar.",
+  "future": "İqlim dəyişikliyi, meşələrin qırılması, biomüxtəlifliyin azalması və ətraf mühitin çirklənməsi kimi qlobal problemlər ekoloq peşəsini XXI əsrin ən vacib və aktual peşələrindən birinə çevirir. 'Yaşıl iqtisadiyyat'a keçid, bərpaolunan enerji, tullantıların təkrar emalı və davamlı inkişaf prinsiplərinin tətbiqi ekoloqlar üçün yeni iş sahələri yaradır. Şirkətlərin və dövlətlərin ekoloji məsuliyyətinin artması bu sahənin mütəxəssislərinə olan tələbatı daha da gücləndirəcək.",
+  "job_opportunities": "Ekologiya və Təbii Sərvətlər Nazirliyi və onun tabeliyindəki qurumlar, xüsusi mühafizə olunan təbiət əraziləri (milli parklar, qoruqlar), neft-qaz və sənaye şirkətlərinin ətraf mühitin mühafizəsi departamentləri, ekoloji konsaltinq şirkətləri (ƏMTQ sənədlərinin hazırlanması), beynəlxalq ekoloji təşkilatlar (WWF, UNDP), su və tullantıların təmizlənməsi müəssisələri, elmi-tədqiqat institutları.",
+  "possible_positions": [
+    "Ekoloq",
+    "Ətraf mühit üzrə mütəxəssis/məsləhətçi",
+    "SƏTƏM (HSE) mütəxəssisi",
+    "Milli parkın əməkdaşı/reyncer",
+    "Tullantıların idarə olunması üzrə mütəxəssis",
+    "Ekoloji auditor",
+    "Elmi işçi"
+  ],
+  "recommendations": "Təhsil müddətində çöl təcrübələrində və ekspedisiyalarda aktiv iştirak etmək, flora və faunanı tanımaq, su və torpaq nümunələrinin analizi kimi praktiki bacarıqlara yiyələnmək çox vacibdir. ArcGIS və ya QGIS kimi Coğrafi İnformasiya Sistemlərini (GIS) öyrənmək ətraf mühitin monitorinqi və təsirin qiymətləndirilməsi üçün böyük üstünlükdür. Azərbaycanın ekoloji qanunvericiliyi və beynəlxalq standartlar (ISO 14001) ilə tanışlıq karyeranız üçün faydalı olacaq. Ekoloji QHT-lərdə könüllü fəaliyyət həm təcrübə, həm də faydalı əlaqələr qazanmaq üçün əla yoldur."
+}

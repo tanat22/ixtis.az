@@ -1,0 +1,15 @@
+{
+    "name": "Yüksək gərginliklər texnikası",
+    "slug": "yuksek-gerginlikler-texnikasi",
+    "description": "Bu ixtisas, elektrik enerjisinin ötürülməsi və paylanması zamanı istifadə olunan yüksək gərginlikli (110 kV, 220 kV, 330 kV və daha yüksək) avadanlıqların (transformatorlar, açarlar, izolyatorlar) konstruksiyası, izolyasiyasının seçilməsi, ifrat gərginliklərdən mühafizəsi və sınağı ilə məşğul olan mütəxəssislər hazırlayır. Bu, energetikanın ən fundamental və elm tutumlu sahələrindən biridir.",
+    "future": "Elektrik enerjisinə tələbat artdıqca daha böyük güclərin daha uzaq məsafələrə ötürülməsi zərurəti yaranır ki, bu da daha yüksək gərginlik siniflərinin tətbiqini tələb edir. Yüksək gərginlik avadanlıqlarının etibarlılığı bütün enerji sisteminin dayanıqlığını müəyyən edir. Bu sahənin mütəxəssisləri həm istismar, həm də elmi-tədqiqat və sınaq laboratoriyalarında çalışa bilərlər.",
+    "job_opportunities": "Azərenerji ASC-nin yüksək gərginlikli elektrik şəbəkələri, yarımstansiyaları və sınaq laboratoriyaları, elmi-tədqiqat institutları, iri sənaye müəssisələrinin yüksək gərginlikli təsərrüfatları, yüksək gərginlik avadanlıqları istehsal edən zavodların nümayəndəlikləri.",
+    "possible_positions": [
+        "Yüksək gərginlik xidmətinin mühəndisi",
+        "İzolyasiya və ifrat gərginlikdən mühafizə xidmətinin mühəndisi",
+        "Sınaq laboratoriyasının mühəndisi",
+        "Yarımstansiya mühəndisi/rəisi",
+        "Elmi işçi"
+    ],
+    "recommendations": "Bu ixtisas üçün fizikanın elektromaqnetizm bölməsini, materialşünaslığı və riyaziyyatı dərindən bilmək, tədqiqatlara və sınaqlara meyl, yüksək diqqət və məsuliyyət hissi vacibdir. Elektromaqnit sahələrinin hesablanması üçün proqram paketləri (məs., COMSOL) ilə işləmək bacarığı müasir mütəxəssis üçün böyük üstünlükdür."
+}

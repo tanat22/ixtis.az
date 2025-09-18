@@ -1,0 +1,15 @@
+{
+    "name": "Energetika və avtomatika sistemləri",
+    "slug": "energetika-ve-avtomatika-sistemleri",
+    "description": "Bu ixtisas, elektrik stansiyaları, yarımstansiyalar və şəbəkələrdə texnoloji proseslərin avtomatlaşdırılması, idarə olunması və mühafizəsi sistemləri üzrə mütəxəssislər hazırlayır. Bu, klassik energetika ilə avtomatikanın (proqramlaşdırılan məntiq kontrollerləri - PLC, SCADA sistemləri) qovuşuğunda yerləşən bir sahədir. Məzunlar həm energetikanı, həm də avtomatlaşdırmanı bilirlər.",
+    "future": "Müasir energetika sistemləri tamamilə avtomatlaşdırılmış və kompüterləşdirilmişdir. Enerji sistemlərinin etibarlılığı və səmərəliliyi birbaşa bu avtomatika sistemlərinin düzgün işləməsindən asılıdır. Enerji sistemlərinin rəqəmsallaşması ilə bu sahənin mütəxəssislərinə tələbat daha da artacaqdır.",
+    "job_opportunities": "Azərenerji ASC (xüsusilə Mərkəzi Dispetçer İdarəsi və Rele Mühafizəsi, Avtomatika xidmətləri), Azərişıq ASC, sənaye müəssisələrinin baş energetik və avtomatlaşdırma şöbələri, proseslərin avtomatlaşdırılması ilə məşğul olan mühəndislik şirkətləri (məs., Schneider Electric, Siemens, ABB nümayəndəlikləri).",
+    "possible_positions": [
+        "Rele mühafizəsi və avtomatika üzrə mühəndis",
+        "SCADA/PLC mühəndisi (energetika sahəsində)",
+        "Avtomatlaşdırılmış idarəetmə sistemləri üzrə mühəndis",
+        "Baş energetikin avtomatika üzrə müavini",
+        "Sistem inteqratoru"
+    ],
+    "recommendations": "Bu ixtisas üçün həm energetikanın əsaslarını, həm də proqramlaşdırma və mikroprosessor texnikasını bilmək lazımdır. Məntiqi və alqoritmik düşüncə, problem həll etmə bacarığı və yüksək məsuliyyət hissi vacibdir. Müasir idarəetmə sistemlərini və protokollarını (məs., IEC 61850) öyrənməyə həvəsli olmaq tələb olunur."
+}
