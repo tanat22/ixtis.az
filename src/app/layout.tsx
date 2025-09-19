@@ -4,6 +4,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 import { Header } from '@/components/layout/Header';
 import { SelectionProvider } from '@/context/SelectionContext';
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
   title: 'İnteraktiv Təhsil Bələdçisi',
@@ -27,6 +28,7 @@ export default function RootLayout({
           <Header />
           <main>{children}</main>
           <Toaster />
+          <Analytics />
         </SelectionProvider>
       </body>
     </html>
