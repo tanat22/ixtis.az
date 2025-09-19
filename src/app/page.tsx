@@ -21,6 +21,7 @@ export default function HomePage() {
         showSelectButton={false} 
         showCodeColumn={false} 
         highlightScoreInput={true}
+        showEducationLevelFilter={true}
       />
     </>
   );

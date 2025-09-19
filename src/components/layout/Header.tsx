@@ -27,10 +27,6 @@ const mainNav = [
     title: "FAQ",
     href: "/faq",
   },
-  {
-    title: "Seçilmişlər",
-    href: "/selection",
-  },
 ];
 
 export function Header() {
